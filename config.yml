@@ -1,0 +1,14 @@
+ontology_name: "Battery Data Format Application Ontology"
+ontology_adjective: "battery data format"
+ontology_noun: "battery data format"
+ontology_abbreviation: "BDF"
+ontology_uri: "https://w3id.org/emmo/domain/electrochemistry"
+ontology_prefix: "https://w3id.org/emmo/domain/electrochemistry#"
+ontology_description: "The ontology for electrochemical systems."
+
+ttl_files:
+  - section_title: "Battery Data Format"
+    path: "battery-data-format.ttl"
+output:
+  inferred_ttl: "battery-data-format-inferred.ttl"
+  rst_file: "docs/battery-data-format.rst"

@@ -1,0 +1,11 @@
+# Core dependencies for ontology parsing, reasoning, and linked data processing
+EMMOntoPy>=0.4.0,<1
+rdflib
+owlrl
+
+# Configuration and general utilities
+PyYAML
+
+# Optional development tools
+jupyter
+ipykernel
