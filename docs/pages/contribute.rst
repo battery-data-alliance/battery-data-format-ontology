@@ -1,3 +1,0 @@
-Contributing to the ontology
-============================
-... a contributing page ...

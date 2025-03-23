@@ -1,15 +1,18 @@
-import json
 import os
 import sys
-import subprocess
+import json
 import yaml
-import rdflib
-from rdflib.namespace import RDF, OWL, SKOS, RDFS
+import logging
+import subprocess
 from urllib.parse import urljoin
 from urllib.request import pathname2url
+
+import rdflib
 from rdflib import Graph
-import logging
+from rdflib.namespace import RDF, OWL, SKOS, RDFS
+
 from owlrl import DeductiveClosure, OWLRL_Semantics
+
 
 def print_ttl_files():
     config = load_ontology_config()
@@ -238,15 +241,8 @@ def render_rst_top() -> str:
     return f"""
 :html_theme.sidebar_secondary.remove:
 
-{underline}
 {title}
 {underline}
-
-**{ontology_description}**
-
-The {ontology_name} is a domain of the Elementary Multiperspective Materials Ontology (EMMO), for describing {ontology_adjective} systems, materials, methods, and data. Its primary objective is to support the creation of FAIR, Linked Data within the field of {ontology_noun}. This ontology serves as a foundational resource for harmonizing {ontology_adjective} knowledge representation, enhancing data interoperability, and accelerating progress in electroc{ontology_adjective}hemical research and development.
-
-This page lists all terms extracted from the {ontology_name.lower()} ontology. It is intended to serve as a reference resource. 
 
 """
 

@@ -124,12 +124,12 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/emmo-repo/domain-electrochemistry",
+            "url": "https://github.com/BatteryDataAlliance/BDAOntology",
             "icon": "fab fa-github-square",
         },
         {
-            "name": "Ontology Homepage",
-            "url": "https://w3id.org/emmo/domain/electrochemistry",
+            "name": "BDA Homepage",
+            "url": "https://lfenergy.org/projects/battery-data-alliance/",
             "icon": "fas fa-globe",
         },
     ],

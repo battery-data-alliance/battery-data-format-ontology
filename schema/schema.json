@@ -1,0 +1,368 @@
+{
+    "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+    "@type": "csvw:TableSchema",
+    "dc:title": "Battery Data Format Table Schema",
+    "dc:description": "A table schema describing files that are compliant with Battery Data Format (BDF) recommendations",
+    "dc:subject": ["battery", "data", "TBD", "cycler", "cycling"],
+    "dc:language": "en",
+    "dc:license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0.html"
+    },
+    "dc:accessRights": "public",
+    "dc:publisher": {
+        "@type": "schema:Organization",
+        "@id": "https://ror.org/02krvw113",
+        "schema:name": "Linux Foundation"
+    },
+    "dc:creator": {
+        "@type": "schema:Person",
+        "@id": "https://orcid.org/0000-0002-8758-6109",
+        "schema:name": "Simon Clark",
+        "schema:affiliation": {
+            "@type": "schema:ResearchOrganization",
+            "@id": "https://ror.org/01f677e56",
+            "schema:name": "SINTEF"
+        }
+    },
+    "dc:modified": {
+        "@value": "2025-03-14",
+        "@type": "xsd:date"
+    },
+    "dc:created": {
+        "@value": "2025-03-14",
+        "@type": "xsd:date"
+    },
+    "dc:hasVersion": "0.1.0",
+    "dc:format": "application/ld+json",
+    "schema:name": "BDF Table Schema",
+    "schema:description": "A table schema describing files that are compliant with Battery Data Format (BDF) recommendations",
+    "schema:version": "0.1.0",
+    "schema:encodingFormat": "application/ld+json",
+    "csvw:columns": [
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "test_time_millisecond",
+        "csvw:titles": "Test Time  /  ms",
+        "dc:description": "the number of milliseconds since the start of the test",
+        "csvw:propertyUrl": {
+          "@type": "bdf:test_time_millisecond"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:MilliSecond"
+          },
+          {
+            "@id": "unit:MilliSEC"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:MilliSecond"
+          },
+          {
+            "@id": "unit:MilliSEC"
+          }
+        ],
+        "csvw:datatype": "xsd:integer",
+        "csvw:required": "true"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "current_ampere",
+        "csvw:titles": "Current  /  A",
+        "dc:description": "instantaneous current, recorded in ampere",
+        "csvw:propertyUrl": {
+          "@type": "bdf:current_ampere"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:Ampere"
+          },
+          {
+            "@id": "unit:A"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:Ampere"
+          },
+          {
+            "@id": "unit:A"
+          }
+        ],
+        "csvw:datatype": "xsd:float",
+        "csvw:required": "true"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "voltage_volt",
+        "csvw:titles": "Voltage  /  V",
+        "dc:description": "instantaneous voltage, recorded in volt",
+        "csvw:propertyUrl": {
+          "@type": "bdf:voltage_volt"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "csvw:datatype": "xsd:float",
+        "csvw:required": "true"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "cycle_dimensionless",
+        "csvw:titles": "Cycle  /  1",
+        "dc:description": "the cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging",
+        "csvw:propertyUrl": {
+          "@type": "bdf:cycle_dimensionless"
+        },
+        "csvw:datatype": "xsd:integer",
+        "csvw:required": "true"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "date_time_millisecond",
+        "csvw:titles": "Unix Time  /  ms",
+        "csvw:propertyUrl": {
+          "@type": "bdf:date_time_millisecond"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:MilliSecond"
+          },
+          {
+            "@id": "unit:MilliSEC"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:MilliSecond"
+          },
+          {
+            "@id": "unit:MilliSEC"
+          }
+        ],
+        "csvw:datatype": "xsd:integer",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "I_A",
+        "csvw:titles": "Current",
+        "csvw:propertyUrl": {
+          "@type": "CellCurrent"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:Ampere"
+          },
+          {
+            "@id": "unit:A"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:Ampere"
+          },
+          {
+            "@id": "unit:A"
+          }
+        ],
+        "csvw:datatype": "xsd:decimal",
+        "csvw:required": "true"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "Ah_Ah",
+        "csvw:titles": "Total Capacity",
+        "csvw:propertyUrl": {
+          "@type": "TotalCapacity"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:AmpereHour"
+          },
+          {
+            "@id": "unit:A-HR"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:AmpereHour"
+          },
+          {
+            "@id": "unit:A-HR"
+          }
+        ],
+        "csvw:datatype": "xsd:decimal",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "Ah_Step",
+        "csvw:titles": "Step Capacity",
+        "dc:description": "the capacity that has flown through the device in the current step",
+        "csvw:propertyUrl": {
+          "@type": "StepCapacity"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:AmpereHour"
+          },
+          {
+            "@id": "unit:A-HR"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:AmpereHour"
+          },
+          {
+            "@id": "unit:A-HR"
+          }
+        ],
+        "csvw:datatype": "xsd:decimal",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "Wh_Wh",
+        "csvw:titles": "Total Energy",
+        "dc:description": "the total energy that has flown through the device in watt hours",
+        "csvw:propertyUrl": {
+          "@type": "TotalEnergy"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:WattHour"
+          },
+          {
+            "@id": "unit:W-HR"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:WattHour"
+          },
+          {
+            "@id": "unit:W-HR"
+          }
+        ],
+        "csvw:datatype": "xsd:decimal",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "T1_C",
+        "csvw:titles": "Temperature",
+        "csvw:propertyUrl": {
+          "@type": "CelsiusTemperature"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:DegreeCelsius"
+          },
+          {
+            "@id": "unit:DEG_C"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:DegreeCelsius"
+          },
+          {
+            "@id": "unit:DEG_C"
+          }
+        ],
+        "csvw:datatype": "xsd:decimal",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "Cyc_Count",
+        "csvw:titles": "Cycle Index",
+        "dc:description": "the current cycle number in the test",
+        "csvw:propertyUrl": {
+          "@type": "CycleIndex"
+        },
+        "csvw:datatype": "xsd:integer",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "State",
+        "dc:description": "the charging or discharging state of a battery",
+        "csvw:titles": "State",
+        "csvw:datatype": "xsd:string",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "u_charge",
+        "dc:description": "the upper voltage limit",
+        "csvw:titles": "Upper Voltage Limit",
+        "csvw:propertyUrl": {
+          "@type": "UpperVoltageLimit"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "csvw:datatype": "xsd:string",
+        "csvw:required": "false"
+      },
+      {
+        "@type": "csvw:Column",
+        "csvw:name": "u_discharge",
+        "dc:description": "the lower voltage limit",
+        "csvw:titles": "Lower Voltage Limit",
+        "csvw:propertyUrl": {
+          "@type": "LowerVoltageLimit"
+        },
+        "hasMeasurementUnit": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "schema:unitCode": [
+          {
+            "@id": "emmo:Volt"
+          },
+          {
+            "@id": "unit:V"
+          }
+        ],
+        "csvw:datatype": "xsd:string",
+        "csvw:required": "false"
+      }      
+    ],
+    "csvw:primaryKey": "Time_h"
+  }
+  

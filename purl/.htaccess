@@ -1,0 +1,49 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# ==============================================
+# Top-Level Redirects (non-versioned)
+# ==============================================
+
+# Redirect to GitHub Pages (browser = HTML, otherwise TTL)
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml
+RewriteRule ^ontology/battery-data-format/?$ https://battery-data-alliance.github.io/BDAOntology/battery-data-format.html [R=303,NE,L]
+RewriteRule ^ontology/battery-data-format/?$ https://battery-data-alliance.github.io/BDAOntology/battery-data-format.ttl [R=303,NE,L]
+
+# Pre-inferred version
+RewriteRule ^ontology/battery-data-format/inferred/?$ https://battery-data-alliance.github.io/BDAOntology/battery-data-format-inferred.ttl [R=303,NE,L]
+
+# Latest and source
+RewriteRule ^ontology/battery-data-format/latest/?$ https://raw.githubusercontent.com/battery-data-alliance/BDAOntology/main/battery-data-format.ttl [R=303,NE,L]
+RewriteRule ^ontology/battery-data-format/source/?$ https://github.com/battery-data-alliance/BDAOntology/blob/main/battery-data-format.ttl [R=303,NE,L]
+
+# JSON-LD Context and CSVW Schema
+RewriteRule ^ontology/battery-data-format/context/?$ https://battery-data-alliance.github.io/BDAOntology/context/context.json [R=303,NE,L]
+RewriteRule ^ontology/battery-data-format/schema/?$ https://battery-data-alliance.github.io/BDAOntology/schema/schema.json [R=303,NE,L]
+
+# ==============================================
+# Versioned Redirects (new structure)
+# Example: /ontology/battery-data-format/0.1.0/battery-data-format/context
+# ==============================================
+
+# Versioned base ontology file (HTML if browser, otherwise TTL)
+RewriteCond %{HTTP_ACCEPT} text/html [OR]
+RewriteCond %{HTTP_ACCEPT} application/xhtml\+xml
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/?$ https://battery-data-alliance.github.io/BDAOntology/versions/$1/battery-data-format.html [R=303,NE,L]
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/?$ https://battery-data-alliance.github.io/BDAOntology/versions/$1/battery-data-format.ttl [R=303,NE,L]
+
+# Versioned latest TTL (raw)
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/latest/?$ https://raw.githubusercontent.com/battery-data-alliance/BDAOntology/$1/battery-data-format.ttl [R=303,NE,L]
+
+# Versioned inferred ontology
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/inferred/?$ https://battery-data-alliance.github.io/BDAOntology/versions/$1/battery-data-format-inferred.ttl [R=303,NE,L]
+
+# Versioned source
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/source/?$ https://github.com/battery-data-alliance/BDAOntology/blob/$1/battery-data-format.ttl [R=303,NE,L]
+
+# Versioned JSON-LD context
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/context/?$ https://battery-data-alliance.github.io/BDAOntology/versions/$1/context/context.jsonld [R=303,NE,L]
+
+# Versioned CSVW schema
+RewriteRule ^ontology/battery-data-format/([0-9]+\.[0-9]+\.[0-9]+)/battery-data-format/schema/?$ https://battery-data-alliance.github.io/BDAOntology/versions/$1/schema/schema.json [R=303,NE,L]
