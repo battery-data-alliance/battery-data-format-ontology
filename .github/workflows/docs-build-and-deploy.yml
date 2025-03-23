@@ -3,7 +3,7 @@ name: docs
 on: 
   push:
     branches:
-      - 'master'
+      - 'main'
   pull_request:
     branches:
       - '*'  # To ensure it runs on all PRs
@@ -38,33 +38,32 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements-docs.txt
 
+    - name: Install System Dependencies
+      run: sudo apt-get update -y && sudo apt-get install -y pandoc
+
     - name: Load Ontology Configuration from YAML
       run: |
         python .github/scripts/ontology_toolkit.py >> $GITHUB_ENV
-  
+
     - name: Render Documentation from TTL Files
       run: python .github/scripts/ontology_toolkit.py --generate-rst
 
-    - name: Build HTML
-      uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
-        pre-build-command: "apt-get update -y; apt-get install -y pandoc"
+    - name: Build HTML with Sphinx
+      run: sphinx-build -b html docs/ docs/_build/html/
 
     - name: Create Context File from TTL
       run: python .github/scripts/ontology_toolkit.py --generate-context
-      
 
     - name: Ensure HTML Directories Exist
       run: |
-        sudo mkdir -p docs/_build/html/context/
-        sudo mkdir -p docs/_build/html/assets/
-        sudo mkdir -p docs/_build/html/versions/
+        mkdir -p docs/_build/html/context/
+        mkdir -p docs/_build/html/assets/
+        mkdir -p docs/_build/html/versions/
 
     - name: Copy Assets and Context to HTML Directory
       run: |
-        sudo cp -r docs/assets/* docs/_build/html/assets/
-        sudo cp context/context.json docs/_build/html/context/
+        cp -r docs/assets/* docs/_build/html/assets/ || true
+        cp context/context.json docs/_build/html/context/
 
     - name: Commit Generated Changes (context.json & rst files)
       run: |
@@ -73,37 +72,27 @@ jobs:
         git add context/context.json ${{ env.RST_FILE }}
         git diff --staged --quiet || git commit -m "Update generated docs files for ${{ env.ONTOLOGY_NAME }}"
 
-    - name: Debug Before Pull
-      run: |
-        echo "Checking Git status before pull..."
-        git status
-        echo "Listing unstaged changes..."
-        git diff --name-only
-        echo "Listing untracked files..."
-        git ls-files --others --exclude-standard
-
     - name: Stash Changes Before Pull
       if: github.event_name == 'push'
       run: |
         git stash --include-untracked
-        git pull origin master --rebase
+        git pull origin main --rebase
         git stash pop || echo "No stash to apply"
 
     - name: Push Changes
-      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      run: git push origin HEAD:master
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: git push origin HEAD:main
 
     - name: Load TTL Files into ENV
       run: |
         TTL_FILES=$(python .github/scripts/ontology_toolkit.py --print-ttl-files)
         echo "TTL_FILES=$TTL_FILES" >> $GITHUB_ENV   
-    
+
     - name: Prepare Directory Structure
       run: |
-        # Prepare latest and versions directories
-        sudo mkdir -p docs/_build/html/latest/
-        sudo mkdir -p docs/_build/html/versions/
-      
+        mkdir -p docs/_build/html/latest/
+        mkdir -p docs/_build/html/versions/
+
     - name: Apply FOOPS Recommendations to Current Files
       run: |
         IFS=' ' read -r -a TTL_FILES <<< "${{ env.TTL_FILES }}"
@@ -111,48 +100,34 @@ jobs:
             if [ -f "$FILE" ]; then
                 OUTPUT_FILE="${FILE/.ttl/-foops.ttl}"
                 python .github/scripts/foops_toolkit.py --apply-to-file "$FILE" "$OUTPUT_FILE"
-                sudo cp "$OUTPUT_FILE" "docs/_build/html/$(basename "$FILE")"
+                cp "$OUTPUT_FILE" "docs/_build/html/$(basename "$FILE")"
             else
                 echo "Warning: $FILE not found!"
             fi
         done
-    
+
     - name: Fetch All Tags and Copy TTL Files
       run: |
         git fetch --tags
-    
-        # Clear out the versions directory to start fresh
-        sudo rm -rf docs/_build/html/versions
-        sudo mkdir -p docs/_build/html/versions
-    
+        rm -rf docs/_build/html/versions
+        mkdir -p docs/_build/html/versions
         ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    
         for TAG in $(git tag); do
             echo "Processing tag: $TAG"
-            
-            # Checkout the repository at the tag
             git checkout $TAG
-            
-            # Create directory for this tag
-            sudo mkdir -p "docs/_build/html/versions/$TAG"
-            
+            mkdir -p "docs/_build/html/versions/$TAG"
             git ls-tree -r --name-only "$TAG" | grep "\.ttl$" | while read FILE; do
                 if [ -f "$FILE" ]; then
-                    sudo cp "$FILE" "docs/_build/html/versions/$TAG/$(basename "$FILE")"
+                    cp "$FILE" "docs/_build/html/versions/$TAG/$(basename "$FILE")"
                 fi
             done
-            
-            # Copy context.json if present
             if [ -f "context/context.json" ]; then
-                sudo mkdir -p "docs/_build/html/versions/$TAG/context"
-                sudo cp "context/context.json" "docs/_build/html/versions/$TAG/context"
+                mkdir -p "docs/_build/html/versions/$TAG/context"
+                cp "context/context.json" "docs/_build/html/versions/$TAG/context"
             fi
-    
-            # Return to the original branch (could be master, dev, etc.)
             git checkout $ORIGINAL_BRANCH
         done
-      
-      
+
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -160,8 +135,8 @@ jobs:
         path: docs/_build/html/
 
     - name: Deploy
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/_build/html
+        publish_dir: docs/_build/html/
