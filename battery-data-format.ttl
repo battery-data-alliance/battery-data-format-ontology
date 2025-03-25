@@ -1,0 +1,150 @@
+@prefix : <https://w3id.org/battery-data-alliance/ontology/battery-data-format#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix electrochemistry: <https://w3id.org/emmo/domain/electrochemistry#> .
+@prefix emmo: <https://w3id.org/emmo#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:bibliographicCitation a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+bibo:doi a owl:AnnotationProperty .
+
+bibo:status a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+<https://w3id.org/battery-data-alliance/ontology/battery-data-format> a owl:Ontology ;
+    dcterms:abstract "An applicaiton ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
+    dcterms:bibliographicCitation "TBD" ;
+    dcterms:contributor <https://orcid.org/0000-0002-8758-6109> ;
+    dcterms:created "2025-01-23"^^xsd:date ;
+    dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
+    dcterms:issued "2025-01-23"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/legalcode" ;
+    dcterms:modified "2025-01-23"^^xsd:date ;
+    dcterms:publisher "Battery Data Alliance" ;
+    dcterms:title "Battery Data Format Ontology"@en ;
+    bibo:doi "TBD" ;
+    bibo:status "unstable" ;
+    vann:preferredNamespacePrefix "bda" ;
+    vann:preferredNamespaceUri "https://w3id.org/emmo/domain/battery" ;
+    owl:backwardCompatibleWith "0.1.0-beta" ;
+    owl:imports <https://w3id.org/emmo/domain/battery/0.18.0-beta/battery> ;
+    owl:priorVersion "0.1.0-beta" ;
+    owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/0.1.0-beta/battery-data-format> ;
+    owl:versionInfo "0.1.0-beta" ;
+    foaf:logo "TBD" .
+
+:ambient_pressure_pascal a owl:Class ;
+    rdfs:label "ambient_pressure_pascal"@en ;
+    rdfs:comment "the ambient pressure in unit Psacal"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:Pascal ],
+        emmo:EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989 ;
+    skos:prefLabel "ambient_pressure_pascal"@en .
+
+:ambient_temperature_celsius a owl:Class ;
+    rdfs:label "ambient_temperature_celsius"@en ;
+    rdfs:comment "the ambient temperature in degree Celsius"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:DegreeCelsius ],
+        emmo:EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22 ;
+    skos:prefLabel "ambient_temperature_celsius"@en .
+
+:current_ampere a owl:Class ;
+    rdfs:label "current_ampere"@en ;
+    rdfs:comment "Instantaneous current, recorded in amperes"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:Ampere ],
+        electrochemistry:electrochemistry_a24f8581_a5a4_41a4_bb45_d0fdd5c0d810 ;
+    skos:prefLabel "current_ampere"@en .
+
+:cycle_dimensionless a owl:Class ;
+    rdfs:label "cycle_dimensionless"@en ;
+    rdfs:comment "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978 ],
+        electrochemistry:electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8 ;
+    skos:prefLabel "cycle_dimensionless"@en .
+
+:dcir_ohm a owl:Class ;
+    rdfs:label "dcir_ohm"@en ;
+    rdfs:comment "direct current internal resistance in unit ohm"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:Ohm ],
+        electrochemistry:electrochemistry_f94678d6_1386_48fc_8e54_024921924401 ;
+    skos:prefLabel "dcir_ohm"@en .
+
+:step_dimensionless a owl:Class ;
+    rdfs:label "step_dimensionless"@en ;
+    rdfs:comment "the step number with unit one"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978 ],
+        electrochemistry:electrochemistry_d78b696d_9832_4352_a264_28a2ea7d82e4 ;
+    skos:prefLabel "step_dimensionless"@en .
+
+:surface_pressure_pascal a owl:Class ;
+    rdfs:label "surface_pressure_pascal"@en ;
+    rdfs:comment "the surface pressure in unit Psacal"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:Pascal ],
+        emmo:EMMO_50a44256_9dc5_434b_bad4_74a4d9a29989 ;
+    skos:prefLabel "surface_pressure_pascal"@en .
+
+:surface_temperature_celsius a owl:Class ;
+    rdfs:label "surface_temperature_celsius"@en ;
+    rdfs:comment "the surface temperature in degree Celsius"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:DegreeCelsius ],
+        emmo:EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22 ;
+    skos:prefLabel "surface_temperature_celsius"@en .
+
+:test_time_millisecond a owl:Class ;
+    rdfs:label "test_time_millisecond"@en ;
+    rdfs:comment "the number of milliseconds since the start of the test."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:MilliSecond ],
+        electrochemistry:electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05 ;
+    skos:prefLabel "test_time_millisecond"@en .
+
+:voltage_volt a owl:Class ;
+    rdfs:label "voltage_volt"@en ;
+    rdfs:comment "Instantaneous voltage, recorded in volts"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:Volt ],
+        electrochemistry:electrochemistry_4ebe2ef1_eea8_4b10_822d_7a68215bd24d ;
+    skos:prefLabel "voltage_volt"@en .
+
+emmo:Ampere a owl:Class .
+
+emmo:MilliSecond a owl:Class .
+
+emmo:Ohm a owl:Class .
+
+emmo:Volt a owl:Class .
+
+emmo:DegreeCelsius a owl:Class .
+
