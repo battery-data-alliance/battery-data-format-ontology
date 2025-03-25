@@ -1,0 +1,55 @@
+name: Update FOOPS Score Badge
+
+on:
+  workflow_run:
+    workflows: ["docs"]
+    types:
+      - completed
+
+env:
+  GIT_USER_NAME: "GitHub Actions"
+  GIT_USER_EMAIL: "github-actions[bot]@users.noreply.github.com"
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        ref: master  # This ensures you're on master
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Fetch FOOPS Score and Update Badge
+      run: |
+        python .github/scripts/foops_toolkit.py --generate-badge
+
+    - name: Configure Git
+      run: |
+        git config --local user.email "${{ env.GIT_USER_EMAIL }}"
+        git config --local user.name "${{ env.GIT_USER_NAME }}"
+
+    - name: Commit Changes if Needed
+      run: |
+        git add README.md docs/assets/foops_badge.svg
+        if ! git diff --cached --quiet; then
+          git commit -m "Update FOOPS score badge"
+        else
+          echo "No changes to commit"
+        fi
+
+    - name: Push Changes
+      run: git push origin master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

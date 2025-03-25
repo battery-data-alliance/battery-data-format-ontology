@@ -1,0 +1,142 @@
+name: docs
+
+on: 
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '*'  # To ensure it runs on all PRs
+
+env:
+  GIT_USER_NAME: "GitHub Actions"
+  GIT_USER_EMAIL: "github-actions[bot]@users.noreply.github.com"
+    
+jobs:
+
+  updatepages:
+    
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      
+    steps:
+    - name: Checkout Repository (Force Clean)
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        clean: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-docs.txt
+
+    - name: Install System Dependencies
+      run: sudo apt-get update -y && sudo apt-get install -y pandoc
+
+    - name: Load Ontology Configuration from YAML
+      run: |
+        python .github/scripts/ontology_toolkit.py >> $GITHUB_ENV
+
+    - name: Render Documentation from TTL Files
+      run: python .github/scripts/ontology_toolkit.py --generate-rst
+
+    - name: Build HTML with Sphinx
+      run: sphinx-build -b html docs/ docs/_build/html/
+
+    - name: Create Context File from TTL
+      run: python .github/scripts/ontology_toolkit.py --generate-context
+
+    - name: Ensure HTML Directories Exist
+      run: |
+        mkdir -p docs/_build/html/context/
+        mkdir -p docs/_build/html/assets/
+        mkdir -p docs/_build/html/versions/
+
+    - name: Copy Assets and Context to HTML Directory
+      run: |
+        cp -r docs/assets/* docs/_build/html/assets/ || true
+        cp context/context.json docs/_build/html/context/
+
+    - name: Commit Generated Changes (context.json & rst files)
+      run: |
+        git config --local user.email "${{ env.GIT_USER_EMAIL }}"
+        git config --local user.name "${{ env.GIT_USER_NAME }}"
+        git add context/context.json ${{ env.RST_FILE }}
+        git diff --staged --quiet || git commit -m "Update generated docs files for ${{ env.ONTOLOGY_NAME }}"
+
+    - name: Stash Changes Before Pull
+      if: github.event_name == 'push'
+      run: |
+        git stash --include-untracked
+        git pull origin main --rebase
+        git stash pop || echo "No stash to apply"
+
+    - name: Push Changes
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: git push origin HEAD:main
+
+    - name: Load TTL Files into ENV
+      run: |
+        TTL_FILES=$(python .github/scripts/ontology_toolkit.py --print-ttl-files)
+        echo "TTL_FILES=$TTL_FILES" >> $GITHUB_ENV   
+
+    - name: Prepare Directory Structure
+      run: |
+        mkdir -p docs/_build/html/latest/
+        mkdir -p docs/_build/html/versions/
+
+    - name: Apply FOOPS Recommendations to Current Files
+      run: |
+        IFS=' ' read -r -a TTL_FILES <<< "${{ env.TTL_FILES }}"
+        for FILE in "${TTL_FILES[@]}"; do
+            if [ -f "$FILE" ]; then
+                OUTPUT_FILE="${FILE/.ttl/-foops.ttl}"
+                python .github/scripts/foops_toolkit.py --apply-to-file "$FILE" "$OUTPUT_FILE"
+                cp "$OUTPUT_FILE" "docs/_build/html/$(basename "$FILE")"
+            else
+                echo "Warning: $FILE not found!"
+            fi
+        done
+
+    - name: Fetch All Tags and Copy TTL Files
+      run: |
+        git fetch --tags
+        rm -rf docs/_build/html/versions
+        mkdir -p docs/_build/html/versions
+        ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        for TAG in $(git tag); do
+            echo "Processing tag: $TAG"
+            git checkout $TAG
+            mkdir -p "docs/_build/html/versions/$TAG"
+            git ls-tree -r --name-only "$TAG" | grep "\.ttl$" | while read FILE; do
+                if [ -f "$FILE" ]; then
+                    cp "$FILE" "docs/_build/html/versions/$TAG/$(basename "$FILE")"
+                fi
+            done
+            if [ -f "context/context.json" ]; then
+                mkdir -p "docs/_build/html/versions/$TAG/context"
+                cp "context/context.json" "docs/_build/html/versions/$TAG/context"
+            fi
+            git checkout $ORIGINAL_BRANCH
+        done
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: "${{ env.ONTOLOGY_NAME }}_Documentation_${{ env.DOC_DATE }}"
+        path: docs/_build/html/
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html/

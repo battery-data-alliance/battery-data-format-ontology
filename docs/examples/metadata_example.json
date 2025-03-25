@@ -1,0 +1,148 @@
+{
+	"@context": "https://w3id.org/emmo/domain/battery/context",
+	"@graph": [
+		{
+			"@id": "https://zenodo.org/records/15069341#b2b97032-7b18-4b16-8597-68a3b3eebbc1",
+			"@type": "BatteryTest",
+			"rdfs:label": "CR2032 Discharging Test",
+			"rdfs:comment": "A test discharging a CR2032 coin cell",
+			"hasTask": [
+				{
+					"@id": "https://zenodo.org/records/15069341#0d8de126-0900-4ed3-a5d2-4a7737d57948",
+					"@type": "Discharging",
+					"hasParameter": [
+						{
+							"@id": "https://zenodo.org/records/15069341#8f4fbbd2-12d1-4fa9-b2c0-f50c02183b84",
+							"@type": "DischargingCurrent",
+							"hasNumericalPart": {
+								"@id": "https://zenodo.org/records/15069341#b47b2ddf-465f-4fdc-a67e-7d626471b249",
+								"@type": "RealData",
+								"hasNumberValue": 11
+							},
+							"hasMeasurementUnit": "emmo:MilliAmpere"
+						},
+						{
+							"@id": "https://zenodo.org/records/15069341#b51dc6a6-f4de-4553-9763-65f95df0dc82",
+							"@type": "LowerVoltageLimit",
+							"hasNumericalPart": {
+								"@id": "https://zenodo.org/records/15069341#9c21f9df-2b17-4f2c-b1e4-3b40318c2ab3",
+								"@type": "RealData",
+								"hasNumberValue": 1.5
+							},
+							"hasMeasurementUnit": "emmo:Volt"
+						}
+					]
+				}
+			],
+			"hasTestObject": {
+				"@id": "https://zenodo.org/records/15069341#8c9a5084-bcf7-4e31-a9e7-34d3e58c85e6",
+				"@type": "CR2032",
+				"rdfs:label": "CR2032 Battery Cell",
+				"rdfs:comment": "A purchased coin cell used for demonstration purposes",
+				"schema:manufacturer": {
+					"@id": "https://www.wikidata.org/wiki/Q695251",
+					"schema:name": "VARTA"
+				},
+				"schema:image": {
+					"@id": "https://zenodo.org/records/15069341/files/cr2032.image.png",
+					"schema:encodingFormat": "image/png"
+				}
+			},
+			"hasTestEquipment": {
+				"@id": "https://zenodo.org/records/15069341#7d8b9f59-2a2e-4704-a258-7dce87d56b6c",
+				"@type": "BatteryCycler",
+				"schema:manufacturer": {
+					"@id": "https://battery.knowledge-graph.eu/wiki/Item:OSW4956eab590f649c18139b1f292cc836f",
+					"schema:name": "BioLogic"
+				}
+			},
+			"hasOutput": {
+				"@id": "https://zenodo.org/records/15069341#93fa5c2e-9287-41bb-b94f-f40b5cbe8e8a",
+				"@type": ["BatteryTestResult", "dcat:Dataset"],
+				"dc:title": "Discharging Time Series of a CR2032 Battery at 11 mA",
+				"dc:description": "This dataset contains time series data collected during constant-current discharge of a VARTA CR2032 lithium coin cell at 11 mA using a BioLogic battery cycler.",
+				"dc:creator": [
+					{
+						"@type": "schema:Person",
+						"@id": "https://orcid.org/0000-0002-8758-6109",
+						"schema:name": "Simon Clark",
+						"schema:affiliation": {
+							"@type": "schema:ResearchOrganization",
+							"schema:name": "SINTEF"
+						}
+					},
+					{
+						"@type": "schema:Person",
+						"@id": "https://orcid.org/0000-0002-8014-4324",
+						"schema:name": "Nils Peter Wagner",
+						"schema:affiliation": {
+							"@type": "schema:ResearchOrganization",
+							"schema:name": "SINTEF"
+						}
+					}
+				],
+				"dc:publisher": {
+					"@type": "schema:ResearchOrganization",
+					"schema:name": "SINTEF"
+				},
+				"dc:license": "https://creativecommons.org/licenses/by/4.0/",
+				"dc:issued": "2025-03-21",
+				"schema:datePublished": "2025-03-21",
+				"dc:modified": "2025-03-21",
+				"dcat:keyword": ["battery", "discharging", "CR2032", "coin cell", "test data", "time series"],
+				"dcat:accessURL": "https://doi.org/10.5281/zenodo.15069341",
+				"dcat:endpointDescription": {
+  					"@id": "https://developers.zenodo.org/",
+  					"rdfs:label": "Zenodo REST API"
+				},
+				"dcat:endpointURL": "https://zenodo.org/api/records/15069341",
+				"schema:citation": "Simon Clark, Nils Peter Wagner (2025). Discharging Time Series of a CR2032 Battery at 11 mA. https://doi.org/10.5281/zenodo.15069341",
+				"schema:associatedMedia": {
+					"@id": "https://zenodo.org/records/15069341/files/sintef__cr2032__discharging_11_mA__20240216.plot.png",
+					"schema:encodingFormat": "image/png",
+					"rdfs:label": "Voltage and Current vs Time Plot"
+				},
+				"dcat:distribution": [
+					{
+						"@id": "https://zenodo.org/records/15069341#b49ce967-e877-4e0c-9437-5002723f26e0",
+						"@type": "dcat:Distribution",
+						"dcat:mediaType": "text/csv",
+						"dcat:downloadURL": "https://zenodo.org/records/15069341/files/sintef__cr2032__discharging_11_mA__20240216.bdf.csv",
+						"csvw:dialect": {
+							"@type": "csvw:Dialect",
+							"csvw:delimiter": "\t",
+							"csvw:skipRows": 0
+						},
+						"csvw:tableSchema": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema"
+					},
+					{
+						"@id": "https://zenodo.org/records/15069341#b02d0644-80a6-4b63-a94c-42b25430b350",
+						"@type": "dcat:Distribution",
+						"dcat:mediaType": "application/json",
+						"dcat:downloadURL": "https://zenodo.org/records/15069341/files/sintef__cr2032__discharging_11_mA__20240216.bdf.json",
+						"csvw:tableSchema": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema"
+					},
+					{
+						"@id": "https://zenodo.org/records/15069341#71b8df2c-7b2e-4a86-9df1-3d47030d3148",
+						"@type": "dcat:Distribution",
+						"dcat:mediaType": "text/plain",
+						"dcat:downloadURL": "https://zenodo.org/records/15069341/files/sintef__cr2032__discharging_11_mA__20240216.bdf.txt",
+						"csvw:dialect": {
+							"@type": "csvw:Dialect",
+							"csvw:delimiter": "\t",
+							"csvw:skipRows": 0
+						},
+						"csvw:tableSchema": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema"
+					},
+					{
+						"@id": "https://zenodo.org/records/15069341#52eac879-3b13-4086-80d3-b8714353162e",
+						"@type": "dcat:Distribution",
+						"dcat:mediaType": "application/vnd.apache.parquet",
+						"dcat:downloadURL": "https://zenodo.org/records/15069341/files/sintef__cr2032__discharging_11_mA__20240216.bdf.parquet",
+						"csvw:tableSchema": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema"
+					}
+				]
+			}
+		}
+	]
+}
