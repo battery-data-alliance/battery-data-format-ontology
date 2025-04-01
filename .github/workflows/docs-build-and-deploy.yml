@@ -57,6 +57,7 @@ jobs:
     - name: Ensure HTML Directories Exist
       run: |
         mkdir -p docs/_build/html/context/
+        mkdir -p docs/_build/html/schema/
         mkdir -p docs/_build/html/assets/
         mkdir -p docs/_build/html/versions/
 
@@ -64,12 +65,13 @@ jobs:
       run: |
         cp -r docs/assets/* docs/_build/html/assets/ || true
         cp context/context.json docs/_build/html/context/
+        cp schema/schema.json docs/_build/html/schema/
 
     - name: Commit Generated Changes (context.json & rst files)
       run: |
         git config --local user.email "${{ env.GIT_USER_EMAIL }}"
         git config --local user.name "${{ env.GIT_USER_NAME }}"
-        git add context/context.json ${{ env.RST_FILE }}
+        git add context/context.json schema/schema.json ${{ env.RST_FILE }}
         git diff --staged --quiet || git commit -m "Update generated docs files for ${{ env.ONTOLOGY_NAME }}"
 
     - name: Stash Changes Before Pull
@@ -124,6 +126,10 @@ jobs:
             if [ -f "context/context.json" ]; then
                 mkdir -p "docs/_build/html/versions/$TAG/context"
                 cp "context/context.json" "docs/_build/html/versions/$TAG/context"
+            fi
+            if [ -f "schema/schema.json" ]; then
+                mkdir -p "docs/_build/html/versions/$TAG/schema"
+                cp "schema/schema.json" "docs/_build/html/versions/$TAG/schema"
             fi
             git checkout $ORIGINAL_BRANCH
         done
