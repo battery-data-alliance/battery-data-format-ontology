@@ -18,16 +18,14 @@
 @base <https://w3id.org/battery-data-alliance/ontology/battery-data-format> .
 
 <https://w3id.org/battery-data-alliance/ontology/battery-data-format> rdf:type owl:Ontology ;
-                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/0.1.0-beta/battery-data-format> ;
+                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/0.2.0-beta/battery-data-format> ;
                                                                        owl:imports <https://w3id.org/emmo/domain/battery/0.18.0-beta/battery> ;
                                                                        dcterms:abstract "An applicaiton ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
                                                                        dcterms:bibliographicCitation "TBD" ;
-                                                                       dcterms:contributor <https://orcid.org/0000-0002-8758-6109> ;
                                                                        dcterms:created "2025-01-23"^^xsd:date ;
                                                                        dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
-                                                                       dcterms:issued "2025-01-23"^^xsd:date ;
-                                                                       dcterms:license "https://creativecommons.org/licenses/by/4.0/legalcode" ;
-                                                                       dcterms:modified "2025-01-23"^^xsd:date ;
+                                                                       dcterms:issued "2025-06-06"^^xsd:date ;
+                                                                       dcterms:modified "2025-06-06"^^xsd:date ;
                                                                        dcterms:publisher "Battery Data Alliance" ;
                                                                        dcterms:title "Battery Data Format Ontology"@en ;
                                                                        bibo:doi "TBD" ;
@@ -36,7 +34,7 @@
                                                                        vann:preferredNamespaceUri "https://w3id.org/emmo/domain/battery" ;
                                                                        owl:backwardCompatibleWith "0.1.0-beta" ;
                                                                        owl:priorVersion "0.1.0-beta" ;
-                                                                       owl:versionInfo "0.1.0-beta" ;
+                                                                       owl:versionInfo "0.2.0-beta" ;
                                                                        foaf:logo "TBD" .
 
 #################################################################
@@ -76,6 +74,125 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasAmbientPressureValue
+:hasAmbientPressureValue rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasAmbientTemperatureValue
+:hasAmbientTemperatureValue rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasAppliedPressureValue
+:hasAppliedPressureValue rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasChargingCapacityValue
+:hasChargingCapacityValue rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasChargingEnergyValue
+:hasChargingEnergyValue rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasCumulativeCapacityValue
+:hasCumulativeCapacityValue rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasCumulativeEnergyValue
+:hasCumulativeEnergyValue rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasCurrentValue
+:hasCurrentValue rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasCycleCountValue
+:hasCycleCountValue rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasDischargingCapacityValue
+:hasDischargingCapacityValue rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasDischargingEnergyValue
+:hasDischargingEnergyValue rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasInternalResistanceValue
+:hasInternalResistanceValue rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasNetCapacityValue
+:hasNetCapacityValue rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasNetEnergyValue
+:hasNetEnergyValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasPowerValue
+:hasPowerValue rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasStepCapacityValue
+:hasStepCapacityValue rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasStepCountValue
+:hasStepCountValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasStepEnergyValue
+:hasStepEnergyValue rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasStepIndexValue
+:hasStepIndexValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasSurfaceTemperatureValue
+:hasSurfaceTemperatureValue rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasTestTimeValue
+:hasTestTimeValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasUnixTimeValue
+:hasUnixTimeValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#hasVoltageValue
+:hasVoltageValue rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf emmo:EMMO_faf79f53_749d_40b2_807c_d34244c192f4 .
+
+
+#################################################################
 #    Classes
 #################################################################
 
@@ -86,9 +203,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                            owl:someValuesFrom emmo:Pascal
                                          ] ;
-                         rdfs:comment "the ambient pressure in unit Psacal"@en ;
-                         rdfs:label "ambient_pressure_pascal"@en ;
-                         skos:prefLabel "ambient_pressure_pascal"@en .
+                         rdfs:comment "The ambient pressure, recorded in Pascal"@en ;
+                         rdfs:label "Ambient Pressure / Pa"@en ;
+                         skos:altLabel "ambient_pressure_pascal"@en ;
+                         skos:prefLabel "Ambient Pressure / Pa"@en ;
+                         schema:name "Ambient Pressure / Pa"@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient_temperature_celsius
@@ -98,9 +217,55 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                                owl:someValuesFrom emmo:DegreeCelsius
                                              ] ;
-                             rdfs:comment "the ambient temperature in degree Celsius"@en ;
-                             rdfs:label "ambient_temperature_celsius"@en ;
-                             skos:prefLabel "ambient_temperature_celsius"@en .
+                             rdfs:comment "The ambient temperature, recorded in degree Celsius"@en ;
+                             rdfs:label "Ambient Temperature / degC"@en ;
+                             skos:altLabel "ambient_temperature_celsius"@en ;
+                             skos:prefLabel "Ambient Temperature / degC"@en ;
+                             schema:name "Ambient Temperature / degC"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#charging_capacity_ah
+:charging_capacity_ah rdf:type owl:Class ;
+                      rdfs:subClassOf electrochemistry:electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                      skos:prefLabel "Charging Capacity / Ah"@en ;
+                      emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred into the test object during charging, in ampere hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#charging_energy_wh
+:charging_energy_wh rdf:type owl:Class ;
+                    rdfs:subClassOf electrochemistry:electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                    skos:prefLabel "Charging Energy / Wh"@en ;
+                    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred into the test object during charging, in watt hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulative_capacity_ah
+:cumulative_capacity_ah rdf:type owl:Class ;
+                        rdfs:subClassOf electrochemistry:electrochemistry_df9e9d49_12fa_4794_b482_e0dcd2a7bb66 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                        skos:prefLabel "Cumulative Capacity / Ah"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Total electric charge that has passed through the test object since the start of the test, in ampere hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulative_energy_wh
+:cumulative_energy_wh rdf:type owl:Class ;
+                      rdfs:subClassOf electrochemistry:electrochemistry_0f986d97_445f_4075_a5ce_ddde598a47a9 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:WattHour
+                                         ] ;
+                      skos:prefLabel "Cumulative Energy / Wh"@en ;
+                      emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Total energy transferred through the test object since the start of the test, in watt hour."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere
@@ -110,45 +275,119 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                   owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                   owl:someValuesFrom emmo:Ampere
                                 ] ;
-                rdfs:comment "Instantaneous current, recorded in amperes"@en ;
-                rdfs:label "current_ampere"@en ;
-                skos:prefLabel "current_ampere"@en .
+                rdfs:comment "Instantaneous current, recorded in Ampere"@en ;
+                rdfs:label "Current / A"@en ;
+                skos:altLabel "current_ampere"@en ;
+                skos:prefLabel "Current / A"@en ;
+                schema:name "Current / A"@en .
 
 
-###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_dimensionless
-:cycle_dimensionless rdf:type owl:Class ;
-                     rdfs:subClassOf electrochemistry:electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8 ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                                       owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
-                                     ] ;
-                     rdfs:comment "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
-                     rdfs:label "cycle_dimensionless"@en ;
-                     skos:prefLabel "cycle_dimensionless"@en .
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count
+:cycle_count rdf:type owl:Class ;
+             rdfs:subClassOf electrochemistry:electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8 ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                               owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+                             ] ;
+             rdfs:comment "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
+             rdfs:label "Cycle / 1"@en ;
+             skos:altLabel "cycle_count"@en ;
+             skos:prefLabel "Cycle / 1"@en ;
+             schema:name "Cycle / 1"@en .
 
 
-###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#dcir_ohm
-:dcir_ohm rdf:type owl:Class ;
-          rdfs:subClassOf electrochemistry:electrochemistry_f94678d6_1386_48fc_8e54_024921924401 ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                            owl:someValuesFrom emmo:Ohm
-                          ] ;
-          rdfs:comment "direct current internal resistance in unit ohm"@en ;
-          rdfs:label "dcir_ohm"@en ;
-          skos:prefLabel "dcir_ohm"@en .
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#discharging_capacity_ah
+:discharging_capacity_ah rdf:type owl:Class ;
+                         rdfs:subClassOf electrochemistry:electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                         skos:prefLabel "Discharging Capacity / Ah"@en ;
+                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred out of the test object during discharging, in ampere hour."@en .
 
 
-###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_dimensionless
-:step_dimensionless rdf:type owl:Class ;
-                    rdfs:subClassOf electrochemistry:electrochemistry_d78b696d_9832_4352_a264_28a2ea7d82e4 ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                                      owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
-                                    ] ;
-                    rdfs:comment "the step number with unit one"@en ;
-                    rdfs:label "step_dimensionless"@en ;
-                    skos:prefLabel "step_dimensionless"@en .
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#discharging_energy_wh
+:discharging_energy_wh rdf:type owl:Class ;
+                       rdfs:subClassOf electrochemistry:electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:WattHour
+                                         ] ;
+                       skos:prefLabel "Discharging Energy / Wh"@en ;
+                       emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during discharging, in watt hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#internal_resistance_ohm
+:internal_resistance_ohm rdf:type owl:Class ;
+                         rdfs:subClassOf electrochemistry:electrochemistry_f94678d6_1386_48fc_8e54_024921924401 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:Ohm
+                                         ] ;
+                         rdfs:comment "The direct current internal resistance, recorded in Ohm"@en ;
+                         rdfs:label "Internal Resistance / Ohm"@en ;
+                         skos:altLabel "internal_resistance_ohm"@en ;
+                         skos:prefLabel "Internal Resistance / Ohm"@en ;
+                         schema:name "Internal Resistance / Ohm"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#net_capacity_ah
+:net_capacity_ah rdf:type owl:Class ;
+                 rdfs:subClassOf electrochemistry:electrochemistry_791c1915_a791_4450_acd8_7f94764743b5 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                 skos:prefLabel "Net Capacity / Ah"@en ;
+                 emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net capacity difference between charge and discharge within a defined step or cycle, in ampere hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#net_energy_wh
+:net_energy_wh rdf:type owl:Class ;
+               rdfs:subClassOf electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:WattHour
+                                         ] ;
+               skos:prefLabel "Net Energy / Wh"@en ;
+               emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy difference between charge and discharge within a defined step or cycle, in watt hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
+:step_capacity_ah rdf:type owl:Class ;
+                  rdfs:subClassOf electrochemistry:electrochemistry_ae108db7_8765_4329_9908_059277dee586 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:AmpereHour
+                                         ] ;
+                  skos:prefLabel "Step Capacity / Ah"@en ;
+                  emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred during the current test step, in ampere hour."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
+:step_count rdf:type owl:Class ;
+            rdfs:subClassOf electrochemistry:electrochemistry_d78b696d_9832_4352_a264_28a2ea7d82e4 ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                              owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+                            ] ;
+            rdfs:comment "The step number, with unit One"@en ;
+            rdfs:label "Step / 1"@en ;
+            skos:altLabel "step_count"@en ;
+            skos:prefLabel "Step / 1"@en ;
+            schema:name "Step / 1"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
+:step_energy_wh rdf:type owl:Class ;
+                rdfs:subClassOf electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:WattHour
+                                         ] ;
+                skos:prefLabel "Step Energy / Wh"@en ;
+                emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred during the current test step, in watt hour."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_pressure_pascal
@@ -158,9 +397,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                            owl:someValuesFrom emmo:Pascal
                                          ] ;
-                         rdfs:comment "the surface pressure in unit Psacal"@en ;
-                         rdfs:label "surface_pressure_pascal"@en ;
-                         skos:prefLabel "surface_pressure_pascal"@en .
+                         rdfs:comment "The surface pressure, recorded in unit Pascal"@en ;
+                         rdfs:label "Surface Pressure / Pa"@en ;
+                         skos:altLabel "surface_pressure_pascal"@en ;
+                         skos:prefLabel "Surface Pressure / Pa"@en ;
+                         schema:name "Surface Pressure / Pa"@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius
@@ -170,9 +411,66 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                                owl:someValuesFrom emmo:DegreeCelsius
                                              ] ;
-                             rdfs:comment "the surface temperature in degree Celsius"@en ;
-                             rdfs:label "surface_temperature_celsius"@en ;
-                             skos:prefLabel "surface_temperature_celsius"@en .
+                             rdfs:comment "The surface temperature, recorded in degree Celsius"@en ;
+                             rdfs:label "Surface Temperature / degC"@en ;
+                             skos:altLabel "surface_temperature_celsius"@en ;
+                             skos:prefLabel "Surface Temperature / degC"@en ;
+                             schema:name "Surface Temperature / degC"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius
+:temperature_t1_celsius rdf:type owl:Class ;
+                        rdfs:subClassOf :surface_temperature_celsius ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:DegreeCelsius
+                                             ] ;
+                        skos:prefLabel "Surface Temperature T1 / degC"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius
+:temperature_t2_celsius rdf:type owl:Class ;
+                        rdfs:subClassOf :surface_temperature_celsius ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:DegreeCelsius
+                                             ] ;
+                        skos:prefLabel "Surface Temperature T2 / degC"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius
+:temperature_t3_celsius rdf:type owl:Class ;
+                        rdfs:subClassOf :surface_temperature_celsius ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:DegreeCelsius
+                                             ] ;
+                        skos:prefLabel "Surface Temperature T3 / degC"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius
+:temperature_t4_celsius rdf:type owl:Class ;
+                        rdfs:subClassOf :surface_temperature_celsius ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:DegreeCelsius
+                                             ] ;
+                        skos:prefLabel "Surface Temperature T4 / degC"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius
+:temperature_t5_celsius rdf:type owl:Class ;
+                        rdfs:subClassOf :surface_temperature_celsius ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:DegreeCelsius
+                                             ] ;
+                        skos:prefLabel "Surface Temperature T5 / degC"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_millisecond
@@ -182,9 +480,53 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                          owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                          owl:someValuesFrom emmo:MilliSecond
                                        ] ;
-                       rdfs:comment "the number of milliseconds since the start of the test."@en ;
-                       rdfs:label "test_time_millisecond"@en ;
-                       skos:prefLabel "test_time_millisecond"@en .
+                       rdfs:comment "The test time, recorded in Millisecond."@en ;
+                       rdfs:label "Test Time / ms"@en ;
+                       skos:altLabel "test_time_millisecond"@en ;
+                       skos:prefLabel "Test Time / ms"@en ;
+                       schema:name "Test Time / ms"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second
+:test_time_second rdf:type owl:Class ;
+                  rdfs:subClassOf electrochemistry:electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                    owl:someValuesFrom emmo:Second
+                                  ] ;
+                  rdfs:comment "The test time, recorded in second."@en ;
+                  rdfs:label "Test Time / s"@en ;
+                  skos:altLabel "test_time_second"@en ;
+                  skos:prefLabel "Test Time / s"@en ;
+                  schema:name "Test Time / s"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_time_millisecond
+:unix_time_millisecond rdf:type owl:Class ;
+                       rdfs:subClassOf electrochemistry:electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05 ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                         owl:someValuesFrom emmo:MilliSecond
+                                       ] ;
+                       rdfs:comment "The Unix time, recorded in millisecond."@en ;
+                       rdfs:label "Unix Time / ms"@en ;
+                       skos:altLabel "unix_time_millisecond"@en ;
+                       skos:prefLabel "Unix Time / ms"@en ;
+                       schema:name "Unix Time / ms"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_time_second
+:unix_time_second rdf:type owl:Class ;
+                  rdfs:subClassOf electrochemistry:electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                    owl:someValuesFrom emmo:Second
+                                  ] ;
+                  rdfs:comment "The Unix time, recorded in second."@en ;
+                  rdfs:label "Unix Time / s"@en ;
+                  skos:altLabel "unix_time_second"@en ;
+                  skos:prefLabel "Unix Time / s"@en ;
+                  schema:name "Unix Time / s"@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt
@@ -194,13 +536,23 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                 owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                 owl:someValuesFrom emmo:Volt
                               ] ;
-              rdfs:comment "Instantaneous voltage, recorded in volts"@en ;
-              rdfs:label "voltage_volt"@en ;
-              skos:prefLabel "voltage_volt"@en .
+              rdfs:comment "Instantaneous voltage, recorded in Volt"@en ;
+              rdfs:label "Voltage / V"@en ;
+              skos:altLabel "voltage_volt"@en ;
+              skos:prefLabel "Voltage / V"@en ;
+              schema:name "Voltage / V"@en .
 
 
 ###  https://w3id.org/emmo#Ampere
 emmo:Ampere rdf:type owl:Class .
+
+
+###  https://w3id.org/emmo#AmpereHour
+emmo:AmpereHour rdf:type owl:Class .
+
+
+###  https://w3id.org/emmo#WattHour
+emmo:WattHour rdf:type owl:Class .
 
 
 ###  https://w3id.org/emmo#DegreeCelsius
@@ -213,6 +565,10 @@ emmo:MilliSecond rdf:type owl:Class .
 
 ###  https://w3id.org/emmo#Ohm
 emmo:Ohm rdf:type owl:Class .
+
+
+###  https://w3id.org/emmo#Second
+emmo:Second rdf:type owl:Class .
 
 
 ###  https://w3id.org/emmo#Volt
