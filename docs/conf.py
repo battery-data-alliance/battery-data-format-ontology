@@ -12,8 +12,9 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 from __future__ import unicode_literals
-import sys
 import os
+import sys
+import subprocess
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -119,7 +120,6 @@ html_theme_options = {
     "primary_sidebar_end": [],  # No left sidebar
     "show_nav_level": 0,  # No expanded left sections
     "show_toc_level": 0,  # This disables the "On This Page" sidebar everywhere
-    'show_sidebar': False,
     "navbar_center": ["navbar-nav"],
     "icon_links": [
         {
@@ -137,8 +137,8 @@ html_theme_options = {
     "show_prev_next": False,
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-version"],
-    "pygment_light_style": "friendly",
-    "pygment_dark_style": "lightbulb",
+    "pygments_light_style": "friendly",
+    "pygments_dark_style": "lightbulb",
 }
 
 html_static_path = ["_static"]
@@ -163,12 +163,12 @@ html_css_files = ["custom.css"]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = 'assets/img/battinfologo.jpg'
+html_logo = 'assets/img/logo/battery-data-alliance-horizontal-color-2.svg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = 'assets/img/battinfologo.ico'
+html_favicon = 'assets/img/logo/battery-data-alliance-horizontal-color-2.svg'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -334,5 +334,14 @@ add_module_names = False
 #                       '<autodoc>')
 
 # MatAttributeDocumenter.add_directive_header = _add_directive_header
+
+
+def _generate_specification(_app):
+    script_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "scripts", "generate_specification.py"))
+    subprocess.run([sys.executable, script_path], check=True)
+
+
+def setup(app):
+    app.connect("builder-inited", _generate_specification)
 
 

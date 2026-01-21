@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate Turtle, JSON, and YAML
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          import yaml
+          from pathlib import Path
+          from rdflib import Graph
+
+          ttl_files = [Path("battery-data-format.ttl")]
+          json_files = [Path("context/context.json"), Path("schema/schema.json")]
+          yaml_files = [Path("config.yml")]
+
+          for ttl_path in ttl_files:
+              if not ttl_path.exists():
+                  sys.exit(f"Missing TTL file: {ttl_path}")
+              g = Graph()
+              g.parse(ttl_path, format="turtle")
+              print(f"Parsed TTL: {ttl_path}")
+
+          for json_path in json_files:
+              if not json_path.exists():
+                  sys.exit(f"Missing JSON file: {json_path}")
+              json.load(json_path.open())
+              print(f"Validated JSON: {json_path}")
+
+          for yaml_path in yaml_files:
+              if not yaml_path.exists():
+                  sys.exit(f"Missing YAML file: {yaml_path}")
+              yaml.safe_load(yaml_path.read_text())
+              print(f"Validated YAML: {yaml_path}")
+          PY

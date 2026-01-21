@@ -1,4 +1,4 @@
-#+TITLE: Documentation generation for BattInfo
+#+TITLE: Documentation generation for BDF
 * Requirements
 ** sphinx
    installation instruction described [[https://www.sphinx-doc.org/en/master/usage/installation.html][here]]
@@ -26,17 +26,19 @@
   make html
   #+END_SRC
 
+  The Specification page is generated automatically during the build.
+
   The command generates all the files for a static website and writes them in ~Documentation/_build/html~
 
-  All the files in this directory must then be copied to the ~BattInfo-doc~ [[https://github.com/BattMoTeam/BattMo-doc][repo]]. From there, make a *force* push. We do
+  All the files in this directory must then be copied to the ~BDF-doc~ [[https://github.com/BattMoTeam/BattMo-doc][repo]]. From there, make a *force* push. We do
   not keep track of the history of the ouput files (html), but we of course keep track of the documentation source, directly in the
-  main repo ~BattInfo~.
+  main repo ~BDF~.
 
   The deployment of the webpage can be followed from the [[https://github.com/BattMoTeam/BattMo-doc/actions][github pages section]]
 
   The result can be view at
 
-  https://battmoteam.github.io/Battinfo-doc/
+  https://battmoteam.github.io/bdf-doc/
 
 * Interesting Manuals
 ** sphinx manual

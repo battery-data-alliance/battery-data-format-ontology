@@ -935,7 +935,7 @@
     },
     {
       "@type": "csvw:Column",
-      "csvw:name": "power_watt",
+      "csvw:name": "power_w",
       "csvw:titles": "Power / W",
       "csvw:propertyUrl": "bdf:hasPowerValue",
       "dcterms:description": "Instantaneous power calculated as the product of Voltage and Current",
@@ -944,12 +944,12 @@
         "@value": "Power / W",
         "@language": "en"
       },
-      "skos:altLabel": "power_watt",
+      "skos:altLabel": "power_w",
       "csvw:datatype": {
         "csvw:base": "xsd:decimal"
       },
       "hasQuantity": {
-        "@id": "bdf:power_watt"
+        "@id": "bdf:power_w"
       },
       "hasMeasurementUnit": {
         "@id": "emmo:Watt"

@@ -5,7 +5,9 @@
 
    Quick Start <pages/quick_start>
    Examples <pages/examples>
+   Specification <pages/specification>
    Documentation <battery-data-format>
+   FAQ <pages/faq>
    About <pages/about>
 
 Battery Data Format Ontology
@@ -39,9 +41,9 @@ Welcome to the **Battery Data Format Ontology**, a semantic resource to help peo
         A clear reference for all the terms in the BDF Ontology!
 
     .. grid-item-card::
-        :link: pages/about.html
+        :link: pages/specification.html
 
-        :octicon:`thumbsup;1em;sd-text-info`  About
-        ^^^^^^^^^^
-        Learn more about the BDF Ontology and the organization behind it!
+        :octicon:`law;1em;sd-text-info`  Specification
+        ^^^^^^^^^^^^^
+        Standards-style definitions generated from the ontology.
 

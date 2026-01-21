@@ -47,6 +47,8 @@ jobs:
 
     - name: Render Documentation from TTL Files
       run: python .github/scripts/ontology_toolkit.py --generate-rst
+      env:
+        BDF_ONLY_LOCAL_IMPORTS: "1"
 
     - name: Build HTML with Sphinx
       run: sphinx-build -b html docs/ docs/_build/html/
