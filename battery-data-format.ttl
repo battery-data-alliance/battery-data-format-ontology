@@ -21,7 +21,6 @@
                                                                        dcterms:bibliographicCitation "Pending" ;
                                                                        dcterms:created "2025-01-23"^^xsd:date ;
                                                                        dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
-                                                                       dcterms:identifier "https://w3id.org/battery-data-alliance/ontology/battery-data-format" ;
                                                                        dcterms:issued "2026-01-21"^^xsd:date ;
                                                                        dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                                                        dcterms:modified "2026-01-21"^^xsd:date ;
@@ -85,6 +84,15 @@ schema:description rdf:type owl:AnnotationProperty .
 #################################################################
 #    Classes
 #################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolute_impedance_ohm
+:absolute_impedance_ohm rdf:type owl:Class ;
+                        rdfs:subClassOf emmo:EMMO_79a02de5_b884_4eab_bc18_f67997d597a2 ;
+                        skos:altLabel "absolute_impedance_ohm"@en ;
+                        skos:definition "the magnitude of the complex impedance, expressed in ohms"@en ;
+                        skos:notation "absolute_impedance_ohm"@en ;
+                        skos:prefLabel "Absolute Impedance / ohm"@en .
+
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient_pressure_pa
 :ambient_pressure_pa rdf:type owl:Class ;
@@ -296,6 +304,24 @@ schema:description rdf:type owl:AnnotationProperty .
                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during discharging, in watt hour."@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequency_hertz
+:frequency_hertz rdf:type owl:Class ;
+                 rdfs:subClassOf emmo:EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a ;
+                 skos:altLabel "frequency_hertz"@en ;
+                 skos:definition "the frequency of an applied periodic excitation or measured response, expressed in hertz"@en ;
+                 skos:notation "frequency_hertz"@en ;
+                 skos:prefLabel "Frequency / Hz"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#imaginary_impedance_ohm
+:imaginary_impedance_ohm rdf:type owl:Class ;
+                         rdfs:subClassOf electrochemistry:electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626 ;
+                         skos:altLabel "imaginary_impedance_ohm"@en ;
+                         skos:definition "the imaginary component of the complex impedance, expressed in ohms"@en ;
+                         skos:notation "imaginary_impedance_ohm"@en ;
+                         skos:prefLabel "Imaginary Impedance / ohm"@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#internal_resistance_ohm
 :internal_resistance_ohm rdf:type owl:Class ;
                          rdfs:subClassOf electrochemistry:electrochemistry_f94678d6_1386_48fc_8e54_024921924401 ,
@@ -352,6 +378,15 @@ schema:description rdf:type owl:AnnotationProperty .
                emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy difference between charge and discharge within a defined step or cycle, in watt hour."@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_degree
+:phase_degree rdf:type owl:Class ;
+              rdfs:subClassOf emmo:EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9 ;
+              skos:altLabel "phase_degree"@en ;
+              skos:definition "the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees"@en ;
+              skos:notation "phase_degree"@en ;
+              skos:prefLabel "Phase / deg"@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_watt
 :power_watt rdf:type owl:Class ;
             rdfs:subClassOf electrochemistry:electrochemistry_5973f91a_fa6b_49c9_ba46_3ecc1c2253d2 ,
@@ -369,6 +404,27 @@ schema:description rdf:type owl:AnnotationProperty .
             schema:description "Instantaneous power calculated as the product of voltage and current, in watt."@en ;
             schema:name "Power / W"@en ;
             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Instantaneous power calculated as the product of voltage and current, in watt."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_impedance_ohm
+:real_impedance_ohm rdf:type owl:Class ;
+                    rdfs:subClassOf electrochemistry:electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f ;
+                    skos:altLabel "real_impedance_ohm"@en ;
+                    skos:definition "the real component of the complex impedance, expressed in ohms"@en ;
+                    skos:notation "real_impedance_ohm"@en ;
+                    skos:prefLabel "Real Impedance / ohm"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_index
+:record_index rdf:type owl:Class ;
+              rdfs:subClassOf emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ;
+              skos:altLabel "record_index"@en ;
+              skos:definition "an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning"@en ;
+              skos:notation "record_index"@en ;
+              skos:prefLabel "Record Index / 1"@en ;
+              schema:description "an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning"@en ;
+              schema:name "Record Index / 1"@en ;
+              emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning"@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
@@ -392,7 +448,7 @@ schema:description rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
 :step_count rdf:type owl:Class ;
-            rdfs:subClassOf electrochemistry:electrochemistry_d78b696d_9832_4352_a264_28a2ea7d82e4 ,
+            rdfs:subClassOf emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                               owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
@@ -446,6 +502,29 @@ schema:description rdf:type owl:AnnotationProperty .
             schema:description "Index indicating the position of the data point within a step, with unit one."@en ;
             schema:name "Step Index / 1"@en ;
             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Index indicating the position of the data point within a step, with unit one."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_time_second
+:step_time_second rdf:type owl:Class ;
+                  rdfs:subClassOf electrochemistry:electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098 ;
+                  skos:altLabel "step_time_second"@en ;
+                  skos:definition "the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition"@en ;
+                  skos:notation "step_time_second"@en ;
+                  skos:prefLabel "Step Time / s"@en ;
+                  schema:description "the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition"@en ;
+                  schema:name "Step Time / s"@en ;
+                  emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition"@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_type
+:step_type rdf:type owl:Class ;
+           rdfs:subClassOf emmo:EMMO_5f334606_f67d_4f0e_acb9_eeb21cb10c66 ;
+           skos:altLabel "step_type"@en ;
+           skos:definition "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en ;
+           skos:prefLabel "Step Type / 1"@en ;
+           schema:description "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en ;
+           schema:name "Step Type / 1"@en ;
+           emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_pressure_pa
