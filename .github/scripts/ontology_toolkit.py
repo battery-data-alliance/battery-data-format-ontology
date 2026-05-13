@@ -10,11 +10,22 @@ from urllib.parse import urljoin
 from urllib.request import pathname2url
 from rdflib import Graph
 import logging
-from owlrl import DeductiveClosure, OWLRL_Semantics
-from ontopy.ontology import Ontology
-from ontopy.utils import asstring
-from ontopy.patch import get_preferred_label
-import owlready2
+
+# ontopy, owlready2, and owlrl are optional — required only for --generate-rst
+# and --run-reasoner-check. Basic operations (env-var export, --generate-context,
+# --print-ttl-files) work without them.
+try:
+    from owlrl import DeductiveClosure, OWLRL_Semantics
+    from ontopy.ontology import Ontology
+    from ontopy.utils import asstring
+    from ontopy.patch import get_preferred_label
+    import owlready2
+    _ONTOPY_AVAILABLE = True
+except ImportError:
+    _ONTOPY_AVAILABLE = False
+    Ontology = object  # placeholder so type annotations don't crash
+    asstring = get_preferred_label = owlready2 = None
+    DeductiveClosure = OWLRL_Semantics = None
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 LOGGER = logging.getLogger(__name__)
@@ -570,6 +581,9 @@ def render_rst_bottom():
     return "End of Document.\n"
 
 def generate_rst_documentation():
+    if not _ONTOPY_AVAILABLE:
+        LOGGER.error("--generate-rst requires ontopy. Install: pip install 'EMMOntoPy>=0.4.0,<1'")
+        sys.exit(1)
     config = load_ontology_config()
     rst_filename = config["rst_output_filename"]
     rst_content = render_rst_top()
@@ -635,6 +649,9 @@ def run_emmocheck():
 
 def run_reasoner_check():
     """Load the ontology, run OWL 2 RL reasoning, and check for inferred triples."""
+    if not _ONTOPY_AVAILABLE:
+        LOGGER.error("--run-reasoner-check requires owlrl. Install: pip install owlrl 'EMMOntoPy>=0.4.0,<1'")
+        sys.exit(1)
     config = load_ontology_config()
 
     ttl_files = config["ttl_files"]
