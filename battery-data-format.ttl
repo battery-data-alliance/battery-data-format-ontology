@@ -253,17 +253,17 @@ schema:description rdf:type owl:AnnotationProperty .
                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
                              ] ;
-             rdfs:comment "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
+             rdfs:comment "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en ;
              rdfs:label "Cycle Count / 1"@en ;
              skos:altLabel "cycle_count"@en ,
                            "cycle_count_1"@en ,
                            "cycle_dimensionless"@en ;
-             skos:definition "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
+             skos:definition "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en ;
              skos:notation "cycle_count" ;
              skos:prefLabel "Cycle Count / 1"@en ;
-             schema:description "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en ;
+             schema:description "Cycle index used to segregate time-series data into quasi-periodic subsets. The starting value is instrument-defined (commonly 0 or 1) and must be preserved as reported; converters must not renumber cycles."@en ;
              schema:name "Cycle Count / 1"@en ;
-             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging."@en .
+             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#discharging_capacity_ah
