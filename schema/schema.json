@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/0.2.0/schema",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema",
   "@type": [
     "csvw:TableSchema",
     "schema:DigitalDocument"
@@ -9,8 +9,8 @@
   "dcterms:description": "A reusable table schema for Battery Data Format (BDF) compliant CSV files, supporting interoperability across battery test data systems",
   "schema:description": "Standard table schema for battery cycling test data in CSV format",
   "dcterms:created": "2025-03-14",
-  "dcterms:modified": "2025-06-05",
-  "dcterms:version": "0.2.0",
+  "dcterms:modified": "2026-01-21",
+  "dcterms:version": "1.0.0",
   "dcterms:license": {
     "@id": "https://spdx.org/licenses/Apache-2.0.html"
   },
@@ -18,7 +18,7 @@
     "@id": "https://www.w3.org/TR/tabular-data-model/"
   },
   "dcterms:publisher": "Battery Data Alliance",
-  "schema:version": "0.2.0",
+  "schema:version": "1.0.0",
   "schema:license": "https://spdx.org/licenses/Apache-2.0.html",
   "schema:publisher": {
     "@type": "schema:Organization",
