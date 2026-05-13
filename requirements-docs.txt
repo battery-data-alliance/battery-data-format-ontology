@@ -29,6 +29,7 @@ zipp==3.15.0
 # Ontology handling and linked data tools
 rdflib
 owlrl
+EMMOntoPy>=0.4.0,<1
 PyYAML
 
 # Markdown support (optional, if needed in docs)
