@@ -330,13 +330,14 @@ schema:description rdf:type owl:AnnotationProperty .
                                            owl:someValuesFrom emmo:Ohm
                                          ] ;
                          rdfs:comment "Direct current internal resistance recorded in ohm."@en ;
-                         rdfs:label "Internal Resistance / Ohm"@en ;
+                         rdfs:label "Internal Resistance / ohm"@en ;
                          skos:altLabel "internal_resistance_ohm"@en ;
                          skos:definition "Direct current internal resistance recorded in ohm."@en ;
                          skos:notation "internal_resistance_ohm" ;
-                         skos:prefLabel "Internal Resistance / Ohm"@en ;
+                         skos:prefLabel "Internal Resistance / ohm"@en ;
+                         skos:hiddenLabel "Internal Resistance / Ohm"@en ;
                          schema:description "Direct current internal resistance recorded in ohm."@en ;
-                         schema:name "Internal Resistance / Ohm"@en ;
+                         schema:name "Internal Resistance / ohm"@en ;
                          emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Direct current internal resistance recorded in ohm."@en .
 
 
@@ -434,16 +435,16 @@ schema:description rdf:type owl:AnnotationProperty .
                                     owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                     owl:someValuesFrom emmo:AmpereHour
                                   ] ;
-                  rdfs:comment "Electric charge transferred during the current test step, in ampere hour."@en ;
+                  rdfs:comment "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
                   rdfs:label "Step Capacity / Ah"@en ;
                   skos:altLabel "step_capacity_ah"@en ,
                                 "step_capacity_ampere_hour"@en ;
-                  skos:definition "Electric charge transferred during the current test step, in ampere hour."@en ;
+                  skos:definition "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
                   skos:notation "step_capacity_ah" ;
                   skos:prefLabel "Step Capacity / Ah"@en ;
-                  schema:description "Electric charge transferred during the current test step, in ampere hour."@en ;
+                  schema:description "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
                   schema:name "Step Capacity / Ah"@en ;
-                  emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred during the current test step, in ampere hour."@en .
+                  emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
@@ -473,16 +474,16 @@ schema:description rdf:type owl:AnnotationProperty .
                                   owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                   owl:someValuesFrom emmo:WattHour
                                 ] ;
-                rdfs:comment "Energy transferred during the current test step, in watt hour."@en ;
+                rdfs:comment "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
                 rdfs:label "Step Energy / Wh"@en ;
                 skos:altLabel "step_energy_watt_hour"@en ,
                               "step_energy_wh"@en ;
-                skos:definition "Energy transferred during the current test step, in watt hour."@en ;
+                skos:definition "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
                 skos:notation "step_energy_wh" ;
                 skos:prefLabel "Step Energy / Wh"@en ;
-                schema:description "Energy transferred during the current test step, in watt hour."@en ;
+                schema:description "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
                 schema:name "Step Energy / Wh"@en ;
-                emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred during the current test step, in watt hour."@en .
+                emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_index
