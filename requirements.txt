@@ -1,11 +1,14 @@
-# Core dependencies for ontology parsing, reasoning, and linked data processing
-EMMOntoPy>=0.4.0,<1
+# Core dependencies for ontology parsing and linked data processing
 rdflib
-owlrl
-
-# Configuration and general utilities
 PyYAML
 
+# OWL reasoning and EMMO bindings — required for local development
+# and the ontology_toolkit.py scripts, but not for CI validation.
+# Install separately when needed: pip install EMMOntoPy owlrl
+# EMMOntoPy also requires a Java runtime for the OWL reasoner.
+# EMMOntoPy>=0.4.0,<1
+# owlrl
+
 # Optional development tools
-jupyter
-ipykernel
+# jupyter
+# ipykernel

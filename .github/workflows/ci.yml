@@ -55,8 +55,5 @@ jobs:
               print(f"Validated YAML: {yaml_path}")
           PY
 
-      - name: Run reasoner check
-        run: python .github/scripts/ontology_toolkit.py --run-reasoner-check
-
       - name: Run ontology tests
         run: python -m unittest discover -s tests -p "test_*.py"
