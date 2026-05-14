@@ -259,7 +259,7 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
 
 :cycle_count a owl:Class ;
     rdfs:label "Cycle Count / 1"@en ;
-    rdfs:comment "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en ;
+    rdfs:comment "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles."@en ;
     rdfs:seeAlso unit:NUM ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
@@ -269,15 +269,15 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
     skos:altLabel "cycle_count"@en,
         "cycle_count_1"@en,
         "cycle_dimensionless"@en ;
-    skos:definition "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en ;
+    skos:definition "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles."@en ;
     skos:exactMatch quantitykind:Count ;
     skos:notation "cycle_count" ;
     skos:prefLabel "Cycle Count / 1"@en ;
-    schema:description "Cycle index used to segregate time-series data into quasi-periodic subsets. The starting value is instrument-defined (commonly 0 or 1) and must be preserved as reported; converters must not renumber cycles."@en ;
+    schema:description "Cycle index, non-negative integer, monotonically non-decreasing within a test. Starting value is instrument-defined (any non-negative integer); converters must not renumber cycles."@en ;
     schema:name "Cycle Count / 1"@en ;
     schema:unitCode "1" ;
     schema:unitText "one"@en ;
-    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere."@en .
+    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles."@en .
 
 :discharging_capacity_ah a owl:Class ;
     rdfs:label "Discharging Capacity / Ah"@en ;
@@ -485,7 +485,7 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
 
 :step_capacity_ah a owl:Class ;
     rdfs:label "Step Capacity / Ah"@en ;
-    rdfs:comment "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
+    rdfs:comment "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
     rdfs:seeAlso unit:A-HR ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
@@ -494,16 +494,16 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
         sosa:ObservableProperty ;
     skos:altLabel "step_capacity_ah"@en,
         "step_capacity_ampere_hour"@en ;
-    skos:definition "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
+    skos:definition "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
     skos:exactMatch quantitykind:ElectricCharge ;
     skos:notation "step_capacity_ah" ;
     skos:prefLabel "Step Capacity / Ah"@en ;
-    schema:description "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
-    schema:measurementTechnique "Time integral of current over the duration of the current test step. Positive during charging, negative during discharging."@en ;
+    schema:description "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative; resets to zero at each step transition."@en ;
+    schema:measurementTechnique "Time integral of the absolute value of current over the duration of the current test step."@en ;
     schema:name "Step Capacity / Ah"@en ;
     schema:unitCode "A.h" ;
     schema:unitText "ampere hour"@en ;
-    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step."@en ;
+    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
     prov:wasDerivedFrom :current_ampere,
         :step_time_second .
 
@@ -531,7 +531,7 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
 
 :step_energy_wh a owl:Class ;
     rdfs:label "Step Energy / Wh"@en ;
-    rdfs:comment "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
+    rdfs:comment "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
     rdfs:seeAlso unit:W-HR ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
@@ -540,16 +540,16 @@ prov:wasDerivedFrom a owl:AnnotationProperty .
         sosa:ObservableProperty ;
     skos:altLabel "step_energy_watt_hour"@en,
         "step_energy_wh"@en ;
-    skos:definition "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
+    skos:definition "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
     skos:exactMatch quantitykind:Energy ;
     skos:notation "step_energy_wh" ;
     skos:prefLabel "Step Energy / Wh"@en ;
-    schema:description "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
-    schema:measurementTechnique "Time integral of instantaneous power over the duration of the current test step. Positive during charging, negative during discharging."@en ;
+    schema:description "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative; resets to zero at each step transition."@en ;
+    schema:measurementTechnique "Time integral of the absolute value of instantaneous power over the duration of the current test step."@en ;
     schema:name "Step Energy / Wh"@en ;
     schema:unitCode "W.h" ;
     schema:unitText "watt hour"@en ;
-    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step."@en ;
+    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
     prov:wasDerivedFrom :power_watt,
         :step_time_second .
 

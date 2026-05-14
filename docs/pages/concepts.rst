@@ -178,36 +178,6 @@ Quantities that are computed rather than directly measured are annotated with ``
 
 These relationships are encoded as ``prov:wasDerivedFrom`` triples in the ontology and can be queried directly with SPARQL. See :doc:`Examples </pages/examples>` for a worked query.
 
-Capacity quantity behaviour
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The diagram below shows how each BDF capacity quantity evolves over a five-step
-protocol (CC discharge → rest → CC charge → rest → CC discharge).
-
-.. figure:: ../assets/img/quantities/capacity_quantities.svg
-   :alt: BDF capacity quantities over a five-step test protocol
-   :align: center
-   :width: 95%
-
-   **BDF capacity quantities.** Panel 2 shows the two unsigned cumulative
-   accumulators (``charging_capacity_ah`` in red, ``discharging_capacity_ah``
-   in blue). Panels 3 and 4 show the two equivalent signed quantities
-   (``net_capacity_ah`` and ``cumulative_capacity_ah``), which differ only in
-   computation path. Panel 5 shows ``step_capacity_ah``, which is unsigned and
-   resets to zero at each step transition.
-
-Energy quantity behaviour
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. figure:: ../assets/img/quantities/energy_quantities.svg
-   :alt: BDF energy quantities over a five-step test protocol
-   :align: center
-   :width: 95%
-
-   **BDF energy quantities.** Same protocol and panel layout as the capacity
-   diagram above, with ``charging_energy_wh``, ``discharging_energy_wh``,
-   ``net_energy_wh``, ``cumulative_energy_wh``, and ``step_energy_wh``.
-
 Content Negotiation
 --------------------
 
