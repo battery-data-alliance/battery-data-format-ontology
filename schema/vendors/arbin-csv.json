@@ -1,0 +1,154 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/arbin-csv",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Arbin BTS CSV/XLSX — BDF column mapping",
+  "dcterms:description": "Maps Arbin Battery Test System CSV and XLSX export column headers to BDF canonical columns. Covers both space-separated (Test Time (s)) and underscore-separated (Test_Time(s)) naming conventions used across Arbin BTS software versions.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Arbin Instruments"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "record_index",
+      "csvw:titles": [
+        "Data_Point",
+        "Data Point",
+        "data_point"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Test_Time(s)",
+        "Test Time(s)",
+        "Test Time (s)",
+        "TestTime(s)",
+        "test_time_s"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "Step_Time(s)",
+        "Step Time(s)",
+        "Step Time (s)",
+        "StepTime(s)",
+        "step_time_s"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Voltage(V)",
+        "Voltage (V)",
+        "Voltage_V",
+        "voltage_v"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Current(A)",
+        "Current (A)",
+        "Current_A",
+        "current_a"
+      ]
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle_Index",
+        "Cycle Index",
+        "Cycle_ID",
+        "cycle_index"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step_Index",
+        "Step Index",
+        "Step_ID",
+        "step_index"
+      ]
+    },
+    {
+      "csvw:name": "charging_capacity_ah",
+      "csvw:titles": [
+        "Charge_Capacity(Ah)",
+        "Charge Capacity(Ah)",
+        "Chg_Capacity(Ah)",
+        "Chg. Capacity(Ah)"
+      ]
+    },
+    {
+      "csvw:name": "discharging_capacity_ah",
+      "csvw:titles": [
+        "Discharge_Capacity(Ah)",
+        "Discharge Capacity(Ah)",
+        "DChg_Capacity(Ah)",
+        "DChg. Capacity(Ah)"
+      ]
+    },
+    {
+      "csvw:name": "charging_energy_wh",
+      "csvw:titles": [
+        "Charge_Energy(Wh)",
+        "Charge Energy(Wh)",
+        "Chg_Energy(Wh)"
+      ]
+    },
+    {
+      "csvw:name": "discharging_energy_wh",
+      "csvw:titles": [
+        "Discharge_Energy(Wh)",
+        "Discharge Energy(Wh)",
+        "DChg_Energy(Wh)"
+      ]
+    },
+    {
+      "csvw:name": "internal_resistance_ohm",
+      "csvw:titles": [
+        "ACR(Ohm)",
+        "ACR (Ohm)",
+        "Internal_Resistance(Ohm)",
+        "Internal Resistance(Ohm)",
+        "IR(Ohm)"
+      ]
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "TC_Counter1(C)",
+        "TC_Counter2(C)",
+        "Temperature(C)",
+        "Temperature (C)",
+        "Aux_Temperature(C)"
+      ]
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "Date_Time",
+        "Date Time",
+        "DateTime"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "ISO 8601 datetime string; converted to Unix epoch seconds by the BDF normaliser."
+    }
+  ]
+}

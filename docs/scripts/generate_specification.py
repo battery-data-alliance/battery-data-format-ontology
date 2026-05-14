@@ -9,6 +9,8 @@ BDF = Namespace(f"{BASE_IRI}#")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 EMMO = Namespace("https://w3id.org/emmo#")
 SCHEMA = Namespace("https://schema.org/")
+QUDT_KIND = Namespace("http://qudt.org/vocab/quantitykind/")
+PROV = Namespace("http://www.w3.org/ns/prov#")
 
 ONTOLOGY_IRI = URIRef(BASE_IRI)
 TTL_PATH = Path("battery-data-format.ttl")
@@ -60,32 +62,9 @@ def _get_definition(graph: Graph, subject):
     return ""
 
 
-def _get_notes(graph: Graph, subject, definition):
-    values = _get_literals(graph, subject, RDFS.comment)
-    if not values:
-        return ""
-    note = _pick_literal(values)
-    if note and note != definition:
-        return note
-    return ""
-
-
-def _get_alt_labels(graph: Graph, subject):
-    values = _get_literals(graph, subject, SKOS.altLabel)
-    return sorted({_literal_text(value) for value in values if _literal_text(value)})
-
-
 def _get_notation(graph: Graph, subject):
     values = _get_literals(graph, subject, SKOS.notation)
     return _pick_literal(values)
-
-
-def _get_superclasses(graph: Graph, subject):
-    supers = []
-    for obj in graph.objects(subject, RDFS.subClassOf):
-        if isinstance(obj, URIRef) and obj != OWL.Thing:
-            supers.append(obj)
-    return supers
 
 
 def _get_units(graph: Graph, subject):
@@ -104,16 +83,32 @@ def _get_units(graph: Graph, subject):
     return units
 
 
-def _get_deprecated(graph: Graph, subject) -> bool:
-    for value in graph.objects(subject, OWL.deprecated):
-        if isinstance(value, Literal) and str(value).lower() == "true":
-            return True
-    return False
+def _get_unit_code(graph: Graph, subject) -> str:
+    val = graph.value(subject, SCHEMA.unitCode)
+    return str(val) if val else ""
+
+
+def _get_quantity_kind(graph: Graph, subject) -> str:
+    """Return the local name of the QUDT quantitykind: match, e.g. 'Voltage'."""
+    for obj in graph.objects(subject, SKOS.exactMatch):
+        if isinstance(obj, URIRef) and str(obj).startswith(str(QUDT_KIND)):
+            return _local_name(obj)
+    return ""
+
+
+def _get_derived_from(graph: Graph, subject) -> str:
+    """Return comma-separated notations of prov:wasDerivedFrom sources."""
+    sources = []
+    for obj in graph.objects(subject, PROV.wasDerivedFrom):
+        if isinstance(obj, URIRef):
+            notation = _get_notation(graph, obj)
+            sources.append(notation or _local_name(obj))
+    return ", ".join(sorted(sources)) if sources else ""
 
 
 def _format_iri_list(graph: Graph, items):
     if not items:
-        return "-"
+        return "—"
     labels = []
     for item in items:
         label = _get_labels(graph, item)
@@ -140,16 +135,11 @@ def build_specification():
         {str(obj) for obj in graph.objects(ONTOLOGY_IRI, OWL.imports) if isinstance(obj, URIRef)}
     )
 
-    terms = []
-    for subject in graph.subjects(RDF.type, OWL.Class):
-        if isinstance(subject, URIRef) and str(subject).startswith(str(BDF)):
-            terms.append(subject)
-
-    def sort_key(term):
-        notation = _get_notation(graph, term)
-        return notation or _local_name(term)
-
-    terms = sorted(terms, key=sort_key)
+    terms = [
+        subject for subject in graph.subjects(RDF.type, OWL.Class)
+        if isinstance(subject, URIRef) and str(subject).startswith(str(BDF))
+    ]
+    terms = sorted(terms, key=lambda t: _get_notation(graph, t) or _local_name(t))
 
     lines = []
     lines.append("Battery Data Format Specification")
@@ -157,58 +147,92 @@ def build_specification():
     lines.append("")
     lines.append(".. note::")
     lines.append("   This page is generated from the ontology file ``battery-data-format.ttl``.")
+    lines.append("   Do not edit it directly.")
     lines.append("")
+
+    # --- Status ---
     lines.append("Status")
     lines.append("------")
-    lines.append(f"- Title: {title or '-'}")
-    lines.append(f"- Version: {version_info or '-'}")
-    lines.append(f"- Issued: {issued or '-'}")
-    lines.append(f"- Modified: {modified or '-'}")
-    lines.append(f"- Publisher: {publisher or '-'}")
-    lines.append(f"- License: {str(license_iri) if license_iri else '-'}")
     lines.append("")
+    lines.append(".. list-table::")
+    lines.append("   :widths: 25 75")
+    lines.append("   :stub-columns: 1")
+    lines.append("")
+    for label, value in [
+        ("Title",     title or "—"),
+        ("Version",   version_info or "—"),
+        ("Issued",    issued or "—"),
+        ("Modified",  modified or "—"),
+        ("Publisher", publisher or "—"),
+        ("License",   str(license_iri) if license_iri else "—"),
+    ]:
+        lines.append(f"   * - {label}")
+        lines.append(f"     - {value}")
+    lines.append("")
+
+    # --- Scope ---
     lines.append("Scope")
     lines.append("-----")
-    lines.append(abstract or "-")
     lines.append("")
+    lines.append(abstract or "—")
+    lines.append("")
+
+    # --- Normative references ---
     lines.append("Normative References")
     lines.append("--------------------")
+    lines.append("")
     if imports:
         for item in imports:
-            lines.append(f"- {item}")
+            lines.append(f"- `{item} <{item}>`_")
     else:
         lines.append("- None.")
     lines.append("")
+
+    # --- Identifiers ---
     lines.append("Identifiers")
     lines.append("-----------")
-    lines.append(f"Base IRI: {BASE_IRI}#")
-    lines.append("Full term IRIs are formed by concatenating the base IRI with the notation.")
     lines.append("")
+    lines.append(f"- **Base IRI:** ``{BASE_IRI}#``")
+    lines.append("- Full term IRIs are formed by appending the notation to the base IRI,")
+    lines.append(f"  e.g. ``{BASE_IRI}#voltage_volt``.")
+    ttl_stem = TTL_PATH.stem  # battery-data-format
+    lines.append(f"- **Version IRI:** ``{BASE_IRI}/{version_info}/{ttl_stem}``")
+    lines.append("")
+
+    # --- Terms and definitions ---
     lines.append("Terms and Definitions")
     lines.append("---------------------")
     lines.append("")
     lines.append(".. list-table::")
-    lines.append("   :widths: 20 15 45 20")
+    lines.append("   :widths: 20 16 38 8 18")
     lines.append("   :header-rows: 1")
     lines.append("")
     lines.append("   * - Term")
     lines.append("     - Notation")
     lines.append("     - Definition")
-    lines.append("     - Unit")
+    lines.append("     - UCUM")
+    lines.append("     - Quantity Kind")
 
     for term in terms:
-        label = _get_labels(graph, term)
-        definition = _get_definition(graph, term) or "-"
-        notation = _get_notation(graph, term) or "-"
-        units = _format_iri_list(graph, _get_units(graph, term))
+        label        = _get_labels(graph, term)
+        definition   = _get_definition(graph, term) or "—"
+        notation     = _get_notation(graph, term) or "—"
+        ucum         = _get_unit_code(graph, term) or "—"
+        qty_kind     = _get_quantity_kind(graph, term) or "—"
+        derived_from = _get_derived_from(graph, term)
+
+        if derived_from:
+            definition = definition.rstrip(".") + f". *Derived from:* ``{derived_from}``."
 
         lines.append("   * - " + label.replace("\n", " "))
-        lines.append("     - " + notation.replace("\n", " "))
+        lines.append("     - ``" + notation.replace("\n", " ") + "``")
         lines.append("     - " + definition.replace("\n", " "))
-        lines.append("     - " + units.replace("\n", " "))
+        lines.append("     - ``" + ucum + "``")
+        lines.append("     - " + qty_kind)
 
     lines.append("")
-    lines.append("See :doc:`BDF Ontology Terms </battery-data-format>` for full term metadata.")
+    lines.append("See :doc:`BDF Ontology Terms </battery-data-format>` for full term metadata,")
+    lines.append("including EMMO superclasses, QUDT unit alignments, and PROV derivation graph.")
     lines.append("")
 
     OUTPUT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")

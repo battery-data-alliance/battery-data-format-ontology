@@ -1,0 +1,86 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt-txt",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "LANDT CT-Series TXT — BDF column mapping",
+  "dcterms:description": "Maps LANDT CT-series older TXT export headers to BDF canonical columns. Older LANDT TXT files use abbreviated English headers (Volts, Amps, Test(sec)) and tab-delimited rows. All values are in SI units; no unit conversion is required.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "LANDT Instruments"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Test(sec)",
+        "Test (sec)",
+        "test_time_s",
+        "Test Time (s)",
+        "Test Time"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "DPT-Time",
+        "DPT Time",
+        "Step Time (s)",
+        "step_time_s"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Volts",
+        "Volt",
+        "Voltage",
+        "V"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Amps",
+        "Amp",
+        "Current",
+        "A",
+        "I(A)"
+      ]
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle",
+        "Cycle#",
+        "Cycle Index"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step",
+        "Step#",
+        "Step Index"
+      ]
+    },
+    {
+      "csvw:name": "record_index",
+      "csvw:titles": [
+        "Rec#",
+        "Record",
+        "Record#"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    }
+  ]
+}
