@@ -37,6 +37,7 @@ _DEFAULT_PREFIXES: dict[str, str] = {
     "dcterms":      "http://purl.org/dc/terms/",
     "emmo":         "https://w3id.org/emmo#",
     "owl":          "http://www.w3.org/2002/07/owl#",
+    "prov":         "http://www.w3.org/ns/prov#",
     "qudt":         "http://qudt.org/schema/qudt/",
     "quantitykind": "http://qudt.org/vocab/quantitykind/",
     "rdf":          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
