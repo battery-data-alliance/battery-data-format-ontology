@@ -77,13 +77,14 @@ add_module_names = False
 
 # -- Sphinx app hooks --------------------------------------------------------
 
-def _generate_specification(app):
+def _run_script(app, script_name):
     script = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "scripts", "generate_specification.py")
+        os.path.join(os.path.dirname(__file__), "scripts", script_name)
     )
     if os.path.isfile(script):
         subprocess.run([sys.executable, script], check=True)
 
 
 def setup(app):
-    app.connect("builder-inited", _generate_specification)
+    app.connect("builder-inited", lambda a: _run_script(a, "generate_specification.py"))
+    app.connect("builder-inited", lambda a: _run_script(a, "generate_quantity_diagrams.py"))
