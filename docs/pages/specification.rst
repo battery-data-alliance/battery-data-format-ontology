@@ -3,164 +3,259 @@ Battery Data Format Specification
 
 .. note::
    This page is generated from the ontology file ``battery-data-format.ttl``.
+   Do not edit it directly.
 
 Status
 ------
-- Title: Battery Data Format Ontology
-- Version: 1.0.0
-- Issued: 2026-01-21
-- Modified: 2026-01-21
-- Publisher: Battery Data Alliance
-- License: http://www.apache.org/licenses/LICENSE-2.0
+
+.. list-table::
+   :widths: 25 75
+   :stub-columns: 1
+
+   * - Title
+     - Battery Data Format Ontology
+   * - Version
+     - 1.0.0
+   * - Issued
+     - 2026-05-14
+   * - Modified
+     - 2026-05-14
+   * - Publisher
+     - Battery Data Alliance
+   * - License
+     - http://www.apache.org/licenses/LICENSE-2.0
 
 Scope
 -----
+
 An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)
 
 Normative References
 --------------------
-- https://w3id.org/emmo/domain/battery/0.18.6/battery
+
+- `https://w3id.org/emmo/domain/battery/0.18.6/battery <https://w3id.org/emmo/domain/battery/0.18.6/battery>`_
 
 Identifiers
 -----------
-Base IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#
-Full term IRIs are formed by concatenating the base IRI with the notation.
+
+- **Base IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#``
+- Full term IRIs are formed by appending the notation to the base IRI,
+  e.g. ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt``.
+- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format``
 
 Terms and Definitions
 ---------------------
 
 .. list-table::
-   :widths: 20 15 45 20
+   :widths: 20 16 38 8 18
    :header-rows: 1
 
    * - Term
      - Notation
      - Definition
-     - Unit
+     - UCUM
+     - Quantity Kind
+   * - Absolute Impedance / ohm
+     - ``absolute_impedance_ohm``
+     - the magnitude of the complex impedance, expressed in ohms. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``.
+     - ``Ohm``
+     - Impedance
    * - Ambient Pressure / Pa
-     - ambient_pressure_pa
+     - ``ambient_pressure_pa``
      - Ambient air pressure recorded during testing, in Pascal.
-     - Pascal
+     - ``Pa``
+     - Pressure
    * - Ambient Temperature / degC
-     - ambient_temperature_celsius
+     - ``ambient_temperature_celsius``
      - Ambient temperature recorded during testing, in degree Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Applied Pressure / Pa
-     - applied_pressure_pa
+     - ``applied_pressure_pa``
      - External pressure applied to the test object, in Pascal.
-     - Pascal
+     - ``Pa``
+     - Pressure
    * - Charging Capacity / Ah
-     - charging_capacity_ah
-     - Electric charge transferred into the test object during charging, in ampere hour.
-     - AmpereHour
+     - ``charging_capacity_ah``
+     - Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. *Derived from:* ``current_ampere, test_time_second``.
+     - ``A.h``
+     - ElectricCharge
    * - Charging Energy / Wh
-     - charging_energy_wh
-     - Energy transferred into the test object during charging, in watt hour.
-     - WattHour
+     - ``charging_energy_wh``
+     - Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. *Derived from:* ``power_watt, test_time_second``.
+     - ``W.h``
+     - Energy
    * - Cumulative Capacity / Ah
-     - cumulative_capacity_ah
-     - Total electric charge that has passed through the test object since the start of the test, in ampere hour.
-     - AmpereHour
+     - ``cumulative_capacity_ah``
+     - Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models. *Derived from:* ``current_ampere, test_time_second``.
+     - ``A.h``
+     - ElectricCharge
    * - Cumulative Energy / Wh
-     - cumulative_energy_wh
-     - Total energy transferred through the test object since the start of the test, in watt hour.
-     - WattHour
+     - ``cumulative_energy_wh``
+     - Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing. *Derived from:* ``power_watt, test_time_second``.
+     - ``W.h``
+     - Energy
    * - Current / A
-     - current_ampere
+     - ``current_ampere``
      - Instantaneous current recorded in ampere.
-     - Ampere
+     - ``A``
+     - ElectricCurrent
    * - Cycle Count / 1
-     - cycle_count
-     - The cycle number here is used to segregate data into smaller quasi-periodic subsets, and is typically used to track evolution of performance metrics over the course of aging.
-     - EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+     - ``cycle_count``
+     - Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. The starting value is instrument-defined and must be preserved as reported by the cycler; converters must not renumber cycles. A starting value of 0 is valid and typically denotes pre-cycling or conditioning steps executed before the first complete charge-discharge cycle. A starting value of 1 is equally valid. Users may also configure a non-default start value on the instrument to indicate that data from earlier cycles exist elsewhere.
+     - ``1``
+     - Count
    * - Discharging Capacity / Ah
-     - discharging_capacity_ah
-     - Electric charge transferred out of the test object during discharging, in ampere hour.
-     - AmpereHour
+     - ``discharging_capacity_ah``
+     - Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. *Derived from:* ``current_ampere, test_time_second``.
+     - ``A.h``
+     - ElectricCharge
    * - Discharging Energy / Wh
-     - discharging_energy_wh
-     - Energy transferred out of the test object during discharging, in watt hour.
-     - WattHour
-   * - Internal Resistance / Ohm
-     - internal_resistance_ohm
+     - ``discharging_energy_wh``
+     - Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. *Derived from:* ``power_watt, test_time_second``.
+     - ``W.h``
+     - Energy
+   * - Frequency / Hz
+     - ``frequency_hertz``
+     - the frequency of an applied periodic excitation or measured response, expressed in hertz
+     - ``Hz``
+     - Frequency
+   * - Imaginary Impedance / ohm
+     - ``imaginary_impedance_ohm``
+     - the imaginary component of the complex impedance, expressed in ohms
+     - ``Ohm``
+     - Impedance
+   * - Internal Resistance / ohm
+     - ``internal_resistance_ohm``
      - Direct current internal resistance recorded in ohm.
-     - Ohm
+     - ``Ohm``
+     - ElectricResistance
    * - Net Capacity / Ah
-     - net_capacity_ah
-     - Net capacity difference between charge and discharge within a defined step or cycle, in ampere hour.
-     - AmpereHour
+     - ``net_capacity_ah``
+     - Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals. *Derived from:* ``charging_capacity_ah, discharging_capacity_ah``.
+     - ``A.h``
+     - ElectricCharge
    * - Net Energy / Wh
-     - net_energy_wh
-     - Net energy difference between charge and discharge within a defined step or cycle, in watt hour.
-     - WattHour
+     - ``net_energy_wh``
+     - Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals. *Derived from:* ``charging_energy_wh, discharging_energy_wh``.
+     - ``W.h``
+     - Energy
+   * - Phase / deg
+     - ``phase_degree``
+     - the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``.
+     - ``deg``
+     - Angle
    * - Power / W
-     - power_watt
-     - Instantaneous power calculated as the product of voltage and current, in watt.
-     - Watt
+     - ``power_watt``
+     - Instantaneous power calculated as the product of voltage and current, in watt. *Derived from:* ``current_ampere, voltage_volt``.
+     - ``W``
+     - Power
+   * - Real Impedance / ohm
+     - ``real_impedance_ohm``
+     - the real component of the complex impedance, expressed in ohms
+     - ``Ohm``
+     - Impedance
+   * - Record Index / 1
+     - ``record_index``
+     - an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning
+     - ``1``
+     - Count
    * - Step Capacity / Ah
-     - step_capacity_ah
-     - Electric charge transferred during the current test step, in ampere hour.
-     - AmpereHour
+     - ``step_capacity_ah``
+     - Net electric charge transferred during the current test step, in ampere hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging capacity minus cumulative discharging capacity since the start of the current step. *Derived from:* ``current_ampere, step_time_second``.
+     - ``A.h``
+     - ElectricCharge
    * - Step Count / 1
-     - step_count
-     - Step number, with unit one.
-     - EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+     - ``step_count``
+     - Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.
+     - ``1``
+     - Count
    * - Step Energy / Wh
-     - step_energy_wh
-     - Energy transferred during the current test step, in watt hour.
-     - WattHour
+     - ``step_energy_wh``
+     - Net energy transferred during the current test step, in watt hour. Positive values indicate net charging; negative values indicate net discharging. Computed as cumulative charging energy minus cumulative discharging energy since the start of the current step. *Derived from:* ``power_watt, step_time_second``.
+     - ``W.h``
+     - Energy
+   * - Step ID
+     - ``step_id``
+     - The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns.
+     - ``—``
+     - —
    * - Step Index / 1
-     - step_index
-     - Index indicating the position of the data point within a step, with unit one.
-     - One
+     - ``step_index``
+     - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software.
+     - ``1``
+     - Dimensionless
+   * - Step Time / s
+     - ``step_time_second``
+     - the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition
+     - ``s``
+     - Time
+   * - Step Type
+     - ``step_type``
+     - A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.
+     - ``—``
+     - —
    * - Surface Pressure / Pa
-     - surface_pressure_pa
+     - ``surface_pressure_pa``
      - Surface pressure recorded in Pascal.
-     - Pascal
+     - ``Pa``
+     - Pressure
    * - Surface Temperature / degC
-     - surface_temperature_celsius
+     - ``surface_temperature_celsius``
      - Surface temperature recorded in degree Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Surface Temperature T1 / degC
-     - temperature_t1_celsius
+     - ``temperature_t1_celsius``
      - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Surface Temperature T2 / degC
-     - temperature_t2_celsius
+     - ``temperature_t2_celsius``
      - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Surface Temperature T3 / degC
-     - temperature_t3_celsius
+     - ``temperature_t3_celsius``
      - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Surface Temperature T4 / degC
-     - temperature_t4_celsius
+     - ``temperature_t4_celsius``
      - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Surface Temperature T5 / degC
-     - temperature_t5_celsius
+     - ``temperature_t5_celsius``
      - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
-     - DegreeCelsius
+     - ``Cel``
+     - Temperature
    * - Test Time / ms
-     - test_time_millisecond
+     - ``test_time_millisecond``
      - Test time recorded in millisecond.
-     - MilliSecond
+     - ``ms``
+     - Time
    * - Test Time / s
-     - test_time_second
+     - ``test_time_second``
      - Test time recorded in second.
-     - Second
+     - ``s``
+     - Time
    * - Unix Time / ms
-     - unix_time_millisecond
+     - ``unix_time_millisecond``
      - Unix time recorded in millisecond.
-     - MilliSecond
+     - ``ms``
+     - Time
    * - Unix Time / s
-     - unix_time_second
+     - ``unix_time_second``
      - Unix time recorded in second.
-     - Second
+     - ``s``
+     - Time
    * - Voltage / V
-     - voltage_volt
+     - ``voltage_volt``
      - Instantaneous voltage recorded in volt.
-     - Volt
+     - ``V``
+     - Voltage
 
-See :doc:`BDF Ontology Terms </battery-data-format>` for full term metadata.
+See :doc:`BDF Ontology Terms </battery-data-format>` for full term metadata,
+including EMMO superclasses, QUDT unit alignments, and PROV derivation graph.
 

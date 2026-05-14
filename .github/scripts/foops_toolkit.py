@@ -1,10 +1,13 @@
 import os
 import json
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import requests
 from rdflib import Graph, Namespace, Literal
 from rdflib.namespace import RDFS, SKOS
-from ontology_toolkit import load_ontology_config
+from config import load_config as load_ontology_config  # backward-compat alias
 
 def add_foops_recommendations(input_file, output_file):
     """

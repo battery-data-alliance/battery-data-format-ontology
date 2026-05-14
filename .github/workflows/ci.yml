@@ -5,52 +5,76 @@ on:
   push:
     branches: [main, dev]
 
+# Read-only access is sufficient for validation and testing.
+permissions:
+  contents: read
+
 jobs:
   validate:
+    name: Validate ontology artefacts
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: pip-${{ runner.os }}-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install .
 
-      - name: Validate Turtle, JSON, and YAML
+      - name: Validate TTL, JSON, YAML and schema content
+        run: python .github/scripts/validate.py
+
+      - name: Run ontology tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+  check-context:
+    name: Check context.json is not stale
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+          restore-keys: pip-${{ runner.os }}-
+
+      - name: Install dependencies
         run: |
-          python - <<'PY'
-          import json
-          import sys
-          import yaml
-          from pathlib import Path
-          from rdflib import Graph
+          python -m pip install --upgrade pip
+          pip install .
 
-          ttl_files = [Path("battery-data-format.ttl")]
-          json_files = [Path("context/context.json"), Path("schema/schema.json")]
-          yaml_files = [Path("config.yml")]
-
-          for ttl_path in ttl_files:
-              if not ttl_path.exists():
-                  sys.exit(f"Missing TTL file: {ttl_path}")
-              g = Graph()
-              g.parse(ttl_path, format="turtle")
-              print(f"Parsed TTL: {ttl_path}")
-
-          for json_path in json_files:
-              if not json_path.exists():
-                  sys.exit(f"Missing JSON file: {json_path}")
-              json.load(json_path.open())
-              print(f"Validated JSON: {json_path}")
-
-          for yaml_path in yaml_files:
-              if not yaml_path.exists():
-                  sys.exit(f"Missing YAML file: {yaml_path}")
-              yaml.safe_load(yaml_path.read_text())
-              print(f"Validated YAML: {yaml_path}")
-          PY
+      - name: Regenerate context and diff against committed version
+        run: |
+          cp context/context.json context/context.json.committed
+          python .github/scripts/ontology_toolkit.py --generate-context
+          if ! diff -u context/context.json.committed context/context.json; then
+            echo ""
+            echo "ERROR: context/context.json is stale."
+            echo "Regenerate and commit:"
+            echo "  python .github/scripts/ontology_toolkit.py --generate-context"
+            exit 1
+          fi
+          echo "context/context.json is up to date."

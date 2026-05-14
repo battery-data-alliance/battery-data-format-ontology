@@ -1,18 +1,23 @@
 # Battery Data Format (BDF) Ontology
 
-The BDF Ontology is an application ontology designed to help machines work with BDF-compliant data.  
+[![CI](https://github.com/BatteryDataAlliance/BDAOntology/actions/workflows/ci.yml/badge.svg)](https://github.com/BatteryDataAlliance/BDAOntology/actions/workflows/ci.yml)
+[![FOOPS Score](https://batterydata-alliance.github.io/BDAOntology/assets/foops_badge.svg)](https://foops.linkeddata.es/FAIR_validator.html)
+
+The BDF Ontology is an application ontology designed to help machines work with BDF-compliant data.
 
 ## Documentation
 
-Build the docs locally:
+Online: [batterydata-alliance.github.io/BDAOntology](https://batterydata-alliance.github.io/BDAOntology/)
 
-```
-python -m pip install -r requirements-docs.txt
-BDF_ONLY_LOCAL_IMPORTS=1 python .github/scripts/ontology_toolkit.py --generate-rst
-python -m sphinx -c docs -b html -d docs/_build/doctrees docs docs/_build/html
+Build locally:
+
+```bash
+pip install ".[docs]"
+ONLY_LOCAL_IMPORTS=1 python .github/scripts/ontology_toolkit.py --generate-rst
+sphinx-build -b html docs/ docs/_build/html/
 ```
 
-The HTML output is available at `docs/_build/html/index.html`.
+Open `docs/_build/html/index.html` to inspect the result.
 
 ## Reference IRIs
 

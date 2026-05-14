@@ -1,0 +1,129 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/neware-csv",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Neware BTS CSV — BDF column mapping",
+  "dcterms:description": "Maps Neware Battery Test System CSV export headers to BDF canonical columns. Supports both English and Simplified Chinese (GB18030) header variants. IMPORTANT: Neware exports capacity in mAh and energy in mWh; schema:unitCode documents the as-exported unit. The BDF normaliser divides by 1000 to produce A·h and W·h. NOTE: Neware's 'Time(s)' column is STEP time, not TEST time; 'Total Time(s)' or 'Test Time(s)' is the test-level elapsed time.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Neware Technology"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Total Time(s)",
+        "Test Time(s)",
+        "TotalTime(s)",
+        "TotalTime_S",
+        "Total Time",
+        "总时间(s)",
+        "测试时间(s)"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "Time(s)",
+        "Relative Time(s)",
+        "State Time(s)",
+        "StepTime(s)",
+        "Step Time(s)",
+        "StepTime_S",
+        "时间(s)"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Voltage(V)",
+        "电压(V)"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Current(A)",
+        "电流(A)"
+      ]
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step"
+      ]
+    },
+    {
+      "csvw:name": "record_index",
+      "csvw:titles": [
+        "Record"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "DateTime",
+        "Datetime",
+        "DATE_TIME"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "ISO 8601 datetime string; converted to Unix epoch seconds by the BDF normaliser."
+    },
+    {
+      "csvw:name": "charging_capacity_ah",
+      "csvw:titles": [
+        "Charge Capacity(mAh)",
+        "Chg.Capacity(mAh)"
+      ],
+      "schema:unitCode": "mA.h"
+    },
+    {
+      "csvw:name": "discharging_capacity_ah",
+      "csvw:titles": [
+        "Discharge Capacity(mAh)",
+        "DChg.Capacity(mAh)"
+      ],
+      "schema:unitCode": "mA.h"
+    },
+    {
+      "csvw:name": "charging_energy_wh",
+      "csvw:titles": [
+        "Charge Energy(mWh)"
+      ],
+      "schema:unitCode": "mW.h"
+    },
+    {
+      "csvw:name": "discharging_energy_wh",
+      "csvw:titles": [
+        "Discharge Energy(mWh)"
+      ],
+      "schema:unitCode": "mW.h"
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "Temperature(°C)",
+        "温度(°C)"
+      ]
+    }
+  ]
+}
