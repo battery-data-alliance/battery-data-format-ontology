@@ -136,20 +136,20 @@ sosa:ObservableProperty rdf:type owl:Class .
                                        owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                        owl:someValuesFrom emmo:Pascal
                                      ] ;
-                     rdfs:comment "Ambient air pressure recorded during testing, in Pascal."@en ;
+                     rdfs:comment "Ambient air pressure recorded during testing, in pascal."@en ;
                      rdfs:label "Ambient Pressure / Pa"@en ;
                      rdfs:seeAlso unit:PA ;
                      skos:altLabel "ambient_pressure_pa"@en ,
                                    "ambient_pressure_pascal"@en ;
-                     skos:definition "Ambient air pressure recorded during testing, in Pascal."@en ;
+                     skos:definition "Ambient air pressure recorded during testing, in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "ambient_pressure_pa" ;
                      skos:prefLabel "Ambient Pressure / Pa"@en ;
-                     schema:description "Ambient air pressure recorded during testing, in Pascal."@en ;
+                     schema:description "Ambient air pressure recorded during testing, in pascal."@en ;
                      schema:name "Ambient Pressure / Pa"@en ;
                      schema:unitCode "Pa" ;
                      schema:unitText "pascal"@en ;
-                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Ambient air pressure recorded during testing, in Pascal."@en .
+                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Ambient air pressure recorded during testing, in pascal."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient_temperature_celsius
@@ -184,20 +184,20 @@ sosa:ObservableProperty rdf:type owl:Class .
                                        owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                        owl:someValuesFrom emmo:Pascal
                                      ] ;
-                     rdfs:comment "External pressure applied to the test object, in Pascal."@en ;
+                     rdfs:comment "External pressure applied to the test object, in pascal."@en ;
                      rdfs:label "Applied Pressure / Pa"@en ;
                      rdfs:seeAlso unit:PA ;
                      skos:altLabel "applied_pressure_pa"@en ,
                                    "applied_pressure_pascal"@en ;
-                     skos:definition "External pressure applied to the test object, in Pascal."@en ;
+                     skos:definition "External pressure applied to the test object, in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "applied_pressure_pa" ;
                      skos:prefLabel "Applied Pressure / Pa"@en ;
-                     schema:description "External pressure applied to the test object, in Pascal."@en ;
+                     schema:description "External pressure applied to the test object, in pascal."@en ;
                      schema:name "Applied Pressure / Pa"@en ;
                      schema:unitCode "Pa" ;
                      schema:unitText "pascal"@en ;
-                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "External pressure applied to the test object, in Pascal."@en .
+                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "External pressure applied to the test object, in pascal."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#charging_capacity_ah
@@ -749,20 +749,20 @@ sosa:ObservableProperty rdf:type owl:Class .
                                        owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                        owl:someValuesFrom emmo:Pascal
                                      ] ;
-                     rdfs:comment "Surface pressure recorded in Pascal."@en ;
+                     rdfs:comment "Surface pressure recorded in pascal."@en ;
                      rdfs:label "Surface Pressure / Pa"@en ;
                      rdfs:seeAlso unit:PA ;
                      skos:altLabel "surface_pressure_pa"@en ,
                                    "surface_pressure_pascal"@en ;
-                     skos:definition "Surface pressure recorded in Pascal."@en ;
+                     skos:definition "Surface pressure recorded in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "surface_pressure_pa" ;
                      skos:prefLabel "Surface Pressure / Pa"@en ;
-                     schema:description "Surface pressure recorded in Pascal."@en ;
+                     schema:description "Surface pressure recorded in pascal."@en ;
                      schema:name "Surface Pressure / Pa"@en ;
                      schema:unitCode "Pa" ;
                      schema:unitText "pascal"@en ;
-                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Surface pressure recorded in Pascal."@en .
+                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Surface pressure recorded in pascal."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius
