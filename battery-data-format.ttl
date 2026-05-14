@@ -21,9 +21,9 @@
                                                                        dcterms:bibliographicCitation "Pending" ;
                                                                        dcterms:created "2025-01-23"^^xsd:date ;
                                                                        dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
-                                                                       dcterms:issued "2026-01-21"^^xsd:date ;
+                                                                       dcterms:issued "2026-05-14"^^xsd:date ;
                                                                        dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
-                                                                       dcterms:modified "2026-01-21"^^xsd:date ;
+                                                                       dcterms:modified "2026-05-14"^^xsd:date ;
                                                                        dcterms:publisher "Battery Data Alliance" ;
                                                                        dcterms:title "Battery Data Format Ontology"@en ;
                                                                        bibo:doi "pending" ;
@@ -454,17 +454,17 @@ schema:description rdf:type owl:AnnotationProperty .
                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                               owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
                             ] ;
-            rdfs:comment "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID / 1, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            rdfs:comment "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
             rdfs:label "Step Count / 1"@en ;
             skos:altLabel "step_count"@en ,
                           "step_count_1"@en ,
                           "step_dimensionless"@en ;
-            skos:definition "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID / 1, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            skos:definition "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
             skos:notation "step_count" ;
             skos:prefLabel "Step Count / 1"@en ;
-            schema:description "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID / 1, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            schema:description "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
             schema:name "Step Count / 1"@en ;
-            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID / 1, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en .
+            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
@@ -513,14 +513,13 @@ schema:description rdf:type owl:AnnotationProperty .
                            owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
                          ] ;
          rdfs:comment "The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns."@en ;
-         rdfs:label "Step ID / 1"@en ;
-         skos:altLabel "step_id"@en ,
-                       "step_id_1"@en ;
+         rdfs:label "Step ID"@en ;
+         skos:altLabel "step_id"@en ;
          skos:definition "The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns."@en ;
          skos:notation "step_id" ;
-         skos:prefLabel "Step ID / 1"@en ;
+         skos:prefLabel "Step ID"@en ;
          schema:description "The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns."@en ;
-         schema:name "Step ID / 1"@en ;
+         schema:name "Step ID"@en ;
          emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns."@en .
 
 
@@ -528,13 +527,13 @@ schema:description rdf:type owl:AnnotationProperty .
 :step_type rdf:type owl:Class ;
            rdfs:subClassOf emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ;
            rdfs:comment "A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument."@en ;
-           rdfs:label "Step Type / 1"@en ;
+           rdfs:label "Step Type"@en ;
            skos:altLabel "step_type"@en ;
            skos:definition "A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument."@en ;
            skos:notation "step_type" ;
-           skos:prefLabel "Step Type / 1"@en ;
+           skos:prefLabel "Step Type"@en ;
            schema:description "A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG, CC_DCH, CV_CHG, CCCV_CHG, REST, OCV, EIS."@en ;
-           schema:name "Step Type / 1"@en ;
+           schema:name "Step Type"@en ;
            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument."@en .
 
 
@@ -555,9 +554,9 @@ schema:description rdf:type owl:AnnotationProperty .
            rdfs:subClassOf emmo:EMMO_5f334606_f67d_4f0e_acb9_eeb21cb10c66 ;
            skos:altLabel "step_type"@en ;
            skos:definition "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en ;
-           skos:prefLabel "Step Type / 1"@en ;
+           skos:prefLabel "Step Type"@en ;
            schema:description "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en ;
-           schema:name "Step Type / 1"@en ;
+           schema:name "Step Type"@en ;
            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "a string value that describes the operational control mode of the active test step at the time of measurement, indicating how the cell is being driven or held"@en .
 
 
