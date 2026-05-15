@@ -1,6 +1,7 @@
 # Ignore virtual environment
 .venv/
 venv/
+.venv-docs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -12,7 +13,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-docs/_build
 build/
 develop-eggs/
 dist/
@@ -36,3 +36,7 @@ wheels/
 # Logs and database files
 *.log
 *.sqlite3
+
+# Generated artifacts (keep out of source control)
+battery-data-format-inferred.ttl
+docs/_build/

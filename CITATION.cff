@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this ontology, please cite it."
+title: "Battery Data Format (BDF) Ontology"
+version: "1.0.0"
+authors:
+  - name: "Battery Data Alliance"
+license: "Apache-2.0"
+repository-code: "https://github.com/BatteryDataAlliance/BDAOntology"

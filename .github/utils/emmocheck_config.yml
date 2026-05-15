@@ -9,7 +9,7 @@ test_quantity_dimension:
     - electrochemistry.ElectrochemicalTransportQuantity
     - electrochemistry.ElectrochemicalThermodynamicQuantity
     - electrochemistry.ElectrochemicalConstant
-    - BattINFO.BatteryQuantity
+    - BDF.BatteryQuantity
     # We ignore reaction rate constant since its dimensionality may vary
     - electrochemistry.ReactionRateConstant
 

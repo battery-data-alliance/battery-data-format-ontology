@@ -1,0 +1,9 @@
+# Ensure consistent text handling
+* text=auto eol=lf
+
+# Treat Turtle and YAML as text with LF endings
+*.ttl text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.rst text eol=lf
+*.md text eol=lf

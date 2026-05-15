@@ -1,0 +1,61 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/basytec-txt",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Basytec Battery Test System TXT/DAT — BDF column mapping",
+  "dcterms:description": "Maps Basytec Battery Test System TXT and DAT export headers to BDF canonical columns. Headers are prefixed with '~' (stripped during parsing). Time may be exported in hours, minutes, or seconds; current may be in A, mA, or µA; voltage may be in V or mV. schema:unitCode documents the as-exported unit where conversion is required. File encoding is typically latin-1.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Basytec GmbH"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Time[s]",
+        "Time[h]",
+        "Time[min]",
+        "Time[h:min:s]",
+        "Time"
+      ],
+      "skos:note": "Time[s] is already in seconds. Time[h] requires ×3600; Time[min] requires ×60. schema:unitCode is set per-file based on the actual header matched.",
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "U[V]",
+        "Voltage[V]",
+        "U",
+        "Voltage",
+        "U[mV]"
+      ],
+      "skos:note": "U[mV] variants require ÷1000. schema:unitCode is V for U[V] and mV for U[mV]."
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "I[A]",
+        "Current[A]",
+        "I",
+        "Current",
+        "I[mA]",
+        "I[uA]"
+      ],
+      "skos:note": "I[mA] requires ÷1000; I[uA] requires ÷1000000. schema:unitCode is set per-file based on the actual header matched."
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "T1[°C]",
+        "T1[C]",
+        "T1[degC]",
+        "Temp[°C]",
+        "Temperature[°C]"
+      ]
+    }
+  ]
+}
