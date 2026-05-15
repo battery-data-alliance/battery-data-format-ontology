@@ -4,44 +4,63 @@
    :hidden:
 
    Quick Start <pages/quick_start>
+   Concepts <pages/concepts>
    Examples <pages/examples>
+   Specification <pages/specification>
    Documentation <battery-data-format>
+   Vendor Schemas <pages/vendor_schemas>
+   FAQ <pages/faq>
    About <pages/about>
 
 Battery Data Format Ontology
 ================================
 
-Welcome to the **Battery Data Format Ontology**, a semantic resource to help people and machines understand the meaning of battery data!
+The **Battery Data Format (BDF) Ontology** gives every column in a BDF file a stable, machine-readable identity. It maps standard column names — voltage, current, time, capacity — to a rich network of semantic definitions aligned with EMMO, QUDT, SOSA, and schema.org, so that software agents, AI tools, and researchers can understand battery data without custom parsers or domain-specific knowledge.
 
-.. grid::
+.. grid:: 2
 
     .. grid-item-card::
         :link: pages/quick_start.html
 
         :octicon:`rocket;1em;sd-text-info`  Quick Start
         ^^^^^^^^^^^
-        Get started enhancing your BDF data with AI-ready metadata!
+        Annotate your BDF dataset with machine-readable metadata in minutes.
+
+    .. grid-item-card::
+        :link: pages/concepts.html
+
+        :octicon:`telescope;1em;sd-text-info`  How It Works
+        ^^^^^^^^^^^
+        Understand the CSVW–SOSA–EMMO architecture and vocabulary alignments.
+
+.. grid:: 2
 
     .. grid-item-card::
         :link: pages/examples.html
 
         :octicon:`book;1em;sd-text-info`  Examples
         ^^^^^^^^^^^
-        Learn from examples of the BDF Ontology in action!
-
-.. grid::
+        Worked examples: SOSA observations, SPARQL queries, vendor normalisation.
 
     .. grid-item-card::
-        :link: pages/documentation.html
+        :link: battery-data-format.html
 
-        :octicon:`pencil;1em;sd-text-info`  Documentation
+        :octicon:`pencil;1em;sd-text-info`  Term Reference
         ^^^^^^^^
-        A clear reference for all the terms in the BDF Ontology!
+        Full definitions, units, and alignments for all 40 BDF quantity classes.
+
+.. grid:: 2
 
     .. grid-item-card::
-        :link: pages/about.html
+        :link: pages/vendor_schemas.html
 
-        :octicon:`thumbsup;1em;sd-text-info`  About
-        ^^^^^^^^^^
-        Learn more about the BDF Ontology and the organization behind it!
+        :octicon:`plug;1em;sd-text-info`  Vendor Schemas
+        ^^^^^^^^^^^^^^
+        Column mappings for 10 commercial cycler instruments.
 
+    .. grid-item-card::
+        :link: pages/specification.html
+
+        :octicon:`law;1em;sd-text-info`  Specification
+        ^^^^^^^^^^^^^
+        Standards-style definitions generated directly from the ontology.

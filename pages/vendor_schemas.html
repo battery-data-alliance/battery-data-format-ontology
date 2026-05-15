@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About the Battery Data Format Ontology &#8212; Battery Data Format Ontology</title>
+    <title>Vendor Schemas &#8212; Battery Data Format Ontology</title>
   
   
   
@@ -48,12 +48,13 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/about';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/vendor_schemas';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../_static/battery-data-alliance-horizontal-color-2.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Battery Data Format Ontology Terms" href="../battery-data-format.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="1.0" />
@@ -186,8 +187,8 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="vendor_schemas.html">
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
     Vendor Schemas
   </a>
 </li>
@@ -200,8 +201,8 @@
 </li>
 
 
-<li class=" current active">
-  <a class="nav-link dropdown-item nav-internal" href="#">
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="about.html">
     About
   </a>
 </li>
@@ -345,8 +346,8 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="vendor_schemas.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
     Vendor Schemas
   </a>
 </li>
@@ -359,8 +360,8 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
     About
   </a>
 </li>
@@ -459,7 +460,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">About the Battery Data Format Ontology</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Vendor Schemas</span></li>
   </ul>
 </nav>
 </div>
@@ -476,96 +477,185 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="about-the-battery-data-format-ontology">
-<h1>About the Battery Data Format Ontology<a class="headerlink" href="#about-the-battery-data-format-ontology" title="Link to this heading">#</a></h1>
-<section id="the-battery-data-alliance">
-<h2>The Battery Data Alliance<a class="headerlink" href="#the-battery-data-alliance" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://lfenergy.org/projects/battery-data-alliance/">Battery Data Alliance (BDA)</a> is a Linux Foundation Energy project whose mission is to accelerate battery research and development by making battery data more accessible, interoperable, and reusable. Members include research institutions, national laboratories, and industry partners across the battery value chain.</p>
-</section>
-<section id="the-battery-data-format">
-<h2>The Battery Data Format<a class="headerlink" href="#the-battery-data-format" title="Link to this heading">#</a></h2>
-<p>The <strong>Battery Data Format (BDF)</strong> is a community standard for time-series battery cycling data. It defines a canonical set of column names — <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code>, <code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code>, <code class="docutils literal notranslate"><span class="pre">current_ampere</span></code>, and so on — that cycler software, data pipelines, and analysis tools can agree on. By standardising column names and units, BDF eliminates the fragile, instrument-specific parsers that currently make battery data difficult to share and reuse.</p>
-<p>BDF files are plain CSV or Parquet: the format imposes no new file type, only a naming convention and a unit system (SI throughout). A converter plugin translates each instrument’s native headers into BDF canonical columns at ingest time.</p>
-</section>
-<section id="the-bdf-ontology">
-<h2>The BDF Ontology<a class="headerlink" href="#the-bdf-ontology" title="Link to this heading">#</a></h2>
-<p>The BDF Ontology gives every BDF column a stable, web-resolvable identity. Where the format says “name this column <code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code>”, the ontology says “this column represents instantaneous voltage measurements, in volts, aligned to these international standards”.</p>
-<p>Each BDF quantity class is:</p>
-<ul class="simple">
-<li><p>An <strong>OWL class</strong> in the EMMO class hierarchy, with a formal unit restriction</p></li>
-<li><p>A <strong>SOSA observable property</strong> (<code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span> <span class="pre">sosa:ObservableProperty</span></code>), enabling integration with sensor data frameworks</p></li>
-<li><p>Aligned to a <strong>QUDT quantity kind</strong> via <code class="docutils literal notranslate"><span class="pre">skos:exactMatch</span></code> and to a <strong>QUDT unit</strong> via <code class="docutils literal notranslate"><span class="pre">qudt:hasUnit</span></code></p></li>
-<li><p>Annotated with a <strong>UCUM unit code</strong> (<code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code>) for tool-agnostic unit handling</p></li>
-<li><p>Linked to <strong>PROV-O derivation relationships</strong> (<code class="docutils literal notranslate"><span class="pre">prov:wasDerivedFrom</span></code>) for derived quantities such as power and energy</p></li>
-</ul>
-<p>This layered design means that a software agent encountering a BDF column can resolve its meaning through any of several well-known vocabularies, without requiring BDF-specific knowledge.</p>
-</section>
-<section id="vocabulary-alignments">
-<h2>Vocabulary Alignments<a class="headerlink" href="#vocabulary-alignments" title="Link to this heading">#</a></h2>
+  <section id="vendor-schemas">
+<h1>Vendor Schemas<a class="headerlink" href="#vendor-schemas" title="Link to this heading">#</a></h1>
+<p>BDF supports data from commercial battery cyclers through <strong>vendor schemas</strong> — machine-readable CSVW documents that map each instrument’s native column headers to BDF canonical column names.</p>
+<p>Vendor schemas live under <code class="docutils literal notranslate"><span class="pre">schema/vendors/</span></code> in the repository and are resolvable as linked data at IRIs of the form:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/{name}
+</pre></div>
+</div>
+<section id="supported-instruments">
+<h2>Supported Instruments<a class="headerlink" href="#supported-instruments" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 12.0%" />
+<col style="width: 44.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Vocabulary</p></th>
-<th class="head"><p>Namespace prefix</p></th>
-<th class="head"><p>Role in BDF</p></th>
+<tr class="row-odd"><th class="head"><p>Schema ID</p></th>
+<th class="head"><p>Manufacturer</p></th>
+<th class="head"><p>Columns</p></th>
+<th class="head"><p>Notes</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://emmo.info">EMMO</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">emmo:</span></code></p></td>
-<td><p>Primary class hierarchy; unit restrictions via <code class="docutils literal notranslate"><span class="pre">hasMeasurementUnit</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arbin-csv</span></code></p></td>
+<td><p>Arbin Instruments</p></td>
+<td><p>14</p></td>
+<td><p>Supports both CSV (space-separated headers) and XLSX (underscore-separated) naming conventions from MITS Pro / BT-Lab exports.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://qudt.org">QUDT</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">quantitykind:</span></code>, <code class="docutils literal notranslate"><span class="pre">unit:</span></code></p></td>
-<td><p>Quantity kind and unit alignments (<code class="docutils literal notranslate"><span class="pre">skos:exactMatch</span></code>, <code class="docutils literal notranslate"><span class="pre">qudt:hasUnit</span></code>)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">basytec-txt</span></code></p></td>
+<td><p>Basytec GmbH</p></td>
+<td><p>4</p></td>
+<td><p>Headers prefixed with <code class="docutils literal notranslate"><span class="pre">~</span></code> (stripped during parsing). Time, current, and voltage may each appear in multiple units depending on the instrument configuration; the normaliser selects the appropriate conversion per file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://www.w3.org/TR/vocab-ssn/">SOSA/SSN</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sosa:</span></code></p></td>
-<td><p>Each BDF class is a subclass of <code class="docutils literal notranslate"><span class="pre">sosa:ObservableProperty</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">biologic-mpt</span></code></p></td>
+<td><p>Bio-Logic Science Instruments</p></td>
+<td><p>15</p></td>
+<td><p>EC-Lab / BT-Lab MPT ASCII export. Current is in milliamperes; capacities in mA·h. File encoding is typically latin-1; decimal separator may be a comma.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.w3.org/TR/prov-o/">PROV-O</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">prov:</span></code></p></td>
-<td><p>Derivation graph for computed quantities (power, energy, capacity integrals)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">digatron-csv</span></code></p></td>
+<td><p>Digatron Power Electronics</p></td>
+<td><p>20</p></td>
+<td><p>Broadest BDF column coverage of any vendor schema, including EIS quantities. Accumulated charge/energy columns (AhAccu, AhBal, AhStep) are recomputed by the normaliser from current and time.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://schema.org">schema.org</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">schema:</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code> (UCUM), <code class="docutils literal notranslate"><span class="pre">schema:unitText</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:measurementTechnique</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt-ccs</span></code></p></td>
+<td><p>LANDT Instruments</p></td>
+<td><p>9</p></td>
+<td><p>CCS (Cloud Cycler System) export format. All values in SI units; no unit conversion required.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.w3.org/2004/02/skos/core">SKOS</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">skos:</span></code></p></td>
-<td><p>Labels, definitions, notations, and cross-vocabulary alignments</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">landt-csv</span></code></p></td>
+<td><p>LANDT Instruments</p></td>
+<td><p>8</p></td>
+<td><p>Modern CSV export with snake_case headers and SI units embedded in the column name (e.g. <code class="docutils literal notranslate"><span class="pre">voltage_v</span></code>, <code class="docutils literal notranslate"><span class="pre">current_a</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt-txt</span></code></p></td>
+<td><p>LANDT Instruments</p></td>
+<td><p>7</p></td>
+<td><p>Older TXT export with abbreviated English headers (<code class="docutils literal notranslate"><span class="pre">Volts</span></code>, <code class="docutils literal notranslate"><span class="pre">Amps</span></code>, <code class="docutils literal notranslate"><span class="pre">Test(sec)</span></code>). Tab-delimited, SI units throughout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">neware-csv</span></code></p></td>
+<td><p>Neware Technology</p></td>
+<td><p>13</p></td>
+<td><p>Supports both English and Simplified Chinese (GB18030) header variants. Capacity exported in mAh, energy in mWh; both divided by 1000 during normalisation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">neware-nda</span></code></p></td>
+<td><p>Neware Technology</p></td>
+<td><p>10</p></td>
+<td><p>Binary NDA/NDAX format, parsed via the <code class="docutils literal notranslate"><span class="pre">NewareNDA</span></code> or <code class="docutils literal notranslate"><span class="pre">fastnda</span></code> library. Column names are the DataFrame column names produced by the parser, not the binary file headers. Current in mA; capacity/energy in mAh/mWh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">novonix-csv</span></code></p></td>
+<td><p>Novonix</p></td>
+<td><p>13</p></td>
+<td><p>UHPC CSV export with an INI-style <code class="docutils literal notranslate"><span class="pre">[Summary]</span></code>/<code class="docutils literal notranslate"><span class="pre">[Data]</span></code> preamble. Time columns are in <strong>hours</strong> (<code class="docutils literal notranslate"><span class="pre">schema:unitCode</span> <span class="pre">&quot;h&quot;</span></code>); the normaliser multiplies by 3600.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">#</a></h2>
-<p><strong>Stable IRIs.</strong>
-All term IRIs are minted under <code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/</span></code> and are resolved via the w3id.org persistent identifier service. IRIs will not change between versions; deprecated terms are marked with <code class="docutils literal notranslate"><span class="pre">owl:deprecated</span></code> rather than removed.</p>
-<p><strong>SI units throughout.</strong>
-All BDF canonical quantities are in SI base or derived units. Vendor-specific unit variants (mAh, hours) are handled by converter plugins using <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code> annotations in the vendor schema files; the canonical ontology always reflects the normalised SI value.</p>
-<p><strong>Separation of concerns.</strong>
-The ontology describes <em>what quantities are</em>. The CSVW canonical schema describes <em>what a valid BDF file looks like</em>. Vendor schemas describe <em>how each instrument’s output maps to canonical BDF</em>. These three layers are independently versioned and resolvable.</p>
-<p><strong>Multi-vocabulary coverage.</strong>
-Rather than choosing a single vocabulary, BDF aligns to several. An EMMO-aware reasoner, a QUDT-based unit converter, a SOSA observation processor, and a schema.org crawler can all extract meaningful information from the same ontology file without any of them being the “primary” consumer.</p>
-</section>
-<section id="how-to-cite">
-<h2>How to Cite<a class="headerlink" href="#how-to-cite" title="Link to this heading">#</a></h2>
-<p>If you use the BDF Ontology in a publication, please cite it as:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Battery Data Alliance (2026). Battery Data Format Ontology, version 1.0.0.
-https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0
+<section id="how-vendor-schemas-work">
+<h2>How Vendor Schemas Work<a class="headerlink" href="#how-vendor-schemas-work" title="Link to this heading">#</a></h2>
+<p>Each vendor schema is a JSON-LD document typed as <code class="docutils literal notranslate"><span class="pre">csvw:TableSchema</span></code>. It contains a <code class="docutils literal notranslate"><span class="pre">csvw:columns</span></code> array where each entry maps one or more vendor header names to a BDF canonical column:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/context&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix-csv&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csvw:TableSchema&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dcterms:title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Novonix UHPC CSV — BDF column mapping&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;schema:producer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;schema:Organization&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Novonix&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;dcterms:conformsTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;csvw:columns&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;csvw:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_time_second&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;csvw:titles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Run Time (h)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Run-Time (h)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Runtime (h)&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;schema:unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>The DOI is pending. The ontology is licensed under the <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
+<p>The key fields are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">csvw:name</span></code></dt><dd><p>The BDF canonical column name. This links the vendor column to the full BDF schema entry, which carries <code class="docutils literal notranslate"><span class="pre">csvw:propertyUrl</span></code>, datatype, unit annotations, and required flags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">csvw:titles</span></code></dt><dd><p>An array of header strings that this vendor instrument may produce for this column. The BDF normaliser matches any of these against the actual file header.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code></dt><dd><p>Present only when the vendor exports the column in a non-SI unit. The value is a UCUM code indicating the as-exported unit. The normaliser applies the appropriate conversion factor. If <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code> is absent, the values are already in BDF canonical SI units.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">skos:note</span></code></dt><dd><p>Present when there is a semantic subtlety — for example, where a vendor’s column does not map cleanly to the BDF canonical definition (accumulated vs. step-level capacity, column that doubles as step time vs. test time, etc.).</p>
+</dd>
+</dl>
 </section>
-<section id="contributing">
-<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
-<p>Contributions are welcome. Please see the <a class="reference external" href="https://github.com/BatteryDataAlliance/BDAOntology/blob/main/.github/CONTRIBUTING.md">contributing guide</a> and <a class="reference external" href="https://github.com/BatteryDataAlliance/BDAOntology/blob/main/CODE_OF_CONDUCT.md">code of conduct</a> before opening a pull request.</p>
+<section id="unit-conversion-summary">
+<h2>Unit Conversion Summary<a class="headerlink" href="#unit-conversion-summary" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Vendor</p></th>
+<th class="head"><p>Column</p></th>
+<th class="head"><p>Source unit</p></th>
+<th class="head"><p>Conversion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bio-Logic MPT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code></p></td>
+<td><p>mA</p></td>
+<td><p>÷ 1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bio-Logic MPT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*_capacity_ah</span></code></p></td>
+<td><p>mA·h</p></td>
+<td><p>÷ 1000</p></td>
+</tr>
+<tr class="row-even"><td><p>Neware CSV / NDA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*_capacity_ah</span></code></p></td>
+<td><p>mAh</p></td>
+<td><p>÷ 1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Neware CSV / NDA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*_energy_wh</span></code></p></td>
+<td><p>mWh</p></td>
+<td><p>÷ 1000</p></td>
+</tr>
+<tr class="row-even"><td><p>Neware NDA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code></p></td>
+<td><p>mA</p></td>
+<td><p>÷ 1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Novonix CSV</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">test_time_second</span></code>, <code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
+<td><p>h</p></td>
+<td><p>× 3600</p></td>
+</tr>
+<tr class="row-even"><td><p>Basytec TXT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+<td><p>s / min / h (per file)</p></td>
+<td><p>× 1 / × 60 / × 3600</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="adding-a-new-vendor-schema">
+<h2>Adding a New Vendor Schema<a class="headerlink" href="#adding-a-new-vendor-schema" title="Link to this heading">#</a></h2>
+<p>To add support for a new instrument:</p>
+<ol class="arabic simple">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">schema/vendors/{manufacturer}-{format}.json</span></code> following the structure above.</p></li>
+<li><p>List only the columns that the instrument actually exports; omit columns with no known equivalent.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code> where the instrument exports in non-SI units.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">skos:note</span></code> for any column where the semantic mapping is non-obvious.</p></li>
+<li><p>Open a pull request against the <a class="reference external" href="https://github.com/BatteryDataAlliance/BDAOntology">BDAOntology repository</a>.</p></li>
+</ol>
+<p>The CI pipeline will validate JSON syntax and check that all <code class="docutils literal notranslate"><span class="pre">csvw:name</span></code> values reference canonical BDF columns.</p>
 </section>
 </section>
 
@@ -592,20 +682,17 @@ https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-battery-data-alliance">The Battery Data Alliance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-battery-data-format">The Battery Data Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bdf-ontology">The BDF Ontology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary-alignments">Vocabulary Alignments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-principles">Design Principles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-cite">How to Cite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-instruments">Supported Instruments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-vendor-schemas-work">How Vendor Schemas Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-conversion-summary">Unit Conversion Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-vendor-schema">Adding a New Vendor Schema</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/pages/about.rst.txt">
+    <a href="../_sources/pages/vendor_schemas.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

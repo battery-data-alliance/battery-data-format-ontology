@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Battery Data Format Specification &#8212; Battery Data Format Ontology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=b84f66a2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/specification';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/battery-data-alliance-horizontal-color-2.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Battery Data Format Ontology Terms" href="../battery-data-format.html" />
+    <link rel="prev" title="Examples" href="examples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the ontology..."
+         aria-label="Search the ontology..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/battery-data-alliance-horizontal-color-2.svg" class="logo__image only-light" alt="Battery Data Format Ontology - Home"/>
+    <img src="../_static/battery-data-alliance-horizontal-color-2.svg" class="logo__image only-dark pst-js-only" alt="Battery Data Format Ontology - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
+    Concepts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Specification
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../battery-data-format.html">
+    Documentation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="vendor_schemas.html">
+    Vendor Schemas
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="about.html">
+    About
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BatteryDataAlliance/BDAOntology" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://lfenergy.org/projects/battery-data-alliance/" title="BDA Homepage" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">BDA Homepage</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="concepts.html">
+    Concepts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Specification
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../battery-data-format.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="vendor_schemas.html">
+    Vendor Schemas
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BatteryDataAlliance/BDAOntology" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://lfenergy.org/projects/battery-data-alliance/" title="BDA Homepage" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">BDA Homepage</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Battery Data Format Specification</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="battery-data-format-specification">
+<h1>Battery Data Format Specification<a class="headerlink" href="#battery-data-format-specification" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page is generated from the ontology file <code class="docutils literal notranslate"><span class="pre">battery-data-format.ttl</span></code>.
+Do not edit it directly.</p>
+</div>
+<section id="status">
+<h2>Status<a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Title</p></th>
+<td><p>Battery Data Format Ontology</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Version</p></th>
+<td><p>1.0.0</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Issued</p></th>
+<td><p>2026-05-14</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Modified</p></th>
+<td><p>2026-05-14</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Publisher</p></th>
+<td><p>Battery Data Alliance</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>License</p></th>
+<td><p><a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
+<p>An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)</p>
+</section>
+<section id="normative-references">
+<h2>Normative References<a class="headerlink" href="#normative-references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://w3id.org/emmo/domain/battery/0.18.6/battery">https://w3id.org/emmo/domain/battery/0.18.6/battery</a></p></li>
+</ul>
+</section>
+<section id="identifiers">
+<h2>Identifiers<a class="headerlink" href="#identifiers" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Base IRI:</strong> <code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/ontology/battery-data-format#</span></code></p></li>
+<li><p>Full term IRIs are formed by appending the notation to the base IRI,
+e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt</span></code>.</p></li>
+<li><p><strong>Version IRI:</strong> <code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format</span></code></p></li>
+</ul>
+</section>
+<section id="terms-and-definitions">
+<h2>Terms and Definitions<a class="headerlink" href="#terms-and-definitions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 16.0%" />
+<col style="width: 38.0%" />
+<col style="width: 8.0%" />
+<col style="width: 18.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Notation</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>UCUM</p></th>
+<th class="head"><p>Quantity Kind</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Absolute Impedance / ohm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">absolute_impedance_ohm</span></code></p></td>
+<td><p>the magnitude of the complex impedance, expressed in ohms. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
+<td><p>Impedance</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ambient Pressure / Pa</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ambient_pressure_pa</span></code></p></td>
+<td><p>Ambient air pressure recorded during testing, in pascal.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
+<td><p>Pressure</p></td>
+</tr>
+<tr class="row-even"><td><p>Ambient Temperature / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ambient_temperature_celsius</span></code></p></td>
+<td><p>Ambient temperature recorded during testing, in degree Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Applied Pressure / Pa</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">applied_pressure_pa</span></code></p></td>
+<td><p>External pressure applied to the test object, in pascal.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
+<td><p>Pressure</p></td>
+</tr>
+<tr class="row-even"><td><p>Charging Capacity / Ah</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">charging_capacity_ah</span></code></p></td>
+<td><p>Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
+<td><p>ElectricCharge</p></td>
+</tr>
+<tr class="row-odd"><td><p>Charging Energy / Wh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">charging_energy_wh</span></code></p></td>
+<td><p>Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
+<td><p>Energy</p></td>
+</tr>
+<tr class="row-even"><td><p>Cumulative Capacity / Ah</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cumulative_capacity_ah</span></code></p></td>
+<td><p>Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
+<td><p>ElectricCharge</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cumulative Energy / Wh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cumulative_energy_wh</span></code></p></td>
+<td><p>Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
+<td><p>Energy</p></td>
+</tr>
+<tr class="row-even"><td><p>Current / A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code></p></td>
+<td><p>Instantaneous current recorded in ampere.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td><p>ElectricCurrent</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cycle Count / 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cycle_count</span></code></p></td>
+<td><p>Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Count</p></td>
+</tr>
+<tr class="row-even"><td><p>Discharging Capacity / Ah</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">discharging_capacity_ah</span></code></p></td>
+<td><p>Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
+<td><p>ElectricCharge</p></td>
+</tr>
+<tr class="row-odd"><td><p>Discharging Energy / Wh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">discharging_energy_wh</span></code></p></td>
+<td><p>Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
+<td><p>Energy</p></td>
+</tr>
+<tr class="row-even"><td><p>Frequency / Hz</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">frequency_hertz</span></code></p></td>
+<td><p>the frequency of an applied periodic excitation or measured response, expressed in hertz</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Hz</span></code></p></td>
+<td><p>Frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p>Imaginary Impedance / ohm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm</span></code></p></td>
+<td><p>the imaginary component of the complex impedance, expressed in ohms</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
+<td><p>Impedance</p></td>
+</tr>
+<tr class="row-even"><td><p>Internal Resistance / ohm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">internal_resistance_ohm</span></code></p></td>
+<td><p>Direct current internal resistance recorded in ohm.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
+<td><p>ElectricResistance</p></td>
+</tr>
+<tr class="row-odd"><td><p>Net Capacity / Ah</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">net_capacity_ah</span></code></p></td>
+<td><p>Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_capacity_ah,</span> <span class="pre">discharging_capacity_ah</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
+<td><p>ElectricCharge</p></td>
+</tr>
+<tr class="row-even"><td><p>Net Energy / Wh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">net_energy_wh</span></code></p></td>
+<td><p>Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_energy_wh,</span> <span class="pre">discharging_energy_wh</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
+<td><p>Energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Phase / deg</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">phase_degree</span></code></p></td>
+<td><p>the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">deg</span></code></p></td>
+<td><p>Angle</p></td>
+</tr>
+<tr class="row-even"><td><p>Power / W</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code></p></td>
+<td><p>Instantaneous power calculated as the product of voltage and current, in watt. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">voltage_volt</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
+<td><p>Power</p></td>
+</tr>
+<tr class="row-odd"><td><p>Real Impedance / ohm</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">real_impedance_ohm</span></code></p></td>
+<td><p>the real component of the complex impedance, expressed in ohms</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
+<td><p>Impedance</p></td>
+</tr>
+<tr class="row-even"><td><p>Record Index / 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">record_index</span></code></p></td>
+<td><p>an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Count</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Capacity / Ah</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_capacity_ah</span></code></p></td>
+<td><p>Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
+<td><p>ElectricCharge</p></td>
+</tr>
+<tr class="row-even"><td><p>Step Count / 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_count</span></code></p></td>
+<td><p>Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Count</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Energy / Wh</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_energy_wh</span></code></p></td>
+<td><p>Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
+<td><p>Energy</p></td>
+</tr>
+<tr class="row-even"><td><p>Step ID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_id</span></code></p></td>
+<td><p>The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">—</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Index / 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_index</span></code></p></td>
+<td><p>1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p>Step Time / s</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
+<td><p>the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_type</span></code></p></td>
+<td><p>A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">—</span></code></p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>Surface Pressure / Pa</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">surface_pressure_pa</span></code></p></td>
+<td><p>Surface pressure recorded in pascal.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
+<td><p>Pressure</p></td>
+</tr>
+<tr class="row-odd"><td><p>Surface Temperature / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">surface_temperature_celsius</span></code></p></td>
+<td><p>Surface temperature recorded in degree Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>Surface Temperature T1 / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature_t1_celsius</span></code></p></td>
+<td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Surface Temperature T2 / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature_t2_celsius</span></code></p></td>
+<td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>Surface Temperature T3 / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature_t3_celsius</span></code></p></td>
+<td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Surface Temperature T4 / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature_t4_celsius</span></code></p></td>
+<td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>Surface Temperature T5 / degC</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature_t5_celsius</span></code></p></td>
+<td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
+<td><p>Temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Test Time / ms</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">test_time_millisecond</span></code></p></td>
+<td><p>Test time recorded in millisecond.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-even"><td><p>Test Time / s</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+<td><p>Test time recorded in second.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unix Time / ms</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unix_time_millisecond</span></code></p></td>
+<td><p>Unix time recorded in millisecond.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-even"><td><p>Unix Time / s</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unix_time_second</span></code></p></td>
+<td><p>Unix time recorded in second.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td><p>Time</p></td>
+</tr>
+<tr class="row-odd"><td><p>Voltage / V</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code></p></td>
+<td><p>Instantaneous voltage recorded in volt.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td><p>Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="../battery-data-format.html"><span class="doc">BDF Ontology Terms</span></a> for full term metadata,
+including EMMO superclasses, QUDT unit alignments, and PROV derivation graph.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status">Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normative-references">Normative References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifiers">Identifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-and-definitions">Terms and Definitions</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/pages/specification.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024–2025, Battery Data Alliance.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

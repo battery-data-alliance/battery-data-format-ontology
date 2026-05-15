@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How the Ontology Works &#8212; Battery Data Format Ontology</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=b84f66a2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/concepts';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../_static/battery-data-alliance-horizontal-color-2.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the ontology..."
+         aria-label="Search the ontology..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/battery-data-alliance-horizontal-color-2.svg" class="logo__image only-light" alt="Battery Data Format Ontology - Home"/>
+    <img src="../_static/battery-data-alliance-horizontal-color-2.svg" class="logo__image only-dark pst-js-only" alt="Battery Data Format Ontology - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Concepts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="specification.html">
+    Specification
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../battery-data-format.html">
+    Documentation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="vendor_schemas.html">
+    Vendor Schemas
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="about.html">
+    About
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BatteryDataAlliance/BDAOntology" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://lfenergy.org/projects/battery-data-alliance/" title="BDA Homepage" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">BDA Homepage</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Concepts
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="specification.html">
+    Specification
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../battery-data-format.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="vendor_schemas.html">
+    Vendor Schemas
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="faq.html">
+    FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="about.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/BatteryDataAlliance/BDAOntology" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://lfenergy.org/projects/battery-data-alliance/" title="BDA Homepage" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-globe fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">BDA Homepage</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How the Ontology Works</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-the-ontology-works">
+<h1>How the Ontology Works<a class="headerlink" href="#how-the-ontology-works" title="Link to this heading">#</a></h1>
+<p>This page explains the architecture of the BDF Ontology — how the pieces fit together and what a machine agent can do with them.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The BDF semantic stack has three layers:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────┐
+│  Vendor schemas (schema/vendors/*.json)                  │
+│  Header synonyms + unit conversion hints per instrument  │
+└────────────────────┬────────────────────────────────────┘
+                     │ csvw:name maps to
+┌────────────────────▼────────────────────────────────────┐
+│  Canonical CSVW schema (schema/schema.json)              │
+│  One column per BDF quantity · csvw:propertyUrl → IRI    │
+└────────────────────┬────────────────────────────────────┘
+                     │ IRI resolves to
+┌────────────────────▼────────────────────────────────────┐
+│  BDF Ontology (battery-data-format.ttl)                  │
+│  OWL class · EMMO · QUDT · SOSA · PROV · schema.org      │
+└─────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+<p>Each layer is independently resolvable and versioned. You can use any layer in isolation, or follow the chain from a raw CSV file all the way to a formal semantic description.</p>
+</section>
+<section id="the-csvw-propertyurl-pattern">
+<h2>The <code class="docutils literal notranslate"><span class="pre">csvw:propertyUrl</span></code> Pattern<a class="headerlink" href="#the-csvw-propertyurl-pattern" title="Link to this heading">#</a></h2>
+<p>The canonical CSVW schema connects each column to the ontology via <code class="docutils literal notranslate"><span class="pre">csvw:propertyUrl</span></code>. For example, the voltage column entry looks like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;csvw:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;voltage_volt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;csvw:titles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Voltage / V&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;csvw:propertyUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bdf:voltage_volt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;csvw:datatype&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;csvw:base&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xsd:decimal&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;hasMeasurementUnit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emmo:Volt&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;qudt:hasUnit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit:VLT&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;schema:unitCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;V&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;csvw:required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">csvw:propertyUrl</span></code> value <code class="docutils literal notranslate"><span class="pre">bdf:voltage_volt</span></code> expands to the full IRI
+<code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt</span></code>.</p>
+<p>When a CSVW processor converts a BDF file to RDF, each data row produces triples of the form:</p>
+<div class="highlight-turtle notranslate"><div class="highlight"><pre><span></span><span class="nn">_</span><span class="p">:</span><span class="nt">row123</span> <span class="nn">bdf</span><span class="p">:</span><span class="nt">voltage_volt</span> <span class="s">&quot;3.712&quot;</span><span class="p">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">decimal</span> <span class="p">.</span>
+</pre></div>
+</div>
+<p>The property IRI is the BDF class IRI — so the predicate <em>is</em> the observable property class, which is exactly what SOSA expects.</p>
+</section>
+<section id="what-an-agent-finds-at-a-bdf-class-iri">
+<h2>What an Agent Finds at a BDF Class IRI<a class="headerlink" href="#what-an-agent-finds-at-a-bdf-class-iri" title="Link to this heading">#</a></h2>
+<p>When an agent dereferences <code class="docutils literal notranslate"><span class="pre">https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt</span></code>
+(via content negotiation, receiving Turtle), it finds:</p>
+<div class="highlight-turtle notranslate"><div class="highlight"><pre><span></span><span class="k">@prefix</span><span class="w"> </span><span class="nn">bdf:</span><span class="w">          </span><span class="nv">&lt;https://w3id.org/battery-data-alliance/ontology/battery-data-format#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">emmo:</span><span class="w">         </span><span class="nv">&lt;https://w3id.org/emmo#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">owl:</span><span class="w">          </span><span class="nv">&lt;http://www.w3.org/2002/07/owl#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">quantitykind:</span><span class="w"> </span><span class="nv">&lt;http://qudt.org/vocab/quantitykind/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">qudt:</span><span class="w">         </span><span class="nv">&lt;http://qudt.org/schema/qudt/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w">         </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">schema:</span><span class="w">       </span><span class="nv">&lt;https://schema.org/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">skos:</span><span class="w">         </span><span class="nv">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">sosa:</span><span class="w">         </span><span class="nv">&lt;http://www.w3.org/ns/sosa/&gt;</span><span class="w"> </span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">unit:</span><span class="w">         </span><span class="nv">&lt;http://qudt.org/vocab/unit/&gt;</span><span class="w"> </span><span class="p">.</span>
+
+<span class="nn">bdf</span><span class="p">:</span><span class="nt">voltage_volt</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">Class</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="nn">sosa</span><span class="p">:</span><span class="nt">ObservableProperty</span><span class="p">,</span>
+        <span class="nn">emmo</span><span class="p">:</span><span class="nt">EMMO_17b031fb_4695_49b6_bb69_189ec63df3ee</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">subClassOf</span> <span class="p">[</span> <span class="kt">a</span> <span class="nn">owl</span><span class="p">:</span><span class="nt">Restriction</span> <span class="p">;</span>
+        <span class="nn">owl</span><span class="p">:</span><span class="nt">onProperty</span> <span class="nn">emmo</span><span class="p">:</span><span class="nt">EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569</span> <span class="p">;</span>
+        <span class="nn">owl</span><span class="p">:</span><span class="nt">someValuesFrom</span> <span class="nn">emmo</span><span class="p">:</span><span class="nt">Volt</span> <span class="p">]</span> <span class="p">;</span>
+    <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="s">&quot;Voltage / V&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">skos</span><span class="p">:</span><span class="nt">definition</span> <span class="s">&quot;Instantaneous voltage recorded in volt.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
+    <span class="nn">skos</span><span class="p">:</span><span class="nt">exactMatch</span> <span class="nn">quantitykind</span><span class="p">:</span><span class="nt">Voltage</span> <span class="p">;</span>
+    <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasUnit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">VLT</span> <span class="p">;</span>
+    <span class="nn">schema</span><span class="p">:</span><span class="nt">unitCode</span> <span class="s">&quot;V&quot;</span> <span class="p">;</span>
+    <span class="nn">schema</span><span class="p">:</span><span class="nt">unitText</span> <span class="s">&quot;volt&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">.</span>
+</pre></div>
+</div>
+<p>From this single node the agent can determine:</p>
+<ul class="simple">
+<li><p><strong>What kind of quantity</strong> — <code class="docutils literal notranslate"><span class="pre">skos:exactMatch</span> <span class="pre">quantitykind:Voltage</span></code> (QUDT)</p></li>
+<li><p><strong>What unit</strong> — <code class="docutils literal notranslate"><span class="pre">qudt:hasUnit</span> <span class="pre">unit:VLT</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span> <span class="pre">&quot;V&quot;</span></code> (UCUM), <code class="docutils literal notranslate"><span class="pre">hasMeasurementUnit</span> <span class="pre">emmo:Volt</span></code> (EMMO)</p></li>
+<li><p><strong>Where in the EMMO hierarchy</strong> — <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span> <span class="pre">emmo:EMMO_17b031fb...</span></code> (ElectricPotential)</p></li>
+<li><p><strong>SOSA role</strong> — <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span> <span class="pre">sosa:ObservableProperty</span></code></p></li>
+</ul>
+<p>No BDF-specific knowledge is required. Any agent that understands QUDT, SOSA, or EMMO can extract meaningful information.</p>
+</section>
+<section id="sosa-observation-pattern">
+<h2>SOSA Observation Pattern<a class="headerlink" href="#sosa-observation-pattern" title="Link to this heading">#</a></h2>
+<p>Because every BDF class is a subclass of <code class="docutils literal notranslate"><span class="pre">sosa:ObservableProperty</span></code>, BDF data can be expressed as SOSA observations. A single row from a BDF file maps naturally to:</p>
+<div class="highlight-turtle notranslate"><div class="highlight"><pre><span></span><span class="nn">ex</span><span class="p">:</span><span class="nt">obs_456</span> <span class="kt">a</span> <span class="nn">sosa</span><span class="p">:</span><span class="nt">Observation</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">observedProperty</span> <span class="nn">bdf</span><span class="p">:</span><span class="nt">voltage_volt</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">hasFeatureOfInterest</span> <span class="nn">ex</span><span class="p">:</span><span class="nt">cell_A001</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">resultTime</span> <span class="s">&quot;2025-03-01T14:23:01Z&quot;</span><span class="p">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">hasSimpleResult</span> <span class="s">&quot;3.712&quot;</span><span class="p">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">decimal</span> <span class="p">.</span>
+
+<span class="nn">ex</span><span class="p">:</span><span class="nt">obs_457</span> <span class="kt">a</span> <span class="nn">sosa</span><span class="p">:</span><span class="nt">Observation</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">observedProperty</span> <span class="nn">bdf</span><span class="p">:</span><span class="nt">current_ampere</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">hasFeatureOfInterest</span> <span class="nn">ex</span><span class="p">:</span><span class="nt">cell_A001</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">resultTime</span> <span class="s">&quot;2025-03-01T14:23:01Z&quot;</span><span class="p">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="p">;</span>
+    <span class="nn">sosa</span><span class="p">:</span><span class="nt">hasSimpleResult</span> <span class="s">&quot;-2.000&quot;</span><span class="p">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">decimal</span> <span class="p">.</span>
+</pre></div>
+</div>
+<p>A full BDF time-series becomes a set of linked SOSA observations sharing a <code class="docutils literal notranslate"><span class="pre">sosa:FeatureOfInterest</span></code> (the cell under test) and timestamped via <code class="docutils literal notranslate"><span class="pre">sosa:resultTime</span></code>.</p>
+</section>
+<section id="derivation-graph">
+<h2>Derivation Graph<a class="headerlink" href="#derivation-graph" title="Link to this heading">#</a></h2>
+<p>Quantities that are computed rather than directly measured are annotated with <code class="docutils literal notranslate"><span class="pre">prov:wasDerivedFrom</span></code> to express their input dependencies. This lets agents determine which base measurements are required to reproduce a derived column.</p>
+<p><strong>Tier 1 — derived from direct measurements:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Derived from</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code>, <code class="docutils literal notranslate"><span class="pre">current_ampere</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">step_capacity_ah</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code>, <code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">charging_capacity_ah</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">discharging_capacity_ah</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cumulative_capacity_ah</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">charging_energy_wh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">discharging_energy_wh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cumulative_energy_wh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code>, <code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Tier 2 — derived from derived quantities:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Derived from</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">net_capacity_ah</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">charging_capacity_ah</span></code>, <code class="docutils literal notranslate"><span class="pre">discharging_capacity_ah</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">step_energy_wh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code>, <code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">net_energy_wh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">charging_energy_wh</span></code>, <code class="docutils literal notranslate"><span class="pre">discharging_energy_wh</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>EIS computed components:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Derived from</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">absolute_impedance_ohm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">real_impedance_ohm</span></code>, <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_degree</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">real_impedance_ohm</span></code>, <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These relationships are encoded as <code class="docutils literal notranslate"><span class="pre">prov:wasDerivedFrom</span></code> triples in the ontology and can be queried directly with SPARQL. See <a class="reference internal" href="examples.html"><span class="doc">Examples</span></a> for a worked query.</p>
+</section>
+<section id="content-negotiation">
+<h2>Content Negotiation<a class="headerlink" href="#content-negotiation" title="Link to this heading">#</a></h2>
+<p>All BDF IRIs support content negotiation via w3id.org:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">Accept</span></code> header</p></th>
+<th class="head"><p>Response</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text/html</span></code></p></td>
+<td><p>Human-readable HTML documentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text/turtle</span></code></p></td>
+<td><p>Turtle serialisation of the ontology</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application/ld+json</span></code></p></td>
+<td><p>JSON-LD context document</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>(any other)</em></p></td>
+<td><p>Turtle (default)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This means that the same IRI serves a browser, an RDF library, and a JSON-LD processor without any client-side configuration.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-csvw-propertyurl-pattern">The <code class="docutils literal notranslate"><span class="pre">csvw:propertyUrl</span></code> Pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-an-agent-finds-at-a-bdf-class-iri">What an Agent Finds at a BDF Class IRI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sosa-observation-pattern">SOSA Observation Pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-graph">Derivation Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-negotiation">Content Negotiation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/pages/concepts.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024–2025, Battery Data Alliance.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

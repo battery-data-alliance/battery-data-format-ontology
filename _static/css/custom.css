@@ -17,6 +17,16 @@ table.element-table {
     text-align: left;
 }
 
+.term-separator {
+    border: 0;
+    border-top: 1px solid #c7c7c7;
+    margin: 1.5rem 0;
+}
+
+html[data-theme=dark] .term-separator {
+    border-top-color: #333333;
+}
+
 html table.element-table tr:nth-child(odd) td{
    background-color: Gainsboro;
 }
@@ -26,11 +36,11 @@ table.element-table tr:nth-child(even) td{
 }
 
 html[data-theme=dark] table.element-table tr:nth-child(odd) td{
-   background-color: black;
+   background-color: #111111;
 }
 
 html[data-theme=dark] table.element-table tr:nth-child(even) td{
-   background-color: black;
+   background-color: #1a1a1a;
 }
 body img, body svg {
     background-color: transparent;
