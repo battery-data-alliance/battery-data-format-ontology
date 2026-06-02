@@ -13,8 +13,11 @@ QUDT_KIND = Namespace("http://qudt.org/vocab/quantitykind/")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 
 ONTOLOGY_IRI = URIRef(BASE_IRI)
-TTL_PATH = Path("battery-data-format.ttl")
-OUTPUT_PATH = Path("docs/pages/specification.rst")
+
+# Paths are resolved relative to the repo root (two levels up from this script)
+_REPO_ROOT  = Path(__file__).resolve().parent.parent.parent
+TTL_PATH    = _REPO_ROOT / "battery-data-format.ttl"
+OUTPUT_PATH = _REPO_ROOT / "docs" / "pages" / "specification.rst"
 
 
 def _local_name(uri: URIRef) -> str:
@@ -106,6 +109,16 @@ def _get_derived_from(graph: Graph, subject) -> str:
     return ", ".join(sorted(sources)) if sources else ""
 
 
+def _get_latex_symbol(graph: Graph, subject) -> str:
+    val = graph.value(subject, BDF.latexSymbol)
+    return str(val) if val else ""
+
+
+def _get_latex_formula(graph: Graph, subject) -> str:
+    val = graph.value(subject, BDF.latexFormula)
+    return str(val) if val else ""
+
+
 def _format_iri_list(graph: Graph, items):
     if not items:
         return "—"
@@ -195,7 +208,7 @@ def build_specification():
     lines.append(f"- **Base IRI:** ``{BASE_IRI}#``")
     lines.append("- Full term IRIs are formed by appending the notation to the base IRI,")
     lines.append(f"  e.g. ``{BASE_IRI}#voltage_volt``.")
-    ttl_stem = TTL_PATH.stem  # battery-data-format
+    ttl_stem = TTL_PATH.stem
     lines.append(f"- **Version IRI:** ``{BASE_IRI}/{version_info}/{ttl_stem}``")
     lines.append("")
 
@@ -203,15 +216,22 @@ def build_specification():
     lines.append("Terms and Definitions")
     lines.append("---------------------")
     lines.append("")
+    lines.append(".. note::")
+    lines.append("   For derived quantities, :math:`t_s` denotes the start time of the current")
+    lines.append("   step and all time variables are in seconds. The factor")
+    lines.append("   :math:`\\tfrac{1}{3600}` converts A·s or W·s to Ah or Wh.")
+    lines.append("")
     lines.append(".. list-table::")
-    lines.append("   :widths: 20 16 38 8 18")
+    lines.append("   :widths: 17 13 7 25 6 12 20")
     lines.append("   :header-rows: 1")
     lines.append("")
     lines.append("   * - Term")
     lines.append("     - Notation")
+    lines.append("     - Symbol")
     lines.append("     - Definition")
     lines.append("     - UCUM")
     lines.append("     - Quantity Kind")
+    lines.append("     - Formula")
 
     for term in terms:
         label        = _get_labels(graph, term)
@@ -220,15 +240,22 @@ def build_specification():
         ucum         = _get_unit_code(graph, term) or "—"
         qty_kind     = _get_quantity_kind(graph, term) or "—"
         derived_from = _get_derived_from(graph, term)
+        symbol       = _get_latex_symbol(graph, term)
+        formula      = _get_latex_formula(graph, term)
 
         if derived_from:
             definition = definition.rstrip(".") + f". *Derived from:* ``{derived_from}``."
 
+        symbol_cell  = f":math:`{symbol}`"  if symbol  else "—"
+        formula_cell = f":math:`{formula}`" if formula else "—"
+
         lines.append("   * - " + label.replace("\n", " "))
         lines.append("     - ``" + notation.replace("\n", " ") + "``")
+        lines.append("     - " + symbol_cell)
         lines.append("     - " + definition.replace("\n", " "))
         lines.append("     - ``" + ucum + "``")
         lines.append("     - " + qty_kind)
+        lines.append("     - " + formula_cell)
 
     lines.append("")
     lines.append("See :doc:`BDF Ontology Terms </battery-data-format>` for full term metadata,")

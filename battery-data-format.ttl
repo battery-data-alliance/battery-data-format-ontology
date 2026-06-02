@@ -104,6 +104,20 @@ schema:unitCode rdf:type owl:AnnotationProperty .
 schema:unitText rdf:type owl:AnnotationProperty .
 
 
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#latexFormula
+:latexFormula rdf:type owl:AnnotationProperty ;
+              rdfs:label "LaTeX formula"@en ;
+              rdfs:comment "Mathematical definition of a derived quantity in LaTeX notation. Backslashes are single (standard LaTeX)."@en ;
+              rdfs:range xsd:string .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#latexSymbol
+:latexSymbol rdf:type owl:AnnotationProperty ;
+             rdfs:label "LaTeX symbol"@en ;
+             rdfs:comment "LaTeX notation for the variable name used to represent this quantity in mathematical expressions."@en ;
+             rdfs:range xsd:string .
+
 #################################################################
 #    Classes
 #################################################################
@@ -115,12 +129,18 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolute_impedance_ohm
 :absolute_impedance_ohm rdf:type owl:Class ;
                         rdfs:subClassOf sosa:ObservableProperty ,
-                                        emmo:EMMO_79a02de5_b884_4eab_bc18_f67997d597a2 ;
+                                        emmo:EMMO_79a02de5_b884_4eab_bc18_f67997d597a2 ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                          owl:someValuesFrom emmo:Ohm
+                                        ] ;
                         rdfs:seeAlso unit:OHM ;
                         skos:altLabel "absolute_impedance_ohm"@en ;
                         skos:definition "the magnitude of the complex impedance, expressed in ohms"@en ;
                         skos:exactMatch quantitykind:Impedance ;
                         skos:notation "absolute_impedance_ohm"@en ;
+                        :latexSymbol "|Z|"^^xsd:string ;
+                        :latexFormula "|Z| = \\sqrt{Z_\\mathrm{re}^2 + Z_\\mathrm{im}^2}"^^xsd:string ;
                         skos:prefLabel "Absolute Impedance / ohm"@en ;
                         prov:wasDerivedFrom :imaginary_impedance_ohm ,
                                             :real_impedance_ohm ;
@@ -144,6 +164,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                      skos:definition "Ambient air pressure recorded during testing, in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "ambient_pressure_pa" ;
+                     :latexSymbol "p_\\mathrm{amb}"^^xsd:string ;
                      skos:prefLabel "Ambient Pressure / Pa"@en ;
                      schema:description "Ambient air pressure recorded during testing, in pascal."@en ;
                      schema:name "Ambient Pressure / Pa"@en ;
@@ -168,6 +189,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                              skos:definition "Ambient temperature recorded during testing, in degree Celsius."@en ;
                              skos:exactMatch quantitykind:Temperature ;
                              skos:notation "ambient_temperature_celsius" ;
+                             :latexSymbol "T_\\mathrm{amb}"^^xsd:string ;
                              skos:prefLabel "Ambient Temperature / degC"@en ;
                              schema:description "Ambient temperature recorded during testing, in degree Celsius."@en ;
                              schema:name "Ambient Temperature / degC"@en ;
@@ -192,6 +214,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                      skos:definition "External pressure applied to the test object, in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "applied_pressure_pa" ;
+                     :latexSymbol "p_\\mathrm{app}"^^xsd:string ;
                      skos:prefLabel "Applied Pressure / Pa"@en ;
                      schema:description "External pressure applied to the test object, in pascal."@en ;
                      schema:name "Applied Pressure / Pa"@en ;
@@ -216,6 +239,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                       skos:definition "Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary."@en ;
                       skos:exactMatch quantitykind:ElectricCharge ;
                       skos:notation "charging_capacity_ah" ;
+                      :latexSymbol "Q_\\mathrm{chg}"^^xsd:string ;
+                      :latexFormula "Q_\\mathrm{chg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
                       skos:prefLabel "Charging Capacity / Ah"@en ;
                       prov:wasDerivedFrom :current_ampere ,
                                           :test_time_second ;
@@ -242,6 +267,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                     skos:definition "Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge."@en ;
                     skos:exactMatch quantitykind:Energy ;
                     skos:notation "charging_energy_wh" ;
+                    :latexSymbol "E_\\mathrm{chg}"^^xsd:string ;
+                    :latexFormula "E_\\mathrm{chg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
                     skos:prefLabel "Charging Energy / Wh"@en ;
                     prov:wasDerivedFrom :power_watt ,
                                         :test_time_second ;
@@ -268,6 +295,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                         skos:definition "Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models."@en ;
                         skos:exactMatch quantitykind:ElectricCharge ;
                         skos:notation "cumulative_capacity_ah" ;
+                        :latexSymbol "Q_\\mathrm{cum}"^^xsd:string ;
+                        :latexFormula "Q_\\mathrm{cum}(t) = Q_\\mathrm{chg}(t) + Q_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\bigl|I(\\tau)\\bigr|\\,\\mathrm{d}\\tau"^^xsd:string ;
                         skos:prefLabel "Cumulative Capacity / Ah"@en ;
                         prov:wasDerivedFrom :current_ampere ,
                                             :test_time_second ;
@@ -295,6 +324,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                       skos:definition "Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing."@en ;
                       skos:exactMatch quantitykind:Energy ;
                       skos:notation "cumulative_energy_wh" ;
+                      :latexSymbol "E_\\mathrm{cum}"^^xsd:string ;
+                      :latexFormula "E_\\mathrm{cum}(t) = E_\\mathrm{chg}(t) + E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\bigl|P(\\tau)\\bigr|\\,\\mathrm{d}\\tau"^^xsd:string ;
                       skos:prefLabel "Cumulative Energy / Wh"@en ;
                       prov:wasDerivedFrom :power_watt ,
                                           :test_time_second ;
@@ -322,6 +353,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                 skos:definition "Instantaneous current recorded in ampere."@en ;
                 skos:exactMatch quantitykind:ElectricCurrent ;
                 skos:notation "current_ampere" ;
+                :latexSymbol "I"^^xsd:string ;
                 skos:prefLabel "Current / A"@en ;
                 schema:description "Instantaneous current recorded in ampere."@en ;
                 schema:name "Current / A"@en ;
@@ -347,6 +379,7 @@ sosa:ObservableProperty rdf:type owl:Class .
              skos:definition "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles."@en ;
              skos:exactMatch quantitykind:Count ;
              skos:notation "cycle_count" ;
+             :latexSymbol "n"^^xsd:string ;
              skos:prefLabel "Cycle Count / 1"@en ;
              schema:description "Cycle index, non-negative integer, monotonically non-decreasing within a test. Starting value is instrument-defined (any non-negative integer); converters must not renumber cycles."@en ;
              schema:name "Cycle Count / 1"@en ;
@@ -371,6 +404,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                          skos:definition "Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary."@en ;
                          skos:exactMatch quantitykind:ElectricCharge ;
                          skos:notation "discharging_capacity_ah" ;
+                         :latexSymbol "Q_\\mathrm{dchg}"^^xsd:string ;
+                         :latexFormula "Q_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(-I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
                          skos:prefLabel "Discharging Capacity / Ah"@en ;
                          prov:wasDerivedFrom :current_ampere ,
                                              :test_time_second ;
@@ -397,6 +432,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                        skos:definition "Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge."@en ;
                        skos:exactMatch quantitykind:Energy ;
                        skos:notation "discharging_energy_wh" ;
+                       :latexSymbol "E_\\mathrm{dchg}"^^xsd:string ;
+                       :latexFormula "E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(-P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
                        skos:prefLabel "Discharging Energy / Wh"@en ;
                        prov:wasDerivedFrom :power_watt ,
                                            :test_time_second ;
@@ -410,12 +447,17 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequency_hertz
 :frequency_hertz rdf:type owl:Class ;
                  rdfs:subClassOf sosa:ObservableProperty ,
-                                 emmo:EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a ;
+                                 emmo:EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                   owl:someValuesFrom emmo:Hertz
+                                 ] ;
                  rdfs:seeAlso unit:HZ ;
                  skos:altLabel "frequency_hertz"@en ;
                  skos:definition "the frequency of an applied periodic excitation or measured response, expressed in hertz"@en ;
                  skos:exactMatch quantitykind:Frequency ;
                  skos:notation "frequency_hertz"@en ;
+                 :latexSymbol "f"^^xsd:string ;
                  skos:prefLabel "Frequency / Hz"@en ;
                  schema:unitCode "Hz" ;
                  schema:unitText "hertz"@en .
@@ -424,12 +466,17 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#imaginary_impedance_ohm
 :imaginary_impedance_ohm rdf:type owl:Class ;
                          rdfs:subClassOf sosa:ObservableProperty ,
-                                         electrochemistry:electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626 ;
+                                         electrochemistry:electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:Ohm
+                                         ] ;
                          rdfs:seeAlso unit:OHM ;
                          skos:altLabel "imaginary_impedance_ohm"@en ;
                          skos:definition "the imaginary component of the complex impedance, expressed in ohms"@en ;
                          skos:exactMatch quantitykind:Impedance ;
                          skos:notation "imaginary_impedance_ohm"@en ;
+                         :latexSymbol "Z''"^^xsd:string ;
                          skos:prefLabel "Imaginary Impedance / ohm"@en ;
                          schema:unitCode "Ohm" ;
                          schema:unitText "ohm"@en .
@@ -451,6 +498,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                          skos:exactMatch quantitykind:ElectricResistance ;
                          skos:hiddenLabel "Internal Resistance / Ohm"@en ;
                          skos:notation "internal_resistance_ohm" ;
+                         :latexSymbol "R_0"^^xsd:string ;
                          skos:prefLabel "Internal Resistance / ohm"@en ;
                          schema:description "Direct current internal resistance recorded in ohm."@en ;
                          schema:name "Internal Resistance / ohm"@en ;
@@ -475,6 +523,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                  skos:definition "Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals."@en ;
                  skos:exactMatch quantitykind:ElectricCharge ;
                  skos:notation "net_capacity_ah" ;
+                 :latexSymbol "Q_\\mathrm{net}"^^xsd:string ;
+                 :latexFormula "Q_\\mathrm{net}(t) = Q_\\mathrm{chg}(t) - Q_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t I(\\tau)\\,\\mathrm{d}\\tau"^^xsd:string ;
                  skos:prefLabel "Net Capacity / Ah"@en ;
                  prov:wasDerivedFrom :charging_capacity_ah ,
                                      :discharging_capacity_ah ;
@@ -502,6 +552,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                skos:definition "Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals."@en ;
                skos:exactMatch quantitykind:Energy ;
                skos:notation "net_energy_wh" ;
+               :latexSymbol "E_\\mathrm{net}"^^xsd:string ;
+               :latexFormula "E_\\mathrm{net}(t) = E_\\mathrm{chg}(t) - E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t P(\\tau)\\,\\mathrm{d}\\tau"^^xsd:string ;
                skos:prefLabel "Net Energy / Wh"@en ;
                prov:wasDerivedFrom :charging_energy_wh ,
                                    :discharging_energy_wh ;
@@ -516,12 +568,18 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_degree
 :phase_degree rdf:type owl:Class ;
               rdfs:subClassOf sosa:ObservableProperty ,
-                              emmo:EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9 ;
+                              emmo:EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9 ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                owl:someValuesFrom emmo:Degree
+                              ] ;
               rdfs:seeAlso unit:DEG ;
               skos:altLabel "phase_degree"@en ;
               skos:definition "the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees"@en ;
               skos:exactMatch quantitykind:Angle ;
               skos:notation "phase_degree"@en ;
+              :latexSymbol "\\phi"^^xsd:string ;
+              :latexFormula "\\phi = \\arctan\\!\\left(\\frac{Z_\\mathrm{im}}{Z_\\mathrm{re}}\\right) \\cdot \\frac{180}{\\pi}"^^xsd:string ;
               skos:prefLabel "Phase / deg"@en ;
               prov:wasDerivedFrom :imaginary_impedance_ohm ,
                                   :real_impedance_ohm ;
@@ -545,6 +603,8 @@ sosa:ObservableProperty rdf:type owl:Class .
             skos:definition "Instantaneous power calculated as the product of voltage and current, in watt."@en ;
             skos:exactMatch quantitykind:Power ;
             skos:notation "power_watt" ;
+            :latexSymbol "P"^^xsd:string ;
+            :latexFormula "P(t) = V(t)\\,I(t)"^^xsd:string ;
             skos:prefLabel "Power / W"@en ;
             prov:wasDerivedFrom :current_ampere ,
                                 :voltage_volt ;
@@ -559,12 +619,17 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_impedance_ohm
 :real_impedance_ohm rdf:type owl:Class ;
                     rdfs:subClassOf sosa:ObservableProperty ,
-                                    electrochemistry:electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f ;
+                                    electrochemistry:electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                      owl:someValuesFrom emmo:Ohm
+                                    ] ;
                     rdfs:seeAlso unit:OHM ;
                     skos:altLabel "real_impedance_ohm"@en ;
                     skos:definition "the real component of the complex impedance, expressed in ohms"@en ;
                     skos:exactMatch quantitykind:Impedance ;
                     skos:notation "real_impedance_ohm"@en ;
+                    :latexSymbol "Z'"^^xsd:string ;
                     skos:prefLabel "Real Impedance / ohm"@en ;
                     schema:unitCode "Ohm" ;
                     schema:unitText "ohm"@en .
@@ -573,7 +638,11 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_index
 :record_index rdf:type owl:Class ;
               rdfs:subClassOf sosa:ObservableProperty ,
-                              emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ;
+                              emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+                              ] ;
               rdfs:seeAlso unit:NUM ;
               skos:altLabel "record_index"@en ;
               skos:definition "an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning"@en ;
@@ -603,6 +672,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                   skos:definition "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
                   skos:exactMatch quantitykind:ElectricCharge ;
                   skos:notation "step_capacity_ah" ;
+                  :latexSymbol "Q_\\mathrm{step}"^^xsd:string ;
+                  :latexFormula "Q_\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} \\bigl|I(\\tau)\\bigr|\\,\\mathrm{d}\\tau"^^xsd:string ;
                   skos:prefLabel "Step Capacity / Ah"@en ;
                   prov:wasDerivedFrom :current_ampere ,
                                       :step_time_second ;
@@ -655,6 +726,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                 skos:definition "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
                 skos:exactMatch quantitykind:Energy ;
                 skos:notation "step_energy_wh" ;
+                :latexSymbol "E_\\mathrm{step}"^^xsd:string ;
+                :latexFormula "E_\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} \\bigl|P(\\tau)\\bigr|\\,\\mathrm{d}\\tau"^^xsd:string ;
                 skos:prefLabel "Step Energy / Wh"@en ;
                 prov:wasDerivedFrom :power_watt ,
                                     :step_time_second ;
@@ -712,12 +785,17 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_time_second
 :step_time_second rdf:type owl:Class ;
                   rdfs:subClassOf sosa:ObservableProperty ,
-                                  electrochemistry:electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098 ;
+                                  electrochemistry:electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                    owl:someValuesFrom emmo:Second
+                                  ] ;
                   rdfs:seeAlso unit:SEC ;
                   skos:altLabel "step_time_second"@en ;
                   skos:definition "the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition"@en ;
                   skos:exactMatch quantitykind:Time ;
                   skos:notation "step_time_second"@en ;
+                  :latexSymbol "\\Delta t_\\mathrm{step}"^^xsd:string ;
                   skos:prefLabel "Step Time / s"@en ;
                   schema:description "the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition"@en ;
                   schema:name "Step Time / s"@en ;
@@ -757,6 +835,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                      skos:definition "Surface pressure recorded in pascal."@en ;
                      skos:exactMatch quantitykind:Pressure ;
                      skos:notation "surface_pressure_pa" ;
+                     :latexSymbol "p_\\mathrm{surf}"^^xsd:string ;
                      skos:prefLabel "Surface Pressure / Pa"@en ;
                      schema:description "Surface pressure recorded in pascal."@en ;
                      schema:name "Surface Pressure / Pa"@en ;
@@ -781,6 +860,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                              skos:definition "Surface temperature recorded in degree Celsius."@en ;
                              skos:exactMatch quantitykind:Temperature ;
                              skos:notation "surface_temperature_celsius" ;
+                             :latexSymbol "T_\\mathrm{surf}"^^xsd:string ;
                              skos:prefLabel "Surface Temperature / degC"@en ;
                              schema:description "Surface temperature recorded in degree Celsius."@en ;
                              schema:name "Surface Temperature / degC"@en ;
@@ -950,6 +1030,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                   skos:definition "Test time recorded in second."@en ;
                   skos:exactMatch quantitykind:Time ;
                   skos:notation "test_time_second" ;
+                  :latexSymbol "t"^^xsd:string ;
                   skos:prefLabel "Test Time / s"@en ;
                   schema:description "Test time recorded in second."@en ;
                   schema:name "Test Time / s"@en ;
@@ -1023,6 +1104,7 @@ sosa:ObservableProperty rdf:type owl:Class .
               skos:definition "Instantaneous voltage recorded in volt."@en ;
               skos:exactMatch quantitykind:Voltage ;
               skos:notation "voltage_volt" ;
+              :latexSymbol "V"^^xsd:string ;
               skos:prefLabel "Voltage / V"@en ;
               schema:description "Instantaneous voltage recorded in volt."@en ;
               schema:name "Voltage / V"@en ;

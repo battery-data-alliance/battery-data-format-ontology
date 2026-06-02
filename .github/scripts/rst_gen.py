@@ -12,9 +12,15 @@ import re
 import sys
 from typing import Any
 
+from rdflib import URIRef
 from rdflib.namespace import SKOS
 
 LOGGER = logging.getLogger(__name__)
+
+_BDF_NS = "https://w3id.org/battery-data-alliance/ontology/battery-data-format#"
+_LATEX_SYMBOL_IRI      = URIRef(f"{_BDF_NS}latexSymbol")
+_LATEX_FORMULA_IRI     = URIRef(f"{_BDF_NS}latexFormula")
+_PROV_DERIVED_FROM_IRI = URIRef("http://www.w3.org/ns/prov#wasDerivedFrom")
 
 # ---------------------------------------------------------------------------
 # Annotation property display order
@@ -44,7 +50,8 @@ CALLOUTS: dict[str, tuple[str, str | None]] = {
 }
 
 _TABLE_SKIP_BASE = frozenset(
-    {"iri", "preflabel", "subclassof", "subclasses", "restrictions", "deprecated"}
+    {"iri", "preflabel", "subclassof", "subclasses", "restrictions", "deprecated",
+     "wasderivedfrom", "latexsymbol", "latexformula"}
 )
 
 # ---------------------------------------------------------------------------
@@ -73,13 +80,10 @@ def _linkify_value(val: str) -> str:
 
 
 def _html_link(iri: str, label: str) -> str:
-    frag = iri.split("#")[-1]
-    return (
-        f"<a href='#{frag}' "
-        f"onclick=\"if(!document.getElementById('{frag}'))"
-        f"{{window.location.href='{iri}';return false;}}\">"
-        f"{label}</a>"
-    )
+    if iri.startswith(_BDF_NS):
+        frag = iri.split("#")[-1]
+        return f"<a href='#{frag}'>{label}</a>"
+    return f"<a href='{iri}' target='_blank' rel='noopener'>{label}</a>"
 
 
 def _html_table_row(label: str, value: str) -> str:
@@ -176,6 +180,11 @@ def extract_terms(onto: Any, ontology_prefix: str) -> list[dict[str, Any]]:
     ]
     multi_row = {str(SKOS.altLabel), str(SKOS.example)}
 
+    # Annotation property objects for BDF-specific and prov annotations.
+    _latex_symbol_prop  = onto[f"{_BDF_NS}latexSymbol"]
+    _latex_formula_prop = onto[f"{_BDF_NS}latexFormula"]
+    _prov_derived_prop  = onto[str(_PROV_DERIVED_FROM_IRI)]
+
     entities = []
     for entity in onto.get_entities(imported=False):
         if not entity.iri.split("#")[0] == base:
@@ -212,6 +221,26 @@ def extract_terms(onto: Any, ontology_prefix: str) -> list[dict[str, Any]]:
         record["restrictions"] = [
             r for r in entity.is_a if isinstance(r, owlready2.Restriction)
         ]
+
+        # Extract BDF-specific LaTeX annotations via the ontopy annotation API.
+        if _latex_symbol_prop:
+            vals = _latex_symbol_prop._get_values_for_class(entity)
+            if vals:
+                record["latexSymbol"] = str(vals[0])
+        if _latex_formula_prop:
+            vals = _latex_formula_prop._get_values_for_class(entity)
+            if vals:
+                record["latexFormula"] = str(vals[0])
+
+        # Extract prov:wasDerivedFrom; values are IRI references.
+        if _prov_derived_prop:
+            raw = _prov_derived_prop._get_values_for_class(entity)
+            derived = sorted(
+                v.iri if hasattr(v, "iri") else str(v) for v in raw
+            )
+            if derived:
+                record["wasDerivedFrom"] = derived
+
         entities.append(record)
 
     entities.sort(key=lambda e: e[onto.prefLabel])
@@ -291,6 +320,35 @@ def entities_to_rst(entities: list[dict[str, Any]], onto: Any) -> str:
                 continue
             for val in (value if isinstance(value, list) else [value]):
                 rst += _html_table_row(display.get(ck, ck), _linkify_value(str(val)))
+
+        # LaTeX symbol and formula rows (rendered via MathJax inline/display notation)
+        if item.get("latexSymbol"):
+            symbol_html = (
+                f'<span class="math notranslate nohighlight">'
+                f'\\({item["latexSymbol"]}\\)</span>'
+            )
+            rst += _html_table_row("symbol", symbol_html)
+        if item.get("latexFormula"):
+            formula_html = (
+                f'<span class="math notranslate nohighlight">'
+                f'\\[{item["latexFormula"]}\\]</span>'
+            )
+            rst += _html_table_row("formula", formula_html)
+
+        if item.get("wasDerivedFrom"):
+            links = []
+            for dep_iri in item["wasDerivedFrom"]:
+                frag = dep_iri.split("#")[-1] if "#" in dep_iri else dep_iri.split("/")[-1]
+                dep_ent = onto[frag]
+                if dep_ent is not None:
+                    try:
+                        label = str(dep_ent.prefLabel.get_lang("en")[0])
+                    except (IndexError, AttributeError):
+                        label = frag
+                else:
+                    label = frag
+                links.append(_html_link(dep_iri, label))
+            rst += _html_table_row("wasDerivedFrom", ", ".join(links))
 
         if item.get("restrictions"):
             restr = list(dict.fromkeys(

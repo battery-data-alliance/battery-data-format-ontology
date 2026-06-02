@@ -19,6 +19,7 @@ release = "1.0.0"
 extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.autosectionlabel",
+    "sphinx.ext.mathjax",
     "sphinx_design",
     "nbsphinx",
     "sphinx_copybutton",
@@ -63,6 +64,7 @@ html_logo = "assets/img/logo/battery-data-alliance-horizontal-color-2.svg"
 html_favicon = "assets/img/logo/battery-data-alliance-horizontal-color-2.svg"
 html_static_path = ["_static"]
 html_css_files = ["css/custom.css"]
+html_js_files = ["js/ensure-mathjax.js"]
 
 html_sidebars = {
     "battery-data-format": [
