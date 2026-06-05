@@ -1,13 +1,13 @@
 # Battery Data Format (BDF) Ontology
 
-[![CI](https://github.com/BatteryDataAlliance/BDAOntology/actions/workflows/ci.yml/badge.svg)](https://github.com/BatteryDataAlliance/BDAOntology/actions/workflows/ci.yml)
-[![FOOPS Score](https://batterydata-alliance.github.io/BDAOntology/assets/foops_badge.svg)](https://foops.linkeddata.es/FAIR_validator.html)
+[![CI](https://github.com/battery-data-alliance/battery-data-format-ontology/actions/workflows/ci.yml/badge.svg)](https://github.com/battery-data-alliance/battery-data-format-ontology/actions/workflows/ci.yml)
+[![FOOPS Score](https://battery-data-alliance.github.io/battery-data-format-ontology/assets/foops_badge.svg)](https://foops.linkeddata.es/FAIR_validator.html)
 
 The BDF Ontology is an application ontology designed to help machines work with BDF-compliant data.
 
 ## Documentation
 
-Online: [batterydata-alliance.github.io/BDAOntology](https://batterydata-alliance.github.io/BDAOntology/)
+Online: [battery-data-alliance.github.io/battery-data-format-ontology](https://battery-data-alliance.github.io/battery-data-format-ontology/)
 
 Build locally:
 
