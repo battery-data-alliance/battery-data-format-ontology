@@ -88,6 +88,10 @@ skos:definition rdf:type owl:AnnotationProperty .
 skos:exactMatch rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#historyNote
+skos:historyNote rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#notation
 skos:notation rdf:type owl:AnnotationProperty .
 
@@ -602,9 +606,10 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
 :step_capacity_ah rdf:type owl:Class ;
                   owl:deprecated true ;
-                  rdfs:label "obsolete Step Capacity / Ah"@en ;
-                  rdfs:comment "DEPRECATED in 1.1.0 (2026-06-08). Renamed for consistency with the {charging, discharging, net, cumulative} capacity convention; the concept is unchanged. Use :step_cumulative_capacity_ah."@en ;
+                  rdfs:label "Step Capacity / Ah"@en ;
                   skos:notation "step_capacity_ah" ;
+                  skos:prefLabel "Step Capacity / Ah"@en ;
+                  skos:historyNote "Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged."@en ;
                   dcterms:isReplacedBy :step_cumulative_capacity_ah .
 
 
@@ -808,9 +813,10 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
 :step_energy_wh rdf:type owl:Class ;
                 owl:deprecated true ;
-                rdfs:label "obsolete Step Energy / Wh"@en ;
-                rdfs:comment "DEPRECATED in 1.1.0 (2026-06-08). Renamed for consistency with the {charging, discharging, net, cumulative} energy convention; the concept is unchanged. Use :step_cumulative_energy_wh."@en ;
+                rdfs:label "Step Energy / Wh"@en ;
                 skos:notation "step_energy_wh" ;
+                skos:prefLabel "Step Energy / Wh"@en ;
+                skos:historyNote "Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged."@en ;
                 dcterms:isReplacedBy :step_cumulative_energy_wh .
 
 
