@@ -10,7 +10,7 @@ SOSA = Namespace("http://www.w3.org/ns/sosa/")
 
 ONTOLOGY_IRI = URIRef("https://w3id.org/battery-data-alliance/ontology/battery-data-format")
 ONTOLOGY_VERSION_IRI = URIRef(
-    "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format"
+    "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format"
 )
 BDF = Namespace("https://w3id.org/battery-data-alliance/ontology/battery-data-format#")
 BDF_NS = str(BDF)
@@ -43,7 +43,7 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     def test_ontology_declares_expected_version(self):
         self.assertIn((ONTOLOGY_IRI, RDF.type, OWL.Ontology), self.graph)
         self.assertIn((ONTOLOGY_IRI, OWL.versionIRI, ONTOLOGY_VERSION_IRI), self.graph)
-        self.assertIn((ONTOLOGY_IRI, OWL.versionInfo, Literal("1.0.0")), self.graph)
+        self.assertIn((ONTOLOGY_IRI, OWL.versionInfo, Literal("1.1.0")), self.graph)
 
     def test_internal_resistance_has_ohm_unit_restriction(self):
         entity = BDF.internal_resistance_ohm
@@ -60,9 +60,9 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     # ------------------------------------------------------------------
 
     def test_schema_version_matches_ontology_release(self):
-        self.assertEqual(self.schema.get("dcterms:version"), "1.0.0")
-        self.assertEqual(self.schema.get("schema:version"), "1.0.0")
-        self.assertIn("/1.0.0/", self.schema.get("@id", ""))
+        self.assertEqual(self.schema.get("dcterms:version"), "1.1.0")
+        self.assertEqual(self.schema.get("schema:version"), "1.1.0")
+        self.assertIn("/1.1.0/", self.schema.get("@id", ""))
 
     def test_all_required_bdf_columns_in_schema(self):
         missing = REQUIRED_SCHEMA_COLUMNS - self.schema_columns.keys()
@@ -164,19 +164,21 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     # ------------------------------------------------------------------
 
     EXPECTED_DERIVATIONS = {
-        "power_watt":              {"voltage_volt", "current_ampere"},
-        "step_capacity_ah":        {"current_ampere", "step_time_second"},
-        "charging_capacity_ah":    {"current_ampere", "test_time_second"},
-        "discharging_capacity_ah": {"current_ampere", "test_time_second"},
-        "cumulative_capacity_ah":  {"current_ampere", "test_time_second"},
-        "charging_energy_wh":      {"power_watt", "test_time_second"},
-        "discharging_energy_wh":   {"power_watt", "test_time_second"},
-        "cumulative_energy_wh":    {"power_watt", "test_time_second"},
-        "net_capacity_ah":         {"charging_capacity_ah", "discharging_capacity_ah"},
-        "step_energy_wh":          {"power_watt", "step_time_second"},
-        "net_energy_wh":           {"charging_energy_wh", "discharging_energy_wh"},
-        "absolute_impedance_ohm":  {"real_impedance_ohm", "imaginary_impedance_ohm"},
-        "phase_degree":            {"real_impedance_ohm", "imaginary_impedance_ohm"},
+        "power_watt":                  {"voltage_volt", "current_ampere"},
+        "step_cumulative_capacity_ah": {"current_ampere", "step_time_second"},
+        "charging_capacity_ah":        {"current_ampere", "test_time_second"},
+        "discharging_capacity_ah":     {"current_ampere", "test_time_second"},
+        "cumulative_capacity_ah":      {"current_ampere", "test_time_second"},
+        "charging_energy_wh":          {"power_watt", "test_time_second"},
+        "discharging_energy_wh":       {"power_watt", "test_time_second"},
+        "cumulative_energy_wh":        {"power_watt", "test_time_second"},
+        "net_capacity_ah":             {"charging_capacity_ah", "discharging_capacity_ah"},
+        "step_cumulative_energy_wh":   {"power_watt", "step_time_second"},
+        "net_energy_wh":               {"charging_energy_wh", "discharging_energy_wh"},
+        "step_net_capacity_ah":        {"step_charging_capacity_ah", "step_discharging_capacity_ah"},
+        "step_net_energy_wh":          {"step_charging_energy_wh", "step_discharging_energy_wh"},
+        "absolute_impedance_ohm":      {"real_impedance_ohm", "imaginary_impedance_ohm"},
+        "phase_degree":                {"real_impedance_ohm", "imaginary_impedance_ohm"},
     }
 
     def test_prov_derivation_graph_complete_and_targets_bdf_classes(self):
