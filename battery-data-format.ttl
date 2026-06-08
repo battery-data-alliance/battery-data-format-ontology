@@ -18,7 +18,7 @@
 @base <https://w3id.org/battery-data-alliance/ontology/battery-data-format#> .
 
 <https://w3id.org/battery-data-alliance/ontology/battery-data-format> rdf:type owl:Ontology ;
-                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format> ;
+                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format> ;
                                                                        owl:imports <https://w3id.org/emmo/domain/battery/0.18.6/battery> ;
                                                                        dcterms:abstract "An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
                                                                        dcterms:bibliographicCitation "Pending" ;
@@ -26,15 +26,15 @@
                                                                        dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
                                                                        dcterms:issued "2026-05-14"^^xsd:date ;
                                                                        dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
-                                                                       dcterms:modified "2026-05-14"^^xsd:date ;
+                                                                       dcterms:modified "2026-06-08"^^xsd:date ;
                                                                        dcterms:publisher "Battery Data Alliance" ;
                                                                        dcterms:title "Battery Data Format Ontology"@en ;
                                                                        bibo:doi "pending" ;
                                                                        bibo:status "stable" ;
                                                                        vann:preferredNamespacePrefix "bdf" ;
                                                                        vann:preferredNamespaceUri "https://w3id.org/battery-data-alliance/ontology/battery-data-format#" ;
-                                                                       owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/0.1.0-beta/battery-data-format> ;
-                                                                       owl:versionInfo "1.0.0" .
+                                                                       owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format> ;
+                                                                       owl:versionInfo "1.1.0" .
 
 #################################################################
 #    Annotation properties
@@ -48,8 +48,16 @@ dcterms:bibliographicCitation rdf:type owl:AnnotationProperty .
 dcterms:created rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/isReplacedBy
+dcterms:isReplacedBy rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/issued
 dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/replaces
+dcterms:replaces rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/modified
@@ -86,6 +94,10 @@ skos:notation rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
 prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasRevisionOf
+prov:wasRevisionOf rdf:type owl:AnnotationProperty .
 
 
 ###  https://schema.org/description
@@ -589,30 +601,11 @@ sosa:ObservableProperty rdf:type owl:Class .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
 :step_capacity_ah rdf:type owl:Class ;
-                  rdfs:subClassOf sosa:ObservableProperty ,
-                                  electrochemistry:electrochemistry_ae108db7_8765_4329_9908_059277dee586 ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                                    owl:someValuesFrom emmo:AmpereHour
-                                  ] ;
-                  rdfs:comment "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
-                  rdfs:label "Step Capacity / Ah"@en ;
-                  rdfs:seeAlso unit:A-HR ;
-                  skos:altLabel "step_capacity_ah"@en ,
-                                "step_capacity_ampere_hour"@en ,
-                                "step_cumulative_capacity_ah"@en ;
-                  skos:definition "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
-                  skos:exactMatch quantitykind:ElectricCharge ;
+                  owl:deprecated true ;
+                  rdfs:label "obsolete Step Capacity / Ah"@en ;
+                  rdfs:comment "DEPRECATED in 1.1.0 (2026-06-08). Renamed for consistency with the {charging, discharging, net, cumulative} capacity convention; the concept is unchanged. Use :step_cumulative_capacity_ah."@en ;
                   skos:notation "step_capacity_ah" ;
-                  skos:prefLabel "Step Capacity / Ah"@en ;
-                  prov:wasDerivedFrom :current_ampere ,
-                                      :step_time_second ;
-                  schema:description "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative; resets to zero at each step transition."@en ;
-                  schema:measurementTechnique "Time integral of the absolute value of current over the duration of the current test step."@en ;
-                  schema:name "Step Capacity / Ah"@en ;
-                  schema:unitCode "A.h" ;
-                  schema:unitText "ampere hour"@en ;
-                  emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en .
+                  dcterms:isReplacedBy :step_cumulative_capacity_ah .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_charging_capacity_ah
@@ -671,6 +664,91 @@ sosa:ObservableProperty rdf:type owl:Class .
                          emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step."@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
+:step_count rdf:type owl:Class ;
+            rdfs:subClassOf sosa:ObservableProperty ,
+                            emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                              owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+                            ] ;
+            rdfs:comment "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            rdfs:label "Step Count / 1"@en ;
+            rdfs:seeAlso unit:NUM ;
+            skos:altLabel "step_count"@en ,
+                          "step_count_1"@en ,
+                          "step_dimensionless"@en ;
+            skos:definition "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            skos:exactMatch quantitykind:Count ;
+            skos:notation "step_count" ;
+            skos:prefLabel "Step Count / 1"@en ;
+            schema:description "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
+            schema:name "Step Count / 1"@en ;
+            schema:unitCode "1" ;
+            schema:unitText "one"@en ;
+            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cumulative_capacity_ah
+:step_cumulative_capacity_ah rdf:type owl:Class ;
+                             rdfs:subClassOf sosa:ObservableProperty ,
+                                             electrochemistry:electrochemistry_ae108db7_8765_4329_9908_059277dee586 ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:AmpereHour
+                                             ] ;
+                             rdfs:comment "Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
+                             rdfs:label "Step Cumulative Capacity / Ah"@en ;
+                             rdfs:seeAlso unit:A-HR ;
+                             skos:altLabel "step_capacity_ah"@en ,
+                                           "step_cumulative_capacity_ah"@en ,
+                                           "step_cumulative_capacity_ampere_hour"@en ;
+                             skos:definition "Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration."@en ;
+                             skos:exactMatch quantitykind:ElectricCharge ;
+                             skos:notation "step_cumulative_capacity_ah" ;
+                             skos:prefLabel "Step Cumulative Capacity / Ah"@en ;
+                             prov:wasDerivedFrom :current_ampere ,
+                                                 :step_time_second ;
+                             prov:wasRevisionOf :step_capacity_ah ;
+                             dcterms:replaces :step_capacity_ah ;
+                             schema:description "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition."@en ;
+                             schema:measurementTechnique "Time integral of the absolute value of current from the start of the current test step."@en ;
+                             schema:name "Step Cumulative Capacity / Ah"@en ;
+                             schema:unitCode "A.h" ;
+                             schema:unitText "ampere hour"@en ;
+                             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cumulative_energy_wh
+:step_cumulative_energy_wh rdf:type owl:Class ;
+                           rdfs:subClassOf sosa:ObservableProperty ,
+                                           electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                             owl:someValuesFrom emmo:WattHour
+                                           ] ;
+                           rdfs:comment "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
+                           rdfs:label "Step Cumulative Energy / Wh"@en ;
+                           rdfs:seeAlso unit:W-HR ;
+                           skos:altLabel "step_cumulative_energy_watt_hour"@en ,
+                                         "step_cumulative_energy_wh"@en ,
+                                         "step_energy_wh"@en ;
+                           skos:definition "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
+                           skos:exactMatch quantitykind:Energy ;
+                           skos:notation "step_cumulative_energy_wh" ;
+                           skos:prefLabel "Step Cumulative Energy / Wh"@en ;
+                           prov:wasDerivedFrom :power_watt ,
+                                               :step_time_second ;
+                           prov:wasRevisionOf :step_energy_wh ;
+                           dcterms:replaces :step_energy_wh ;
+                           schema:description "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition."@en ;
+                           schema:measurementTechnique "Time integral of the absolute value of instantaneous power from the start of the current test step."@en ;
+                           schema:name "Step Cumulative Energy / Wh"@en ;
+                           schema:unitCode "W.h" ;
+                           schema:unitText "watt hour"@en ;
+                           emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_discharging_capacity_ah
 :step_discharging_capacity_ah rdf:type owl:Class ;
                               rdfs:subClassOf sosa:ObservableProperty ,
@@ -727,57 +805,13 @@ sosa:ObservableProperty rdf:type owl:Class .
                             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step."@en .
 
 
-###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
-:step_count rdf:type owl:Class ;
-            rdfs:subClassOf sosa:ObservableProperty ,
-                            emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                              owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
-                            ] ;
-            rdfs:comment "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
-            rdfs:label "Step Count / 1"@en ;
-            rdfs:seeAlso unit:NUM ;
-            skos:altLabel "step_count"@en ,
-                          "step_count_1"@en ,
-                          "step_dimensionless"@en ;
-            skos:definition "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
-            skos:exactMatch quantitykind:Count ;
-            skos:notation "step_count" ;
-            skos:prefLabel "Step Count / 1"@en ;
-            schema:description "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en ;
-            schema:name "Step Count / 1"@en ;
-            schema:unitCode "1" ;
-            schema:unitText "one"@en ;
-            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles."@en .
-
-
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
 :step_energy_wh rdf:type owl:Class ;
-                rdfs:subClassOf sosa:ObservableProperty ,
-                                electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                                  owl:someValuesFrom emmo:WattHour
-                                ] ;
-                rdfs:comment "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
-                rdfs:label "Step Energy / Wh"@en ;
-                rdfs:seeAlso unit:W-HR ;
-                skos:altLabel "step_cumulative_energy_wh"@en ,
-                              "step_energy_watt_hour"@en ,
-                              "step_energy_wh"@en ;
-                skos:definition "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
-                skos:exactMatch quantitykind:Energy ;
+                owl:deprecated true ;
+                rdfs:label "obsolete Step Energy / Wh"@en ;
+                rdfs:comment "DEPRECATED in 1.1.0 (2026-06-08). Renamed for consistency with the {charging, discharging, net, cumulative} energy convention; the concept is unchanged. Use :step_cumulative_energy_wh."@en ;
                 skos:notation "step_energy_wh" ;
-                skos:prefLabel "Step Energy / Wh"@en ;
-                prov:wasDerivedFrom :power_watt ,
-                                    :step_time_second ;
-                schema:description "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative; resets to zero at each step transition."@en ;
-                schema:measurementTechnique "Time integral of the absolute value of instantaneous power over the duration of the current test step."@en ;
-                schema:name "Step Energy / Wh"@en ;
-                schema:unitCode "W.h" ;
-                schema:unitText "watt hour"@en ;
-                emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en .
+                dcterms:isReplacedBy :step_cumulative_energy_wh .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_id
@@ -821,6 +855,60 @@ sosa:ObservableProperty rdf:type owl:Class .
             schema:unitCode "1" ;
             schema:unitText "one"@en ;
             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_net_capacity_ah
+:step_net_capacity_ah rdf:type owl:Class ;
+                      rdfs:subClassOf sosa:ObservableProperty ,
+                                      electrochemistry:electrochemistry_791c1915_a791_4450_acd8_7f94764743b5 ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                        owl:someValuesFrom emmo:AmpereHour
+                                      ] ;
+                      rdfs:comment "Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en ;
+                      rdfs:label "Step Net Capacity / Ah"@en ;
+                      rdfs:seeAlso unit:A-HR ;
+                      skos:altLabel "step_net_capacity_ah"@en ,
+                                    "step_net_capacity_ampere_hour"@en ;
+                      skos:definition "Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en ;
+                      skos:exactMatch quantitykind:ElectricCharge ;
+                      skos:notation "step_net_capacity_ah" ;
+                      skos:prefLabel "Step Net Capacity / Ah"@en ;
+                      prov:wasDerivedFrom :step_charging_capacity_ah ,
+                                          :step_discharging_capacity_ah ;
+                      schema:description "Running net capacity within the current test step: step_charging_capacity_ah - step_discharging_capacity_ah. Can be negative; resets to zero at each step transition."@en ;
+                      schema:measurementTechnique "Running signed integral of current from the start of the current test step. Positive increments during charging, negative during discharging. Reset to zero at each step transition."@en ;
+                      schema:name "Step Net Capacity / Ah"@en ;
+                      schema:unitCode "A.h" ;
+                      schema:unitText "ampere hour"@en ;
+                      emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_net_energy_wh
+:step_net_energy_wh rdf:type owl:Class ;
+                    rdfs:subClassOf sosa:ObservableProperty ,
+                                    electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                      owl:someValuesFrom emmo:WattHour
+                                    ] ;
+                    rdfs:comment "Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en ;
+                    rdfs:label "Step Net Energy / Wh"@en ;
+                    rdfs:seeAlso unit:W-HR ;
+                    skos:altLabel "step_net_energy_watt_hour"@en ,
+                                  "step_net_energy_wh"@en ;
+                    skos:definition "Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en ;
+                    skos:exactMatch quantitykind:Energy ;
+                    skos:notation "step_net_energy_wh" ;
+                    skos:prefLabel "Step Net Energy / Wh"@en ;
+                    prov:wasDerivedFrom :step_charging_energy_wh ,
+                                        :step_discharging_energy_wh ;
+                    schema:description "Running net energy within the current test step: step_charging_energy_wh - step_discharging_energy_wh. Can be negative; resets to zero at each step transition."@en ;
+                    schema:measurementTechnique "Running signed integral of instantaneous power from the start of the current test step. Positive increments during charging, negative during discharging. Reset to zero at each step transition."@en ;
+                    schema:name "Step Net Energy / Wh"@en ;
+                    schema:unitCode "W.h" ;
+                    schema:unitText "watt hour"@en ;
+                    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_time_second
