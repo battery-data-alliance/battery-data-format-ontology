@@ -41,15 +41,18 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
 
-    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/specification';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/js/ensure-mathjax.js?v=22fc8153"></script>
     <link rel="icon" href="../_static/battery-data-alliance-horizontal-color-2.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -57,7 +60,7 @@
     <link rel="prev" title="Examples" href="examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="1.0" />
+  <meta name="docsearch:version" content="1.1" />
   
     
     <script src="../_static/searchtools.js"></script>
@@ -547,15 +550,17 @@ e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.o
 <h2>Terms and Definitions<a class="headerlink" href="#terms-and-definitions" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 20.0%" />
-<col style="width: 16.0%" />
-<col style="width: 38.0%" />
-<col style="width: 8.0%" />
 <col style="width: 18.0%" />
+<col style="width: 15.0%" />
+<col style="width: 10.0%" />
+<col style="width: 39.0%" />
+<col style="width: 6.0%" />
+<col style="width: 12.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Term</p></th>
 <th class="head"><p>Notation</p></th>
+<th class="head"><p>Symbol</p></th>
 <th class="head"><p>Definition</p></th>
 <th class="head"><p>UCUM</p></th>
 <th class="head"><p>Quantity Kind</p></th>
@@ -564,288 +569,336 @@ e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.o
 <tbody>
 <tr class="row-even"><td><p>Absolute Impedance / ohm</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">absolute_impedance_ohm</span></code></p></td>
-<td><p>the magnitude of the complex impedance, expressed in ohms. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(|Z|\)</span></p></td>
+<td><p>the magnitude of the complex impedance, expressed in ohms. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(|Z| = \sqrt{Z_\mathrm{re}^2 + Z_\mathrm{im}^2}\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
 <td><p>Impedance</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ambient Pressure / Pa</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ambient_pressure_pa</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_\mathrm{amb}\)</span></p></td>
 <td><p>Ambient air pressure recorded during testing, in pascal.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
 <td><p>Pressure</p></td>
 </tr>
 <tr class="row-even"><td><p>Ambient Temperature / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ambient_temperature_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_\mathrm{amb}\)</span></p></td>
 <td><p>Ambient temperature recorded during testing, in degree Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-odd"><td><p>Applied Pressure / Pa</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">applied_pressure_pa</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_\mathrm{app}\)</span></p></td>
 <td><p>External pressure applied to the test object, in pascal.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
 <td><p>Pressure</p></td>
 </tr>
 <tr class="row-even"><td><p>Charging Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">charging_capacity_ah</span></code></p></td>
-<td><p>Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{chg}\)</span></p></td>
+<td><p>Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{chg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-odd"><td><p>Charging Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">charging_energy_wh</span></code></p></td>
-<td><p>Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{chg}\)</span></p></td>
+<td><p>Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{chg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Cumulative Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">cumulative_capacity_ah</span></code></p></td>
-<td><p>Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{cum}\)</span></p></td>
+<td><p>Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{cum}(t) = Q_\mathrm{chg}(t) + Q_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \bigl|I(\tau)\bigr|\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-odd"><td><p>Cumulative Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">cumulative_energy_wh</span></code></p></td>
-<td><p>Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{cum}\)</span></p></td>
+<td><p>Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{cum}(t) = E_\mathrm{chg}(t) + E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \bigl|P(\tau)\bigr|\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Current / A</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">current_ampere</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(I\)</span></p></td>
 <td><p>Instantaneous current recorded in ampere.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
 <td><p>ElectricCurrent</p></td>
 </tr>
 <tr class="row-odd"><td><p>Cycle Count / 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">cycle_count</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
 <td><p>Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Count</p></td>
 </tr>
 <tr class="row-even"><td><p>Discharging Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">discharging_capacity_ah</span></code></p></td>
-<td><p>Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{dchg}\)</span></p></td>
+<td><p>Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-odd"><td><p>Discharging Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">discharging_energy_wh</span></code></p></td>
-<td><p>Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{dchg}\)</span></p></td>
+<td><p>Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">test_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Frequency / Hz</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">frequency_hertz</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(f\)</span></p></td>
 <td><p>the frequency of an applied periodic excitation or measured response, expressed in hertz</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Hz</span></code></p></td>
 <td><p>Frequency</p></td>
 </tr>
 <tr class="row-odd"><td><p>Imaginary Impedance / ohm</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z''\)</span></p></td>
 <td><p>the imaginary component of the complex impedance, expressed in ohms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
 <td><p>Impedance</p></td>
 </tr>
 <tr class="row-even"><td><p>Internal Resistance / ohm</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">internal_resistance_ohm</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_0\)</span></p></td>
 <td><p>Direct current internal resistance recorded in ohm.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
 <td><p>ElectricResistance</p></td>
 </tr>
 <tr class="row-odd"><td><p>Net Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">net_capacity_ah</span></code></p></td>
-<td><p>Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_capacity_ah,</span> <span class="pre">discharging_capacity_ah</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{net}\)</span></p></td>
+<td><p>Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_capacity_ah,</span> <span class="pre">discharging_capacity_ah</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{net}(t) = Q_\mathrm{chg}(t) - Q_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t I(\tau)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-even"><td><p>Net Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">net_energy_wh</span></code></p></td>
-<td><p>Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_energy_wh,</span> <span class="pre">discharging_energy_wh</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{net}\)</span></p></td>
+<td><p>Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">charging_energy_wh,</span> <span class="pre">discharging_energy_wh</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{net}(t) = E_\mathrm{chg}(t) - E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t P(\tau)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-odd"><td><p>Phase / deg</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">phase_degree</span></code></p></td>
-<td><p>the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(\phi\)</span></p></td>
+<td><p>the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">imaginary_impedance_ohm,</span> <span class="pre">real_impedance_ohm</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(\phi = \arctan\!\left(\frac{Z_\mathrm{im}}{Z_\mathrm{re}}\right) \cdot \frac{180}{\pi}\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">deg</span></code></p></td>
 <td><p>Angle</p></td>
 </tr>
 <tr class="row-even"><td><p>Power / W</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">power_watt</span></code></p></td>
-<td><p>Instantaneous power calculated as the product of voltage and current, in watt. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">voltage_volt</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
+<td><p>Instantaneous power calculated as the product of voltage and current, in watt. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">voltage_volt</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(P(t) = V(t)\,I(t)\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
 <td><p>Power</p></td>
 </tr>
 <tr class="row-odd"><td><p>Real Impedance / ohm</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">real_impedance_ohm</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(Z'\)</span></p></td>
 <td><p>the real component of the complex impedance, expressed in ohms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Ohm</span></code></p></td>
 <td><p>Impedance</p></td>
 </tr>
 <tr class="row-even"><td><p>Record Index / 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">record_index</span></code></p></td>
+<td><p>—</p></td>
 <td><p>an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Count</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_capacity_ah</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Charging Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_charging_capacity_ah</span></code></p></td>
-<td><p>Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{chg}^\mathrm{step}\)</span></p></td>
+<td><p>Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Charging Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_charging_energy_wh</span></code></p></td>
-<td><p>Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{chg}^\mathrm{step}\)</span></p></td>
+<td><p>Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Count / 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_count</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Count</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Cumulative Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_cumulative_capacity_ah</span></code></p></td>
-<td><p>Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{cum}^\mathrm{step}\)</span></p></td>
+<td><p>Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Cumulative Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_cumulative_energy_wh</span></code></p></td>
-<td><p>Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{cum}^\mathrm{step}\)</span></p></td>
+<td><p>Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Discharging Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_discharging_capacity_ah</span></code></p></td>
-<td><p>Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{dchg}^\mathrm{step}\)</span></p></td>
+<td><p>Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">current_ampere,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Discharging Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_discharging_energy_wh</span></code></p></td>
-<td><p>Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{dchg}^\mathrm{step}\)</span></p></td>
+<td><p>Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">power_watt,</span> <span class="pre">step_time_second</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_energy_wh</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Step ID</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_id</span></code></p></td>
+<td><p>—</p></td>
 <td><p>The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">—</span></code></p></td>
 <td><p>—</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Index / 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_index</span></code></p></td>
+<td><p>—</p></td>
 <td><p>1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named ‘Step Index’ (e.g. Arbin Step_Index) maps to step_id, not to this property.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Dimensionless</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Net Capacity / Ah</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_net_capacity_ah</span></code></p></td>
-<td><p>Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">step_charging_capacity_ah,</span> <span class="pre">step_discharging_capacity_ah</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(Q_\mathrm{net}^\mathrm{step}\)</span></p></td>
+<td><p>Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">step_charging_capacity_ah,</span> <span class="pre">step_discharging_capacity_ah</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">A.h</span></code></p></td>
 <td><p>ElectricCharge</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Net Energy / Wh</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_net_energy_wh</span></code></p></td>
-<td><p>Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">step_charging_energy_wh,</span> <span class="pre">step_discharging_energy_wh</span></code>.</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_\mathrm{net}^\mathrm{step}\)</span></p></td>
+<td><p>Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. <em>Derived from:</em> <code class="docutils literal notranslate"><span class="pre">step_charging_energy_wh,</span> <span class="pre">step_discharging_energy_wh</span></code>. <em>Formula:</em> <span class="math notranslate nohighlight">\(E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau\)</span>.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
 <tr class="row-even"><td><p>Step Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\Delta t_\mathrm{step}\)</span></p></td>
 <td><p>the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
 <tr class="row-odd"><td><p>Step Type</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_type</span></code></p></td>
+<td><p>—</p></td>
 <td><p>A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">—</span></code></p></td>
 <td><p>—</p></td>
 </tr>
 <tr class="row-even"><td><p>Surface Pressure / Pa</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">surface_pressure_pa</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_\mathrm{surf}\)</span></p></td>
 <td><p>Surface pressure recorded in pascal.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
 <td><p>Pressure</p></td>
 </tr>
 <tr class="row-odd"><td><p>Surface Temperature / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">surface_temperature_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_\mathrm{surf}\)</span></p></td>
 <td><p>Surface temperature recorded in degree Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-even"><td><p>Surface Temperature T1 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t1_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_1\)</span></p></td>
 <td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-odd"><td><p>Surface Temperature T2 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t2_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_2\)</span></p></td>
 <td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-even"><td><p>Surface Temperature T3 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t3_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_3\)</span></p></td>
 <td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-odd"><td><p>Surface Temperature T4 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t4_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_4\)</span></p></td>
 <td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-even"><td><p>Surface Temperature T5 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t5_celsius</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(T_5\)</span></p></td>
 <td><p>For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
 <tr class="row-odd"><td><p>Test Time / ms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">test_time_millisecond</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Test time recorded in millisecond.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
 <tr class="row-even"><td><p>Test Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(t\)</span></p></td>
 <td><p>Test time recorded in second.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
 <tr class="row-odd"><td><p>Unix Time / ms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unix_time_millisecond</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Unix time recorded in millisecond.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
 <tr class="row-even"><td><p>Unix Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unix_time_second</span></code></p></td>
+<td><p>—</p></td>
 <td><p>Unix time recorded in second.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
 <tr class="row-odd"><td><p>Voltage / V</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(V\)</span></p></td>
 <td><p>Instantaneous voltage recorded in volt.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
 <td><p>Voltage</p></td>
