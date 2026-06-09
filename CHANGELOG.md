@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-06-08
+
+### Added
+
+- `step_cumulative_capacity_ah` and `step_cumulative_energy_wh`: replacements for the deprecated `step_capacity_ah` / `step_energy_wh`. Running accumulation of throughput within the step, reset at each step transition; concept unchanged. Carry `prov:wasRevisionOf` / `dcterms:replaces` back-links, and retain the legacy names as `skos:altLabel`.
+- `step_net_capacity_ah` and `step_net_energy_wh`: completed from prefLabel-only stubs to the full annotation set; defined as `step_charging_* − step_discharging_*` (running signed integral over the step, reset at each step transition). The step capacity and energy families now mirror the test level: charging, discharging, net, cumulative.
+- `:obligation` annotation property (`required` / `recommended` / `optional`), applied to every non-deprecated quantity class for the default BDF profile: `test_time_second`, `voltage_volt`, `current_ampere` are **required**; `unix_time_second`, `step_count`, `cycle_count`, `ambient_temperature_celsius` are **recommended**; all other columns **optional**. Obligation is profile-scoped — this annotation expresses the default profile only; per-profile conformance is expressed in the SHACL shapes.
+
+### Deprecated
+
+- `step_capacity_ah` → use `step_cumulative_capacity_ah`. Renamed for consistency with the {charging, discharging, net, cumulative} naming convention; tombstoned with `owl:deprecated true` and `dcterms:isReplacedBy`. The IRI continues to resolve.
+- `step_energy_wh` → use `step_cumulative_energy_wh`. Same treatment.
+
 ## [1.0.0] - 2026-05-14
 
 ### Added

@@ -34,7 +34,7 @@ Documentation is built and deployed to GitHub Pages automatically by the
 `.github/workflows/docs-build-and-deploy.yml` CI workflow on every push to `main`
 and for each tagged release. The live site is at:
 
-<https://battery-data-alliance.github.io/BDAOntology/>
+<https://battery-data-alliance.github.io/battery-data-format-ontology/>
 
 ## Directory structure
 
