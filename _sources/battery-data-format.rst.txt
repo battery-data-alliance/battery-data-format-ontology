@@ -893,23 +893,27 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
 .. raw:: html
 
    <hr class="term-separator" />
-   <div id="step_capacity_ah"></div>
+   <div id="step_charging_capacity_ah"></div>
 
-Step Capacity / Ah
-------------------
+Step Charging Capacity / Ah
+---------------------------
 
-IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_charging_capacity_ah
 
 .. raw:: html
 
   <table class="element-table">
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
-    <td class="element-table-value">step_capacity_ah</td>
+    <td class="element-table-value">step_charge_capacity_ah</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
-    <td class="element-table-value">step_capacity_ampere_hour</td>
+    <td class="element-table-value">step_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_charging_capacity_ampere_hour</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
@@ -917,11 +921,11 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
-    <td class="element-table-value">step_capacity_ah</td>
+    <td class="element-table-value">step_charging_capacity_ah</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration.</td>
+    <td class="element-table-value">Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -929,7 +933,55 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('electrochemistry_ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae108db7_8765_4329_9908_059277dee586';return false;}">StepCapacity</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45' onclick="if(!document.getElementById('electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45';return false;}">ChargingCapacity</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_charging_energy_wh"></div>
+
+Step Charging Energy / Wh
+-------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_charging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_charge_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_charging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53' onclick="if(!document.getElementById('electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53';return false;}">ChargingEnergy</a></td>
   </tr>
   </table>
 
@@ -985,19 +1037,71 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_co
 .. raw:: html
 
    <hr class="term-separator" />
-   <div id="step_energy_wh"></div>
+   <div id="step_cumulative_capacity_ah"></div>
 
-Step Energy / Wh
-----------------
+Step Cumulative Capacity / Ah
+-----------------------------
 
-IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cumulative_capacity_ah
 
 .. raw:: html
 
   <table class="element-table">
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
-    <td class="element-table-value">step_energy_watt_hour</td>
+    <td class="element-table-value">step_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_cumulative_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('electrochemistry_ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae108db7_8765_4329_9908_059277dee586';return false;}">StepCapacity</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_cumulative_energy_wh"></div>
+
+Step Cumulative Energy / Wh
+---------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cumulative_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_cumulative_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_cumulative_energy_wh</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
@@ -1009,11 +1113,11 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
-    <td class="element-table-value">step_energy_wh</td>
+    <td class="element-table-value">step_cumulative_energy_wh</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration.</td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -1022,6 +1126,102 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_discharging_capacity_ah"></div>
+
+Step Discharging Capacity / Ah
+------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_discharging_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharge_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharging_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476' onclick="if(!document.getElementById('electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476';return false;}">DischargingCapacity</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_discharging_energy_wh"></div>
+
+Step Discharging Energy / Wh
+----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_discharging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharge_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7' onclick="if(!document.getElementById('electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7';return false;}">DischargingEnergy</a></td>
   </tr>
   </table>
 
@@ -1093,7 +1293,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software.</td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -1102,6 +1302,94 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_0cd58641_824c_4851_907f_f4c3be76630c' onclick="if(!document.getElementById('EMMO_0cd58641_824c_4851_907f_f4c3be76630c')){window.location.href='https://w3id.org/emmo#EMMO_0cd58641_824c_4851_907f_f4c3be76630c';return false;}">Index</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_net_capacity_ah"></div>
+
+Step Net Capacity / Ah
+----------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_net_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_net_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_791c1915_a791_4450_acd8_7f94764743b5' onclick="if(!document.getElementById('electrochemistry_791c1915_a791_4450_acd8_7f94764743b5')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_791c1915_a791_4450_acd8_7f94764743b5';return false;}">Capacity</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_net_energy_wh"></div>
+
+Step Net Energy / Wh
+--------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_net_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_net_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
   </tr>
   </table>
 
@@ -1261,7 +1549,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a>, <a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a></td>
+    <td class="element-table-value"><a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a>, <a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a>, <a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a></td>
   </tr>
   </table>
 
@@ -1620,6 +1908,102 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage
 
 Deprecated Terms
 ----------------
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_capacity_ah"></div>
+
+Step Capacity / Ah
+------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('electrochemistry_ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae108db7_8765_4329_9908_059277dee586';return false;}">StepCapacity</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_energy_wh"></div>
+
+Step Energy / Wh
+----------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
+  </tr>
+  </table>
 
 
 .. raw:: html

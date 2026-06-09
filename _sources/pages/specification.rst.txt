@@ -15,11 +15,11 @@ Status
    * - Title
      - Battery Data Format Ontology
    * - Version
-     - 1.0.0
+     - 1.1.0
    * - Issued
      - 2026-05-14
    * - Modified
-     - 2026-05-14
+     - 2026-06-08
    * - Publisher
      - Battery Data Alliance
    * - License
@@ -41,7 +41,7 @@ Identifiers
 - **Base IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#``
 - Full term IRIs are formed by appending the notation to the base IRI,
   e.g. ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt``.
-- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/battery-data-format``
+- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format``
 
 Terms and Definitions
 ---------------------
@@ -162,17 +162,47 @@ Terms and Definitions
      - Count
    * - Step Capacity / Ah
      - ``step_capacity_ah``
-     - Magnitude of electric charge transferred during the current test step, in ampere hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. *Derived from:* ``current_ampere, step_time_second``.
+     - Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.
      - ``A.h``
      - ElectricCharge
+   * - Step Charging Capacity / Ah
+     - ``step_charging_capacity_ah``
+     - Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``.
+     - ``A.h``
+     - ElectricCharge
+   * - Step Charging Energy / Wh
+     - ``step_charging_energy_wh``
+     - Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``.
+     - ``W.h``
+     - Energy
    * - Step Count / 1
      - ``step_count``
      - Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.
      - ``1``
      - Count
+   * - Step Cumulative Capacity / Ah
+     - ``step_cumulative_capacity_ah``
+     - Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. *Derived from:* ``current_ampere, step_time_second``.
+     - ``A.h``
+     - ElectricCharge
+   * - Step Cumulative Energy / Wh
+     - ``step_cumulative_energy_wh``
+     - Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. *Derived from:* ``power_watt, step_time_second``.
+     - ``W.h``
+     - Energy
+   * - Step Discharging Capacity / Ah
+     - ``step_discharging_capacity_ah``
+     - Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``.
+     - ``A.h``
+     - ElectricCharge
+   * - Step Discharging Energy / Wh
+     - ``step_discharging_energy_wh``
+     - Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``.
+     - ``W.h``
+     - Energy
    * - Step Energy / Wh
      - ``step_energy_wh``
-     - Magnitude of energy transferred during the current test step, in watt hour. Always non-negative (≥ 0); resets to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. *Derived from:* ``power_watt, step_time_second``.
+     - Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.
      - ``W.h``
      - Energy
    * - Step ID
@@ -182,9 +212,19 @@ Terms and Definitions
      - —
    * - Step Index / 1
      - ``step_index``
-     - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software.
+     - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.
      - ``1``
      - Dimensionless
+   * - Step Net Capacity / Ah
+     - ``step_net_capacity_ah``
+     - Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_capacity_ah, step_discharging_capacity_ah``.
+     - ``A.h``
+     - ElectricCharge
+   * - Step Net Energy / Wh
+     - ``step_net_energy_wh``
+     - Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_energy_wh, step_discharging_energy_wh``.
+     - ``W.h``
+     - Energy
    * - Step Time / s
      - ``step_time_second``
      - the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition

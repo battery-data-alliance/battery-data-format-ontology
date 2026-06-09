@@ -43,10 +43,18 @@
         "Real Impedance / ohm": "bdf:real_impedance_ohm",
         "Record Index / 1": "bdf:record_index",
         "Step Capacity / Ah": "bdf:step_capacity_ah",
+        "Step Charging Capacity / Ah": "bdf:step_charging_capacity_ah",
+        "Step Charging Energy / Wh": "bdf:step_charging_energy_wh",
         "Step Count / 1": "bdf:step_count",
+        "Step Cumulative Capacity / Ah": "bdf:step_cumulative_capacity_ah",
+        "Step Cumulative Energy / Wh": "bdf:step_cumulative_energy_wh",
+        "Step Discharging Capacity / Ah": "bdf:step_discharging_capacity_ah",
+        "Step Discharging Energy / Wh": "bdf:step_discharging_energy_wh",
         "Step Energy / Wh": "bdf:step_energy_wh",
         "Step ID": "bdf:step_id",
         "Step Index / 1": "bdf:step_index",
+        "Step Net Capacity / Ah": "bdf:step_net_capacity_ah",
+        "Step Net Energy / Wh": "bdf:step_net_energy_wh",
         "Step Time / s": "bdf:step_time_second",
         "Step Type": "bdf:step_type",
         "Surface Pressure / Pa": "bdf:surface_pressure_pa",
@@ -62,6 +70,6 @@
         "Unix Time / s": "bdf:unix_time_second",
         "Voltage / V": "bdf:voltage_volt"
     },
-    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/context",
-    "dcterms:version": "1.0.0"
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/context",
+    "dcterms:version": "1.1.0"
 }
