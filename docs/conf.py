@@ -11,14 +11,15 @@ sys.path.insert(0, os.path.abspath(".."))
 project = "Battery Data Format Ontology"
 author = "Battery Data Alliance"
 copyright = "2024–2025, Battery Data Alliance"
-version = "1.0"
-release = "1.0.0"
+version = "1.1"
+release = "1.1.0"
 
 # -- General configuration ---------------------------------------------------
 
 extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.autosectionlabel",
+    "sphinx.ext.mathjax",
     "sphinx_design",
     "nbsphinx",
     "sphinx_copybutton",
@@ -63,6 +64,9 @@ html_logo = "assets/img/logo/battery-data-alliance-horizontal-color-2.svg"
 html_favicon = "assets/img/logo/battery-data-alliance-horizontal-color-2.svg"
 html_static_path = ["_static"]
 html_css_files = ["css/custom.css"]
+# The per-term tables on battery-data-format.rst embed LaTeX as raw HTML \(...\),
+# which sphinx.ext.mathjax does not auto-detect; this force-loads MathJax there.
+html_js_files = ["js/ensure-mathjax.js"]
 
 html_sidebars = {
     "battery-data-format": [

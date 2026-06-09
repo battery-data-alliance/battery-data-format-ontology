@@ -88,6 +88,16 @@ def _get_unit_code(graph: Graph, subject) -> str:
     return str(val) if val else ""
 
 
+def _get_symbol(graph: Graph, subject) -> str:
+    val = graph.value(subject, BDF.latexSymbol)
+    return str(val) if val else ""
+
+
+def _get_formula(graph: Graph, subject) -> str:
+    val = graph.value(subject, BDF.latexFormula)
+    return str(val) if val else ""
+
+
 def _get_quantity_kind(graph: Graph, subject) -> str:
     """Return the local name of the QUDT quantitykind: match, e.g. 'Voltage'."""
     for obj in graph.objects(subject, SKOS.exactMatch):
@@ -204,11 +214,12 @@ def build_specification():
     lines.append("---------------------")
     lines.append("")
     lines.append(".. list-table::")
-    lines.append("   :widths: 20 16 38 8 18")
+    lines.append("   :widths: 18 15 10 39 6 12")
     lines.append("   :header-rows: 1")
     lines.append("")
     lines.append("   * - Term")
     lines.append("     - Notation")
+    lines.append("     - Symbol")
     lines.append("     - Definition")
     lines.append("     - UCUM")
     lines.append("     - Quantity Kind")
@@ -217,15 +228,22 @@ def build_specification():
         label        = _get_labels(graph, term)
         definition   = _get_definition(graph, term) or "—"
         notation     = _get_notation(graph, term) or "—"
+        symbol       = _get_symbol(graph, term)
+        formula      = _get_formula(graph, term)
         ucum         = _get_unit_code(graph, term) or "—"
         qty_kind     = _get_quantity_kind(graph, term) or "—"
         derived_from = _get_derived_from(graph, term)
 
         if derived_from:
             definition = definition.rstrip(".") + f". *Derived from:* ``{derived_from}``."
+        if formula:
+            definition = definition.rstrip(".") + f". *Formula:* :math:`{formula}`."
+
+        symbol_cell = f":math:`{symbol}`" if symbol else "—"
 
         lines.append("   * - " + label.replace("\n", " "))
         lines.append("     - ``" + notation.replace("\n", " ") + "``")
+        lines.append("     - " + symbol_cell)
         lines.append("     - " + definition.replace("\n", " "))
         lines.append("     - ``" + ucum + "``")
         lines.append("     - " + qty_kind)

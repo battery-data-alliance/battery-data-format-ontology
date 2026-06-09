@@ -44,7 +44,8 @@ CALLOUTS: dict[str, tuple[str, str | None]] = {
 }
 
 _TABLE_SKIP_BASE = frozenset(
-    {"iri", "preflabel", "subclassof", "subclasses", "restrictions", "deprecated"}
+    {"iri", "preflabel", "subclassof", "subclasses", "restrictions", "deprecated",
+     "wasderivedfrom"}
 )
 
 # ---------------------------------------------------------------------------
@@ -204,6 +205,35 @@ def extract_terms(onto: Any, ontology_prefix: str) -> list[dict[str, Any]]:
             else:
                 record[ann] = "; ".join(str(x) for x in extracted)
 
+        # BDF-specific annotations: the LaTeX symbol/formula (emitted as MathJax
+        # inline math \(...\) in the raw-HTML table) and the obligation level.
+        # Keys are lowercased to match the local-name style of the other rows.
+        for disp_key, ann_iri, as_math in (
+            ("symbol",     base + "#latexSymbol",  True),
+            ("formula",    base + "#latexFormula", True),
+            ("obligation", base + "#obligation",   False),
+        ):
+            prop = onto[ann_iri]
+            if prop is None:
+                continue
+            vals = prop._get_values_for_class(entity)
+            if not vals:
+                continue
+            text = str(vals[0]).strip()
+            if text:
+                record[disp_key] = f"\\({text}\\)" if as_math else text
+
+        # prov:wasDerivedFrom -> resolve targets to entities for linked rendering
+        deriv_prop = onto["http://www.w3.org/ns/prov#wasDerivedFrom"]
+        if deriv_prop is not None:
+            derived = []
+            for val in deriv_prop._get_values_for_class(entity):
+                target = val if hasattr(val, "iri") else onto[str(val)]
+                if target is not None and getattr(target, "iri", "").split("#")[0] == base:
+                    derived.append(target)
+            if derived:
+                record["wasDerivedFrom"] = list(dict.fromkeys(derived))
+
         record["subclassOf"] = [
             e for e in entity.is_a
             if isinstance(e, (owlready2.ThingClass, owlready2.PropertyClass))
@@ -306,6 +336,8 @@ def entities_to_rst(entities: list[dict[str, Any]], onto: Any) -> str:
             rst += _html_table_row("subclassOf", ", ".join(_get_links(item, "subclassOf")))
         if norm.get("subclasses"):
             rst += _html_table_row("subclasses", ", ".join(_get_links(item, "subclasses")))
+        if norm.get("wasderivedfrom"):
+            rst += _html_table_row("wasDerivedFrom", ", ".join(_get_links(item, "wasDerivedFrom")))
 
         rst += "  </table>\n\n"
 
