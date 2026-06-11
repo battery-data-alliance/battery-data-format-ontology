@@ -21,6 +21,7 @@
             "@id": "https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569",
             "@type": "@id"
         },
+        "AC Internal Resistance / ohm": "bdf:ac_internal_resistance_ohm",
         "Absolute Impedance / ohm": "bdf:absolute_impedance_ohm",
         "Ambient Pressure / Pa": "bdf:ambient_pressure_pa",
         "Ambient Temperature / degC": "bdf:ambient_temperature_celsius",
@@ -30,7 +31,16 @@
         "Cumulative Capacity / Ah": "bdf:cumulative_capacity_ah",
         "Cumulative Energy / Wh": "bdf:cumulative_energy_wh",
         "Current / A": "bdf:current_ampere",
+        "Cycle Charging Capacity / Ah": "bdf:cycle_charging_capacity_ah",
+        "Cycle Charging Energy / Wh": "bdf:cycle_charging_energy_wh",
         "Cycle Count / 1": "bdf:cycle_count",
+        "Cycle Cumulative Capacity / Ah": "bdf:cycle_cumulative_capacity_ah",
+        "Cycle Cumulative Energy / Wh": "bdf:cycle_cumulative_energy_wh",
+        "Cycle Discharging Capacity / Ah": "bdf:cycle_discharging_capacity_ah",
+        "Cycle Discharging Energy / Wh": "bdf:cycle_discharging_energy_wh",
+        "Cycle Net Capacity / Ah": "bdf:cycle_net_capacity_ah",
+        "Cycle Net Energy / Wh": "bdf:cycle_net_energy_wh",
+        "DC Internal Resistance / ohm": "bdf:dc_internal_resistance_ohm",
         "Discharging Capacity / Ah": "bdf:discharging_capacity_ah",
         "Discharging Energy / Wh": "bdf:discharging_energy_wh",
         "Frequency / Hz": "bdf:frequency_hertz",
@@ -70,6 +80,6 @@
         "Unix Time / s": "bdf:unix_time_second",
         "Voltage / V": "bdf:voltage_volt"
     },
-    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/context",
-    "dcterms:version": "1.1.1"
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/context",
+    "dcterms:version": "1.2.0"
 }

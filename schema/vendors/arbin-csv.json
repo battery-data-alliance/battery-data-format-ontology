@@ -85,7 +85,7 @@
       ]
     },
     {
-      "csvw:name": "charging_capacity_ah",
+      "csvw:name": "cycle_charging_capacity_ah",
       "csvw:titles": [
         "Charge_Capacity(Ah)",
         "Charge Capacity(Ah)",
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "csvw:name": "discharging_capacity_ah",
+      "csvw:name": "cycle_discharging_capacity_ah",
       "csvw:titles": [
         "Discharge_Capacity(Ah)",
         "Discharge Capacity(Ah)",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "csvw:name": "charging_energy_wh",
+      "csvw:name": "cycle_charging_energy_wh",
       "csvw:titles": [
         "Charge_Energy(Wh)",
         "Charge Energy(Wh)",
@@ -111,7 +111,7 @@
       ]
     },
     {
-      "csvw:name": "discharging_energy_wh",
+      "csvw:name": "cycle_discharging_energy_wh",
       "csvw:titles": [
         "Discharge_Energy(Wh)",
         "Discharge Energy(Wh)",
@@ -119,10 +119,15 @@
       ]
     },
     {
-      "csvw:name": "internal_resistance_ohm",
+      "csvw:name": "ac_internal_resistance_ohm",
       "csvw:titles": [
         "ACR(Ohm)",
-        "ACR (Ohm)",
+        "ACR (Ohm)"
+      ]
+    },
+    {
+      "csvw:name": "internal_resistance_ohm",
+      "csvw:titles": [
         "Internal_Resistance(Ohm)",
         "Internal Resistance(Ohm)",
         "IR(Ohm)"

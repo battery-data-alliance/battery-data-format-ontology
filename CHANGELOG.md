@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.1.1] - 2026-06-11
+## [1.2.0] - 2026-06-11
+
+### Added
+
+- **Cycle-scope running quantities** (8 terms): `cycle_{charging,discharging,cumulative,net}_capacity_ah` and `cycle_{charging,discharging,cumulative,net}_energy_wh` — running accumulations within the current cycle, reset when `cycle_count` increments (cycle boundaries remain instrument-defined). These are the quantities cyclers natively export in cycle-reset configurations (e.g. Arbin `Charge_Capacity(Ah)` / `Discharge_Capacity(Ah)`, noted in the definitions); the end-of-cycle value of `cycle_discharging_capacity_ah` is the capacity-fade quantity, and the end-of-cycle value of `cycle_net_*` is the per-cycle coulombic slippage / net energy loss. End-of-cycle aggregate terms and the efficiency ratios (`coulombic_efficiency`, `energy_efficiency`) are deferred to the per-cycle summary-table release.
+- **Resistance family**: `internal_resistance_ohm` broadened to a method-agnostic parent (symbol `R_int`); new subclasses `dc_internal_resistance_ohm` (`R_DC`, ΔV/ΔI current-pulse methods, instrument-specific) and `ac_internal_resistance_ohm` (`R_AC`, impedance magnitude at fixed frequency, conventionally 1 kHz; vendor "ACR"). The previously released state was internally inconsistent (a DC-specific definition with the Arbin ACR column mapped to it); broadening reconciles existing data without invalidating it.
+- `dcterms:isReplacedBy` and `skos:historyNote` added to the `test_time_millisecond` and `unix_time_millisecond` tombstones, so all deprecated terms are now machine-followable to their replacements.
+- Arbin vendor schema: `Charge/Discharge_Capacity(Ah)` and `Charge/Discharge_Energy(Wh)` remapped to the new cycle-scope terms (they reset per cycle, contradicting the never-resetting test-level terms they previously mapped to); `ACR(Ohm)` split out and mapped to `ac_internal_resistance_ohm`.
 
 ### Changed
+
+- **Energy formulas gated by current direction**: charging/discharging energy integrands changed from `max(±P, 0)` (sign-of-power gating) to `±P·[I ≷ 0]` (current-interval gating), and cumulative energy from `∫|P|` to `∫P·sgn(I)`. Numerically identical wherever voltage is positive (all normal cycling data); the forms now agree with the capacity family and the prose in the cell-reversal edge case (forced over-discharge), where power-sign gating misclassifies dissipated energy as charging energy.
 
 - **Definition clarity pass** (no semantic changes to any quantity; wording only):
   - `current_ampere`: the sign convention is now stated explicitly — positive current charges the test object, negative discharges it; the charging/discharging capacity and energy families are defined by this convention.
@@ -17,16 +26,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `voltage_volt`: measured across the terminals of the test object.
   - `unix_time_second`: defined as seconds since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.
   - `surface_pressure_pa` vs `applied_pressure_pa` disambiguated: surface pressure is *measured* at the test object surface (may be nonzero from swelling alone); applied pressure is *actively applied and controlled* by an external agent. Each definition cross-references the other.
-  - `internal_resistance_ohm`: notes that the determination method is instrument-specific and values from different methods are not directly comparable; LaTeX symbol corrected from `R_0` to `R_DC`.
   - EIS terms (`absolute/real/imaginary_impedance_ohm`, `phase_degree`, `frequency_hertz`): rewritten in sentence style, `schema:description` added; `imaginary_impedance_ohm` states the as-reported sign convention (negative for capacitive behaviour, vs the negated Nyquist plotting convention); `phase_degree` formula uses two-argument `atan2`.
   - All eight step-level `latexFormula` annotations now define `t_s` (start of the current step) inline.
   - `record_index` and `step_time_second` definitions normalised to sentence style.
-  - Usage advice moved out of `cumulative_capacity_ah`'s definition into a new `skos:scopeNote`.
-
-### Added
-
-- `skos:scopeNote` declared as an annotation property.
-- `latexSymbol` for `record_index` (i), `step_count` (k), `step_index` (j), and `unix_time_second` (t_unix).
+  - Usage advice moved out of `cumulative_capacity_ah`'s definition into a new `skos:scopeNote` (declared as an annotation property).
+  - `latexSymbol` added for `record_index` (i), `step_count` (k), `step_index` (j), and `unix_time_second` (t_unix).
 
 ## [1.1.0] - 2026-06-08
 

@@ -18,7 +18,7 @@
 @base <https://w3id.org/battery-data-alliance/ontology/battery-data-format#> .
 
 <https://w3id.org/battery-data-alliance/ontology/battery-data-format> rdf:type owl:Ontology ;
-                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/battery-data-format> ;
+                                                                       owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/battery-data-format> ;
                                                                        owl:imports <https://w3id.org/emmo/domain/battery/0.18.6/battery> ;
                                                                        dcterms:abstract "An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
                                                                        dcterms:bibliographicCitation "Pending" ;
@@ -34,7 +34,7 @@
                                                                        vann:preferredNamespacePrefix "bdf" ;
                                                                        vann:preferredNamespaceUri "https://w3id.org/battery-data-alliance/ontology/battery-data-format#" ;
                                                                        owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format> ;
-                                                                       owl:versionInfo "1.1.1" .
+                                                                       owl:versionInfo "1.2.0" .
 
 #################################################################
 #    Annotation properties
@@ -173,6 +173,33 @@ sosa:ObservableProperty rdf:type owl:Class .
                         schema:unitText "ohm"@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm
+:ac_internal_resistance_ohm rdf:type owl:Class ;
+                            rdfs:subClassOf sosa:ObservableProperty ,
+                                            :internal_resistance_ohm ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                              owl:someValuesFrom emmo:Ohm
+                                            ] ;
+                            rdfs:comment "Alternating current internal resistance of the test object, in ohm: the magnitude of the impedance at a fixed excitation frequency, conventionally 1 kHz unless otherwise stated. Equivalent to the ACR quantity reported by some instruments (e.g. Arbin ACR). The excitation frequency should be recorded in accompanying metadata."@en ;
+                            rdfs:label "AC Internal Resistance / ohm"@en ;
+                            rdfs:seeAlso unit:OHM ;
+                            skos:altLabel "ac_internal_resistance_ohm"@en ,
+                                          "ac_resistance_ohm"@en ,
+                                          "acr"@en ;
+                            skos:definition "Alternating current internal resistance of the test object, in ohm: the magnitude of the impedance at a fixed excitation frequency, conventionally 1 kHz unless otherwise stated. Equivalent to the ACR quantity reported by some instruments (e.g. Arbin ACR). The excitation frequency should be recorded in accompanying metadata."@en ;
+                            skos:exactMatch quantitykind:Resistance ;
+                            skos:notation "ac_internal_resistance_ohm" ;
+                            :latexSymbol "R_\\mathrm{AC}"^^xsd:string ;
+                            :obligation "optional" ;
+                            skos:prefLabel "AC Internal Resistance / ohm"@en ;
+                            schema:description "AC internal resistance: impedance magnitude at a fixed excitation frequency, conventionally 1 kHz. Equivalent to instrument ACR outputs."@en ;
+                            schema:name "AC Internal Resistance / ohm"@en ;
+                            schema:unitCode "Ohm" ;
+                            schema:unitText "ohm"@en ;
+                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Alternating current internal resistance of the test object, in ohm: the magnitude of the impedance at a fixed excitation frequency, conventionally 1 kHz unless otherwise stated. Equivalent to the ACR quantity reported by some instruments (e.g. Arbin ACR). The excitation frequency should be recorded in accompanying metadata."@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient_pressure_pa
 :ambient_pressure_pa rdf:type owl:Class ;
                      rdfs:subClassOf sosa:ObservableProperty ,
@@ -297,7 +324,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                     skos:exactMatch quantitykind:Energy ;
                     skos:notation "charging_energy_wh" ;
                     :latexSymbol "E_\\mathrm{chg}"^^xsd:string ;
-                    :latexFormula "E_\\mathrm{chg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
+                    :latexFormula "E_\\mathrm{chg}(t) = \\frac{1}{3600}\\int_0^t P(\\tau)\\,\\bigl[I(\\tau) > 0\\bigr]\\,\\mathrm{d}\\tau,\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
                     :obligation "optional" ;
                     skos:prefLabel "Charging Energy / Wh"@en ;
                     prov:wasDerivedFrom :power_watt ,
@@ -357,7 +384,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                       skos:exactMatch quantitykind:Energy ;
                       skos:notation "cumulative_energy_wh" ;
                       :latexSymbol "E_\\mathrm{cum}"^^xsd:string ;
-                      :latexFormula "E_\\mathrm{cum}(t) = E_\\mathrm{chg}(t) + E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\bigl|P(\\tau)\\bigr|\\,\\mathrm{d}\\tau"^^xsd:string ;
+                      :latexFormula "E_\\mathrm{cum}(t) = E_\\mathrm{chg}(t) + E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t P(\\tau)\\,\\operatorname{sgn} I(\\tau)\\,\\mathrm{d}\\tau"^^xsd:string ;
                       :obligation "optional" ;
                       skos:prefLabel "Cumulative Energy / Wh"@en ;
                       prov:wasDerivedFrom :power_watt ,
@@ -396,6 +423,68 @@ sosa:ObservableProperty rdf:type owl:Class .
                 emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention."@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_capacity_ah
+:cycle_charging_capacity_ah rdf:type owl:Class ;
+                            rdfs:subClassOf sosa:ObservableProperty ,
+                                            electrochemistry:10763eb0_dbc9_4d34_bd1a_7b8996590d45 ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                              owl:someValuesFrom emmo:AmpereHour
+                                            ] ;
+                            rdfs:comment "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the positive part of current from the start of the current cycle. Equivalent to the cycle-level charge capacity reported by some instruments (e.g. Arbin Charge_Capacity in cycle-reset export configurations), which reset at each cycle boundary."@en ;
+                            rdfs:label "Cycle Charging Capacity / Ah"@en ;
+                            rdfs:seeAlso unit:A-HR ;
+                            skos:altLabel "cycle_charge_capacity_ah"@en ,
+                                          "cycle_charging_capacity_ah"@en ,
+                                          "cycle_charging_capacity_ampere_hour"@en ;
+                            skos:definition "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the positive part of current from the start of the current cycle. Equivalent to the cycle-level charge capacity reported by some instruments (e.g. Arbin Charge_Capacity in cycle-reset export configurations), which reset at each cycle boundary."@en ;
+                            skos:exactMatch quantitykind:ElectricCharge ;
+                            skos:notation "cycle_charging_capacity_ah" ;
+                            :latexSymbol "Q_\\mathrm{chg}^\\mathrm{cyc}"^^xsd:string ;
+                            :latexFormula "Q_\\mathrm{chg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} \\max\\!\\bigl(I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                            :obligation "optional" ;
+                            skos:prefLabel "Cycle Charging Capacity / Ah"@en ;
+                            prov:wasDerivedFrom :current_ampere ,
+                                                :cycle_count ;
+                            schema:description "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments."@en ;
+                            schema:measurementTechnique "Time integral of the positive part of current from the start of the current cycle."@en ;
+                            schema:name "Cycle Charging Capacity / Ah"@en ;
+                            schema:unitCode "A.h" ;
+                            schema:unitText "ampere hour"@en ;
+                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the positive part of current from the start of the current cycle. Equivalent to the cycle-level charge capacity reported by some instruments (e.g. Arbin Charge_Capacity in cycle-reset export configurations), which reset at each cycle boundary."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_energy_wh
+:cycle_charging_energy_wh rdf:type owl:Class ;
+                          rdfs:subClassOf sosa:ObservableProperty ,
+                                          electrochemistry:2ab7af60_da58_4243_b3bc_cbb2155cac53 ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                            owl:someValuesFrom emmo:WattHour
+                                          ] ;
+                          rdfs:comment "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the cycle. Equivalent to the cycle-level charge energy reported by some instruments (e.g. Arbin Charge_Energy in cycle-reset export configurations)."@en ;
+                          rdfs:label "Cycle Charging Energy / Wh"@en ;
+                          rdfs:seeAlso unit:W-HR ;
+                          skos:altLabel "cycle_charge_energy_wh"@en ,
+                                        "cycle_charging_energy_watt_hour"@en ,
+                                        "cycle_charging_energy_wh"@en ;
+                          skos:definition "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the cycle. Equivalent to the cycle-level charge energy reported by some instruments (e.g. Arbin Charge_Energy in cycle-reset export configurations)."@en ;
+                          skos:exactMatch quantitykind:Energy ;
+                          skos:notation "cycle_charging_energy_wh" ;
+                          :latexSymbol "E_\\mathrm{chg}^\\mathrm{cyc}"^^xsd:string ;
+                          :latexFormula "E_\\mathrm{chg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} P(\\tau)\\,\\bigl[I(\\tau) > 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle},\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
+                          :obligation "optional" ;
+                          skos:prefLabel "Cycle Charging Energy / Wh"@en ;
+                          prov:wasDerivedFrom :power_watt ,
+                                              :cycle_count ;
+                          schema:description "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments."@en ;
+                          schema:measurementTechnique "Time integral of instantaneous power over the charge intervals (current > 0) of the current cycle."@en ;
+                          schema:name "Cycle Charging Energy / Wh"@en ;
+                          schema:unitCode "W.h" ;
+                          schema:unitText "watt hour"@en ;
+                          emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the cycle. Equivalent to the cycle-level charge energy reported by some instruments (e.g. Arbin Charge_Energy in cycle-reset export configurations)."@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count
 :cycle_count rdf:type owl:Class ;
              rdfs:subClassOf sosa:ObservableProperty ,
@@ -421,6 +510,215 @@ sosa:ObservableProperty rdf:type owl:Class .
              schema:unitCode "1" ;
              schema:unitText "one"@en ;
              emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_capacity_ah
+:cycle_cumulative_capacity_ah rdf:type owl:Class ;
+                              rdfs:subClassOf sosa:ObservableProperty ,
+                                              electrochemistry:ae108db7_8765_4329_9908_059277dee586 ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                                owl:someValuesFrom emmo:AmpereHour
+                                              ] ;
+                              rdfs:comment "Running accumulation of charge throughput within the current cycle, in ampere hour: the time integral of the absolute current from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_capacity_ah + cycle_discharging_capacity_ah."@en ;
+                              rdfs:label "Cycle Cumulative Capacity / Ah"@en ;
+                              rdfs:seeAlso unit:A-HR ;
+                              skos:altLabel "cycle_cumulative_capacity_ah"@en ,
+                                            "cycle_cumulative_capacity_ampere_hour"@en ;
+                              skos:definition "Running accumulation of charge throughput within the current cycle, in ampere hour: the time integral of the absolute current from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_capacity_ah + cycle_discharging_capacity_ah."@en ;
+                              skos:exactMatch quantitykind:ElectricCharge ;
+                              skos:notation "cycle_cumulative_capacity_ah" ;
+                              :latexSymbol "Q_\\mathrm{cum}^\\mathrm{cyc}"^^xsd:string ;
+                              :latexFormula "Q_\\mathrm{cum}^\\mathrm{cyc}(t) = Q_\\mathrm{chg}^\\mathrm{cyc}(t) + Q_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} \\bigl|I(\\tau)\\bigr|\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                              :obligation "optional" ;
+                              skos:prefLabel "Cycle Cumulative Capacity / Ah"@en ;
+                              prov:wasDerivedFrom :current_ampere ,
+                                                  :cycle_count ;
+                              schema:description "Running accumulation of charge throughput within the current cycle, in ampere hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments."@en ;
+                              schema:measurementTechnique "Time integral of the absolute value of current from the start of the current cycle."@en ;
+                              schema:name "Cycle Cumulative Capacity / Ah"@en ;
+                              schema:unitCode "A.h" ;
+                              schema:unitText "ampere hour"@en ;
+                              emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Running accumulation of charge throughput within the current cycle, in ampere hour: the time integral of the absolute current from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_capacity_ah + cycle_discharging_capacity_ah."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_energy_wh
+:cycle_cumulative_energy_wh rdf:type owl:Class ;
+                            rdfs:subClassOf sosa:ObservableProperty ,
+                                            electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                              owl:someValuesFrom emmo:WattHour
+                                            ] ;
+                            rdfs:comment "Running accumulation of energy throughput within the current cycle, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_energy_wh + cycle_discharging_energy_wh."@en ;
+                            rdfs:label "Cycle Cumulative Energy / Wh"@en ;
+                            rdfs:seeAlso unit:W-HR ;
+                            skos:altLabel "cycle_cumulative_energy_watt_hour"@en ,
+                                          "cycle_cumulative_energy_wh"@en ;
+                            skos:definition "Running accumulation of energy throughput within the current cycle, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_energy_wh + cycle_discharging_energy_wh."@en ;
+                            skos:exactMatch quantitykind:Energy ;
+                            skos:notation "cycle_cumulative_energy_wh" ;
+                            :latexSymbol "E_\\mathrm{cum}^\\mathrm{cyc}"^^xsd:string ;
+                            :latexFormula "E_\\mathrm{cum}^\\mathrm{cyc}(t) = E_\\mathrm{chg}^\\mathrm{cyc}(t) + E_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} P(\\tau)\\,\\operatorname{sgn} I(\\tau)\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                            :obligation "optional" ;
+                            skos:prefLabel "Cycle Cumulative Energy / Wh"@en ;
+                            prov:wasDerivedFrom :power_watt ,
+                                                :cycle_count ;
+                            schema:description "Running accumulation of energy throughput within the current cycle, in watt hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments."@en ;
+                            schema:measurementTechnique "Time integral of the current-signed instantaneous power from the start of the current cycle."@en ;
+                            schema:name "Cycle Cumulative Energy / Wh"@en ;
+                            schema:unitCode "W.h" ;
+                            schema:unitText "watt hour"@en ;
+                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Running accumulation of energy throughput within the current cycle, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_energy_wh + cycle_discharging_energy_wh."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_capacity_ah
+:cycle_discharging_capacity_ah rdf:type owl:Class ;
+                               rdfs:subClassOf sosa:ObservableProperty ,
+                                               electrochemistry:0141b5c2_9f15_46f4_82e6_92a104faa476 ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                                 owl:someValuesFrom emmo:AmpereHour
+                                               ] ;
+                               rdfs:comment "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the negated negative part of current from the start of the current cycle. Equivalent to the cycle-level discharge capacity reported by some instruments (e.g. Arbin Discharge_Capacity in cycle-reset export configurations), which reset at each cycle boundary. Its end-of-cycle value is the discharge capacity of that cycle, the quantity conventionally plotted in capacity-fade curves."@en ;
+                               rdfs:label "Cycle Discharging Capacity / Ah"@en ;
+                               rdfs:seeAlso unit:A-HR ;
+                               skos:altLabel "cycle_discharge_capacity_ah"@en ,
+                                             "cycle_discharging_capacity_ah"@en ,
+                                             "cycle_discharging_capacity_ampere_hour"@en ;
+                               skos:definition "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the negated negative part of current from the start of the current cycle. Equivalent to the cycle-level discharge capacity reported by some instruments (e.g. Arbin Discharge_Capacity in cycle-reset export configurations), which reset at each cycle boundary. Its end-of-cycle value is the discharge capacity of that cycle, the quantity conventionally plotted in capacity-fade curves."@en ;
+                               skos:exactMatch quantitykind:ElectricCharge ;
+                               skos:notation "cycle_discharging_capacity_ah" ;
+                               :latexSymbol "Q_\\mathrm{dchg}^\\mathrm{cyc}"^^xsd:string ;
+                               :latexFormula "Q_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} \\max\\!\\bigl(-I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                               :obligation "optional" ;
+                               skos:prefLabel "Cycle Discharging Capacity / Ah"@en ;
+                               prov:wasDerivedFrom :current_ampere ,
+                                                   :cycle_count ;
+                               schema:description "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments."@en ;
+                               schema:measurementTechnique "Time integral of the negated negative part of current from the start of the current cycle."@en ;
+                               schema:name "Cycle Discharging Capacity / Ah"@en ;
+                               schema:unitCode "A.h" ;
+                               schema:unitText "ampere hour"@en ;
+                               emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the negated negative part of current from the start of the current cycle. Equivalent to the cycle-level discharge capacity reported by some instruments (e.g. Arbin Discharge_Capacity in cycle-reset export configurations), which reset at each cycle boundary. Its end-of-cycle value is the discharge capacity of that cycle, the quantity conventionally plotted in capacity-fade curves."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_energy_wh
+:cycle_discharging_energy_wh rdf:type owl:Class ;
+                             rdfs:subClassOf sosa:ObservableProperty ,
+                                             electrochemistry:ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                               owl:someValuesFrom emmo:WattHour
+                                             ] ;
+                             rdfs:comment "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the cycle. Equivalent to the cycle-level discharge energy reported by some instruments (e.g. Arbin Discharge_Energy in cycle-reset export configurations)."@en ;
+                             rdfs:label "Cycle Discharging Energy / Wh"@en ;
+                             rdfs:seeAlso unit:W-HR ;
+                             skos:altLabel "cycle_discharge_energy_wh"@en ,
+                                           "cycle_discharging_energy_watt_hour"@en ,
+                                           "cycle_discharging_energy_wh"@en ;
+                             skos:definition "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the cycle. Equivalent to the cycle-level discharge energy reported by some instruments (e.g. Arbin Discharge_Energy in cycle-reset export configurations)."@en ;
+                             skos:exactMatch quantitykind:Energy ;
+                             skos:notation "cycle_discharging_energy_wh" ;
+                             :latexSymbol "E_\\mathrm{dchg}^\\mathrm{cyc}"^^xsd:string ;
+                             :latexFormula "E_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} -P(\\tau)\\,\\bigl[I(\\tau) < 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle},\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
+                             :obligation "optional" ;
+                             skos:prefLabel "Cycle Discharging Energy / Wh"@en ;
+                             prov:wasDerivedFrom :power_watt ,
+                                                 :cycle_count ;
+                             schema:description "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments."@en ;
+                             schema:measurementTechnique "Negated time integral of instantaneous power over the discharge intervals (current < 0) of the current cycle."@en ;
+                             schema:name "Cycle Discharging Energy / Wh"@en ;
+                             schema:unitCode "W.h" ;
+                             schema:unitText "watt hour"@en ;
+                             emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the cycle. Equivalent to the cycle-level discharge energy reported by some instruments (e.g. Arbin Discharge_Energy in cycle-reset export configurations)."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_capacity_ah
+:cycle_net_capacity_ah rdf:type owl:Class ;
+                       rdfs:subClassOf sosa:ObservableProperty ,
+                                       electrochemistry:791c1915_a791_4450_acd8_7f94764743b5 ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                         owl:someValuesFrom emmo:AmpereHour
+                                       ] ;
+                       rdfs:comment "Net charge transferred during the current cycle, in ampere hour. Defined as cycle_charging_capacity_ah minus cycle_discharging_capacity_ah; the running signed integral of current from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more charge is extracted than injected during the cycle. Its end-of-cycle value is the per-cycle coulombic slippage: the irreversible charge consumed by side reactions during that cycle."@en ;
+                       rdfs:label "Cycle Net Capacity / Ah"@en ;
+                       rdfs:seeAlso unit:A-HR ;
+                       skos:altLabel "cycle_net_capacity_ah"@en ,
+                                     "cycle_net_capacity_ampere_hour"@en ;
+                       skos:definition "Net charge transferred during the current cycle, in ampere hour. Defined as cycle_charging_capacity_ah minus cycle_discharging_capacity_ah; the running signed integral of current from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more charge is extracted than injected during the cycle. Its end-of-cycle value is the per-cycle coulombic slippage: the irreversible charge consumed by side reactions during that cycle."@en ;
+                       skos:exactMatch quantitykind:ElectricCharge ;
+                       skos:notation "cycle_net_capacity_ah" ;
+                       :latexSymbol "Q_\\mathrm{net}^\\mathrm{cyc}"^^xsd:string ;
+                       :latexFormula "Q_\\mathrm{net}^\\mathrm{cyc}(t) = Q_\\mathrm{chg}^\\mathrm{cyc}(t) - Q_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} I(\\tau)\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                       :obligation "optional" ;
+                       skos:prefLabel "Cycle Net Capacity / Ah"@en ;
+                       prov:wasDerivedFrom :cycle_charging_capacity_ah ,
+                                           :cycle_discharging_capacity_ah ;
+                       schema:description "Running net capacity within the current cycle: cycle_charging_capacity_ah - cycle_discharging_capacity_ah. Can be negative; resets to zero when cycle_count increments."@en ;
+                       schema:measurementTechnique "Running signed integral of current from the start of the current cycle."@en ;
+                       schema:name "Cycle Net Capacity / Ah"@en ;
+                       schema:unitCode "A.h" ;
+                       schema:unitText "ampere hour"@en ;
+                       emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net charge transferred during the current cycle, in ampere hour. Defined as cycle_charging_capacity_ah minus cycle_discharging_capacity_ah; the running signed integral of current from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more charge is extracted than injected during the cycle. Its end-of-cycle value is the per-cycle coulombic slippage: the irreversible charge consumed by side reactions during that cycle."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_energy_wh
+:cycle_net_energy_wh rdf:type owl:Class ;
+                     rdfs:subClassOf sosa:ObservableProperty ,
+                                     electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                       owl:someValuesFrom emmo:WattHour
+                                     ] ;
+                     rdfs:comment "Net energy transferred during the current cycle, in watt hour. Defined as cycle_charging_energy_wh minus cycle_discharging_energy_wh; the running signed integral of instantaneous power from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more energy is extracted than delivered during the cycle. Its end-of-cycle value is the net energy absorbed over that cycle, reflecting voltage hysteresis and other losses."@en ;
+                     rdfs:label "Cycle Net Energy / Wh"@en ;
+                     rdfs:seeAlso unit:W-HR ;
+                     skos:altLabel "cycle_net_energy_watt_hour"@en ,
+                                   "cycle_net_energy_wh"@en ;
+                     skos:definition "Net energy transferred during the current cycle, in watt hour. Defined as cycle_charging_energy_wh minus cycle_discharging_energy_wh; the running signed integral of instantaneous power from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more energy is extracted than delivered during the cycle. Its end-of-cycle value is the net energy absorbed over that cycle, reflecting voltage hysteresis and other losses."@en ;
+                     skos:exactMatch quantitykind:Energy ;
+                     skos:notation "cycle_net_energy_wh" ;
+                     :latexSymbol "E_\\mathrm{net}^\\mathrm{cyc}"^^xsd:string ;
+                     :latexFormula "E_\\mathrm{net}^\\mathrm{cyc}(t) = E_\\mathrm{chg}^\\mathrm{cyc}(t) - E_\\mathrm{dchg}^\\mathrm{cyc}(t) = \\frac{1}{3600}\\int_{t_c}^{t} P(\\tau)\\,\\mathrm{d}\\tau,\\quad t_c = \\text{start of the current cycle}"^^xsd:string ;
+                     :obligation "optional" ;
+                     skos:prefLabel "Cycle Net Energy / Wh"@en ;
+                     prov:wasDerivedFrom :cycle_charging_energy_wh ,
+                                         :cycle_discharging_energy_wh ;
+                     schema:description "Running net energy within the current cycle: cycle_charging_energy_wh - cycle_discharging_energy_wh. Can be negative; resets to zero when cycle_count increments."@en ;
+                     schema:measurementTechnique "Running signed integral of instantaneous power from the start of the current cycle."@en ;
+                     schema:name "Cycle Net Energy / Wh"@en ;
+                     schema:unitCode "W.h" ;
+                     schema:unitText "watt hour"@en ;
+                     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Net energy transferred during the current cycle, in watt hour. Defined as cycle_charging_energy_wh minus cycle_discharging_energy_wh; the running signed integral of instantaneous power from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more energy is extracted than delivered during the cycle. Its end-of-cycle value is the net energy absorbed over that cycle, reflecting voltage hysteresis and other losses."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm
+:dc_internal_resistance_ohm rdf:type owl:Class ;
+                            rdfs:subClassOf sosa:ObservableProperty ,
+                                            :internal_resistance_ohm ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                              owl:someValuesFrom emmo:Ohm
+                                            ] ;
+                            rdfs:comment "Direct current internal resistance of the test object, in ohm, determined from the voltage response to a current step (e.g. delta-V over delta-I across a current pulse). The method parameters (pulse magnitude and duration) are instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en ;
+                            rdfs:label "DC Internal Resistance / ohm"@en ;
+                            rdfs:seeAlso unit:OHM ;
+                            skos:altLabel "dc_internal_resistance_ohm"@en ,
+                                          "dc_resistance_ohm"@en ,
+                                          "dcir"@en ;
+                            skos:definition "Direct current internal resistance of the test object, in ohm, determined from the voltage response to a current step (e.g. delta-V over delta-I across a current pulse). The method parameters (pulse magnitude and duration) are instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en ;
+                            skos:exactMatch quantitykind:Resistance ;
+                            skos:notation "dc_internal_resistance_ohm" ;
+                            :latexSymbol "R_\\mathrm{DC}"^^xsd:string ;
+                            :obligation "optional" ;
+                            skos:prefLabel "DC Internal Resistance / ohm"@en ;
+                            schema:description "DC internal resistance from the voltage response to a current step. Method parameters are instrument-specific; values from different methods are not directly comparable."@en ;
+                            schema:name "DC Internal Resistance / ohm"@en ;
+                            schema:unitCode "Ohm" ;
+                            schema:unitText "ohm"@en ;
+                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Direct current internal resistance of the test object, in ohm, determined from the voltage response to a current step (e.g. delta-V over delta-I across a current pulse). The method parameters (pulse magnitude and duration) are instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#discharging_capacity_ah
@@ -469,7 +767,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                        skos:exactMatch quantitykind:Energy ;
                        skos:notation "discharging_energy_wh" ;
                        :latexSymbol "E_\\mathrm{dchg}"^^xsd:string ;
-                       :latexFormula "E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t \\max\\!\\bigl(-P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau"^^xsd:string ;
+                       :latexFormula "E_\\mathrm{dchg}(t) = \\frac{1}{3600}\\int_0^t -P(\\tau)\\,\\bigl[I(\\tau) < 0\\bigr]\\,\\mathrm{d}\\tau,\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
                        :obligation "optional" ;
                        skos:prefLabel "Discharging Energy / Wh"@en ;
                        prov:wasDerivedFrom :power_watt ,
@@ -523,22 +821,22 @@ sosa:ObservableProperty rdf:type owl:Class .
                                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                            owl:someValuesFrom emmo:Ohm
                                          ] ;
-                         rdfs:comment "Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en ;
+                         rdfs:comment "Internal resistance of the test object, in ohm, as reported by the instrument; the determination method is unspecified. Where the determination method is known, use the more specific dc_internal_resistance_ohm or ac_internal_resistance_ohm."@en ;
                          rdfs:label "Internal Resistance / ohm"@en ;
                          rdfs:seeAlso unit:OHM ;
                          skos:altLabel "internal_resistance_ohm"@en ;
-                         skos:definition "Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en ;
+                         skos:definition "Internal resistance of the test object, in ohm, as reported by the instrument; the determination method is unspecified. Where the determination method is known, use the more specific dc_internal_resistance_ohm or ac_internal_resistance_ohm."@en ;
                          skos:exactMatch quantitykind:ElectricResistance ;
                          skos:hiddenLabel "Internal Resistance / Ohm"@en ;
                          skos:notation "internal_resistance_ohm" ;
-                         :latexSymbol "R_\\mathrm{DC}"^^xsd:string ;
+                         :latexSymbol "R_\\mathrm{int}"^^xsd:string ;
                          :obligation "optional" ;
                          skos:prefLabel "Internal Resistance / ohm"@en ;
-                         schema:description "Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en ;
+                         schema:description "Internal resistance of the test object, in ohm, as reported by the instrument; the determination method is unspecified. Where the determination method is known, use the more specific dc_internal_resistance_ohm or ac_internal_resistance_ohm."@en ;
                          schema:name "Internal Resistance / ohm"@en ;
                          schema:unitCode "Ohm" ;
                          schema:unitText "ohm"@en ;
-                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable."@en .
+                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Internal resistance of the test object, in ohm, as reported by the instrument; the determination method is unspecified. Where the determination method is known, use the more specific dc_internal_resistance_ohm or ac_internal_resistance_ohm."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#net_capacity_ah
@@ -753,27 +1051,27 @@ sosa:ObservableProperty rdf:type owl:Class .
                                            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                            owl:someValuesFrom emmo:WattHour
                                          ] ;
-                         rdfs:comment "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step."@en ;
+                         rdfs:comment "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the step."@en ;
                          rdfs:label "Step Charging Energy / Wh"@en ;
                          rdfs:seeAlso unit:W-HR ;
                          skos:altLabel "step_charge_energy_wh"@en ,
                                        "step_charging_energy_watt_hour"@en ,
                                        "step_charging_energy_wh"@en ;
-                         skos:definition "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step."@en ;
+                         skos:definition "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the step."@en ;
                          skos:exactMatch quantitykind:Energy ;
                          skos:notation "step_charging_energy_wh" ;
                          :latexSymbol "E_\\mathrm{chg}^\\mathrm{step}"^^xsd:string ;
-                         :latexFormula "E_\\mathrm{chg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} \\max\\!\\bigl(P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step}"^^xsd:string ;
+                         :latexFormula "E_\\mathrm{chg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} P(\\tau)\\,\\bigl[I(\\tau) > 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step},\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
                          :obligation "optional" ;
                          skos:prefLabel "Step Charging Energy / Wh"@en ;
                          prov:wasDerivedFrom :power_watt ,
                                              :step_time_second ;
                          schema:description "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition."@en ;
-                         schema:measurementTechnique "Time integral of the positive part of instantaneous power over the duration of the current test step."@en ;
+                         schema:measurementTechnique "Time integral of instantaneous power over the charge intervals (current > 0) of the current test step."@en ;
                          schema:name "Step Charging Energy / Wh"@en ;
                          schema:unitCode "W.h" ;
                          schema:unitText "watt hour"@en ;
-                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step."@en .
+                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the step."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_count
@@ -844,17 +1142,17 @@ sosa:ObservableProperty rdf:type owl:Class .
                                              owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                              owl:someValuesFrom emmo:WattHour
                                            ] ;
-                           rdfs:comment "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
+                           rdfs:comment "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the current-signed instantaneous power over the step duration."@en ;
                            rdfs:label "Step Cumulative Energy / Wh"@en ;
                            rdfs:seeAlso unit:W-HR ;
                            skos:altLabel "step_cumulative_energy_watt_hour"@en ,
                                          "step_cumulative_energy_wh"@en ,
                                          "step_energy_wh"@en ;
-                           skos:definition "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration."@en ;
+                           skos:definition "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the current-signed instantaneous power over the step duration."@en ;
                            skos:exactMatch quantitykind:Energy ;
                            skos:notation "step_cumulative_energy_wh" ;
                            :latexSymbol "E_\\mathrm{cum}^\\mathrm{step}"^^xsd:string ;
-                           :latexFormula "E_\\mathrm{cum}^\\mathrm{step}(t) = E_\\mathrm{chg}^\\mathrm{step}(t) + E_\\mathrm{dchg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} \\bigl|P(\\tau)\\bigr|\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step}"^^xsd:string ;
+                           :latexFormula "E_\\mathrm{cum}^\\mathrm{step}(t) = E_\\mathrm{chg}^\\mathrm{step}(t) + E_\\mathrm{dchg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} P(\\tau)\\,\\operatorname{sgn} I(\\tau)\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step}"^^xsd:string ;
                            :obligation "optional" ;
                            skos:prefLabel "Step Cumulative Energy / Wh"@en ;
                            prov:wasDerivedFrom :power_watt ,
@@ -862,7 +1160,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                            prov:wasRevisionOf :step_energy_wh ;
                            dcterms:replaces :step_energy_wh ;
                            schema:description "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition."@en ;
-                           schema:measurementTechnique "Time integral of the absolute value of instantaneous power from the start of the current test step."@en ;
+                           schema:measurementTechnique "Time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current test step."@en ;
                            schema:name "Step Cumulative Energy / Wh"@en ;
                            schema:unitCode "W.h" ;
                            schema:unitText "watt hour"@en ;
@@ -908,27 +1206,27 @@ sosa:ObservableProperty rdf:type owl:Class .
                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                               owl:someValuesFrom emmo:WattHour
                                             ] ;
-                            rdfs:comment "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step."@en ;
+                            rdfs:comment "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the step."@en ;
                             rdfs:label "Step Discharging Energy / Wh"@en ;
                             rdfs:seeAlso unit:W-HR ;
                             skos:altLabel "step_discharge_energy_wh"@en ,
                                           "step_discharging_energy_watt_hour"@en ,
                                           "step_discharging_energy_wh"@en ;
-                            skos:definition "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step."@en ;
+                            skos:definition "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the step."@en ;
                             skos:exactMatch quantitykind:Energy ;
                             skos:notation "step_discharging_energy_wh" ;
                             :latexSymbol "E_\\mathrm{dchg}^\\mathrm{step}"^^xsd:string ;
-                            :latexFormula "E_\\mathrm{dchg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} \\max\\!\\bigl(-P(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step}"^^xsd:string ;
+                            :latexFormula "E_\\mathrm{dchg}^\\mathrm{step}(t) = \\frac{1}{3600}\\int_{t_s}^{t} -P(\\tau)\\,\\bigl[I(\\tau) < 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_s = \\text{start of the current step},\\quad [\\cdot] = \\text{1 if true, 0 otherwise}"^^xsd:string ;
                             :obligation "optional" ;
                             skos:prefLabel "Step Discharging Energy / Wh"@en ;
                             prov:wasDerivedFrom :power_watt ,
                                                 :step_time_second ;
                             schema:description "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition."@en ;
-                            schema:measurementTechnique "Time integral of the negated negative part of instantaneous power over the duration of the current test step."@en ;
+                            schema:measurementTechnique "Negated time integral of instantaneous power over the discharge intervals (current < 0) of the current test step."@en ;
                             schema:name "Step Discharging Energy / Wh"@en ;
                             schema:unitCode "W.h" ;
                             schema:unitText "watt hour"@en ;
-                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step."@en .
+                            emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the step."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_energy_wh
@@ -940,12 +1238,12 @@ sosa:ObservableProperty rdf:type owl:Class .
                                   owl:someValuesFrom emmo:WattHour
                                 ] ;
                 owl:deprecated "true"^^xsd:boolean ;
-                rdfs:comment "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
+                rdfs:comment "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
                 rdfs:label "Step Energy / Wh"@en ;
                 rdfs:seeAlso unit:W-HR ;
                 skos:altLabel "step_energy_watt_hour"@en ,
                               "step_energy_wh"@en ;
-                skos:definition "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
+                skos:definition "Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value."@en ;
                 skos:exactMatch quantitykind:Energy ;
                 skos:historyNote "Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged."@en ;
                 skos:notation "step_energy_wh" ;
@@ -1298,6 +1596,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                        skos:definition "Test time recorded in millisecond."@en ;
                        skos:exactMatch quantitykind:Time ;
                        skos:notation "test_time_millisecond" ;
+                       skos:historyNote "Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility."@en ;
+                       dcterms:isReplacedBy :test_time_second ;
                        skos:prefLabel "Test Time / ms"@en ;
                        schema:description "Test time recorded in millisecond."@en ;
                        schema:name "Test Time / ms"@en ;
@@ -1349,6 +1649,8 @@ sosa:ObservableProperty rdf:type owl:Class .
                        skos:definition "Unix time recorded in millisecond."@en ;
                        skos:exactMatch quantitykind:Time ;
                        skos:notation "unix_time_millisecond" ;
+                       skos:historyNote "Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility."@en ;
+                       dcterms:isReplacedBy :unix_time_second ;
                        skos:prefLabel "Unix Time / ms"@en ;
                        schema:description "Unix time recorded in millisecond."@en ;
                        schema:name "Unix Time / ms"@en ;

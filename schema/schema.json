@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/schema",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/schema",
   "@type": [
     "csvw:TableSchema",
     "schema:DigitalDocument"
@@ -10,7 +10,7 @@
   "schema:description": "Standard table schema for battery cycling test data in CSV format",
   "dcterms:created": "2025-03-14",
   "dcterms:modified": "2026-06-11",
-  "dcterms:version": "1.1.1",
+  "dcterms:version": "1.2.0",
   "dcterms:license": {
     "@id": "https://spdx.org/licenses/Apache-2.0.html"
   },
@@ -18,7 +18,7 @@
     "@id": "https://www.w3.org/TR/tabular-data-model/"
   },
   "dcterms:publisher": "Battery Data Alliance",
-  "schema:version": "1.1.1",
+  "schema:version": "1.2.0",
   "schema:license": "https://spdx.org/licenses/Apache-2.0.html",
   "schema:publisher": {
     "@type": "schema:Organization",
