@@ -13,6 +13,62 @@ Battery Data Format
 .. raw:: html
 
    <hr class="term-separator" />
+   <div id="ac_internal_resistance_ohm"></div>
+
+AC Internal Resistance / ohm
+----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">ac_internal_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">ac_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">acr</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Resistance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Resistance')){window.location.href='http://qudt.org/vocab/quantitykind/Resistance';return false;}">http://qudt.org/vocab/quantitykind/Resistance</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Alternating current internal resistance of the test object, in ohm: the magnitude of the impedance at a fixed excitation frequency, conventionally 1 kHz unless otherwise stated. Equivalent to the ACR quantity reported by some instruments (e.g. Arbin ACR). The excitation frequency should be recorded in accompanying metadata.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">ac_internal_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(R_\mathrm{AC}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Ohm' onclick="if(!document.getElementById('Ohm')){window.location.href='https://w3id.org/emmo#Ohm';return false;}">Ohm</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#internal_resistance_ohm' onclick="if(!document.getElementById('internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#internal_resistance_ohm';return false;}">Internal Resistance / ohm</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
    <div id="absolute_impedance_ohm"></div>
 
 Absolute Impedance / ohm
@@ -33,7 +89,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolut
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the magnitude of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The magnitude of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -193,7 +249,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#applied
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">External pressure applied to the test object, in pascal.</td>
+    <td class="element-table-value">External pressure actively applied to the test object and controlled by an external agent (e.g. a fixture, clamp, or press), in pascal. Distinguished from surface_pressure_pa, which is the pressure measured at the surface of the test object regardless of its source.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -317,7 +373,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#chargin
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{chg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{chg}(t) = \frac{1}{3600}\int_0^t P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -365,7 +421,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models.</td>
+    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -396,6 +452,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
     <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
   </tr>
   </table>
+
+.. note::
+
+   Suitable for throughput-based degradation models.
 
 
 .. raw:: html
@@ -437,7 +497,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{cum}(t) = E_\mathrm{chg}(t) + E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \bigl|P(\tau)\bigr|\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{cum}(t) = E_\mathrm{chg}(t) + E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t P(\tau)\,\operatorname{sgn} I(\tau)\,\mathrm{d}\tau\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -485,7 +545,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#current
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous current recorded in ampere.</td>
+    <td class="element-table-value">Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -506,6 +566,134 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#current
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_a24f8581_a5a4_41a4_bb45_d0fdd5c0d810' onclick="if(!document.getElementById('electrochemistry_a24f8581_a5a4_41a4_bb45_d0fdd5c0d810')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_a24f8581_a5a4_41a4_bb45_d0fdd5c0d810';return false;}">InstantaneousCurrent</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_charging_capacity_ah"></div>
+
+Cycle Charging Capacity / Ah
+----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charge_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charging_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the positive part of current from the start of the current cycle. Equivalent to the cycle-level charge capacity reported by some instruments (e.g. Arbin Charge_Capacity in cycle-reset export configurations), which reset at each cycle boundary.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#10763eb0_dbc9_4d34_bd1a_7b8996590d45' onclick="if(!document.getElementById('10763eb0_dbc9_4d34_bd1a_7b8996590d45')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#10763eb0_dbc9_4d34_bd1a_7b8996590d45';return false;}">electrochemistry.10763eb0_dbc9_4d34_bd1a_7b8996590d45</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_charging_energy_wh"></div>
+
+Cycle Charging Energy / Wh
+--------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charge_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the cycle. Equivalent to the cycle-level charge energy reported by some instruments (e.g. Arbin Charge_Energy in cycle-reset export configurations).</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle},\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#2ab7af60_da58_4243_b3bc_cbb2155cac53' onclick="if(!document.getElementById('2ab7af60_da58_4243_b3bc_cbb2155cac53')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#2ab7af60_da58_4243_b3bc_cbb2155cac53';return false;}">electrochemistry.2ab7af60_da58_4243_b3bc_cbb2155cac53</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#power_watt' onclick="if(!document.getElementById('power_watt')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_watt';return false;}">Power / W</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
   </tr>
   </table>
 
@@ -562,6 +750,430 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8' onclick="if(!document.getElementById('electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_5766a819_c319_48ba_ab9a_ce3bd8fedee8';return false;}">CycleIndex</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_cumulative_capacity_ah"></div>
+
+Cycle Cumulative Capacity / Ah
+------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_cumulative_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current cycle, in ampere hour: the time integral of the absolute current from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_capacity_ah + cycle_discharging_capacity_ah.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{cyc}(t) = Q_\mathrm{chg}^\mathrm{cyc}(t) + Q_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#ae108db7_8765_4329_9908_059277dee586';return false;}">electrochemistry.ae108db7_8765_4329_9908_059277dee586</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_cumulative_energy_wh"></div>
+
+Cycle Cumulative Energy / Wh
+----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_cumulative_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_cumulative_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current cycle, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_energy_wh + cycle_discharging_energy_wh.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_cumulative_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{cyc}(t) = E_\mathrm{chg}^\mathrm{cyc}(t) + E_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} P(\tau)\,\operatorname{sgn} I(\tau)\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#46376e5d_9627_4514_9881_9e62083625c3';return false;}">electrochemistry.46376e5d_9627_4514_9881_9e62083625c3</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#power_watt' onclick="if(!document.getElementById('power_watt')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_watt';return false;}">Power / W</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_discharging_capacity_ah"></div>
+
+Cycle Discharging Capacity / Ah
+-------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharge_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharging_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the time integral of the negated negative part of current from the start of the current cycle. Equivalent to the cycle-level discharge capacity reported by some instruments (e.g. Arbin Discharge_Capacity in cycle-reset export configurations), which reset at each cycle boundary. Its end-of-cycle value is the discharge capacity of that cycle, the quantity conventionally plotted in capacity-fade curves.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#0141b5c2_9f15_46f4_82e6_92a104faa476' onclick="if(!document.getElementById('0141b5c2_9f15_46f4_82e6_92a104faa476')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#0141b5c2_9f15_46f4_82e6_92a104faa476';return false;}">electrochemistry.0141b5c2_9f15_46f4_82e6_92a104faa476</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_discharging_energy_wh"></div>
+
+Cycle Discharging Energy / Wh
+-----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharge_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative (>= 0); resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the cycle. Equivalent to the cycle-level discharge energy reported by some instruments (e.g. Arbin Discharge_Energy in cycle-reset export configurations).</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} -P(\tau)\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle},\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#ca36cbf3_1fed_4b88_9177_b4e16ad00cf7' onclick="if(!document.getElementById('ca36cbf3_1fed_4b88_9177_b4e16ad00cf7')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#ca36cbf3_1fed_4b88_9177_b4e16ad00cf7';return false;}">electrochemistry.ca36cbf3_1fed_4b88_9177_b4e16ad00cf7</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#power_watt' onclick="if(!document.getElementById('power_watt')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_watt';return false;}">Power / W</a>, <a href='#cycle_count' onclick="if(!document.getElementById('cycle_count')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_count';return false;}">Cycle Count / 1</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_net_capacity_ah"></div>
+
+Cycle Net Capacity / Ah
+-----------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_net_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net charge transferred during the current cycle, in ampere hour. Defined as cycle_charging_capacity_ah minus cycle_discharging_capacity_ah; the running signed integral of current from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more charge is extracted than injected during the cycle. Its end-of-cycle value is the per-cycle coulombic slippage: the irreversible charge consumed by side reactions during that cycle.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{cyc}(t) = Q_\mathrm{chg}^\mathrm{cyc}(t) - Q_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} I(\tau)\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#791c1915_a791_4450_acd8_7f94764743b5' onclick="if(!document.getElementById('791c1915_a791_4450_acd8_7f94764743b5')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#791c1915_a791_4450_acd8_7f94764743b5';return false;}">electrochemistry.791c1915_a791_4450_acd8_7f94764743b5</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#cycle_charging_capacity_ah' onclick="if(!document.getElementById('cycle_charging_capacity_ah')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_capacity_ah';return false;}">Cycle Charging Capacity / Ah</a>, <a href='#cycle_discharging_capacity_ah' onclick="if(!document.getElementById('cycle_discharging_capacity_ah')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_capacity_ah';return false;}">Cycle Discharging Capacity / Ah</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="cycle_net_energy_wh"></div>
+
+Cycle Net Energy / Wh
+---------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_net_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">cycle_net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net energy transferred during the current cycle, in watt hour. Defined as cycle_charging_energy_wh minus cycle_discharging_energy_wh; the running signed integral of instantaneous power from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more energy is extracted than delivered during the cycle. Its end-of-cycle value is the net energy absorbed over that cycle, reflecting voltage hysteresis and other losses.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">cycle_net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{cyc}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{cyc}(t) = E_\mathrm{chg}^\mathrm{cyc}(t) - E_\mathrm{dchg}^\mathrm{cyc}(t) = \frac{1}{3600}\int_{t_c}^{t} P(\tau)\,\mathrm{d}\tau,\quad t_c = \text{start of the current cycle}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#46376e5d_9627_4514_9881_9e62083625c3';return false;}">electrochemistry.46376e5d_9627_4514_9881_9e62083625c3</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#cycle_charging_energy_wh' onclick="if(!document.getElementById('cycle_charging_energy_wh')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_energy_wh';return false;}">Cycle Charging Energy / Wh</a>, <a href='#cycle_discharging_energy_wh' onclick="if(!document.getElementById('cycle_discharging_energy_wh')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_energy_wh';return false;}">Cycle Discharging Energy / Wh</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="dc_internal_resistance_ohm"></div>
+
+DC Internal Resistance / ohm
+----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">dc_internal_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">dc_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">dcir</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">exactMatch</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Resistance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Resistance')){window.location.href='http://qudt.org/vocab/quantitykind/Resistance';return false;}">http://qudt.org/vocab/quantitykind/Resistance</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Direct current internal resistance of the test object, in ohm, determined from the voltage response to a current step (e.g. delta-V over delta-I across a current pulse). The method parameters (pulse magnitude and duration) are instrument-specific and not standardised; values obtained with different methods are not directly comparable.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">dc_internal_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(R_\mathrm{DC}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Ohm' onclick="if(!document.getElementById('Ohm')){window.location.href='https://w3id.org/emmo#Ohm';return false;}">Ohm</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#internal_resistance_ohm' onclick="if(!document.getElementById('internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#internal_resistance_ohm';return false;}">Internal Resistance / ohm</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
   </tr>
   </table>
 
@@ -665,7 +1277,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#dischar
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t -P(\tau)\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -709,7 +1321,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequen
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the frequency of an applied periodic excitation or measured response, expressed in hertz</td>
+    <td class="element-table-value">The frequency of the applied periodic excitation or measured response, in hertz.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -753,7 +1365,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#imagina
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the imaginary component of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -801,7 +1413,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Direct current internal resistance recorded in ohm.</td>
+    <td class="element-table-value">Internal resistance of the test object, in ohm, as reported by the instrument; the determination method is unspecified. Where the determination method is known, use the more specific dc_internal_resistance_ohm or ac_internal_resistance_ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -809,7 +1421,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
-    <td class="element-table-value">\(R_0\)</td>
+    <td class="element-table-value">\(R_\mathrm{int}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -822,6 +1434,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_f94678d6_1386_48fc_8e54_024921924401' onclick="if(!document.getElementById('electrochemistry_f94678d6_1386_48fc_8e54_024921924401')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_f94678d6_1386_48fc_8e54_024921924401';return false;}">InternalApparentResistance</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
+    <td class="element-table-value"><a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a>, <a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a></td>
   </tr>
   </table>
 
@@ -969,7 +1585,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees</td>
+    <td class="element-table-value">The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -981,7 +1597,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(\phi = \arctan\!\left(\frac{Z_\mathrm{im}}{Z_\mathrm{re}}\right) \cdot \frac{180}{\pi}\)</td>
+    <td class="element-table-value">\(\phi = \operatorname{atan2}\!\left(Z_\mathrm{im},\,Z_\mathrm{re}\right) \cdot \frac{180}{\pi}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1081,7 +1697,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_im
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the real component of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The real (resistive) component of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1125,11 +1741,15 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning</td>
+    <td class="element-table-value">An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">record_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(i\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1185,7 +1805,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1237,7 +1857,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step.</td>
+    <td class="element-table-value">Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) of the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1249,7 +1869,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_s = \text{start of the current step},\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1306,6 +1926,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_co
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_count</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(k\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1365,7 +1989,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1417,7 +2041,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration.</td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the current-signed instantaneous power over the step duration.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1429,7 +2053,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\operatorname{sgn} I(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1493,7 +2117,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1545,7 +2169,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step.</td>
+    <td class="element-table-value">Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1557,7 +2181,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} -P(\tau)\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_s = \text{start of the current step},\quad [\cdot] = \text{1 if true, 0 otherwise}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1652,6 +2276,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
     <td class="element-table-value">step_index</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(j\)</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
     <td class="element-table-value">optional</td>
   </tr>
@@ -1705,7 +2333,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1765,7 +2393,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1809,7 +2437,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition</td>
+    <td class="element-table-value">Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1893,7 +2521,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Surface pressure recorded in pascal.</td>
+    <td class="element-table-value">Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1945,7 +2573,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Surface temperature recorded in degree Celsius.</td>
+    <td class="element-table-value">Temperature measured at the surface of the test object, in degree Celsius, regardless of which sensor channel recorded it. Use this term when a column is explicitly a surface (skin) temperature without channel information; channel-indexed auxiliary sensors map to temperature_t1_celsius through temperature_t5_celsius, whose placement is setup-defined.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1967,10 +2595,6 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a>, <a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a></td>
-  </tr>
   </table>
 
 
@@ -1979,14 +2603,22 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
    <hr class="term-separator" />
    <div id="temperature_t1_celsius"></div>
 
-Surface Temperature T1 / degC
------------------------------
+Temperature T1 / degC
+---------------------
 
 IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius
 
 .. raw:: html
 
   <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">Surface Temperature T1 / degC</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">surface_temperature_t1_celsius</td>
+  </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
     <td class="element-table-value">temperature_t1_celsius</td>
@@ -2001,7 +2633,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
+    <td class="element-table-value">Temperature recorded by auxiliary temperature channel 1 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2021,9 +2653,13 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#surface_temperature_celsius' onclick="if(!document.getElementById('surface_temperature_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius';return false;}">Surface Temperature / degC</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
   </table>
+
+.. note::
+
+   Default mapping convention: a single unqualified temperature column from a cycler, or an unqualified numbered channel (T1), maps to temperature_t1_celsius. Columns explicitly designated as chamber, environment, or ambient temperature map to ambient_temperature_celsius; columns explicitly designated as surface (skin) temperature without channel information map to surface_temperature_celsius.
 
 
 .. raw:: html
@@ -2031,14 +2667,22 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
    <hr class="term-separator" />
    <div id="temperature_t2_celsius"></div>
 
-Surface Temperature T2 / degC
------------------------------
+Temperature T2 / degC
+---------------------
 
 IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius
 
 .. raw:: html
 
   <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">Surface Temperature T2 / degC</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">surface_temperature_t2_celsius</td>
+  </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
     <td class="element-table-value">temperature_t2_celsius</td>
@@ -2053,7 +2697,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
+    <td class="element-table-value">Temperature recorded by auxiliary temperature channel 2 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2073,7 +2717,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#surface_temperature_celsius' onclick="if(!document.getElementById('surface_temperature_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius';return false;}">Surface Temperature / degC</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
   </table>
 
@@ -2083,14 +2727,22 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
    <hr class="term-separator" />
    <div id="temperature_t3_celsius"></div>
 
-Surface Temperature T3 / degC
------------------------------
+Temperature T3 / degC
+---------------------
 
 IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius
 
 .. raw:: html
 
   <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">Surface Temperature T3 / degC</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">surface_temperature_t3_celsius</td>
+  </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
     <td class="element-table-value">temperature_t3_celsius</td>
@@ -2105,7 +2757,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
+    <td class="element-table-value">Temperature recorded by auxiliary temperature channel 3 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2125,7 +2777,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#surface_temperature_celsius' onclick="if(!document.getElementById('surface_temperature_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius';return false;}">Surface Temperature / degC</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
   </table>
 
@@ -2135,14 +2787,22 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
    <hr class="term-separator" />
    <div id="temperature_t4_celsius"></div>
 
-Surface Temperature T4 / degC
------------------------------
+Temperature T4 / degC
+---------------------
 
 IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius
 
 .. raw:: html
 
   <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">Surface Temperature T4 / degC</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">surface_temperature_t4_celsius</td>
+  </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
     <td class="element-table-value">temperature_t4_celsius</td>
@@ -2157,7 +2817,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
+    <td class="element-table-value">Temperature recorded by auxiliary temperature channel 4 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2177,7 +2837,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#surface_temperature_celsius' onclick="if(!document.getElementById('surface_temperature_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius';return false;}">Surface Temperature / degC</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
   </table>
 
@@ -2187,14 +2847,22 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
    <hr class="term-separator" />
    <div id="temperature_t5_celsius"></div>
 
-Surface Temperature T5 / degC
------------------------------
+Temperature T5 / degC
+---------------------
 
 IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius
 
 .. raw:: html
 
   <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">Surface Temperature T5 / degC</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">surface_temperature_t5_celsius</td>
+  </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
     <td class="element-table-value">temperature_t5_celsius</td>
@@ -2209,7 +2877,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
+    <td class="element-table-value">Temperature recorded by auxiliary temperature channel 5 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2229,7 +2897,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#surface_temperature_celsius' onclick="if(!document.getElementById('surface_temperature_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface_temperature_celsius';return false;}">Surface Temperature / degC</a>, <a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22' onclick="if(!document.getElementById('EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22')){window.location.href='https://w3id.org/emmo#EMMO_66bc9029_f473_45ff_bab9_c3509ff37a22';return false;}">CelsiusTemperature</a></td>
   </tr>
   </table>
 
@@ -2261,7 +2929,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Test time recorded in second.</td>
+    <td class="element-table-value">Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2313,11 +2981,15 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Unix time recorded in second.</td>
+    <td class="element-table-value">Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds. The value identifies an absolute instant and is independent of local time zone: the same physical moment has the same value everywhere, and local wall-clock times must be converted to UTC before encoding.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_second</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(t_\mathrm{unix}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -2332,6 +3004,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05' onclick="if(!document.getElementById('electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05';return false;}">TestTime</a></td>
   </tr>
   </table>
+
+.. note::
+
+   A common conversion error is computing seconds since the epoch from a naive local wall-clock timestamp as if it were UTC, which shifts all values by the local UTC offset (including daylight-saving changes mid-test). Instruments that log local time must have their timestamps converted to UTC, not reinterpreted.
 
 
 .. raw:: html
@@ -2361,7 +3037,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous voltage recorded in volt.</td>
+    <td class="element-table-value">Instantaneous voltage measured across the terminals of the test object, in volt.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2465,7 +3141,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2520,6 +3196,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value">test_time_millisecond</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
     <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#MilliSecond' onclick="if(!document.getElementById('MilliSecond')){window.location.href='https://w3id.org/emmo#MilliSecond';return false;}">MilliSecond</a></li></ul></div></td>
   </tr>
@@ -2562,6 +3242,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_millisecond</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>

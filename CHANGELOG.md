@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-06-11
+
+### Added
+
+- **Cycle-scope running quantities** (8 terms): `cycle_{charging,discharging,cumulative,net}_capacity_ah` and `cycle_{charging,discharging,cumulative,net}_energy_wh` — running accumulations within the current cycle, reset when `cycle_count` increments (cycle boundaries remain instrument-defined). These are the quantities cyclers natively export in cycle-reset configurations (e.g. Arbin `Charge_Capacity(Ah)` / `Discharge_Capacity(Ah)`, noted in the definitions); the end-of-cycle value of `cycle_discharging_capacity_ah` is the capacity-fade quantity, and the end-of-cycle value of `cycle_net_*` is the per-cycle coulombic slippage / net energy loss. End-of-cycle aggregate terms and the efficiency ratios (`coulombic_efficiency`, `energy_efficiency`) are deferred to the per-cycle summary-table release.
+- **Resistance family**: `internal_resistance_ohm` broadened to a method-agnostic parent (symbol `R_int`); new subclasses `dc_internal_resistance_ohm` (`R_DC`, ΔV/ΔI current-pulse methods, instrument-specific) and `ac_internal_resistance_ohm` (`R_AC`, impedance magnitude at fixed frequency, conventionally 1 kHz; vendor "ACR"). The previously released state was internally inconsistent (a DC-specific definition with the Arbin ACR column mapped to it); broadening reconciles existing data without invalidating it.
+- `dcterms:isReplacedBy` and `skos:historyNote` added to the `test_time_millisecond` and `unix_time_millisecond` tombstones, so all deprecated terms are now machine-followable to their replacements.
+- Arbin vendor schema: `Charge/Discharge_Capacity(Ah)` and `Charge/Discharge_Energy(Wh)` remapped to the new cycle-scope terms (they reset per cycle, contradicting the never-resetting test-level terms they previously mapped to); `ACR(Ohm)` split out and mapped to `ac_internal_resistance_ohm`.
+- **Canonical schema completed**: `schema/schema.json` now carries a column for every active ontology term (56 columns, up from 32) — the step-directional family, the new cycle and resistance terms, EIS quantities, and the remaining base terms — generated from the ontology annotations so descriptions cannot drift. Orphan columns fixed: `power_w` renamed to the canonical `power_watt`; the ambiguous `temperature_celsius` column became `surface_temperature_celsius` (explicit-surface), with the unqualified "Temperature / degC" header reassigned to `temperature_t1_celsius` per the default mapping convention. The stale `step_cumulative_*` descriptions (the documentation residue of battery-data-alliance/battery-data-format#36) are synced from the ontology, and all `schema:unitCode` values are normalised to UCUM (e.g. `AMH` → `A.h`, `VLT` → `V`), as originally intended. `csvw:required` flags now agree with the ontology's `:obligation` levels (enforced by a new test): `unix_time_second` corrected from required to non-required, since its obligation is `recommended` — the schema previously contradicted both the ontology and the package validator. Whether time requiredness should become "at least one of test_time/unix_time" (battery-data-alliance/battery-data-format#19) remains an open conformance-policy question for the SHACL profile work.
+
+### Removed
+
+- `scripts/add_latex_annotations.py`: the one-shot bootstrap that seeded the LaTeX annotations. Its data tables predate the 1.1.0/1.2.0 renames, and re-running it would attach stale symbols to deprecated tombstones; the TTL is the sole source of truth for `latexSymbol`/`latexFormula`.
+
+### Changed
+
+- **Energy formulas gated by current direction**: charging/discharging energy integrands changed from `max(±P, 0)` (sign-of-power gating) to `±P·[I ≷ 0]` (current-interval gating), and cumulative energy from `∫|P|` to `∫P·sgn(I)`. Numerically identical wherever voltage is positive (all normal cycling data); the forms now agree with the capacity family and the prose in the cell-reversal edge case (forced over-discharge), where power-sign gating misclassifies dissipated energy as charging energy.
+
+- **Definition clarity pass** (no semantic changes to any quantity; wording only):
+  - `current_ampere`: the sign convention is now stated explicitly — positive current charges the test object, negative discharges it; the charging/discharging capacity and energy families are defined by this convention.
+  - `test_time_second`: defined as elapsed time since test start, monotonically non-decreasing; pause behaviour is instrument-defined and preserved as reported (was circular "Test time recorded in second").
+  - `voltage_volt`: measured across the terminals of the test object.
+  - `unix_time_second`: defined as seconds since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.
+  - `surface_pressure_pa` vs `applied_pressure_pa` disambiguated: surface pressure is *measured* at the test object surface (may be nonzero from swelling alone); applied pressure is *actively applied and controlled* by an external agent. Each definition cross-references the other.
+  - EIS terms (`absolute/real/imaginary_impedance_ohm`, `phase_degree`, `frequency_hertz`): rewritten in sentence style, `schema:description` added; `imaginary_impedance_ohm` states the as-reported sign convention (negative for capacitive behaviour, vs the negated Nyquist plotting convention); `phase_degree` formula uses two-argument `atan2`.
+  - All eight step-level `latexFormula` annotations now define `t_s` (start of the current step) inline.
+  - `record_index` and `step_time_second` definitions normalised to sentence style.
+  - **Temperature channels unqualified**: `temperature_t1`–`t5_celsius` relabelled from "Surface Temperature TN / degC" to "Temperature TN / degC" (old labels retained as `skos:altLabel`, so legacy headers still resolve) and redefined as auxiliary channel readings with setup-defined sensor placement — the labels previously asserted "surface" while the definitions explicitly declined to. They are no longer subclasses of `surface_temperature_celsius` (re-parented to the generic EMMO temperature class); `surface_temperature_celsius` is now the explicitly-surface semantic term, and the two definitions cross-reference each other. A `skos:scopeNote` on `temperature_t1_celsius` states the default mapping convention — unqualified single temperature columns and unqualified numbered channels map to `temperature_t1_celsius`; explicit chamber/environment columns to `ambient_temperature_celsius`; explicit surface columns to `surface_temperature_celsius` — and the Basytec and Digatron vendor schemas are harmonised to it (resolves #9).
+  - Usage advice moved out of `cumulative_capacity_ah`'s definition into a new `skos:scopeNote` (declared as an annotation property).
+  - `latexSymbol` added for `record_index` (i), `step_count` (k), `step_index` (j), and `unix_time_second` (t_unix).
+
 ## [1.1.0] - 2026-06-08
 
 ### Added
