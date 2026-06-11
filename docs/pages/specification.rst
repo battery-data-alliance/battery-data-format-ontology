@@ -15,11 +15,11 @@ Status
    * - Title
      - Battery Data Format Ontology
    * - Version
-     - 1.1.0
+     - 1.1.1
    * - Issued
      - 2026-05-14
    * - Modified
-     - 2026-06-08
+     - 2026-06-11
    * - Publisher
      - Battery Data Alliance
    * - License
@@ -41,7 +41,7 @@ Identifiers
 - **Base IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#``
 - Full term IRIs are formed by appending the notation to the base IRI,
   e.g. ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt``.
-- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format``
+- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/battery-data-format``
 
 Terms and Definitions
 ---------------------
@@ -59,7 +59,7 @@ Terms and Definitions
    * - Absolute Impedance / ohm
      - ``absolute_impedance_ohm``
      - :math:`|Z|`
-     - the magnitude of the complex impedance, expressed in ohms. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``. *Formula:* :math:`|Z| = \sqrt{Z_\mathrm{re}^2 + Z_\mathrm{im}^2}`.
+     - The magnitude of the complex impedance, in ohm. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``. *Formula:* :math:`|Z| = \sqrt{Z_\mathrm{re}^2 + Z_\mathrm{im}^2}`.
      - ``Ohm``
      - Impedance
    * - Ambient Pressure / Pa
@@ -77,7 +77,7 @@ Terms and Definitions
    * - Applied Pressure / Pa
      - ``applied_pressure_pa``
      - :math:`p_\mathrm{app}`
-     - External pressure applied to the test object, in pascal.
+     - External pressure actively applied to the test object and controlled by an external agent (e.g. a fixture, clamp, or press), in pascal. Distinguished from surface_pressure_pa, which is the pressure measured at the surface of the test object regardless of its source.
      - ``Pa``
      - Pressure
    * - Charging Capacity / Ah
@@ -95,7 +95,7 @@ Terms and Definitions
    * - Cumulative Capacity / Ah
      - ``cumulative_capacity_ah``
      - :math:`Q_\mathrm{cum}`
-     - Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`Q_\mathrm{cum}(t) = Q_\mathrm{chg}(t) + Q_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \bigl|I(\tau)\bigr|\,\mathrm{d}\tau`.
+     - Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`Q_\mathrm{cum}(t) = Q_\mathrm{chg}(t) + Q_\mathrm{dchg}(t) = \frac{1}{3600}\int_0^t \bigl|I(\tau)\bigr|\,\mathrm{d}\tau`.
      - ``A.h``
      - ElectricCharge
    * - Cumulative Energy / Wh
@@ -107,7 +107,7 @@ Terms and Definitions
    * - Current / A
      - ``current_ampere``
      - :math:`I`
-     - Instantaneous current recorded in ampere.
+     - Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention.
      - ``A``
      - ElectricCurrent
    * - Cycle Count / 1
@@ -131,19 +131,19 @@ Terms and Definitions
    * - Frequency / Hz
      - ``frequency_hertz``
      - :math:`f`
-     - the frequency of an applied periodic excitation or measured response, expressed in hertz
+     - The frequency of the applied periodic excitation or measured response, in hertz.
      - ``Hz``
      - Frequency
    * - Imaginary Impedance / ohm
      - ``imaginary_impedance_ohm``
      - :math:`Z''`
-     - the imaginary component of the complex impedance, expressed in ohms
+     - The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis.
      - ``Ohm``
      - Impedance
    * - Internal Resistance / ohm
      - ``internal_resistance_ohm``
-     - :math:`R_0`
-     - Direct current internal resistance recorded in ohm.
+     - :math:`R_\mathrm{DC}`
+     - Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable.
      - ``Ohm``
      - ElectricResistance
    * - Net Capacity / Ah
@@ -161,7 +161,7 @@ Terms and Definitions
    * - Phase / deg
      - ``phase_degree``
      - :math:`\phi`
-     - the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``. *Formula:* :math:`\phi = \arctan\!\left(\frac{Z_\mathrm{im}}{Z_\mathrm{re}}\right) \cdot \frac{180}{\pi}`.
+     - The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree. *Derived from:* ``imaginary_impedance_ohm, real_impedance_ohm``. *Formula:* :math:`\phi = \operatorname{atan2}\!\left(Z_\mathrm{im},\,Z_\mathrm{re}\right) \cdot \frac{180}{\pi}`.
      - ``deg``
      - Angle
    * - Power / W
@@ -173,13 +173,13 @@ Terms and Definitions
    * - Real Impedance / ohm
      - ``real_impedance_ohm``
      - :math:`Z'`
-     - the real component of the complex impedance, expressed in ohms
+     - The real (resistive) component of the complex impedance, in ohm.
      - ``Ohm``
      - Impedance
    * - Record Index / 1
      - ``record_index``
-     - —
-     - an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning
+     - :math:`i`
+     - An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.
      - ``1``
      - Count
    * - Step Capacity / Ah
@@ -191,43 +191,43 @@ Terms and Definitions
    * - Step Charging Capacity / Ah
      - ``step_charging_capacity_ah``
      - :math:`Q_\mathrm{chg}^\mathrm{step}`
-     - Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau`.
+     - Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``A.h``
      - ElectricCharge
    * - Step Charging Energy / Wh
      - ``step_charging_energy_wh``
      - :math:`E_\mathrm{chg}^\mathrm{step}`
-     - Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau`.
+     - Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``W.h``
      - Energy
    * - Step Count / 1
      - ``step_count``
-     - —
+     - :math:`k`
      - Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.
      - ``1``
      - Count
    * - Step Cumulative Capacity / Ah
      - ``step_cumulative_capacity_ah``
      - :math:`Q_\mathrm{cum}^\mathrm{step}`
-     - Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau`.
+     - Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``A.h``
      - ElectricCharge
    * - Step Cumulative Energy / Wh
      - ``step_cumulative_energy_wh``
      - :math:`E_\mathrm{cum}^\mathrm{step}`
-     - Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau`.
+     - Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``W.h``
      - Energy
    * - Step Discharging Capacity / Ah
      - ``step_discharging_capacity_ah``
      - :math:`Q_\mathrm{dchg}^\mathrm{step}`
-     - Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau`.
+     - Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary. *Derived from:* ``current_ampere, step_time_second``. *Formula:* :math:`Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``A.h``
      - ElectricCharge
    * - Step Discharging Energy / Wh
      - ``step_discharging_energy_wh``
      - :math:`E_\mathrm{dchg}^\mathrm{step}`
-     - Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau`.
+     - Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step. *Derived from:* ``power_watt, step_time_second``. *Formula:* :math:`E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``W.h``
      - Energy
    * - Step Energy / Wh
@@ -244,26 +244,26 @@ Terms and Definitions
      - —
    * - Step Index / 1
      - ``step_index``
-     - —
+     - :math:`j`
      - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.
      - ``1``
      - Dimensionless
    * - Step Net Capacity / Ah
      - ``step_net_capacity_ah``
      - :math:`Q_\mathrm{net}^\mathrm{step}`
-     - Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_capacity_ah, step_discharging_capacity_ah``. *Formula:* :math:`Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau`.
+     - Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_capacity_ah, step_discharging_capacity_ah``. *Formula:* :math:`Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``A.h``
      - ElectricCharge
    * - Step Net Energy / Wh
      - ``step_net_energy_wh``
      - :math:`E_\mathrm{net}^\mathrm{step}`
-     - Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_energy_wh, step_discharging_energy_wh``. *Formula:* :math:`E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau`.
+     - Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_energy_wh, step_discharging_energy_wh``. *Formula:* :math:`E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``W.h``
      - Energy
    * - Step Time / s
      - ``step_time_second``
      - :math:`\Delta t_\mathrm{step}`
-     - the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition
+     - Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.
      - ``s``
      - Time
    * - Step Type
@@ -275,7 +275,7 @@ Terms and Definitions
    * - Surface Pressure / Pa
      - ``surface_pressure_pa``
      - :math:`p_\mathrm{surf}`
-     - Surface pressure recorded in pascal.
+     - Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.
      - ``Pa``
      - Pressure
    * - Surface Temperature / degC
@@ -323,7 +323,7 @@ Terms and Definitions
    * - Test Time / s
      - ``test_time_second``
      - :math:`t`
-     - Test time recorded in second.
+     - Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.
      - ``s``
      - Time
    * - Unix Time / ms
@@ -334,14 +334,14 @@ Terms and Definitions
      - Time
    * - Unix Time / s
      - ``unix_time_second``
-     - —
-     - Unix time recorded in second.
+     - :math:`t_\mathrm{unix}`
+     - Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.
      - ``s``
      - Time
    * - Voltage / V
      - ``voltage_volt``
      - :math:`V`
-     - Instantaneous voltage recorded in volt.
+     - Instantaneous voltage measured across the terminals of the test object, in volt.
      - ``V``
      - Voltage
 

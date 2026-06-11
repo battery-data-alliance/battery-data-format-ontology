@@ -33,7 +33,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolut
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the magnitude of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The magnitude of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -193,7 +193,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#applied
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">External pressure applied to the test object, in pascal.</td>
+    <td class="element-table-value">External pressure actively applied to the test object and controlled by an external agent (e.g. a fixture, clamp, or press), in pascal. Distinguished from surface_pressure_pa, which is the pressure measured at the surface of the test object regardless of its source.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -365,7 +365,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge. Suitable for throughput-based degradation models.</td>
+    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -396,6 +396,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
     <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
   </tr>
   </table>
+
+.. note::
+
+   Suitable for throughput-based degradation models.
 
 
 .. raw:: html
@@ -485,7 +489,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#current
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous current recorded in ampere.</td>
+    <td class="element-table-value">Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -709,7 +713,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequen
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the frequency of an applied periodic excitation or measured response, expressed in hertz</td>
+    <td class="element-table-value">The frequency of the applied periodic excitation or measured response, in hertz.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -753,7 +757,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#imagina
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the imaginary component of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -801,7 +805,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Direct current internal resistance recorded in ohm.</td>
+    <td class="element-table-value">Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -809,7 +813,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
-    <td class="element-table-value">\(R_0\)</td>
+    <td class="element-table-value">\(R_\mathrm{DC}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -969,7 +973,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the phase angle of the complex impedance in electrochemical impedance spectroscopy, defined as the argument of the impedance and representing the phase relationship between voltage and current, expressed in degrees</td>
+    <td class="element-table-value">The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -981,7 +985,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(\phi = \arctan\!\left(\frac{Z_\mathrm{im}}{Z_\mathrm{re}}\right) \cdot \frac{180}{\pi}\)</td>
+    <td class="element-table-value">\(\phi = \operatorname{atan2}\!\left(Z_\mathrm{im},\,Z_\mathrm{re}\right) \cdot \frac{180}{\pi}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1081,7 +1085,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_im
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the real component of the complex impedance, expressed in ohms</td>
+    <td class="element-table-value">The real (resistive) component of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1125,11 +1129,15 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">an ordinal, dimensionless integer used to order data records in a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning</td>
+    <td class="element-table-value">An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">record_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(i\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1185,7 +1193,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1249,7 +1257,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(P(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1306,6 +1314,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_co
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_count</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(k\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1365,7 +1377,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{cum}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) + Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|I(\tau)\bigr|\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1429,7 +1441,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{cum}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) + E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \bigl|P(\tau)\bigr|\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1493,7 +1505,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1557,7 +1569,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} \max\!\bigl(-P(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1652,6 +1664,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
     <td class="element-table-value">step_index</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(j\)</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
     <td class="element-table-value">optional</td>
   </tr>
@@ -1705,7 +1721,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(Q_\mathrm{net}^\mathrm{step}(t) = Q_\mathrm{chg}^\mathrm{step}(t) - Q_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} I(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1765,7 +1781,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau\)</td>
+    <td class="element-table-value">\(E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1809,7 +1825,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">the elapsed time since the beginning of the active test step, measured in seconds and reset at each step transition</td>
+    <td class="element-table-value">Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1893,7 +1909,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Surface pressure recorded in pascal.</td>
+    <td class="element-table-value">Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1969,7 +1985,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a>, <a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a></td>
+    <td class="element-table-value"><a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a>, <a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a></td>
   </tr>
   </table>
 
@@ -2261,7 +2277,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Test time recorded in second.</td>
+    <td class="element-table-value">Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2313,11 +2329,15 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Unix time recorded in second.</td>
+    <td class="element-table-value">Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_second</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(t_\mathrm{unix}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -2361,7 +2381,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous voltage recorded in volt.</td>
+    <td class="element-table-value">Instantaneous voltage measured across the terminals of the test object, in volt.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>

@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-06-11
+
+### Changed
+
+- **Definition clarity pass** (no semantic changes to any quantity; wording only):
+  - `current_ampere`: the sign convention is now stated explicitly — positive current charges the test object, negative discharges it; the charging/discharging capacity and energy families are defined by this convention.
+  - `test_time_second`: defined as elapsed time since test start, monotonically non-decreasing; pause behaviour is instrument-defined and preserved as reported (was circular "Test time recorded in second").
+  - `voltage_volt`: measured across the terminals of the test object.
+  - `unix_time_second`: defined as seconds since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.
+  - `surface_pressure_pa` vs `applied_pressure_pa` disambiguated: surface pressure is *measured* at the test object surface (may be nonzero from swelling alone); applied pressure is *actively applied and controlled* by an external agent. Each definition cross-references the other.
+  - `internal_resistance_ohm`: notes that the determination method is instrument-specific and values from different methods are not directly comparable; LaTeX symbol corrected from `R_0` to `R_DC`.
+  - EIS terms (`absolute/real/imaginary_impedance_ohm`, `phase_degree`, `frequency_hertz`): rewritten in sentence style, `schema:description` added; `imaginary_impedance_ohm` states the as-reported sign convention (negative for capacitive behaviour, vs the negated Nyquist plotting convention); `phase_degree` formula uses two-argument `atan2`.
+  - All eight step-level `latexFormula` annotations now define `t_s` (start of the current step) inline.
+  - `record_index` and `step_time_second` definitions normalised to sentence style.
+  - Usage advice moved out of `cumulative_capacity_ah`'s definition into a new `skos:scopeNote`.
+
+### Added
+
+- `skos:scopeNote` declared as an annotation property.
+- `latexSymbol` for `record_index` (i), `step_count` (k), `step_index` (j), and `unix_time_second` (t_unix).
+
 ## [1.1.0] - 2026-06-08
 
 ### Added

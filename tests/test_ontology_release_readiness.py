@@ -10,7 +10,7 @@ SOSA = Namespace("http://www.w3.org/ns/sosa/")
 
 ONTOLOGY_IRI = URIRef("https://w3id.org/battery-data-alliance/ontology/battery-data-format")
 ONTOLOGY_VERSION_IRI = URIRef(
-    "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format"
+    "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/battery-data-format"
 )
 BDF = Namespace("https://w3id.org/battery-data-alliance/ontology/battery-data-format#")
 BDF_NS = str(BDF)
@@ -43,7 +43,7 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     def test_ontology_declares_expected_version(self):
         self.assertIn((ONTOLOGY_IRI, RDF.type, OWL.Ontology), self.graph)
         self.assertIn((ONTOLOGY_IRI, OWL.versionIRI, ONTOLOGY_VERSION_IRI), self.graph)
-        self.assertIn((ONTOLOGY_IRI, OWL.versionInfo, Literal("1.1.0")), self.graph)
+        self.assertIn((ONTOLOGY_IRI, OWL.versionInfo, Literal("1.1.1")), self.graph)
 
     def test_internal_resistance_has_ohm_unit_restriction(self):
         entity = BDF.internal_resistance_ohm
@@ -60,9 +60,9 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     # ------------------------------------------------------------------
 
     def test_schema_version_matches_ontology_release(self):
-        self.assertEqual(self.schema.get("dcterms:version"), "1.1.0")
-        self.assertEqual(self.schema.get("schema:version"), "1.1.0")
-        self.assertIn("/1.1.0/", self.schema.get("@id", ""))
+        self.assertEqual(self.schema.get("dcterms:version"), "1.1.1")
+        self.assertEqual(self.schema.get("schema:version"), "1.1.1")
+        self.assertIn("/1.1.1/", self.schema.get("@id", ""))
 
     def test_all_required_bdf_columns_in_schema(self):
         missing = REQUIRED_SCHEMA_COLUMNS - self.schema_columns.keys()

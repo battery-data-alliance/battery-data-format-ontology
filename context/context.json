@@ -70,6 +70,6 @@
         "Unix Time / s": "bdf:unix_time_second",
         "Voltage / V": "bdf:voltage_volt"
     },
-    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/context",
-    "dcterms:version": "1.1.0"
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.1/context",
+    "dcterms:version": "1.1.1"
 }
