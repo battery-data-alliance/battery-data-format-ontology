@@ -335,7 +335,7 @@ Terms and Definitions
    * - Unix Time / s
      - ``unix_time_second``
      - :math:`t_\mathrm{unix}`
-     - Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.
+     - Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds. The value identifies an absolute instant and is independent of local time zone: the same physical moment has the same value everywhere, and local wall-clock times must be converted to UTC before encoding.
      - ``s``
      - Time
    * - Voltage / V

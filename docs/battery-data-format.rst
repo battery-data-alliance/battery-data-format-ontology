@@ -32,12 +32,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolut
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The magnitude of the complex impedance, in ohm.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">absolute_impedance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The magnitude of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -88,12 +88,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Pressure' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Pressure')){window.location.href='http://qudt.org/vocab/quantitykind/Pressure';return false;}">http://qudt.org/vocab/quantitykind/Pressure</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Ambient air pressure recorded during testing, in pascal.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">ambient_pressure_pa</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Ambient air pressure recorded during testing, in pascal.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -140,12 +140,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#ambient
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Ambient temperature recorded during testing, in degree Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">ambient_temperature_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Ambient temperature recorded during testing, in degree Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -192,12 +192,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#applied
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Pressure' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Pressure')){window.location.href='http://qudt.org/vocab/quantitykind/Pressure';return false;}">http://qudt.org/vocab/quantitykind/Pressure</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">External pressure actively applied to the test object and controlled by an external agent (e.g. a fixture, clamp, or press), in pascal. Distinguished from surface_pressure_pa, which is the pressure measured at the surface of the test object regardless of its source.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">applied_pressure_pa</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">External pressure actively applied to the test object and controlled by an external agent (e.g. a fixture, clamp, or press), in pascal. Distinguished from surface_pressure_pa, which is the pressure measured at the surface of the test object regardless of its source.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -244,12 +244,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#chargin
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric charge transferred into the test object during charging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge. Note: differs from step-level Q charge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -304,12 +304,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#chargin
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative energy transferred into the test object during charging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during charge intervals; unchanged during rest or discharge.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -364,12 +364,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Total Ah throughput since the start of the test, in ampere hour. Defined as charging_capacity_ah + discharging_capacity_ah; always monotonically non-decreasing. Counts charge flow in both directions and is therefore independent of the net state of charge.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -428,12 +428,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cumulat
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">cumulative_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Total Wh throughput since the start of the test, in watt hour. Defined as charging_energy_wh + discharging_energy_wh; always monotonically non-decreasing.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -488,12 +488,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#current
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCurrent' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCurrent')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCurrent';return false;}">http://qudt.org/vocab/quantitykind/ElectricCurrent</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">current_ampere</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Instantaneous current flowing through the test object, in ampere. Sign convention: positive current charges the test object (current flows into it) and negative current discharges it; the charging and discharging capacity and energy quantities are defined by this convention.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -544,12 +544,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">cycle_count</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cycle index used to segregate time-series data into quasi-periodic subsets, typically tracking performance evolution over aging. Must be a non-negative integer and monotonically non-decreasing within a test. No constraint is placed on the starting value: 0, 1, or any other non-negative integer are all valid. The starting value is instrument-defined and must be preserved as reported; converters must not renumber cycles.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -596,12 +596,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#dischar
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric charge transferred out of the test object during discharging, in ampere hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge. Note: differs from step-level Q discharge as reported by some instruments (e.g. BioLogic EC-Lab), which reset to zero at each step boundary.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -656,12 +656,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#dischar
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative energy transferred out of the test object during discharging, in watt hour. Accumulates from the start of the test and never resets between steps or cycles. Increases only during discharge intervals; unchanged during rest or charge.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -712,12 +712,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequen
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Frequency' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Frequency')){window.location.href='http://qudt.org/vocab/quantitykind/Frequency';return false;}">http://qudt.org/vocab/quantitykind/Frequency</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The frequency of the applied periodic excitation or measured response, in hertz.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">frequency_hertz</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The frequency of the applied periodic excitation or measured response, in hertz.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -756,12 +756,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#imagina
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">imaginary_impedance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -804,12 +804,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricResistance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricResistance')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricResistance';return false;}">http://qudt.org/vocab/quantitykind/ElectricResistance</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">internal_resistance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Direct current internal resistance of the test object, in ohm, as reported by the instrument. The determination method (e.g. current-pulse magnitude and duration) is instrument-specific and not standardised; values obtained with different methods are not directly comparable.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -856,12 +856,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#net_cap
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running integral of signed current from the start of the test, in ampere hour. Defined as charging_capacity_ah minus discharging_capacity_ah; can be negative if more charge has been extracted than injected since test start. Equivalent to BioLogic Q-Q0. Increases during charge intervals and decreases during discharge intervals.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -916,12 +916,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#net_ene
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running net energy from the start of the test, in watt hour. Defined as charging_energy_wh minus discharging_energy_wh; can be negative if more energy has been extracted than delivered since test start. Increases during charge intervals and decreases during discharge intervals.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -972,12 +972,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Angle' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Angle')){window.location.href='http://qudt.org/vocab/quantitykind/Angle';return false;}">http://qudt.org/vocab/quantitykind/Angle</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">phase_degree</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1028,12 +1028,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_w
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Power' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Power')){window.location.href='http://qudt.org/vocab/quantitykind/Power';return false;}">http://qudt.org/vocab/quantitykind/Power</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous power calculated as the product of voltage and current, in watt.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">power_watt</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Instantaneous power calculated as the product of voltage and current, in watt.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1084,12 +1084,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_im
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The real (resistive) component of the complex impedance, in ohm.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">real_impedance_ohm</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The real (resistive) component of the complex impedance, in ohm.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1128,12 +1128,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">record_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1180,12 +1180,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of current over the step. Equivalent to the step-level charge capacity reported by some instruments (e.g. BioLogic EC-Lab Q charge), which reset at each step boundary.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1244,12 +1244,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ch
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the positive part of instantaneous power over the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1308,12 +1308,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_co
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_count</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Monotonically increasing sequential counter incremented by one each time a new step begins, for the duration of the test. Unlike Step ID, this counter never resets and never repeats, making it a unique identifier for each step execution across all cycles.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1364,12 +1364,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_cumulative_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute current over the step duration.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1428,12 +1428,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_cu
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_cumulative_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value. Instruments that export this quantity directly are accepted as-is; where it must be computed, it is the time integral of the absolute instantaneous power over the step duration.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1492,12 +1492,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of current over the step. Equivalent to the step-level discharge capacity reported by some instruments (e.g. BioLogic EC-Lab Q discharge), which reset at each step boundary.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1556,12 +1556,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_di
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the time integral of the negated negative part of instantaneous power over the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1608,12 +1608,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_id
     <td class="element-table-value">step_id</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_id</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">The step identifier as defined in the test program or schedule file. Values are instrument-defined and are not required to be contiguous or monotonically increasing; the same step ID may recur in successive cycles. Known equivalents: Arbin Step_Index, Neware Step_ID, Digatron Step, BioLogic Ns.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1656,12 +1656,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Dimensionless' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Dimensionless')){window.location.href='http://qudt.org/vocab/quantitykind/Dimensionless';return false;}">http://qudt.org/vocab/quantitykind/Dimensionless</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1708,12 +1708,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_net_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net charge transferred during the current test step, in ampere hour. Defined as step_charging_capacity_ah minus step_discharging_capacity_ah; the running signed integral of current from the step start, reset to zero at each step transition. Can be negative if more charge is extracted than injected during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1768,12 +1768,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_net_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1824,12 +1824,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_time_second</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1864,12 +1864,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ty
     <td class="element-table-value">step_type</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_type</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1908,12 +1908,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Pressure' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Pressure')){window.location.href='http://qudt.org/vocab/quantitykind/Pressure';return false;}">http://qudt.org/vocab/quantitykind/Pressure</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">surface_pressure_pa</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1960,12 +1960,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Surface temperature recorded in degree Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">surface_temperature_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Surface temperature recorded in degree Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -1985,7 +1985,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#surface
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a>, <a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a></td>
+    <td class="element-table-value"><a href='#temperature_t3_celsius' onclick="if(!document.getElementById('temperature_t3_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t3_celsius';return false;}">Surface Temperature T3 / degC</a>, <a href='#temperature_t1_celsius' onclick="if(!document.getElementById('temperature_t1_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t1_celsius';return false;}">Surface Temperature T1 / degC</a>, <a href='#temperature_t5_celsius' onclick="if(!document.getElementById('temperature_t5_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t5_celsius';return false;}">Surface Temperature T5 / degC</a>, <a href='#temperature_t2_celsius' onclick="if(!document.getElementById('temperature_t2_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t2_celsius';return false;}">Surface Temperature T2 / degC</a>, <a href='#temperature_t4_celsius' onclick="if(!document.getElementById('temperature_t4_celsius')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#temperature_t4_celsius';return false;}">Surface Temperature T4 / degC</a></td>
   </tr>
   </table>
 
@@ -2016,12 +2016,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">temperature_t1_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2068,12 +2068,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">temperature_t2_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2120,12 +2120,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">temperature_t3_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2172,12 +2172,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">temperature_t4_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2224,12 +2224,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#tempera
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Temperature' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Temperature')){window.location.href='http://qudt.org/vocab/quantitykind/Temperature';return false;}">http://qudt.org/vocab/quantitykind/Temperature</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">temperature_t5_celsius</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2276,12 +2276,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">test_time_second</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2328,12 +2328,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_second</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds. The value identifies an absolute instant and is independent of local time zone: the same physical moment has the same value everywhere, and local wall-clock times must be converted to UTC before encoding.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2352,6 +2352,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05' onclick="if(!document.getElementById('electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_27b3799c_250c_4332_8b71_7992c4a7bb05';return false;}">TestTime</a></td>
   </tr>
   </table>
+
+.. note::
+
+   A common conversion error is computing seconds since the epoch from a naive local wall-clock timestamp as if it were UTC, which shifts all values by the local UTC offset (including daylight-saving changes mid-test). Instruments that log local time must have their timestamps converted to UTC, not reinterpreted.
 
 
 .. raw:: html
@@ -2380,12 +2384,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Voltage' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Voltage')){window.location.href='http://qudt.org/vocab/quantitykind/Voltage';return false;}">http://qudt.org/vocab/quantitykind/Voltage</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Instantaneous voltage measured across the terminals of the test object, in volt.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">voltage_volt</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Instantaneous voltage measured across the terminals of the test object, in volt.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">symbol</span></td>
@@ -2436,16 +2440,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_capacity_ah</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -2484,16 +2488,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the absolute instantaneous power from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -2532,12 +2536,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Test time recorded in millisecond.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">test_time_millisecond</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Test time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -2576,12 +2580,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Unix time recorded in millisecond.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_millisecond</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Unix time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
