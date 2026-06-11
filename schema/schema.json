@@ -134,7 +134,7 @@
         "@id": "unit:SEC"
       },
       "schema:unitCode": "s",
-      "csvw:required": true
+      "csvw:required": false
     },
     {
       "@type": "csvw:Column",

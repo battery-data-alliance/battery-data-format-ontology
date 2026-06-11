@@ -17,7 +17,11 @@ BDF_NS = str(BDF)
 EMMO = Namespace("https://w3id.org/emmo#")
 HAS_MEASUREMENT_UNIT = URIRef("https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569")
 
-REQUIRED_SCHEMA_COLUMNS = {"test_time_second", "voltage_volt", "current_ampere", "unix_time_second"}
+# Columns that must exist in the canonical schema (presence, not requiredness).
+EXPECTED_SCHEMA_COLUMNS = {"test_time_second", "voltage_volt", "current_ampere", "unix_time_second"}
+# Columns whose csvw:required flag must be true — derived from the ontology's
+# obligation levels (unix_time_second is 'recommended', so not flagged).
+REQUIRED_FLAG_COLUMNS = {"test_time_second", "voltage_volt", "current_ampere"}
 STEP_COLUMNS = {"step_id", "step_type"}
 
 
@@ -65,7 +69,7 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
         self.assertIn("/1.2.0/", self.schema.get("@id", ""))
 
     def test_all_required_bdf_columns_in_schema(self):
-        missing = REQUIRED_SCHEMA_COLUMNS - self.schema_columns.keys()
+        missing = EXPECTED_SCHEMA_COLUMNS - self.schema_columns.keys()
         self.assertFalse(
             missing,
             f"schema.json is missing required columns: {sorted(missing)}",
@@ -83,13 +87,27 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
     def test_required_columns_flagged_as_required(self):
         not_required = [
             name
-            for name in REQUIRED_SCHEMA_COLUMNS
+            for name in REQUIRED_FLAG_COLUMNS
             if not self.schema_columns.get(name, {}).get("csvw:required", False)
         ]
         self.assertFalse(
             not_required,
             f"These columns should have csvw:required=true: {sorted(not_required)}",
         )
+
+    def test_required_flags_match_ontology_obligation(self):
+        """csvw:required must agree with the ontology's :obligation annotation."""
+        obligation = URIRef(str(BDF) + "obligation")
+        for name, col in self.schema_columns.items():
+            term_obligation = self.graph.value(BDF[name], obligation)
+            if term_obligation is None:
+                continue  # deprecated tombstones carry no obligation
+            with self.subTest(column=name):
+                self.assertEqual(
+                    bool(col.get("csvw:required", False)),
+                    str(term_obligation) == "required",
+                    f"{name}: csvw:required disagrees with obligation '{term_obligation}'",
+                )
 
     def test_no_unit_CountingUnit_in_schema(self):
         """unit:CountingUnit is a QUDT class, not a unit individual. Regression guard."""
