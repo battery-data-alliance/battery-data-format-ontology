@@ -48,7 +48,7 @@
       "skos:note": "I[mA] requires ÷1000; I[uA] requires ÷1000000. schema:unitCode is set per-file based on the actual header matched."
     },
     {
-      "csvw:name": "ambient_temperature_celsius",
+      "csvw:name": "temperature_t1_celsius",
       "csvw:titles": [
         "T1[°C]",
         "T1[C]",

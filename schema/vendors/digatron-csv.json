@@ -82,7 +82,7 @@
       ]
     },
     {
-      "csvw:name": "surface_temperature_t1_celsius",
+      "csvw:name": "temperature_t1_celsius",
       "csvw:titles": [
         "T1#degC",
         "LogTemp001"

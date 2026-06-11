@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - EIS terms (`absolute/real/imaginary_impedance_ohm`, `phase_degree`, `frequency_hertz`): rewritten in sentence style, `schema:description` added; `imaginary_impedance_ohm` states the as-reported sign convention (negative for capacitive behaviour, vs the negated Nyquist plotting convention); `phase_degree` formula uses two-argument `atan2`.
   - All eight step-level `latexFormula` annotations now define `t_s` (start of the current step) inline.
   - `record_index` and `step_time_second` definitions normalised to sentence style.
+  - **Temperature channels unqualified**: `temperature_t1`–`t5_celsius` relabelled from "Surface Temperature TN / degC" to "Temperature TN / degC" (old labels retained as `skos:altLabel`, so legacy headers still resolve) and redefined as auxiliary channel readings with setup-defined sensor placement — the labels previously asserted "surface" while the definitions explicitly declined to. They are no longer subclasses of `surface_temperature_celsius` (re-parented to the generic EMMO temperature class); `surface_temperature_celsius` is now the explicitly-surface semantic term, and the two definitions cross-reference each other.
   - Usage advice moved out of `cumulative_capacity_ah`'s definition into a new `skos:scopeNote` (declared as an annotation property).
   - `latexSymbol` added for `record_index` (i), `step_count` (k), `step_index` (j), and `unix_time_second` (t_unix).
 

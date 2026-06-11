@@ -251,12 +251,12 @@
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t1_celsius",
-      "csvw:titles": "Surface Temperature T1 / degC",
+      "csvw:titles": ["Temperature T1 / degC", "Surface Temperature T1 / degC"],
       "csvw:propertyUrl": "bdf:temperature_t1_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Surface Temperature T1 / degC",
+        "@value": "Temperature T1 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t1_celsius",
@@ -279,12 +279,12 @@
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t2_celsius",
-      "csvw:titles": "Surface Temperature T2 / degC",
+      "csvw:titles": ["Temperature T2 / degC", "Surface Temperature T2 / degC"],
       "csvw:propertyUrl": "bdf:temperature_t2_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Surface Temperature T2 / degC",
+        "@value": "Temperature T2 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t2_celsius",
@@ -307,12 +307,12 @@
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t3_celsius",
-      "csvw:titles": "Surface Temperature T3 / degC",
+      "csvw:titles": ["Temperature T3 / degC", "Surface Temperature T3 / degC"],
       "csvw:propertyUrl": "bdf:temperature_t3_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Surface Temperature T3 / degC",
+        "@value": "Temperature T3 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t3_celsius",
@@ -335,12 +335,12 @@
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t4_celsius",
-      "csvw:titles": "Surface Temperature T4 / degC",
+      "csvw:titles": ["Temperature T4 / degC", "Surface Temperature T4 / degC"],
       "csvw:propertyUrl": "bdf:temperature_t4_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Surface Temperature T4 / degC",
+        "@value": "Temperature T4 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t4_celsius",
@@ -363,12 +363,12 @@
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t5_celsius",
-      "csvw:titles": "Surface Temperature T5 / degC",
+      "csvw:titles": ["Temperature T5 / degC", "Surface Temperature T5 / degC"],
       "csvw:propertyUrl": "bdf:temperature_t5_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Surface Temperature T5 / degC",
+        "@value": "Temperature T5 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t5_celsius",

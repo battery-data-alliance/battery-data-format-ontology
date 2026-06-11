@@ -341,37 +341,37 @@ Terms and Definitions
    * - Surface Temperature / degC
      - ``surface_temperature_celsius``
      - :math:`T_\mathrm{surf}`
-     - Surface temperature recorded in degree Celsius.
+     - Temperature measured at the surface of the test object, in degree Celsius, regardless of which sensor channel recorded it. Use this term when a column is explicitly a surface (skin) temperature without channel information; channel-indexed auxiliary sensors map to temperature_t1_celsius through temperature_t5_celsius, whose placement is setup-defined.
      - ``Cel``
      - Temperature
-   * - Surface Temperature T1 / degC
+   * - Temperature T1 / degC
      - ``temperature_t1_celsius``
      - :math:`T_1`
-     - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
+     - Temperature recorded by auxiliary temperature channel 1 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.
      - ``Cel``
      - Temperature
-   * - Surface Temperature T2 / degC
+   * - Temperature T2 / degC
      - ``temperature_t2_celsius``
      - :math:`T_2`
-     - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
+     - Temperature recorded by auxiliary temperature channel 2 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.
      - ``Cel``
      - Temperature
-   * - Surface Temperature T3 / degC
+   * - Temperature T3 / degC
      - ``temperature_t3_celsius``
      - :math:`T_3`
-     - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
+     - Temperature recorded by auxiliary temperature channel 3 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.
      - ``Cel``
      - Temperature
-   * - Surface Temperature T4 / degC
+   * - Temperature T4 / degC
      - ``temperature_t4_celsius``
      - :math:`T_4`
-     - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
+     - Temperature recorded by auxiliary temperature channel 4 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.
      - ``Cel``
      - Temperature
-   * - Surface Temperature T5 / degC
+   * - Temperature T5 / degC
      - ``temperature_t5_celsius``
      - :math:`T_5`
-     - For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.
+     - Temperature recorded by auxiliary temperature channel 5 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.
      - ``Cel``
      - Temperature
    * - Test Time / ms
