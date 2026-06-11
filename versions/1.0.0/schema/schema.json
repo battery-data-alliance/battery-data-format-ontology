@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/schema",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema",
   "@type": [
     "csvw:TableSchema",
     "schema:DigitalDocument"
@@ -9,8 +9,8 @@
   "dcterms:description": "A reusable table schema for Battery Data Format (BDF) compliant CSV files, supporting interoperability across battery test data systems",
   "schema:description": "Standard table schema for battery cycling test data in CSV format",
   "dcterms:created": "2025-03-14",
-  "dcterms:modified": "2026-06-11",
-  "dcterms:version": "1.2.0",
+  "dcterms:modified": "2026-01-21",
+  "dcterms:version": "1.0.0",
   "dcterms:license": {
     "@id": "https://spdx.org/licenses/Apache-2.0.html"
   },
@@ -18,7 +18,7 @@
     "@id": "https://www.w3.org/TR/tabular-data-model/"
   },
   "dcterms:publisher": "Battery Data Alliance",
-  "schema:version": "1.2.0",
+  "schema:version": "1.0.0",
   "schema:license": "https://spdx.org/licenses/Apache-2.0.html",
   "schema:publisher": {
     "@type": "schema:Organization",
@@ -77,7 +77,7 @@
       "qudt:hasUnit": {
         "@id": "unit:MilliSEC"
       },
-      "schema:unitCode": "ms",
+      "schema:unitCode": "C26",
       "csvw:required": false
     },
     {
@@ -105,7 +105,7 @@
       "qudt:hasUnit": {
         "@id": "unit:SEC"
       },
-      "schema:unitCode": "s",
+      "schema:unitCode": "SEC",
       "csvw:required": true
     },
     {
@@ -133,8 +133,8 @@
       "qudt:hasUnit": {
         "@id": "unit:SEC"
       },
-      "schema:unitCode": "s",
-      "csvw:required": false
+      "schema:unitCode": "SEC",
+      "csvw:required": true
     },
     {
       "@type": "csvw:Column",
@@ -163,7 +163,7 @@
       "qudt:hasUnit": {
         "@id": "unit:MilliSEC"
       },
-      "schema:unitCode": "ms",
+      "schema:unitCode": "C26",
       "csvw:required": false
     },
     {
@@ -190,7 +190,7 @@
       "qudt:hasUnit": {
         "@id": "unit:VLT"
       },
-      "schema:unitCode": "V",
+      "schema:unitCode": "VLT",
       "csvw:required": true
     },
     {
@@ -217,23 +217,21 @@
       "qudt:hasUnit": {
         "@id": "unit:AMP"
       },
-      "schema:unitCode": "A",
+      "schema:unitCode": "AMP",
       "csvw:required": true
     },
     {
       "@type": "csvw:Column",
-      "csvw:name": "surface_temperature_celsius",
-      "csvw:titles": [
-        "Surface Temperature / degC"
-      ],
+      "csvw:name": "temperature_celsius",
+      "csvw:titles": "Temperature / degC",
       "csvw:propertyUrl": "bdf:surface_temperature_celsius",
-      "dcterms:description": "Temperature measured at the surface of the test object, in degree Celsius, regardless of sensor channel.",
-      "rdfs:comment": "Temperature measured at the surface of the test object, in degree Celsius, regardless of sensor channel.",
+      "dcterms:description": "Measured temperature of the test object (e.g., surface or internal), in degrees Celsius",
+      "rdfs:comment": "Measured temperature of the test object (e.g., surface or internal), in degrees Celsius",
       "skos:prefLabel": {
-        "@value": "Surface Temperature / degC",
+        "@value": "Temperature / degC",
         "@language": "en"
       },
-      "skos:altLabel": "surface_temperature_celsius",
+      "skos:altLabel": "temperature_celsius",
       "csvw:datatype": {
         "csvw:base": "xsd:decimal",
         "csvw:minimum": -273.15
@@ -247,22 +245,18 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t1_celsius",
-      "csvw:titles": [
-        "Temperature T1 / degC",
-        "Surface Temperature T1 / degC",
-        "Temperature / degC"
-      ],
+      "csvw:titles": "Surface Temperature T1 / degC",
       "csvw:propertyUrl": "bdf:temperature_t1_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Temperature T1 / degC",
+        "@value": "Surface Temperature T1 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t1_celsius",
@@ -279,21 +273,18 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t2_celsius",
-      "csvw:titles": [
-        "Temperature T2 / degC",
-        "Surface Temperature T2 / degC"
-      ],
+      "csvw:titles": "Surface Temperature T2 / degC",
       "csvw:propertyUrl": "bdf:temperature_t2_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Temperature T2 / degC",
+        "@value": "Surface Temperature T2 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t2_celsius",
@@ -310,21 +301,18 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t3_celsius",
-      "csvw:titles": [
-        "Temperature T3 / degC",
-        "Surface Temperature T3 / degC"
-      ],
+      "csvw:titles": "Surface Temperature T3 / degC",
       "csvw:propertyUrl": "bdf:temperature_t3_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Temperature T3 / degC",
+        "@value": "Surface Temperature T3 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t3_celsius",
@@ -341,21 +329,18 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t4_celsius",
-      "csvw:titles": [
-        "Temperature T4 / degC",
-        "Surface Temperature T4 / degC"
-      ],
+      "csvw:titles": "Surface Temperature T4 / degC",
       "csvw:propertyUrl": "bdf:temperature_t4_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Temperature T4 / degC",
+        "@value": "Surface Temperature T4 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t4_celsius",
@@ -372,21 +357,18 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
       "csvw:name": "temperature_t5_celsius",
-      "csvw:titles": [
-        "Temperature T5 / degC",
-        "Surface Temperature T5 / degC"
-      ],
+      "csvw:titles": "Surface Temperature T5 / degC",
       "csvw:propertyUrl": "bdf:temperature_t5_celsius",
       "dcterms:description": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "rdfs:comment": "For tests with multiple temperature measurements, the measured temperature of the test object (e.g., surface or internal), in degrees Celsius.",
       "skos:prefLabel": {
-        "@value": "Temperature T5 / degC",
+        "@value": "Surface Temperature T5 / degC",
         "@language": "en"
       },
       "skos:altLabel": "temperature_t5_celsius",
@@ -403,7 +385,7 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
@@ -431,7 +413,7 @@
       "qudt:hasUnit": {
         "@id": "unit:CEL"
       },
-      "schema:unitCode": "Cel",
+      "schema:unitCode": "CEL",
       "csvw:required": false
     },
     {
@@ -459,7 +441,7 @@
       "qudt:hasUnit": {
         "@id": "unit:NUM"
       },
-      "schema:unitCode": "1",
+      "schema:unitCode": "C62",
       "csvw:required": false
     },
     {
@@ -487,7 +469,7 @@
       "qudt:hasUnit": {
         "@id": "unit:NUM"
       },
-      "schema:unitCode": "1",
+      "schema:unitCode": "C62",
       "csvw:required": false
     },
     {
@@ -514,7 +496,7 @@
       "qudt:hasUnit": {
         "@id": "unit:C62"
       },
-      "schema:unitCode": "1",
+      "schema:unitCode": "C62",
       "csvw:required": false
     },
     {
@@ -575,7 +557,7 @@
       "qudt:hasUnit": {
         "@id": "unit:A-HR"
       },
-      "schema:unitCode": "A.h",
+      "schema:unitCode": "AMH",
       "csvw:required": false
     },
     {
@@ -602,18 +584,18 @@
       "qudt:hasUnit": {
         "@id": "unit:A-HR"
       },
-      "schema:unitCode": "A.h",
+      "schema:unitCode": "AMH",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
-      "csvw:name": "step_cumulative_capacity_ah",
-      "csvw:titles": "Step Cumulative Capacity / Ah",
-      "csvw:propertyUrl": "bdf:step_cumulative_capacity_ah",
-      "dcterms:description": "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
-      "rdfs:comment": "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "csvw:name": "step_capacity_ah",
+      "csvw:titles": "Step Capacity / Ah",
+      "csvw:propertyUrl": "bdf:step_capacity_ah",
+      "dcterms:description": "Electric charge transferred during the current test step, in ampere hour.",
+      "rdfs:comment": "Electric charge transferred during the current test step, in ampere hour.",
       "skos:prefLabel": {
-        "@value": "Step Cumulative Capacity / Ah",
+        "@value": "Step Capacity / Ah",
         "@language": "en"
       },
       "skos:altLabel": "step_capacity_ah",
@@ -629,7 +611,7 @@
       "qudt:hasUnit": {
         "@id": "unit:A-HR"
       },
-      "schema:unitCode": "A.h",
+      "schema:unitCode": "AMH",
       "csvw:required": false
     },
     {
@@ -656,7 +638,7 @@
       "qudt:hasUnit": {
         "@id": "unit:A-HR"
       },
-      "schema:unitCode": "A.h",
+      "schema:unitCode": "AMH",
       "csvw:required": false
     },
     {
@@ -683,18 +665,18 @@
       "qudt:hasUnit": {
         "@id": "unit:A-HR"
       },
-      "schema:unitCode": "A.h",
+      "schema:unitCode": "AMH",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
-      "csvw:name": "step_cumulative_energy_wh",
-      "csvw:titles": "Step Cumulative Energy / Wh",
-      "csvw:propertyUrl": "bdf:step_cumulative_energy_wh",
-      "dcterms:description": "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
-      "rdfs:comment": "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "csvw:name": "step_energy_wh",
+      "csvw:titles": "Step Energy / Wh",
+      "csvw:propertyUrl": "bdf:step_energy_wh",
+      "dcterms:description": "Energy transferred during the current test step, in watt hour.",
+      "rdfs:comment": "Energy transferred during the current test step, in watt hour.",
       "skos:prefLabel": {
-        "@value": "Step Cumulative Energy / Wh",
+        "@value": "Step Energy / Wh",
         "@language": "en"
       },
       "skos:altLabel": "step_energy_wh",
@@ -710,7 +692,7 @@
       "qudt:hasUnit": {
         "@id": "unit:W-HR"
       },
-      "schema:unitCode": "W.h",
+      "schema:unitCode": "WHR",
       "csvw:required": false
     },
     {
@@ -737,7 +719,7 @@
       "qudt:hasUnit": {
         "@id": "unit:W-HR"
       },
-      "schema:unitCode": "W.h",
+      "schema:unitCode": "WHR",
       "csvw:required": false
     },
     {
@@ -764,7 +746,7 @@
       "qudt:hasUnit": {
         "@id": "unit:W-HR"
       },
-      "schema:unitCode": "W.h",
+      "schema:unitCode": "WHR",
       "csvw:required": false
     },
     {
@@ -791,7 +773,7 @@
       "qudt:hasUnit": {
         "@id": "unit:W-HR"
       },
-      "schema:unitCode": "W.h",
+      "schema:unitCode": "WHR",
       "csvw:required": false
     },
     {
@@ -818,7 +800,7 @@
       "qudt:hasUnit": {
         "@id": "unit:W-HR"
       },
-      "schema:unitCode": "W.h",
+      "schema:unitCode": "WHR",
       "csvw:required": false
     },
     {
@@ -845,7 +827,7 @@
       "qudt:hasUnit": {
         "@id": "unit:OHM"
       },
-      "schema:unitCode": "Ohm",
+      "schema:unitCode": "OHM",
       "csvw:required": false
     },
     {
@@ -872,7 +854,7 @@
       "qudt:hasUnit": {
         "@id": "unit:PA"
       },
-      "schema:unitCode": "Pa",
+      "schema:unitCode": "PAL",
       "csvw:required": false
     },
     {
@@ -899,21 +881,21 @@
       "qudt:hasUnit": {
         "@id": "unit:PA"
       },
-      "schema:unitCode": "Pa",
+      "schema:unitCode": "PAL",
       "csvw:required": false
     },
     {
       "@type": "csvw:Column",
-      "csvw:name": "power_watt",
+      "csvw:name": "power_w",
       "csvw:titles": "Power / W",
       "csvw:propertyUrl": "bdf:power_watt",
-      "dcterms:description": "Instantaneous power calculated as the product of voltage and current, in watt.",
-      "rdfs:comment": "Instantaneous power calculated as the product of voltage and current, in watt.",
+      "dcterms:description": "Instantaneous power calculated as the product of Voltage and Current",
+      "rdfs:comment": "Instantaneous power calculated as the product of Voltage and Current",
       "skos:prefLabel": {
         "@value": "Power / W",
         "@language": "en"
       },
-      "skos:altLabel": "power_watt",
+      "skos:altLabel": "power_w",
       "csvw:datatype": {
         "csvw:base": "xsd:decimal"
       },
@@ -926,635 +908,7 @@
       "qudt:hasUnit": {
         "@id": "unit:WTT"
       },
-      "schema:unitCode": "W",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "absolute_impedance_ohm",
-      "csvw:titles": "Absolute Impedance / ohm",
-      "csvw:propertyUrl": "bdf:absolute_impedance_ohm",
-      "dcterms:description": "The magnitude of the complex impedance, in ohm.",
-      "rdfs:comment": "The magnitude of the complex impedance, in ohm.",
-      "skos:prefLabel": {
-        "@value": "Absolute Impedance / ohm",
-        "@language": "en"
-      },
-      "skos:altLabel": "absolute_impedance_ohm",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Impedance"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:OHM"
-      },
-      "schema:unitCode": "Ohm",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "ac_internal_resistance_ohm",
-      "csvw:titles": "AC Internal Resistance / ohm",
-      "csvw:propertyUrl": "bdf:ac_internal_resistance_ohm",
-      "dcterms:description": "AC internal resistance: impedance magnitude at a fixed excitation frequency, conventionally 1 kHz. Equivalent to instrument ACR outputs.",
-      "rdfs:comment": "AC internal resistance: impedance magnitude at a fixed excitation frequency, conventionally 1 kHz. Equivalent to instrument ACR outputs.",
-      "skos:prefLabel": {
-        "@value": "AC Internal Resistance / ohm",
-        "@language": "en"
-      },
-      "skos:altLabel": "ac_internal_resistance_ohm",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:Ohm"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Resistance"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:OHM"
-      },
-      "schema:unitCode": "Ohm",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_charging_capacity_ah",
-      "csvw:titles": "Cycle Charging Capacity / Ah",
-      "csvw:propertyUrl": "bdf:cycle_charging_capacity_ah",
-      "dcterms:description": "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Electric charge transferred into the test object during the charge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Charging Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_charging_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_charging_energy_wh",
-      "csvw:titles": "Cycle Charging Energy / Wh",
-      "csvw:propertyUrl": "bdf:cycle_charging_energy_wh",
-      "dcterms:description": "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Energy transferred into the test object during the charge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Charging Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_charging_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_cumulative_capacity_ah",
-      "csvw:titles": "Cycle Cumulative Capacity / Ah",
-      "csvw:propertyUrl": "bdf:cycle_cumulative_capacity_ah",
-      "dcterms:description": "Running accumulation of charge throughput within the current cycle, in ampere hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Running accumulation of charge throughput within the current cycle, in ampere hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Cumulative Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_cumulative_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_cumulative_energy_wh",
-      "csvw:titles": "Cycle Cumulative Energy / Wh",
-      "csvw:propertyUrl": "bdf:cycle_cumulative_energy_wh",
-      "dcterms:description": "Running accumulation of energy throughput within the current cycle, in watt hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Running accumulation of energy throughput within the current cycle, in watt hour. Monotonically non-decreasing within the cycle; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Cumulative Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_cumulative_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_discharging_capacity_ah",
-      "csvw:titles": "Cycle Discharging Capacity / Ah",
-      "csvw:propertyUrl": "bdf:cycle_discharging_capacity_ah",
-      "dcterms:description": "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Electric charge transferred out of the test object during the discharge portions of the current cycle, in ampere hour. Non-negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Discharging Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_discharging_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_discharging_energy_wh",
-      "csvw:titles": "Cycle Discharging Energy / Wh",
-      "csvw:propertyUrl": "bdf:cycle_discharging_energy_wh",
-      "dcterms:description": "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Energy transferred out of the test object during the discharge portions of the current cycle, in watt hour. Non-negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Discharging Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_discharging_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_net_capacity_ah",
-      "csvw:titles": "Cycle Net Capacity / Ah",
-      "csvw:propertyUrl": "bdf:cycle_net_capacity_ah",
-      "dcterms:description": "Running net capacity within the current cycle: cycle_charging_capacity_ah - cycle_discharging_capacity_ah. Can be negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Running net capacity within the current cycle: cycle_charging_capacity_ah - cycle_discharging_capacity_ah. Can be negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Net Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_net_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "cycle_net_energy_wh",
-      "csvw:titles": "Cycle Net Energy / Wh",
-      "csvw:propertyUrl": "bdf:cycle_net_energy_wh",
-      "dcterms:description": "Running net energy within the current cycle: cycle_charging_energy_wh - cycle_discharging_energy_wh. Can be negative; resets to zero when cycle_count increments.",
-      "rdfs:comment": "Running net energy within the current cycle: cycle_charging_energy_wh - cycle_discharging_energy_wh. Can be negative; resets to zero when cycle_count increments.",
-      "skos:prefLabel": {
-        "@value": "Cycle Net Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "cycle_net_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "dc_internal_resistance_ohm",
-      "csvw:titles": "DC Internal Resistance / ohm",
-      "csvw:propertyUrl": "bdf:dc_internal_resistance_ohm",
-      "dcterms:description": "DC internal resistance from the voltage response to a current step. Method parameters are instrument-specific; values from different methods are not directly comparable.",
-      "rdfs:comment": "DC internal resistance from the voltage response to a current step. Method parameters are instrument-specific; values from different methods are not directly comparable.",
-      "skos:prefLabel": {
-        "@value": "DC Internal Resistance / ohm",
-        "@language": "en"
-      },
-      "skos:altLabel": "dc_internal_resistance_ohm",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:Ohm"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Resistance"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:OHM"
-      },
-      "schema:unitCode": "Ohm",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "frequency_hertz",
-      "csvw:titles": "Frequency / Hz",
-      "csvw:propertyUrl": "bdf:frequency_hertz",
-      "dcterms:description": "The frequency of the applied periodic excitation or measured response, in hertz.",
-      "rdfs:comment": "The frequency of the applied periodic excitation or measured response, in hertz.",
-      "skos:prefLabel": {
-        "@value": "Frequency / Hz",
-        "@language": "en"
-      },
-      "skos:altLabel": "frequency_hertz",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Frequency"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:HZ"
-      },
-      "schema:unitCode": "Hz",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "imaginary_impedance_ohm",
-      "csvw:titles": "Imaginary Impedance / ohm",
-      "csvw:propertyUrl": "bdf:imaginary_impedance_ohm",
-      "dcterms:description": "The imaginary (reactive) component of the complex impedance, in ohm. Sign as reported: negative for predominantly capacitive behaviour.",
-      "rdfs:comment": "The imaginary (reactive) component of the complex impedance, in ohm. Sign as reported: negative for predominantly capacitive behaviour.",
-      "skos:prefLabel": {
-        "@value": "Imaginary Impedance / ohm",
-        "@language": "en"
-      },
-      "skos:altLabel": "imaginary_impedance_ohm",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Impedance"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:OHM"
-      },
-      "schema:unitCode": "Ohm",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "phase_degree",
-      "csvw:titles": "Phase / deg",
-      "csvw:propertyUrl": "bdf:phase_degree",
-      "dcterms:description": "The phase angle of the complex impedance, representing the phase shift between voltage and current, in degree.",
-      "rdfs:comment": "The phase angle of the complex impedance, representing the phase shift between voltage and current, in degree.",
-      "skos:prefLabel": {
-        "@value": "Phase / deg",
-        "@language": "en"
-      },
-      "skos:altLabel": "phase_degree",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Angle"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:DEG"
-      },
-      "schema:unitCode": "deg",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "real_impedance_ohm",
-      "csvw:titles": "Real Impedance / ohm",
-      "csvw:propertyUrl": "bdf:real_impedance_ohm",
-      "dcterms:description": "The real (resistive) component of the complex impedance, in ohm.",
-      "rdfs:comment": "The real (resistive) component of the complex impedance, in ohm.",
-      "skos:prefLabel": {
-        "@value": "Real Impedance / ohm",
-        "@language": "en"
-      },
-      "skos:altLabel": "real_impedance_ohm",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Impedance"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:OHM"
-      },
-      "schema:unitCode": "Ohm",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "record_index",
-      "csvw:titles": "Record Index / 1",
-      "csvw:propertyUrl": "bdf:record_index",
-      "dcterms:description": "An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.",
-      "rdfs:comment": "An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.",
-      "skos:prefLabel": {
-        "@value": "Record Index / 1",
-        "@language": "en"
-      },
-      "skos:altLabel": "record_index",
-      "csvw:datatype": {
-        "csvw:base": "xsd:integer",
-        "csvw:minimum": 0
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Count"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:NUM"
-      },
-      "schema:unitCode": "1",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_charging_capacity_ah",
-      "csvw:titles": "Step Charging Capacity / Ah",
-      "csvw:propertyUrl": "bdf:step_charging_capacity_ah",
-      "dcterms:description": "Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative; resets to zero at each step transition.",
-      "rdfs:comment": "Electric charge transferred into the test object during the charge portion of the current test step, in ampere hour. Non-negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Charging Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_charging_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_charging_energy_wh",
-      "csvw:titles": "Step Charging Energy / Wh",
-      "csvw:propertyUrl": "bdf:step_charging_energy_wh",
-      "dcterms:description": "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition.",
-      "rdfs:comment": "Energy transferred into the test object during the charge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Charging Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_charging_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_discharging_capacity_ah",
-      "csvw:titles": "Step Discharging Capacity / Ah",
-      "csvw:propertyUrl": "bdf:step_discharging_capacity_ah",
-      "dcterms:description": "Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative; resets to zero at each step transition.",
-      "rdfs:comment": "Electric charge transferred out of the test object during the discharge portion of the current test step, in ampere hour. Non-negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Discharging Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_discharging_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_discharging_energy_wh",
-      "csvw:titles": "Step Discharging Energy / Wh",
-      "csvw:propertyUrl": "bdf:step_discharging_energy_wh",
-      "dcterms:description": "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition.",
-      "rdfs:comment": "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Discharging Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_discharging_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_net_capacity_ah",
-      "csvw:titles": "Step Net Capacity / Ah",
-      "csvw:propertyUrl": "bdf:step_net_capacity_ah",
-      "dcterms:description": "Running net capacity within the current test step: step_charging_capacity_ah - step_discharging_capacity_ah. Can be negative; resets to zero at each step transition.",
-      "rdfs:comment": "Running net capacity within the current test step: step_charging_capacity_ah - step_discharging_capacity_ah. Can be negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Net Capacity / Ah",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_net_capacity_ah",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:AmpereHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:ElectricCharge"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:A-HR"
-      },
-      "schema:unitCode": "A.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_net_energy_wh",
-      "csvw:titles": "Step Net Energy / Wh",
-      "csvw:propertyUrl": "bdf:step_net_energy_wh",
-      "dcterms:description": "Running net energy within the current test step: step_charging_energy_wh - step_discharging_energy_wh. Can be negative; resets to zero at each step transition.",
-      "rdfs:comment": "Running net energy within the current test step: step_charging_energy_wh - step_discharging_energy_wh. Can be negative; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Net Energy / Wh",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_net_energy_wh",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:WattHour"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Energy"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:W-HR"
-      },
-      "schema:unitCode": "W.h",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "step_time_second",
-      "csvw:titles": "Step Time / s",
-      "csvw:propertyUrl": "bdf:step_time_second",
-      "dcterms:description": "Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.",
-      "rdfs:comment": "Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.",
-      "skos:prefLabel": {
-        "@value": "Step Time / s",
-        "@language": "en"
-      },
-      "skos:altLabel": "step_time_second",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Time"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:SEC"
-      },
-      "schema:unitCode": "s",
-      "csvw:required": false
-    },
-    {
-      "@type": "csvw:Column",
-      "csvw:name": "surface_pressure_pa",
-      "csvw:titles": "Surface Pressure / Pa",
-      "csvw:propertyUrl": "bdf:surface_pressure_pa",
-      "dcterms:description": "Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.",
-      "rdfs:comment": "Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.",
-      "skos:prefLabel": {
-        "@value": "Surface Pressure / Pa",
-        "@language": "en"
-      },
-      "skos:altLabel": "surface_pressure_pa",
-      "csvw:datatype": {
-        "csvw:base": "xsd:decimal"
-      },
-      "hasMeasurementUnit": {
-        "@id": "emmo:Pascal"
-      },
-      "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Pressure"
-      },
-      "qudt:hasUnit": {
-        "@id": "unit:PA"
-      },
-      "schema:unitCode": "Pa",
+      "schema:unitCode": "WTT",
       "csvw:required": false
     }
   ]
