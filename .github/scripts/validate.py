@@ -37,12 +37,20 @@ LOGGER = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # BDF-specific column requirements (regression guards)
 # ---------------------------------------------------------------------------
-# Core required columns — present and csvw:required=true in every compliant file.
+# Core columns — must be present in the canonical schema.
 _CORE_REQUIRED = frozenset({
     "test_time_second",
     "voltage_volt",
     "current_ampere",
     "unix_time_second",
+})
+
+# Columns flagged csvw:required=true — derived from the ontology's obligation
+# levels (unix_time_second is 'recommended', so present but not required).
+_REQUIRED_FLAG = frozenset({
+    "test_time_second",
+    "voltage_volt",
+    "current_ampere",
 })
 
 # Step-quantity columns added in fix/step-quantity-semantics.
@@ -132,7 +140,7 @@ def check_schema(schema_path: Path) -> None:
 
     not_required = [
         name for col in columns
-        if (name := col.get("csvw:name")) in _CORE_REQUIRED
+        if (name := col.get("csvw:name")) in _REQUIRED_FLAG
         and not col.get("csvw:required", False)
     ]
     if not_required:
