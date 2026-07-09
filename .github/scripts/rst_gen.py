@@ -223,6 +223,18 @@ def extract_terms(onto: Any, ontology_prefix: str) -> list[dict[str, Any]]:
             if text:
                 record[disp_key] = f"\\({text}\\)" if as_math else text
 
+        # qudt:hasQuantityKind -> the QUDT quantity-kind alignment (formerly
+        # carried by skos:exactMatch, which the SKOS-namespace loop above picked
+        # up automatically; the qudt: property needs an explicit read).
+        qk_prop = onto["http://qudt.org/schema/qudt/hasQuantityKind"]
+        if qk_prop is not None:
+            qk_values = [
+                str(getattr(v, "iri", v))
+                for v in qk_prop._get_values_for_class(entity)
+            ]
+            if qk_values:
+                record["hasQuantityKind"] = "; ".join(qk_values)
+
         # prov:wasDerivedFrom -> resolve targets to entities for linked rendering
         deriv_prop = onto["http://www.w3.org/ns/prov#wasDerivedFrom"]
         if deriv_prop is not None:
