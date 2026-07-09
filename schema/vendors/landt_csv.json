@@ -1,9 +1,9 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt-txt",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt_csv",
   "@type": "csvw:TableSchema",
-  "dcterms:title": "LANDT CT-Series TXT — BDF column mapping",
-  "dcterms:description": "Maps LANDT CT-series older TXT export headers to BDF canonical columns. Older LANDT TXT files use abbreviated English headers (Volts, Amps, Test(sec)) and tab-delimited rows. All values are in SI units; no unit conversion is required.",
+  "dcterms:title": "LANDT CT-Series CSV — BDF column mapping",
+  "dcterms:description": "Maps LANDT CT-series modern CSV export headers to BDF canonical columns. Modern LANDT exports use snake_case headers with SI units embedded in the name (e.g. test_time_s, voltage_v). All columns are already in BDF canonical SI units; no unit conversion is required.",
   "schema:producer": {
     "@type": "schema:Organization",
     "schema:name": "LANDT Instruments"
@@ -15,20 +15,13 @@
     {
       "csvw:name": "test_time_second",
       "csvw:titles": [
-        "Test(sec)",
-        "Test (sec)",
-        "test_time_s",
-        "Test Time (s)",
-        "Test Time"
+        "test_time_s"
       ],
       "schema:unitCode": "s"
     },
     {
       "csvw:name": "step_time_second",
       "csvw:titles": [
-        "DPT-Time",
-        "DPT Time",
-        "Step Time (s)",
         "step_time_s"
       ],
       "schema:unitCode": "s"
@@ -36,28 +29,19 @@
     {
       "csvw:name": "voltage_volt",
       "csvw:titles": [
-        "Volts",
-        "Volt",
-        "Voltage",
-        "V"
+        "voltage_v"
       ]
     },
     {
       "csvw:name": "current_ampere",
       "csvw:titles": [
-        "Amps",
-        "Amp",
-        "Current",
-        "A",
-        "I(A)"
+        "current_a"
       ]
     },
     {
       "csvw:name": "cycle_count",
       "csvw:titles": [
-        "Cycle",
-        "Cycle#",
-        "Cycle Index"
+        "cycle_index"
       ],
       "csvw:datatype": {
         "csvw:base": "xsd:integer"
@@ -66,21 +50,28 @@
     {
       "csvw:name": "step_id",
       "csvw:titles": [
-        "Step",
-        "Step#",
-        "Step Index"
+        "step_index"
       ]
     },
     {
       "csvw:name": "record_index",
       "csvw:titles": [
-        "Rec#",
-        "Record",
-        "Record#"
+        "channel_index"
       ],
       "csvw:datatype": {
         "csvw:base": "xsd:integer"
-      }
+      },
+      "skos:note": "channel_index in LANDT CSV is a sequential record counter analogous to record_index."
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "date_time_iso_string"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "ISO 8601 datetime string; converted to Unix epoch seconds by the BDF normaliser."
     }
   ]
 }

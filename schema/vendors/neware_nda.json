@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/neware-nda",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/neware_nda",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Neware NDA/NDAX binary — BDF column mapping",
   "dcterms:description": "Maps column names produced by parsing Neware NDA and NDAX binary files to BDF canonical columns. These are not file-level text headers; they are the DataFrame column names returned by the NewareNDA or fastnda parsing library. IMPORTANT: Current is in milliamperes and capacity/energy in mAh/mWh in the raw parsed output; schema:unitCode documents the as-parsed unit.",

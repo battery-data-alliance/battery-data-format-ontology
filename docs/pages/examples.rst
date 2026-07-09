@@ -173,7 +173,7 @@ The following example shows how a Novonix UHPC CSV file is normalised to BDF can
    from battery_data_format import read_file
 
    # The normaliser detects the Novonix format automatically,
-   # loads the novonix-csv vendor schema, maps headers, and
+   # loads the novonix_csv vendor schema, maps headers, and
    # converts time from hours to seconds (schema:unitCode "h" → × 3600).
    df = read_file("novonix_experiment.csv")
 

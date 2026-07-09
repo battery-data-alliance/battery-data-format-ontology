@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/digatron-csv",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/digatron_csv",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Digatron CSV — BDF column mapping",
   "dcterms:description": "Maps Digatron battery cycler CSV export headers to BDF canonical columns. Digatron uses a '#' separator between column name and unit (e.g. 'Voltage#V'). Column headers appear on row 1; row 2 is a units row that the BDF parser drops. IMPORTANT: Digatron's AhAccu/WhAccu, AhBal/WhBal, and AhStep/WhStep do not align with the BDF cumulative/net/step definitions; the BDF normaliser recomputes all derived capacity and energy columns from the primary accumulators (AhCha, AhDch).",
