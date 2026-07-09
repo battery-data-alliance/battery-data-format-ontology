@@ -189,6 +189,31 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
             "schema.json contains 'unit:CountingUnit' which is a QUDT class. Use 'unit:NUM' instead.",
         )
 
+    def test_schema_columns_cover_ontology_classes_both_directions(self):
+        """The CSVW schema and the ontology must describe the same set of columns.
+
+        Compared by skos:notation (= csvw:name). Guards against schema drift such
+        as the deprecated step_capacity_ah / step_energy_wh columns previously
+        missing from schema.json while present (deprecated) in the ontology.
+        """
+        onto_notations = {
+            str(n)
+            for s in self.graph.subjects(RDF.type, OWL.Class)
+            if str(s).startswith(BDF_NS)
+            for n in self.graph.objects(s, SKOS.notation)
+        }
+        schema_names = set(self.schema_columns.keys())
+        self.assertEqual(
+            sorted(onto_notations - schema_names),
+            [],
+            "Ontology classes with no matching schema.json column",
+        )
+        self.assertEqual(
+            sorted(schema_names - onto_notations),
+            [],
+            "schema.json columns with no matching ontology class",
+        )
+
     # ------------------------------------------------------------------
     # Context completeness and correctness
     # ------------------------------------------------------------------
@@ -224,6 +249,36 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
             "Step Type",
             inner,
             "context.json is missing 'Step Type'. Regenerate with --generate-context.",
+        )
+
+    def test_context_indexes_terms_by_preflabel_and_notation(self):
+        """Both the human pref-label ("Voltage / V") and the machine notation
+        ("voltage_volt", the on-disk BDF header) must resolve to the same term,
+        including deprecated ones."""
+        inner = self.context.get("@context", {})
+        samples = {
+            "voltage_volt": ("Voltage / V", "voltage_volt"),
+            "test_time_second": ("Test Time / s", "test_time_second"),
+            "step_capacity_ah": ("Step Capacity / Ah", "step_capacity_ah"),  # deprecated
+        }
+        for local, (pref_key, notation_key) in samples.items():
+            with self.subTest(term=local):
+                self.assertEqual(inner.get(pref_key), f"bdf:{local}")
+                self.assertEqual(inner.get(notation_key), f"bdf:{local}")
+
+    def test_context_has_two_keys_per_class(self):
+        """Every BDF class contributes exactly two context keys (pref-label and
+        notation); the remaining entries are prefixes and hasMeasurementUnit."""
+        inner = self.context.get("@context", {})
+        n_classes = sum(
+            1 for s in self.graph.subjects(RDF.type, OWL.Class) if str(s).startswith(BDF_NS)
+        )
+        term_keys = [k for k, v in inner.items() if isinstance(v, str) and v.startswith("bdf:")]
+        self.assertEqual(
+            len(term_keys),
+            2 * n_classes,
+            "Context must map exactly 2 keys (pref-label + notation) to each BDF class. "
+            "Regenerate with --generate-context.",
         )
 
     # ------------------------------------------------------------------
