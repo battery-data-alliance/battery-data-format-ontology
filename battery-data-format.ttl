@@ -161,7 +161,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolute_impedance_ohm
 :absolute_impedance_ohm rdf:type owl:Class ;
                         rdfs:subClassOf sosa:ObservableProperty ,
-                                        emmo:EMMO_79a02de5_b884_4eab_bc18_f67997d597a2 ;
+                                        emmo:EMMO_79a02de5_b884_4eab_bc18_f67997d597a2 ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                          owl:someValuesFrom emmo:Ohm
+                                        ] ;
+                        rdfs:comment "The magnitude of the complex impedance, in ohm."@en ;
+                        rdfs:label "Absolute Impedance / ohm"@en ;
                         rdfs:seeAlso unit:OHM ;
                         skos:altLabel "absolute_impedance_ohm"@en ;
                         skos:definition "The magnitude of the complex impedance, in ohm."@en ;
@@ -172,10 +178,12 @@ sosa:ObservableProperty rdf:type owl:Class .
                         :obligation "optional" ;
                         skos:prefLabel "Absolute Impedance / ohm"@en ;
                         schema:description "The magnitude of the complex impedance, in ohm."@en ;
+                        schema:name "Absolute Impedance / ohm"@en ;
                         prov:wasDerivedFrom :imaginary_impedance_ohm ,
                                             :real_impedance_ohm ;
                         schema:unitCode "Ohm" ;
-                        schema:unitText "ohm"@en .
+                        schema:unitText "ohm"@en ;
+                        emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The magnitude of the complex impedance, in ohm."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm
@@ -787,7 +795,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequency_hertz
 :frequency_hertz rdf:type owl:Class ;
                  rdfs:subClassOf sosa:ObservableProperty ,
-                                 emmo:EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a ;
+                                 emmo:EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                   owl:someValuesFrom emmo:Hertz
+                                 ] ;
+                 rdfs:comment "The frequency of the applied periodic excitation or measured response, in hertz."@en ;
+                 rdfs:label "Frequency / Hz"@en ;
                  rdfs:seeAlso unit:HZ ;
                  skos:altLabel "frequency_hertz"@en ;
                  skos:definition "The frequency of the applied periodic excitation or measured response, in hertz."@en ;
@@ -797,14 +811,22 @@ sosa:ObservableProperty rdf:type owl:Class .
                  :obligation "optional" ;
                  skos:prefLabel "Frequency / Hz"@en ;
                  schema:description "The frequency of the applied periodic excitation or measured response, in hertz."@en ;
+                 schema:name "Frequency / Hz"@en ;
                  schema:unitCode "Hz" ;
-                 schema:unitText "hertz"@en .
+                 schema:unitText "hertz"@en ;
+                 emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The frequency of the applied periodic excitation or measured response, in hertz."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#imaginary_impedance_ohm
 :imaginary_impedance_ohm rdf:type owl:Class ;
                          rdfs:subClassOf sosa:ObservableProperty ,
-                                         electrochemistry:electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626 ;
+                                         electrochemistry:electrochemistry_0089729b_5890_4c15_aa09_1244d41f8626 ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                           owl:someValuesFrom emmo:Ohm
+                                         ] ;
+                         rdfs:comment "The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis."@en ;
+                         rdfs:label "Imaginary Impedance / ohm"@en ;
                          rdfs:seeAlso unit:OHM ;
                          skos:altLabel "imaginary_impedance_ohm"@en ;
                          skos:definition "The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis."@en ;
@@ -814,8 +836,10 @@ sosa:ObservableProperty rdf:type owl:Class .
                          :obligation "optional" ;
                          skos:prefLabel "Imaginary Impedance / ohm"@en ;
                          schema:description "The imaginary (reactive) component of the complex impedance, in ohm. Sign as reported: negative for predominantly capacitive behaviour."@en ;
+                         schema:name "Imaginary Impedance / ohm"@en ;
                          schema:unitCode "Ohm" ;
-                         schema:unitText "ohm"@en .
+                         schema:unitText "ohm"@en ;
+                         emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The imaginary (reactive) component of the complex impedance, in ohm, as reported with the standard electrotechnical sign convention: negative for predominantly capacitive behaviour. Note that Nyquist plots in electrochemistry conventionally display the negated value on the vertical axis."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#internal_resistance_ohm
@@ -907,7 +931,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_degree
 :phase_degree rdf:type owl:Class ;
               rdfs:subClassOf sosa:ObservableProperty ,
-                              emmo:EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9 ;
+                              emmo:EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9 ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                owl:someValuesFrom emmo:Degree
+                              ] ;
+              rdfs:comment "The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree."@en ;
+              rdfs:label "Phase / deg"@en ;
               rdfs:seeAlso unit:DEG ;
               skos:altLabel "phase_degree"@en ;
               skos:definition "The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree."@en ;
@@ -918,10 +948,12 @@ sosa:ObservableProperty rdf:type owl:Class .
               :obligation "optional" ;
               skos:prefLabel "Phase / deg"@en ;
               schema:description "The phase angle of the complex impedance, representing the phase shift between voltage and current, in degree."@en ;
+              schema:name "Phase / deg"@en ;
               prov:wasDerivedFrom :imaginary_impedance_ohm ,
                                   :real_impedance_ohm ;
               schema:unitCode "deg" ;
-              schema:unitText "degree"@en .
+              schema:unitText "degree"@en ;
+              emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The phase angle of the complex impedance: the argument of the complex impedance, representing the phase shift between voltage and current, in degree."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#power_watt
@@ -957,7 +989,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_impedance_ohm
 :real_impedance_ohm rdf:type owl:Class ;
                     rdfs:subClassOf sosa:ObservableProperty ,
-                                    electrochemistry:electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f ;
+                                    electrochemistry:electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                      owl:someValuesFrom emmo:Ohm
+                                    ] ;
+                    rdfs:comment "The real (resistive) component of the complex impedance, in ohm."@en ;
+                    rdfs:label "Real Impedance / ohm"@en ;
                     rdfs:seeAlso unit:OHM ;
                     skos:altLabel "real_impedance_ohm"@en ;
                     skos:definition "The real (resistive) component of the complex impedance, in ohm."@en ;
@@ -967,14 +1005,22 @@ sosa:ObservableProperty rdf:type owl:Class .
                     :obligation "optional" ;
                     skos:prefLabel "Real Impedance / ohm"@en ;
                     schema:description "The real (resistive) component of the complex impedance, in ohm."@en ;
+                    schema:name "Real Impedance / ohm"@en ;
                     schema:unitCode "Ohm" ;
-                    schema:unitText "ohm"@en .
+                    schema:unitText "ohm"@en ;
+                    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The real (resistive) component of the complex impedance, in ohm."@en .
 
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_index
 :record_index rdf:type owl:Class ;
               rdfs:subClassOf sosa:ObservableProperty ,
-                              emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ;
+                              emmo:EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
+                              ] ;
+              rdfs:comment "An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning."@en ;
+              rdfs:label "Record Index / 1"@en ;
               rdfs:seeAlso unit:NUM ;
               skos:altLabel "record_index"@en ;
               skos:definition "An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning."@en ;
@@ -1370,7 +1416,13 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_time_second
 :step_time_second rdf:type owl:Class ;
                   rdfs:subClassOf sosa:ObservableProperty ,
-                                  electrochemistry:electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098 ;
+                                  electrochemistry:electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098 ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                                    owl:someValuesFrom emmo:Second
+                                  ] ;
+                  rdfs:comment "Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition."@en ;
+                  rdfs:label "Step Time / s"@en ;
                   rdfs:seeAlso unit:SEC ;
                   skos:altLabel "step_time_second"@en ;
                   skos:definition "Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition."@en ;

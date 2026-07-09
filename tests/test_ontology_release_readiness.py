@@ -15,7 +15,15 @@ ONTOLOGY_VERSION_IRI = URIRef(
 BDF = Namespace("https://w3id.org/battery-data-alliance/ontology/battery-data-format#")
 BDF_NS = str(BDF)
 EMMO = Namespace("https://w3id.org/emmo#")
+SCHEMA = Namespace("https://schema.org/")
 HAS_MEASUREMENT_UNIT = URIRef("https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569")
+ELUCIDATION = URIRef("https://w3id.org/emmo#EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9")
+OBLIGATION = URIRef(str(BDF) + "obligation")
+
+# step_type is a string-valued channel, exempt from the EMMO unit restriction.
+# step_id is a counting index without a UCUM unit code / QUDT unit see-also.
+UNIT_RESTRICTION_EXEMPT = frozenset({"step_type"})
+UNIT_CODE_SEEALSO_EXEMPT = frozenset({"step_id", "step_type"})
 
 # Columns that must exist in the canonical schema (presence, not requiredness).
 EXPECTED_SCHEMA_COLUMNS = {"test_time_second", "voltage_volt", "current_ampere", "unix_time_second"}
@@ -58,6 +66,69 @@ class TestOntologyReleaseReadiness(unittest.TestCase):
             for _, _, candidate in self.graph.triples((entity, RDFS.subClassOf, None))
         )
         self.assertTrue(found, "Missing expected Ohm unit restriction on internal_resistance_ohm")
+
+    def _non_deprecated_bdf_classes(self):
+        classes = []
+        for s in self.graph.subjects(RDF.type, OWL.Class):
+            if not str(s).startswith(BDF_NS):
+                continue
+            dep = self.graph.value(s, OWL.deprecated)
+            if dep is not None and str(dep).lower() == "true":
+                continue
+            classes.append(s)
+        return classes
+
+    def _has_unit_restriction(self, entity):
+        return any(
+            (candidate, RDF.type, OWL.Restriction) in self.graph
+            and (candidate, OWL.onProperty, HAS_MEASUREMENT_UNIT) in self.graph
+            and any(True for _ in self.graph.objects(candidate, OWL.someValuesFrom))
+            for _, _, candidate in self.graph.triples((entity, RDFS.subClassOf, None))
+        )
+
+    def test_annotation_parity_across_non_deprecated_terms(self):
+        """Every non-deprecated BDF class must carry the full annotation set, an
+        EMMO unit restriction (except string channels), and a UCUM unit code plus
+        QUDT see-also (except unitless index/string channels).
+
+        Guards against the EIS/late-added terms silently missing annotations the
+        rest carry. Removing any of these from the TTL must fail this test.
+        """
+        required_annotations = {
+            "skos:prefLabel": SKOS.prefLabel,
+            "skos:definition": SKOS.definition,
+            "skos:notation": SKOS.notation,
+            ":obligation": OBLIGATION,
+            "rdfs:label": RDFS.label,
+            "rdfs:comment": RDFS.comment,
+            "schema:name": SCHEMA.name,
+            "schema:description": SCHEMA.description,
+            "emmo:elucidation": ELUCIDATION,
+        }
+        classes = self._non_deprecated_bdf_classes()
+        self.assertTrue(classes, "No non-deprecated BDF classes found in the ontology graph.")
+        for entity in classes:
+            name = str(entity).split("#")[-1]
+            with self.subTest(term=name):
+                for label, pred in required_annotations.items():
+                    self.assertTrue(
+                        any(True for _ in self.graph.objects(entity, pred)),
+                        f"{name} is missing {label}",
+                    )
+                if name not in UNIT_RESTRICTION_EXEMPT:
+                    self.assertTrue(
+                        self._has_unit_restriction(entity),
+                        f"{name} is missing the EMMO unit restriction",
+                    )
+                if name not in UNIT_CODE_SEEALSO_EXEMPT:
+                    self.assertTrue(
+                        any(True for _ in self.graph.objects(entity, SCHEMA.unitCode)),
+                        f"{name} is missing schema:unitCode",
+                    )
+                    self.assertTrue(
+                        any(True for _ in self.graph.objects(entity, RDFS.seeAlso)),
+                        f"{name} is missing rdfs:seeAlso",
+                    )
 
     # ------------------------------------------------------------------
     # Schema completeness

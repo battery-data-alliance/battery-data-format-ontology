@@ -108,6 +108,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#absolut
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Ohm' onclick="if(!document.getElementById('Ohm')){window.location.href='https://w3id.org/emmo#Ohm';return false;}">Ohm</a></li></ul></div></td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_79a02de5_b884_4eab_bc18_f67997d597a2' onclick="if(!document.getElementById('EMMO_79a02de5_b884_4eab_bc18_f67997d597a2')){window.location.href='https://w3id.org/emmo#EMMO_79a02de5_b884_4eab_bc18_f67997d597a2';return false;}">ElectricImpedance</a></td>
   </tr>
@@ -1336,6 +1340,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#frequen
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Frequency' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Frequency')){window.location.href='http://qudt.org/vocab/quantitykind/Frequency';return false;}">http://qudt.org/vocab/quantitykind/Frequency</a></td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Hertz' onclick="if(!document.getElementById('Hertz')){window.location.href='https://w3id.org/emmo#Hertz';return false;}">Hertz</a></li></ul></div></td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a' onclick="if(!document.getElementById('EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a')){window.location.href='https://w3id.org/emmo#EMMO_852b4ab8_fc29_4749_a8c7_b92d4fca7d5a';return false;}">Frequency</a></td>
   </tr>
@@ -1378,6 +1386,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#imagina
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Ohm' onclick="if(!document.getElementById('Ohm')){window.location.href='https://w3id.org/emmo#Ohm';return false;}">Ohm</a></li></ul></div></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
@@ -1604,6 +1616,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#phase_d
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Angle' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Angle')){window.location.href='http://qudt.org/vocab/quantitykind/Angle';return false;}">http://qudt.org/vocab/quantitykind/Angle</a></td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Degree' onclick="if(!document.getElementById('Degree')){window.location.href='https://w3id.org/emmo#Degree';return false;}">Degree</a></li></ul></div></td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9' onclick="if(!document.getElementById('EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9')){window.location.href='https://w3id.org/emmo#EMMO_2a0e5777_348c_475b_adf0_1b1e71a29bc9';return false;}">PhaseAngle</a></td>
   </tr>
@@ -1712,6 +1728,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#real_im
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Impedance' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Impedance')){window.location.href='http://qudt.org/vocab/quantitykind/Impedance';return false;}">http://qudt.org/vocab/quantitykind/Impedance</a></td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Ohm' onclick="if(!document.getElementById('Ohm')){window.location.href='https://w3id.org/emmo#Ohm';return false;}">Ohm</a></li></ul></div></td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f' onclick="if(!document.getElementById('electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_abf986d2_90d5_4746_b42b_89dc7cc1bf0f';return false;}">RealElectricImpedance</a></td>
   </tr>
@@ -1754,6 +1774,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978' onclick="if(!document.getElementById('EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978')){window.location.href='https://w3id.org/emmo#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978';return false;}">UnitOne</a></li></ul></div></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
@@ -2452,6 +2476,10 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ti
     <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Time' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Time')){window.location.href='http://qudt.org/vocab/quantitykind/Time';return false;}">http://qudt.org/vocab/quantitykind/Time</a></td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#Second' onclick="if(!document.getElementById('Second')){window.location.href='https://w3id.org/emmo#Second';return false;}">Second</a></li></ul></div></td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098' onclick="if(!document.getElementById('electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_80ca00f8_c891_4493_87a2_7d39b9d1e098';return false;}">StepTime</a></td>
   </tr>
@@ -3088,16 +3116,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
     <td class="element-table-value">step_capacity_ampere_hour</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_capacity_ah</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3136,16 +3164,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_energy_wh</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3184,16 +3212,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value">test_time_ms</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Test time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">test_time_millisecond</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3232,16 +3260,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value">unix_time_ms</td>
   </tr>
   <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+  </tr>
+  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Unix time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_millisecond</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
