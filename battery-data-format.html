@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -36,10 +36,10 @@
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=b84f66a2" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
     <script src="_static/documentation_options.js?v=fc837d61"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
@@ -1746,7 +1746,7 @@
 </tr>
 <tr>
   <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-  <td class="element-table-value"><a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a>, <a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a></td>
+  <td class="element-table-value"><a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a>, <a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a></td>
 </tr>
 </table><hr class="term-separator" />
 <div id="net_capacity_ah"></div></section>
@@ -3104,12 +3104,12 @@
   <td class="element-table-value">step_capacity_ah</td>
 </tr>
 <tr>
-  <td class="element-table-key"><span class="element-table-key">definition</span></td>
-  <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
-</tr>
-<tr>
   <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
   <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+</tr>
+<tr>
+  <td class="element-table-key"><span class="element-table-key">definition</span></td>
+  <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
 </tr>
 <tr>
   <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -3142,12 +3142,12 @@
   <td class="element-table-value">step_energy_wh</td>
 </tr>
 <tr>
-  <td class="element-table-key"><span class="element-table-key">definition</span></td>
-  <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
-</tr>
-<tr>
   <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
   <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+</tr>
+<tr>
+  <td class="element-table-key"><span class="element-table-key">definition</span></td>
+  <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
 </tr>
 <tr>
   <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -3180,12 +3180,12 @@
   <td class="element-table-value">test_time_millisecond</td>
 </tr>
 <tr>
-  <td class="element-table-key"><span class="element-table-key">definition</span></td>
-  <td class="element-table-value">Test time recorded in millisecond.</td>
-</tr>
-<tr>
   <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
   <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+</tr>
+<tr>
+  <td class="element-table-key"><span class="element-table-key">definition</span></td>
+  <td class="element-table-value">Test time recorded in millisecond.</td>
 </tr>
 <tr>
   <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -3218,12 +3218,12 @@
   <td class="element-table-value">unix_time_millisecond</td>
 </tr>
 <tr>
-  <td class="element-table-key"><span class="element-table-key">definition</span></td>
-  <td class="element-table-value">Unix time recorded in millisecond.</td>
-</tr>
-<tr>
   <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
   <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+</tr>
+<tr>
+  <td class="element-table-key"><span class="element-table-key">definition</span></td>
+  <td class="element-table-value">Unix time recorded in millisecond.</td>
 </tr>
 <tr>
   <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
@@ -3348,8 +3348,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -3387,7 +3387,7 @@
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
 </p></div>
       
     </div>
