@@ -3,6 +3,7 @@ name: docs
 on:
   push:
     branches: [main]
+    tags: ['[0-9]*.[0-9]*.[0-9]*']
   pull_request:
     branches: ['*']
 
@@ -92,10 +93,28 @@ jobs:
             echo "Processing tag: $TAG"
             mkdir -p "docs/_build/html/versions/$TAG/context"
             mkdir -p "docs/_build/html/versions/$TAG/schema"
-            git show "$TAG:battery-data-format.ttl"    > "docs/_build/html/versions/$TAG/battery-data-format.ttl"    2>/dev/null || true
-            git show "$TAG:context/context.json"        > "docs/_build/html/versions/$TAG/context/context.json"        2>/dev/null || true
-            git show "$TAG:schema/schema.json"          > "docs/_build/html/versions/$TAG/schema/schema.json"          2>/dev/null || true
+            git show "$TAG:battery-data-format.ttl"    > "docs/_build/html/versions/$TAG/battery-data-format.ttl"
+            git show "$TAG:context/context.json"        > "docs/_build/html/versions/$TAG/context/context.json"
+            git show "$TAG:schema/schema.json"          > "docs/_build/html/versions/$TAG/schema/schema.json"
           done < <(git tag)
+
+      - name: Verify the current release has a published version snapshot
+        # Runs on main/tag pushes (deploy-bound builds), not PRs: a release PR
+        # legitimately bumps owl:versionInfo before its tag is pushed, so a PR-time
+        # check would fail spuriously. On main the tag must already exist.
+        if: github.event_name == 'push'
+        run: |
+          V=$(grep -oP 'owl:versionInfo\s+"\K[0-9.]+' battery-data-format.ttl | head -n1)
+          if [ -z "$V" ]; then
+            echo "::error::Could not parse owl:versionInfo from battery-data-format.ttl"
+            exit 1
+          fi
+          echo "Ontology declares version $V"
+          if [ ! -f "docs/_build/html/versions/$V/battery-data-format.ttl" ]; then
+            echo "::error::versions/$V/battery-data-format.ttl was not built: the ontology declares version $V but no matching git tag exists, so owl:versionIRI .../$V/... will 404. Push the tag with 'git tag $V && git push origin $V' to publish the versioned snapshot."
+            exit 1
+          fi
+          echo "Verified versions/$V/battery-data-format.ttl is present"
 
       - name: Upload documentation artifact
         uses: actions/upload-artifact@v4
@@ -104,7 +123,7 @@ jobs:
           path: docs/_build/html/
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
