@@ -1282,7 +1282,7 @@ sosa:ObservableProperty rdf:type owl:Class .
                             emmo:EMMO_0cd58641_824c_4851_907f_f4c3be76630c ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-                              owl:someValuesFrom emmo:One
+                              owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978
                             ] ;
             rdfs:comment "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
             rdfs:label "Step Index / 1"@en ;
@@ -1741,10 +1741,6 @@ emmo:MilliSecond rdf:type owl:Class .
 
 ###  https://w3id.org/emmo#Ohm
 emmo:Ohm rdf:type owl:Class .
-
-
-###  https://w3id.org/emmo#One
-emmo:One rdf:type owl:Class .
 
 
 ###  https://w3id.org/emmo#Second
