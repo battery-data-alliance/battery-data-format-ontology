@@ -426,7 +426,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_capacity_ah
 :cycle_charging_capacity_ah rdf:type owl:Class ;
                             rdfs:subClassOf sosa:ObservableProperty ,
-                                            electrochemistry:10763eb0_dbc9_4d34_bd1a_7b8996590d45 ,
+                                            electrochemistry:electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45 ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                               owl:someValuesFrom emmo:AmpereHour
@@ -457,7 +457,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_charging_energy_wh
 :cycle_charging_energy_wh rdf:type owl:Class ;
                           rdfs:subClassOf sosa:ObservableProperty ,
-                                          electrochemistry:2ab7af60_da58_4243_b3bc_cbb2155cac53 ,
+                                          electrochemistry:electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53 ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                             owl:someValuesFrom emmo:WattHour
@@ -515,7 +515,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_capacity_ah
 :cycle_cumulative_capacity_ah rdf:type owl:Class ;
                               rdfs:subClassOf sosa:ObservableProperty ,
-                                              electrochemistry:ae108db7_8765_4329_9908_059277dee586 ,
+                                              electrochemistry:electrochemistry_ae108db7_8765_4329_9908_059277dee586 ,
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                                 owl:someValuesFrom emmo:AmpereHour
@@ -545,7 +545,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_cumulative_energy_wh
 :cycle_cumulative_energy_wh rdf:type owl:Class ;
                             rdfs:subClassOf sosa:ObservableProperty ,
-                                            electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ,
+                                            electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                               owl:someValuesFrom emmo:WattHour
@@ -575,7 +575,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_capacity_ah
 :cycle_discharging_capacity_ah rdf:type owl:Class ;
                                rdfs:subClassOf sosa:ObservableProperty ,
-                                               electrochemistry:0141b5c2_9f15_46f4_82e6_92a104faa476 ,
+                                               electrochemistry:electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476 ,
                                                [ rdf:type owl:Restriction ;
                                                  owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                                  owl:someValuesFrom emmo:AmpereHour
@@ -606,7 +606,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_discharging_energy_wh
 :cycle_discharging_energy_wh rdf:type owl:Class ;
                              rdfs:subClassOf sosa:ObservableProperty ,
-                                             electrochemistry:ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ,
+                                             electrochemistry:electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                                owl:someValuesFrom emmo:WattHour
@@ -637,7 +637,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_capacity_ah
 :cycle_net_capacity_ah rdf:type owl:Class ;
                        rdfs:subClassOf sosa:ObservableProperty ,
-                                       electrochemistry:791c1915_a791_4450_acd8_7f94764743b5 ,
+                                       electrochemistry:electrochemistry_791c1915_a791_4450_acd8_7f94764743b5 ,
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                          owl:someValuesFrom emmo:AmpereHour
@@ -667,7 +667,7 @@ sosa:ObservableProperty rdf:type owl:Class .
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_net_energy_wh
 :cycle_net_energy_wh rdf:type owl:Class ;
                      rdfs:subClassOf sosa:ObservableProperty ,
-                                     electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ,
+                                     electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
                                        owl:someValuesFrom emmo:WattHour
