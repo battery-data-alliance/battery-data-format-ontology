@@ -139,7 +139,15 @@ def build_specification():
     abstract = _pick_literal(_get_literals(graph, ONTOLOGY_IRI, DCTERMS.abstract))
     issued = _pick_literal(_get_literals(graph, ONTOLOGY_IRI, DCTERMS.issued))
     modified = _pick_literal(_get_literals(graph, ONTOLOGY_IRI, DCTERMS.modified))
-    publisher = _pick_literal(_get_literals(graph, ONTOLOGY_IRI, DCTERMS.publisher))
+    # Publisher may be a literal name or an organisation IRI. Prefer a literal
+    # (or the IRI's rdfs:label); fall back to the IRI string itself.
+    publisher_obj = next(graph.objects(ONTOLOGY_IRI, DCTERMS.publisher), None)
+    if isinstance(publisher_obj, URIRef):
+        publisher = _pick_literal(_get_literals(graph, publisher_obj, RDFS.label)) or str(publisher_obj)
+    elif publisher_obj is not None:
+        publisher = str(publisher_obj)
+    else:
+        publisher = ""
     license_iri = next(graph.objects(ONTOLOGY_IRI, DCTERMS.license), None)
     version_info = _pick_literal(_get_literals(graph, ONTOLOGY_IRI, OWL.versionInfo))
     imports = sorted(

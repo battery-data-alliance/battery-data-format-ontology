@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/biologic-mpt",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/biologic_mpt",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Bio-Logic EC-Lab / BT-Lab MPT — BDF column mapping",
   "dcterms:description": "Maps Bio-Logic EC-Lab and BT-Lab MPT ASCII export headers to BDF canonical columns. IMPORTANT: Current is exported in milliamperes (mA) and capacities in mA·h; schema:unitCode documents the as-exported unit. The BDF normaliser scales these to SI (A and A·h). File encoding is typically latin-1. Decimal separator may be a comma.",

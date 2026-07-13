@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/arbin-csv",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/arbin_csv",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Arbin BTS CSV/XLSX — BDF column mapping",
   "dcterms:description": "Maps Arbin Battery Test System CSV and XLSX export column headers to BDF canonical columns. Covers both space-separated (Test Time (s)) and underscore-separated (Test_Time(s)) naming conventions used across Arbin BTS software versions.",

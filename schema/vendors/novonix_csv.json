@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix-csv",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix_csv",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Novonix UHPC CSV — BDF column mapping",
   "dcterms:description": "Maps Novonix Ultra-High Precision Charger (UHPC) CSV export headers to BDF canonical columns. The file has an INI-style preamble ([Summary], [Data] sections); the column header row immediately follows the [Data] marker. IMPORTANT: Time columns are in HOURS, not seconds; schema:unitCode is 'h' and the BDF normaliser multiplies by 3600.",

@@ -22,20 +22,22 @@
                                                                        owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/battery-data-format> ;
                                                                        owl:imports <https://w3id.org/emmo/domain/battery/0.18.6/battery> ;
                                                                        dcterms:abstract "An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
-                                                                       dcterms:bibliographicCitation "Pending" ;
                                                                        dcterms:created "2025-01-23"^^xsd:date ;
                                                                        dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
                                                                        dcterms:issued "2026-05-14"^^xsd:date ;
                                                                        dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                                                        dcterms:modified "2026-06-11"^^xsd:date ;
-                                                                       dcterms:publisher "Battery Data Alliance" ;
+                                                                       dcterms:publisher <https://github.com/battery-data-alliance> ;
                                                                        dcterms:title "Battery Data Format Ontology"@en ;
-                                                                       bibo:doi "pending" ;
                                                                        bibo:status "stable" ;
                                                                        vann:preferredNamespacePrefix "bdf" ;
                                                                        vann:preferredNamespaceUri "https://w3id.org/battery-data-alliance/ontology/battery-data-format#" ;
                                                                        owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format> ;
                                                                        owl:versionInfo "1.2.0" .
+
+# Human-readable label for the publisher organisation IRI, used by the docs
+# specification generator to render the Publisher row.
+<https://github.com/battery-data-alliance> rdfs:label "Battery Data Alliance"@en .
 
 #################################################################
 #    Annotation properties

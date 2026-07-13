@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/neware-csv",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/neware_csv",
   "@type": "csvw:TableSchema",
   "dcterms:title": "Neware BTS CSV — BDF column mapping",
   "dcterms:description": "Maps Neware Battery Test System CSV export headers to BDF canonical columns. Supports both English and Simplified Chinese (GB18030) header variants. IMPORTANT: Neware exports capacity in mAh and energy in mWh; schema:unitCode documents the as-exported unit. The BDF normaliser divides by 1000 to produce A·h and W·h. NOTE: Neware's 'Time(s)' column is STEP time, not TEST time; 'Total Time(s)' or 'Test Time(s)' is the test-level elapsed time.",

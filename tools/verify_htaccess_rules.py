@@ -124,8 +124,8 @@ TESTS = [
     ("latest",               "ontology/battery-data-format/latest",    "", "R6",  f"{BASE_RAW}/main/battery-data-format.ttl"),
     ("source",               "ontology/battery-data-format/source",    "", "R7",  f"{BASE_RAW}/main/battery-data-format.ttl"),
     ("context",              "ontology/battery-data-format/context",   "", "R8",  f"{BASE_GH}/context/context.json"),
-    ("vendor neware-csv",    "ontology/battery-data-format/schema/vendors/neware-csv",    "", "R9",  f"{BASE_GH}/schema/vendors/neware-csv.json"),
-    ("vendor biologic-mpt",  "ontology/battery-data-format/schema/vendors/biologic-mpt", "", "R9",  f"{BASE_GH}/schema/vendors/biologic-mpt.json"),
+    ("vendor neware_csv",    "ontology/battery-data-format/schema/vendors/neware_csv",    "", "R9",  f"{BASE_GH}/schema/vendors/neware_csv.json"),
+    ("vendor biologic_mpt",  "ontology/battery-data-format/schema/vendors/biologic_mpt", "", "R9",  f"{BASE_GH}/schema/vendors/biologic_mpt.json"),
     ("schema",               "ontology/battery-data-format/schema",    "", "R10", f"{BASE_GH}/schema/schema.json"),
     # Versioned short form /1.0.0
     ("v1.0.0 | browser",    "ontology/battery-data-format/1.0.0", "text/html",           "R12", f"{BASE_GH}/versions/1.0.0/battery-data-format.html"),
@@ -142,6 +142,11 @@ TESTS = [
     ("v latest",            "ontology/battery-data-format/1.0.0/latest",                           "", "R19", f"{BASE_RAW}/1.0.0/battery-data-format.ttl"),
     ("v source",            "ontology/battery-data-format/1.0.0/source",                           "", "R20", f"{BASE_RAW}/1.0.0/battery-data-format.ttl"),
     ("v context",           "ontology/battery-data-format/1.0.0/context",                          "", "R21", f"{BASE_GH}/versions/1.0.0/context/context.json"),
+    # These vendor cases exercise the rewrite RULES only (this script is a
+    # self-contained mod_rewrite simulator, not a live check). The 1.0.0 form is
+    # left hyphenated to match how the 1.0.0 tag named the file. NOTE: the deploy
+    # workflow does not currently publish schema/vendors/ into the site, so these
+    # redirect targets 404 in practice regardless of casing (tracked separately).
     ("v vendor novonix-csv","ontology/battery-data-format/1.0.0/schema/vendors/novonix-csv",        "", "R22", f"{BASE_GH}/versions/1.0.0/schema/vendors/novonix-csv.json"),
     ("v schema",            "ontology/battery-data-format/1.0.0/schema",                           "", "R23", f"{BASE_GH}/versions/1.0.0/schema/schema.json"),
 ]

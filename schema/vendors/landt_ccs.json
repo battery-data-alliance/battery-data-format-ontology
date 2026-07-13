@@ -1,6 +1,6 @@
 {
   "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
-  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt-ccs",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt_ccs",
   "@type": "csvw:TableSchema",
   "dcterms:title": "LANDT CCS binary — BDF column mapping",
   "dcterms:description": "Maps DataFrame column names produced by parsing LANDT CCS binary files to BDF canonical columns. CCS is a proprietary binary format; there are no text headers in the file. The column names listed here are assigned programmatically by the BDF parser during binary decoding. All values are produced in BDF canonical SI units (seconds, volts, amperes, ampere-hours, watt-hours, ohms); no unit conversion is required.",
