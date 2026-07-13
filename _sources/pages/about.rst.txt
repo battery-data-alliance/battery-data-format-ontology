@@ -22,7 +22,7 @@ Each BDF quantity class is:
 
 - An **OWL class** in the EMMO class hierarchy, with a formal unit restriction
 - A **SOSA observable property** (``rdfs:subClassOf sosa:ObservableProperty``), enabling integration with sensor data frameworks
-- Aligned to a **QUDT quantity kind** via ``skos:exactMatch`` and to a **QUDT unit** via ``qudt:hasUnit``
+- Aligned to a **QUDT quantity kind** via ``qudt:hasQuantityKind`` and to a **QUDT unit** via ``qudt:hasUnit``
 - Annotated with a **UCUM unit code** (``schema:unitCode``) for tool-agnostic unit handling
 - Linked to **PROV-O derivation relationships** (``prov:wasDerivedFrom``) for derived quantities such as power and energy
 
@@ -43,7 +43,7 @@ Vocabulary Alignments
      - Primary class hierarchy; unit restrictions via ``hasMeasurementUnit``
    * - `QUDT <https://qudt.org>`_
      - ``quantitykind:``, ``unit:``
-     - Quantity kind and unit alignments (``skos:exactMatch``, ``qudt:hasUnit``)
+     - Quantity kind and unit alignments (``qudt:hasQuantityKind``, ``qudt:hasUnit``)
    * - `SOSA/SSN <https://www.w3.org/TR/vocab-ssn/>`_
      - ``sosa:``
      - Each BDF class is a subclass of ``sosa:ObservableProperty``

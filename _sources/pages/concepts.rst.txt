@@ -83,14 +83,14 @@ When an agent dereferences ``https://w3id.org/battery-data-alliance/ontology/bat
            owl:someValuesFrom emmo:Volt ] ;
        skos:prefLabel "Voltage / V"@en ;
        skos:definition "Instantaneous voltage recorded in volt."@en ;
-       skos:exactMatch quantitykind:Voltage ;
+       qudt:hasQuantityKind quantitykind:Voltage ;
        qudt:hasUnit unit:VLT ;
        schema:unitCode "V" ;
        schema:unitText "volt"@en .
 
 From this single node the agent can determine:
 
-- **What kind of quantity** — ``skos:exactMatch quantitykind:Voltage`` (QUDT)
+- **What kind of quantity** — ``qudt:hasQuantityKind quantitykind:Voltage`` (QUDT)
 - **What unit** — ``qudt:hasUnit unit:VLT``, ``schema:unitCode "V"`` (UCUM), ``hasMeasurementUnit emmo:Volt`` (EMMO)
 - **Where in the EMMO hierarchy** — ``rdfs:subClassOf emmo:EMMO_17b031fb...`` (ElectricPotential)
 - **SOSA role** — ``rdfs:subClassOf sosa:ObservableProperty``

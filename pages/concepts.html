@@ -559,7 +559,7 @@
         <span class="nn">owl</span><span class="p">:</span><span class="nt">someValuesFrom</span> <span class="nn">emmo</span><span class="p">:</span><span class="nt">Volt</span> <span class="p">]</span> <span class="p">;</span>
     <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="s">&quot;Voltage / V&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
     <span class="nn">skos</span><span class="p">:</span><span class="nt">definition</span> <span class="s">&quot;Instantaneous voltage recorded in volt.&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">;</span>
-    <span class="nn">skos</span><span class="p">:</span><span class="nt">exactMatch</span> <span class="nn">quantitykind</span><span class="p">:</span><span class="nt">Voltage</span> <span class="p">;</span>
+    <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">quantitykind</span><span class="p">:</span><span class="nt">Voltage</span> <span class="p">;</span>
     <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasUnit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">VLT</span> <span class="p">;</span>
     <span class="nn">schema</span><span class="p">:</span><span class="nt">unitCode</span> <span class="s">&quot;V&quot;</span> <span class="p">;</span>
     <span class="nn">schema</span><span class="p">:</span><span class="nt">unitText</span> <span class="s">&quot;volt&quot;</span><span class="o">@</span><span class="ge">en</span> <span class="p">.</span>
@@ -567,7 +567,7 @@
 </div>
 <p>From this single node the agent can determine:</p>
 <ul class="simple">
-<li><p><strong>What kind of quantity</strong> — <code class="docutils literal notranslate"><span class="pre">skos:exactMatch</span> <span class="pre">quantitykind:Voltage</span></code> (QUDT)</p></li>
+<li><p><strong>What kind of quantity</strong> — <code class="docutils literal notranslate"><span class="pre">qudt:hasQuantityKind</span> <span class="pre">quantitykind:Voltage</span></code> (QUDT)</p></li>
 <li><p><strong>What unit</strong> — <code class="docutils literal notranslate"><span class="pre">qudt:hasUnit</span> <span class="pre">unit:VLT</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span> <span class="pre">&quot;V&quot;</span></code> (UCUM), <code class="docutils literal notranslate"><span class="pre">hasMeasurementUnit</span> <span class="pre">emmo:Volt</span></code> (EMMO)</p></li>
 <li><p><strong>Where in the EMMO hierarchy</strong> — <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span> <span class="pre">emmo:EMMO_17b031fb...</span></code> (ElectricPotential)</p></li>
 <li><p><strong>SOSA role</strong> — <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span> <span class="pre">sosa:ObservableProperty</span></code></p></li>

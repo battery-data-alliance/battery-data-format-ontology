@@ -634,6 +634,35 @@
     },
     {
       "@type": "csvw:Column",
+      "csvw:name": "step_capacity_ah",
+      "csvw:titles": "Step Capacity / Ah",
+      "owl:deprecated": true,
+      "skos:note": "This column is maintained for legacy compatibility. It is superseded by step_cumulative_capacity_ah.",
+      "csvw:propertyUrl": "bdf:step_capacity_ah",
+      "dcterms:description": "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "rdfs:comment": "Running accumulation of charge throughput within the current test step, in ampere hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "skos:prefLabel": {
+        "@value": "Step Capacity / Ah",
+        "@language": "en"
+      },
+      "skos:altLabel": "step_capacity_ah",
+      "csvw:datatype": {
+        "csvw:base": "xsd:decimal"
+      },
+      "hasMeasurementUnit": {
+        "@id": "emmo:AmpereHour"
+      },
+      "qudt:hasQuantityKind": {
+        "@id": "quantitykind:ElectricCharge"
+      },
+      "qudt:hasUnit": {
+        "@id": "unit:A-HR"
+      },
+      "schema:unitCode": "A.h",
+      "csvw:required": false
+    },
+    {
+      "@type": "csvw:Column",
       "csvw:name": "net_capacity_ah",
       "csvw:titles": "Net Capacity / Ah",
       "csvw:propertyUrl": "bdf:net_capacity_ah",
@@ -695,6 +724,35 @@
       "rdfs:comment": "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
       "skos:prefLabel": {
         "@value": "Step Cumulative Energy / Wh",
+        "@language": "en"
+      },
+      "skos:altLabel": "step_energy_wh",
+      "csvw:datatype": {
+        "csvw:base": "xsd:decimal"
+      },
+      "hasMeasurementUnit": {
+        "@id": "emmo:WattHour"
+      },
+      "qudt:hasQuantityKind": {
+        "@id": "quantitykind:Energy"
+      },
+      "qudt:hasUnit": {
+        "@id": "unit:W-HR"
+      },
+      "schema:unitCode": "W.h",
+      "csvw:required": false
+    },
+    {
+      "@type": "csvw:Column",
+      "csvw:name": "step_energy_wh",
+      "csvw:titles": "Step Energy / Wh",
+      "owl:deprecated": true,
+      "skos:note": "This column is maintained for legacy compatibility. It is superseded by step_cumulative_energy_wh.",
+      "csvw:propertyUrl": "bdf:step_energy_wh",
+      "dcterms:description": "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "rdfs:comment": "Running accumulation of energy throughput within the current test step, in watt hour. Monotonically non-decreasing within the step; resets to zero at each step transition.",
+      "skos:prefLabel": {
+        "@value": "Step Energy / Wh",
         "@language": "en"
       },
       "skos:altLabel": "step_energy_wh",
