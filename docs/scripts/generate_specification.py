@@ -10,6 +10,7 @@ SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 EMMO = Namespace("https://w3id.org/emmo#")
 SCHEMA = Namespace("https://schema.org/")
 QUDT_KIND = Namespace("http://qudt.org/vocab/quantitykind/")
+QUDT = Namespace("http://qudt.org/schema/qudt/")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 
 ONTOLOGY_IRI = URIRef(BASE_IRI)
@@ -100,7 +101,7 @@ def _get_formula(graph: Graph, subject) -> str:
 
 def _get_quantity_kind(graph: Graph, subject) -> str:
     """Return the local name of the QUDT quantitykind: match, e.g. 'Voltage'."""
-    for obj in graph.objects(subject, SKOS.exactMatch):
+    for obj in graph.objects(subject, QUDT.hasQuantityKind):
         if isinstance(obj, URIRef) and str(obj).startswith(str(QUDT_KIND)):
             return _local_name(obj)
     return ""

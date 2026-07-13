@@ -93,6 +93,11 @@ def generate_lean_context(ttl_path: str, config: dict[str, Any]) -> dict[str, An
     project_ns = config["ontology_prefix"]
     class_entries: dict[str, str] = {}
     property_entries: dict[str, dict[str, str]] = {}
+    # skos:notation keys (the machine names BDF writes as on-disk CSV headers,
+    # e.g. "voltage_volt") mapped to the same term as the pref-label key, so the
+    # published context can lift BDF's own default artifacts. Emitted for every
+    # class including deprecated ones.
+    notation_entries: dict[str, str] = {}
 
     for s, _p, o in g.triples((None, SKOS.prefLabel, None)):
         iri = str(s)
@@ -104,6 +109,8 @@ def generate_lean_context(ttl_path: str, config: dict[str, Any]) -> dict[str, An
             property_entries[label] = {"@id": f"{short_key}:{local}", "@type": "@id"}
         else:
             class_entries[label] = f"{short_key}:{local}"
+            for notation in g.objects(s, SKOS.notation):
+                notation_entries[str(notation)] = f"{short_key}:{local}"
 
     version = _ontology_version(g, config["ontology_uri"])
 
@@ -118,6 +125,7 @@ def generate_lean_context(ttl_path: str, config: dict[str, Any]) -> dict[str, An
             **_EMMO_OBJECT_PROPERTIES,
             **dict(sorted(property_entries.items())),
             **dict(sorted(class_entries.items())),
+            **dict(sorted(notation_entries.items())),
         },
         "@id": f"{config['ontology_uri']}/{version}/context",
         "dcterms:version": version,
