@@ -61,15 +61,13 @@ schema:unitText a owl:AnnotationProperty .
 
 <https://w3id.org/battery-data-alliance/ontology/battery-data-format> a owl:Ontology ;
     dcterms:abstract "An application ontology for the Battery Data Format (BDF) from the Battery Data Alliance (BDA)" ;
-    dcterms:bibliographicCitation "Pending" ;
     dcterms:created "2025-01-23"^^xsd:date ;
     dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
     dcterms:issued "2026-05-14"^^xsd:date ;
     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
     dcterms:modified "2026-06-11"^^xsd:date ;
-    dcterms:publisher "Battery Data Alliance" ;
+    dcterms:publisher <https://github.com/battery-data-alliance> ;
     dcterms:title "Battery Data Format Ontology"@en ;
-    bibo:doi "pending" ;
     bibo:status "stable" ;
     vann:preferredNamespacePrefix "bdf" ;
     vann:preferredNamespaceUri "https://w3id.org/battery-data-alliance/ontology/battery-data-format#" ;
@@ -872,6 +870,8 @@ schema:unitText a owl:AnnotationProperty .
     schema:unitCode "ms" ;
     schema:unitText "millisecond"@en ;
     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Unix time recorded in millisecond."@en .
+
+<https://github.com/battery-data-alliance> rdfs:label "Battery Data Alliance"@en .
 
 :charging_capacity_ah a owl:Class ;
     rdfs:label "Charging Capacity / Ah"@en ;

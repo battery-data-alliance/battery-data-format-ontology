@@ -513,52 +513,52 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arbin-csv</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arbin_csv</span></code></p></td>
 <td><p>Arbin Instruments</p></td>
 <td><p>14</p></td>
 <td><p>Supports both CSV (space-separated headers) and XLSX (underscore-separated) naming conventions from MITS Pro / BT-Lab exports.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">basytec-txt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">basytec_txt</span></code></p></td>
 <td><p>Basytec GmbH</p></td>
 <td><p>4</p></td>
 <td><p>Headers prefixed with <code class="docutils literal notranslate"><span class="pre">~</span></code> (stripped during parsing). Time, current, and voltage may each appear in multiple units depending on the instrument configuration; the normaliser selects the appropriate conversion per file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">biologic-mpt</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">biologic_mpt</span></code></p></td>
 <td><p>Bio-Logic Science Instruments</p></td>
 <td><p>15</p></td>
 <td><p>EC-Lab / BT-Lab MPT ASCII export. Current is in milliamperes; capacities in mA·h. File encoding is typically latin-1; decimal separator may be a comma.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">digatron-csv</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">digatron_csv</span></code></p></td>
 <td><p>Digatron Power Electronics</p></td>
 <td><p>20</p></td>
 <td><p>Broadest BDF column coverage of any vendor schema, including EIS quantities. Accumulated charge/energy columns (AhAccu, AhBal, AhStep) are recomputed by the normaliser from current and time.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt-ccs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt_ccs</span></code></p></td>
 <td><p>LANDT Instruments</p></td>
 <td><p>9</p></td>
 <td><p>CCS (Cloud Cycler System) export format. All values in SI units; no unit conversion required.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">landt-csv</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">landt_csv</span></code></p></td>
 <td><p>LANDT Instruments</p></td>
 <td><p>8</p></td>
 <td><p>Modern CSV export with snake_case headers and SI units embedded in the column name (e.g. <code class="docutils literal notranslate"><span class="pre">voltage_v</span></code>, <code class="docutils literal notranslate"><span class="pre">current_a</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt-txt</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">landt_txt</span></code></p></td>
 <td><p>LANDT Instruments</p></td>
 <td><p>7</p></td>
 <td><p>Older TXT export with abbreviated English headers (<code class="docutils literal notranslate"><span class="pre">Volts</span></code>, <code class="docutils literal notranslate"><span class="pre">Amps</span></code>, <code class="docutils literal notranslate"><span class="pre">Test(sec)</span></code>). Tab-delimited, SI units throughout.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">neware-csv</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">neware_csv</span></code></p></td>
 <td><p>Neware Technology</p></td>
 <td><p>13</p></td>
 <td><p>Supports both English and Simplified Chinese (GB18030) header variants. Capacity exported in mAh, energy in mWh; both divided by 1000 during normalisation.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">neware-nda</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">neware_nda</span></code></p></td>
 <td><p>Neware Technology</p></td>
 <td><p>10</p></td>
 <td><p>Binary NDA/NDAX format, parsed via the <code class="docutils literal notranslate"><span class="pre">NewareNDA</span></code> or <code class="docutils literal notranslate"><span class="pre">fastnda</span></code> library. Column names are the DataFrame column names produced by the parser, not the binary file headers. Current in mA; capacity/energy in mAh/mWh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">novonix-csv</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">novonix_csv</span></code></p></td>
 <td><p>Novonix</p></td>
 <td><p>13</p></td>
 <td><p>UHPC CSV export with an INI-style <code class="docutils literal notranslate"><span class="pre">[Summary]</span></code>/<code class="docutils literal notranslate"><span class="pre">[Data]</span></code> preamble. Time columns are in <strong>hours</strong> (<code class="docutils literal notranslate"><span class="pre">schema:unitCode</span> <span class="pre">&quot;h&quot;</span></code>); the normaliser multiplies by 3600.</p></td>
@@ -572,7 +572,7 @@
 <p>Each vendor schema is a JSON-LD document typed as <code class="docutils literal notranslate"><span class="pre">csvw:TableSchema</span></code>. It contains a <code class="docutils literal notranslate"><span class="pre">csvw:columns</span></code> array where each entry maps one or more vendor header names to a BDF canonical column:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/context&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix-csv&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix_csv&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;csvw:TableSchema&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;dcterms:title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Novonix UHPC CSV — BDF column mapping&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;schema:producer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;schema:Organization&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Novonix&quot;</span><span class="w"> </span><span class="p">},</span>
@@ -661,7 +661,7 @@
 <h2>Adding a New Vendor Schema<a class="headerlink" href="#adding-a-new-vendor-schema" title="Link to this heading">#</a></h2>
 <p>To add support for a new instrument:</p>
 <ol class="arabic simple">
-<li><p>Create <code class="docutils literal notranslate"><span class="pre">schema/vendors/{manufacturer}-{format}.json</span></code> following the structure above.</p></li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">schema/vendors/{manufacturer}_{format}.json</span></code> following the structure above.</p></li>
 <li><p>List only the columns that the instrument actually exports; omit columns with no known equivalent.</p></li>
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">schema:unitCode</span></code> where the instrument exports in non-SI units.</p></li>
 <li><p>Add a <code class="docutils literal notranslate"><span class="pre">skos:note</span></code> for any column where the semantic mapping is non-obvious.</p></li>
