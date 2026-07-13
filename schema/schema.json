@@ -509,10 +509,10 @@
         "@id": "emmo:UnitOne"
       },
       "qudt:hasQuantityKind": {
-        "@id": "quantitykind:Dimensionless"
+        "@id": "quantitykind:Count"
       },
       "qudt:hasUnit": {
-        "@id": "unit:C62"
+        "@id": "unit:NUM"
       },
       "schema:unitCode": "1",
       "csvw:required": false

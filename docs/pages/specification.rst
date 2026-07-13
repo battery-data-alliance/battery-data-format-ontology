@@ -307,7 +307,7 @@ Terms and Definitions
      - :math:`j`
      - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.
      - ``1``
-     - Dimensionless
+     - Count
    * - Step Net Capacity / Ah
      - ``step_net_capacity_ah``
      - :math:`Q_\mathrm{net}^\mathrm{step}`
