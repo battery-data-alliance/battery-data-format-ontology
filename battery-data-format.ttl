@@ -258,7 +258,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:AmpereHour ],
         sosa:ObservableProperty,
-        electrochemistry:ae108db7_8765_4329_9908_059277dee586 ;
+        electrochemistry:electrochemistry_ae108db7_8765_4329_9908_059277dee586 ;
     skos:altLabel "cycle_cumulative_capacity_ah"@en,
         "cycle_cumulative_capacity_ampere_hour"@en ;
     skos:definition "Running accumulation of charge throughput within the current cycle, in ampere hour: the time integral of the absolute current from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_capacity_ah + cycle_discharging_capacity_ah."@en ;
@@ -285,7 +285,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:WattHour ],
         sosa:ObservableProperty,
-        electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ;
+        electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ;
     skos:altLabel "cycle_cumulative_energy_watt_hour"@en,
         "cycle_cumulative_energy_wh"@en ;
     skos:definition "Running accumulation of energy throughput within the current cycle, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the start of the current cycle, monotonically non-decreasing within the cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Defined as cycle_charging_energy_wh + cycle_discharging_energy_wh."@en ;
@@ -312,7 +312,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:AmpereHour ],
         sosa:ObservableProperty,
-        electrochemistry:791c1915_a791_4450_acd8_7f94764743b5 ;
+        electrochemistry:electrochemistry_791c1915_a791_4450_acd8_7f94764743b5 ;
     skos:altLabel "cycle_net_capacity_ah"@en,
         "cycle_net_capacity_ampere_hour"@en ;
     skos:definition "Net charge transferred during the current cycle, in ampere hour. Defined as cycle_charging_capacity_ah minus cycle_discharging_capacity_ah; the running signed integral of current from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more charge is extracted than injected during the cycle. Its end-of-cycle value is the per-cycle coulombic slippage: the irreversible charge consumed by side reactions during that cycle."@en ;
@@ -339,7 +339,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:WattHour ],
         sosa:ObservableProperty,
-        electrochemistry:46376e5d_9627_4514_9881_9e62083625c3 ;
+        electrochemistry:electrochemistry_46376e5d_9627_4514_9881_9e62083625c3 ;
     skos:altLabel "cycle_net_energy_watt_hour"@en,
         "cycle_net_energy_wh"@en ;
     skos:definition "Net energy transferred during the current cycle, in watt hour. Defined as cycle_charging_energy_wh minus cycle_discharging_energy_wh; the running signed integral of instantaneous power from the start of the current cycle; resets to zero when cycle_count increments (cycle boundaries are instrument-defined; see cycle_count). Can be negative if more energy is extracted than delivered during the cycle. Its end-of-cycle value is the net energy absorbed over that cycle, reflecting voltage hysteresis and other losses."@en ;
@@ -567,7 +567,7 @@ schema:unitText a owl:AnnotationProperty .
     rdfs:seeAlso unit:UNITLESS ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
-            owl:someValuesFrom emmo:One ],
+            owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978 ],
         sosa:ObservableProperty,
         emmo:EMMO_0cd58641_824c_4851_907f_f4c3be76630c ;
     skos:altLabel "step_index"@en,
@@ -934,7 +934,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:AmpereHour ],
         sosa:ObservableProperty,
-        electrochemistry:10763eb0_dbc9_4d34_bd1a_7b8996590d45 ;
+        electrochemistry:electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45 ;
     skos:altLabel "cycle_charge_capacity_ah"@en,
         "cycle_charging_capacity_ah"@en,
         "cycle_charging_capacity_ampere_hour"@en ;
@@ -962,7 +962,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:WattHour ],
         sosa:ObservableProperty,
-        electrochemistry:2ab7af60_da58_4243_b3bc_cbb2155cac53 ;
+        electrochemistry:electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53 ;
     skos:altLabel "cycle_charge_energy_wh"@en,
         "cycle_charging_energy_watt_hour"@en,
         "cycle_charging_energy_wh"@en ;
@@ -990,7 +990,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:AmpereHour ],
         sosa:ObservableProperty,
-        electrochemistry:0141b5c2_9f15_46f4_82e6_92a104faa476 ;
+        electrochemistry:electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476 ;
     skos:altLabel "cycle_discharge_capacity_ah"@en,
         "cycle_discharging_capacity_ah"@en,
         "cycle_discharging_capacity_ampere_hour"@en ;
@@ -1018,7 +1018,7 @@ schema:unitText a owl:AnnotationProperty .
             owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
             owl:someValuesFrom emmo:WattHour ],
         sosa:ObservableProperty,
-        electrochemistry:ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ;
+        electrochemistry:electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ;
     skos:altLabel "cycle_discharge_energy_wh"@en,
         "cycle_discharging_energy_watt_hour"@en,
         "cycle_discharging_energy_wh"@en ;
@@ -1311,8 +1311,6 @@ schema:unitText a owl:AnnotationProperty .
     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Instantaneous voltage measured across the terminals of the test object, in volt."@en .
 
 emmo:Ampere a owl:Class .
-
-emmo:One a owl:Class .
 
 emmo:Volt a owl:Class .
 
