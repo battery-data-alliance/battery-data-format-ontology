@@ -242,6 +242,30 @@ Terms and Definitions
      - An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning.
      - ``1``
      - Count
+   * - Schedule Charging Capacity / Ah
+     - ``schedule_charging_capacity_ah``
+     - :math:`Q_\mathrm{chg}^\mathrm{sched}`
+     - Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`Q_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}`.
+     - ``A.h``
+     - ElectricCharge
+   * - Schedule Charging Energy / Wh
+     - ``schedule_charging_energy_wh``
+     - :math:`E_\mathrm{chg}^\mathrm{sched}`
+     - Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`E_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}`.
+     - ``W.h``
+     - Energy
+   * - Schedule Discharging Capacity / Ah
+     - ``schedule_discharging_capacity_ah``
+     - :math:`Q_\mathrm{dchg}^\mathrm{sched}`
+     - Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`Q_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}`.
+     - ``A.h``
+     - ElectricCharge
+   * - Schedule Discharging Energy / Wh
+     - ``schedule_discharging_energy_wh``
+     - :math:`E_\mathrm{dchg}^\mathrm{sched}`
+     - Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined. *Derived from:* ``current_ampere, test_time_second``. *Formula:* :math:`E_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \bigl|P(\tau)\bigr|\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}`.
+     - ``W.h``
+     - Energy
    * - Step Capacity / Ah
      - ``step_capacity_ah``
      - —
