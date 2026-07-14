@@ -23,7 +23,11 @@ Supported Instruments
    * - ``arbin_csv``
      - Arbin Instruments
      - 14
-     - Supports both CSV (space-separated headers) and XLSX (underscore-separated) naming conventions from MITS Pro / BT-Lab exports.
+     - CSV exports from MITS Pro / DataPro. Supports both space-separated and underscore-separated header dialects.
+   * - ``arbin_xlsx``
+     - Arbin Instruments
+     - 16
+     - Multi-sheet XLSX workbooks (Global_Info / Channel_* / ACIM / statistics sheets); maps the Channel_* time-series columns. The Charge/Discharge Capacity and Energy accumulators map to the schedule-scoped BDF terms (their reset windows are schedule-authored). Full per-column and per-sheet semantics are in the Arbin ontology module (``vendors/arbin``).
    * - ``basytec_txt``
      - Basytec GmbH
      - 4
@@ -35,7 +39,7 @@ Supported Instruments
    * - ``digatron_csv``
      - Digatron Power Electronics
      - 20
-     - Broadest BDF column coverage of any vendor schema, including EIS quantities. Accumulated charge/energy columns (AhAccu, AhBal, AhStep) are recomputed by the normaliser from current and time.
+     - Broadest BDF column coverage of any vendor schema, including EIS quantities. The accumulated charge/energy columns (AhAccu, AhBal, AhStep) do not align 1:1 with the BDF cumulative/net/step definitions; the divergences are documented per-column in the schema. Note also that the ``#s`` duration columns are emitted in milliseconds despite the ``s`` label.
    * - ``landt_ccs``
      - LANDT Instruments
      - 9
