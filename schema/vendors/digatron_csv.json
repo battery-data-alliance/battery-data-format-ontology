@@ -19,7 +19,8 @@
         "Prog Time",
         "Program Time"
       ],
-      "schema:unitCode": "s"
+      "schema:unitCode": "s",
+      "skos:note": "The '#s'-suffixed column 'Program Duration#s' is emitted in milliseconds despite the 's' label (a ~1 s wall-clock advance increments the value by ~1000); it must be divided by 1000 for seconds. The schema:unitCode 's' therefore under-reports the scale for that variant and is pending the Digatron unit review."
     },
     {
       "csvw:name": "step_time_second",
@@ -27,7 +28,8 @@
         "Step Duration#s",
         "Step Time"
       ],
-      "schema:unitCode": "s"
+      "schema:unitCode": "s",
+      "skos:note": "The '#s'-suffixed column 'Step Duration#s' is emitted in milliseconds despite the 's' label; divide by 1000 for seconds. Pending the Digatron unit review."
     },
     {
       "csvw:name": "voltage_volt",

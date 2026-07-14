@@ -1,0 +1,171 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/arbin_xlsx",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Arbin BTS XLSX — BDF column mapping",
+  "dcterms:description": "Maps Arbin Battery Test System XLSX export column headers to BDF canonical columns. Arbin XLSX workbooks are multi-sheet: a 'Global_Info' metadata sheet, one or more 'Channel_*' time-series sheets (mapped here), an optional 'ACIM_chan_1' EIS sheet, and 'StatisticsByCycle_chan_1' / 'StatisticsByStep_chan_1' summary sheets. Column headers appear in both space-separated (Charge Capacity (Ah)) and underscore-separated (Charge_Capacity(Ah)) dialects depending on the MITS / MITS_PRO / DataPro software version. The Charge/Discharge Capacity and Energy accumulators reset at schedule-authored boundaries not recoverable from the time-series, so they map to the schedule-scoped BDF terms (schedule_charging_capacity_ah, etc.). For the full per-column vendor semantics, including vendor-only columns with no canonical equivalent and the EIS / statistics / metadata sheets, see the Arbin vendor ontology module at .../vendors/arbin.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Arbin Instruments"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "rdfs:seeAlso": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "record_index",
+      "csvw:titles": [
+        "Data_Point",
+        "Data Point",
+        "data_point"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Test_Time(s)",
+        "Test Time(s)",
+        "Test Time (s)",
+        "Test_Time",
+        "TestTime(s)"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "Step_Time(s)",
+        "Step Time(s)",
+        "Step Time (s)",
+        "Step_Time",
+        "StepTime(s)"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Voltage(V)",
+        "Voltage (V)",
+        "Voltage"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Current(A)",
+        "Current (A)",
+        "Current"
+      ]
+    },
+    {
+      "csvw:name": "power_watt",
+      "csvw:titles": [
+        "Power(W)",
+        "Power (W)",
+        "Power"
+      ]
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle_Index",
+        "Cycle Index",
+        "Cycle_ID"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step_Index",
+        "Step Index",
+        "Step_ID"
+      ]
+    },
+    {
+      "csvw:name": "schedule_charging_capacity_ah",
+      "csvw:titles": [
+        "Charge_Capacity(Ah)",
+        "Charge Capacity (Ah)",
+        "Charge Capacity(Ah)",
+        "Charge_Capacity"
+      ],
+      "skos:note": "Arbin accumulator with schedule-authored reset windows; maps to the schedule-scoped BDF term rather than a cycle- or step-scoped one (the reset rule is not recoverable from the exported time-series)."
+    },
+    {
+      "csvw:name": "schedule_discharging_capacity_ah",
+      "csvw:titles": [
+        "Discharge_Capacity(Ah)",
+        "Discharge Capacity (Ah)",
+        "Discharge Capacity(Ah)",
+        "Discharge_Capacity"
+      ]
+    },
+    {
+      "csvw:name": "schedule_charging_energy_wh",
+      "csvw:titles": [
+        "Charge_Energy(Wh)",
+        "Charge Energy (Wh)",
+        "Charge Energy(Wh)",
+        "Charge_Energy"
+      ]
+    },
+    {
+      "csvw:name": "schedule_discharging_energy_wh",
+      "csvw:titles": [
+        "Discharge_Energy(Wh)",
+        "Discharge Energy (Wh)",
+        "Discharge Energy(Wh)",
+        "Discharge_Energy"
+      ]
+    },
+    {
+      "csvw:name": "ac_internal_resistance_ohm",
+      "csvw:titles": [
+        "ACR(Ohm)",
+        "ACR (Ohm)"
+      ]
+    },
+    {
+      "csvw:name": "internal_resistance_ohm",
+      "csvw:titles": [
+        "Internal_Resistance(Ohm)",
+        "Internal Resistance (Ohm)",
+        "Internal Resistance(Ohm)",
+        "Internal_Resistance"
+      ]
+    },
+    {
+      "csvw:name": "temperature_t1_celsius",
+      "csvw:titles": [
+        "Aux_Temperature_1(C)",
+        "Aux_Temperature_1 (C)",
+        "Aux_Temperature(C)",
+        "Temperature(C)",
+        "Temperature (C)"
+      ],
+      "skos:note": "Unqualified / numbered Arbin auxiliary temperature channel; maps to temperature_t1_celsius per the BDF numbered-channel convention. Additional channels (Aux_Temperature_2, _3, …) correspond to temperature_t2_celsius, temperature_t3_celsius, … — see the Arbin ontology module."
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "Date_Time",
+        "Date Time",
+        "DateTime"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "Datetime string (or Excel serial in some exports); converted to Unix epoch seconds by the BDF normaliser."
+    }
+  ]
+}
