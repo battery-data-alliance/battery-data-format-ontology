@@ -1,0 +1,1144 @@
+@prefix arbin: <https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#> .
+@prefix bdf: <https://w3id.org/battery-data-alliance/ontology/battery-data-format#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin> rdf:type owl:Ontology ;
+     owl:imports <https://w3id.org/battery-data-alliance/ontology/battery-data-format> ;
+     dcterms:title "Arbin Vendor Ontology Module for the Battery Data Format"@en ;
+     dcterms:description "A vendor crosswalk ontology that resolves every native column or field exported by Arbin Battery Test System cyclers (channel time-series, EIS ACIM sheets, statistics sheets, and Global_Info metadata; MITS/MITS_PRO/DataPro CSV and XLSX, .res, SQL and h5 backends) to honest semantics. One class per concept; every dialect spelling is a verbatim skos:altLabel. Concepts with a BDF core equivalent carry rdfs:subClassOf and skos:exactMatch to the core IRI; the remainder are vendor-only, self-described terms."@en ;
+     dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
+     dcterms:publisher "Battery Data Alliance" ;
+     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+     rdfs:seeAlso <https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/arbin> .
+
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+arbin:role rdf:type owl:AnnotationProperty ;
+     rdfs:comment "Functional role of the column/field: measurement, derived, identifier, bookkeeping, or metadata."@en ;
+     rdfs:isDefinedBy <https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin> .
+
+arbin:sheetScope rdf:type owl:AnnotationProperty ;
+     rdfs:comment "Export sheet/context in which the header appears: timeseries, eis, statistics, or metadata."@en ;
+     rdfs:isDefinedBy <https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin> .
+
+arbin:headerPattern rdf:type owl:AnnotationProperty ;
+     rdfs:comment "Regular expression matching the indexed native header spellings of an indexed term family."@en ;
+     rdfs:isDefinedBy <https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin> .
+
+arbin:verificationStatus rdf:type owl:AnnotationProperty ;
+     rdfs:comment "Set to 'unverified' when the term's semantics or unit have not yet been confirmed against real exports; such terms carry no core mapping."@en ;
+     rdfs:isDefinedBy <https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin> .
+
+
+#################################################################
+#    Tier 1 — channel time-series
+#################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#record_index
+arbin:record_index rdf:type owl:Class ;
+     rdfs:subClassOf bdf:record_index ;
+     skos:exactMatch bdf:record_index ;
+     rdfs:label "Record Index"@en ;
+     skos:prefLabel "Record Index"@en ;
+     skos:altLabel "Data_Point" ;
+     skos:altLabel "Data Point" ;
+     skos:altLabel "data_point" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     skos:definition "Ordinal one-based counter incremented by one per recorded row within a channel time-series, ordering records but carrying no physical meaning. Absent from some MITS_PRO/DataPro exports (e.g. lithiumwerks, mushang)."@en ;
+     rdfs:comment "Ordinal one-based counter incremented by one per recorded row within a channel time-series, ordering records but carrying no physical meaning. Absent from some MITS_PRO/DataPro exports (e.g. lithiumwerks, mushang)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#date_time
+arbin:date_time rdf:type owl:Class ;
+     rdfs:subClassOf bdf:unix_time_second ;
+     skos:exactMatch bdf:unix_time_second ;
+     rdfs:label "Wall-clock Timestamp"@en ;
+     skos:prefLabel "Wall-clock Timestamp"@en ;
+     skos:altLabel "Date_Time" ;
+     skos:altLabel "Date Time" ;
+     skos:altLabel "DateTime" ;
+     skos:altLabel "Date_Time                    " ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     skos:definition "Absolute wall-clock timestamp of the record. Encoded differently across Arbin exports: datetime strings in at least three formats (CSV/xlsx), an Excel serial number in .res exports, and 100-nanosecond epoch ticks in the SQL backend. In space-dialect CSV the value may carry a leading tab; in statistics sheets the header is right-padded with spaces. Normalises to bdf:unix_time_second (Unix epoch seconds)."@en ;
+     rdfs:comment "Absolute wall-clock timestamp of the record. Encoded differently across Arbin exports: datetime strings in at least three formats (CSV/xlsx), an Excel serial number in .res exports, and 100-nanosecond epoch ticks in the SQL backend. In space-dialect CSV the value may carry a leading tab; in statistics sheets the header is right-padded with spaces. Normalises to bdf:unix_time_second (Unix epoch seconds)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#test_time_second
+arbin:test_time_second rdf:type owl:Class ;
+     rdfs:subClassOf bdf:test_time_second ;
+     skos:exactMatch bdf:test_time_second ;
+     rdfs:label "Test Time"@en ;
+     skos:prefLabel "Test Time"@en ;
+     skos:altLabel "Test Time (s)" ;
+     skos:altLabel "Test_Time(s)" ;
+     skos:altLabel "Test Time(s)" ;
+     skos:altLabel "Test_Time" ;
+     skos:altLabel "TestTime(s)" ;
+     skos:altLabel "test_time_s" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "s" ;
+     schema:unitText "second"@en ;
+     skos:definition "Elapsed time since the start of the test schedule, in seconds; monotonic across the whole test and never reset. Instrument-reported."@en ;
+     rdfs:comment "Elapsed time since the start of the test schedule, in seconds; monotonic across the whole test and never reset. Instrument-reported."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#step_time_second
+arbin:step_time_second rdf:type owl:Class ;
+     rdfs:subClassOf bdf:step_time_second ;
+     skos:exactMatch bdf:step_time_second ;
+     rdfs:label "Step Time"@en ;
+     skos:prefLabel "Step Time"@en ;
+     skos:altLabel "Step Time (s)" ;
+     skos:altLabel "Step_Time(s)" ;
+     skos:altLabel "Step Time(s)" ;
+     skos:altLabel "Step_Time" ;
+     skos:altLabel "StepTime(s)" ;
+     skos:altLabel "step_time_s" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "s" ;
+     schema:unitText "second"@en ;
+     skos:definition "Elapsed time since the start of the current schedule step, in seconds; resets to zero at each step transition. Instrument-reported. MITS 7 long-format code PV3 (PV_Steptime)."@en ;
+     rdfs:comment "Elapsed time since the start of the current schedule step, in seconds; resets to zero at each step transition. Instrument-reported. MITS 7 long-format code PV3 (PV_Steptime)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#cycle_index
+arbin:cycle_index rdf:type owl:Class ;
+     rdfs:subClassOf bdf:cycle_count ;
+     skos:exactMatch bdf:cycle_count ;
+     rdfs:label "Cycle Index"@en ;
+     skos:prefLabel "Cycle Index"@en ;
+     skos:altLabel "Cycle Index" ;
+     skos:altLabel "Cycle_Index" ;
+     skos:altLabel "Cycle_ID" ;
+     skos:altLabel "cycle_index" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:sheetScope "eis" ;
+     skos:scopeNote "Schedule-authored counter: the value at which it increments is defined by the test program, not derivable from the current/voltage time-series alone."@en ;
+     skos:definition "Cycle counter assigned by the instrument. The increment rule is authored in the test schedule (it advances on a schedule-defined cycle boundary, not necessarily one charge/discharge pair), so it is a program-defined counter rather than a data-derived one. MITS 7 code PV2 (PV_CycleIndex)."@en ;
+     rdfs:comment "Cycle counter assigned by the instrument. The increment rule is authored in the test schedule (it advances on a schedule-defined cycle boundary, not necessarily one charge/discharge pair), so it is a program-defined counter rather than a data-derived one. MITS 7 code PV2 (PV_CycleIndex)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#step_index
+arbin:step_index rdf:type owl:Class ;
+     rdfs:subClassOf bdf:step_id ;
+     skos:exactMatch bdf:step_id ;
+     rdfs:label "Step Index"@en ;
+     skos:prefLabel "Step Index"@en ;
+     skos:altLabel "Step Index" ;
+     skos:altLabel "Step_Index" ;
+     skos:altLabel "Step_ID" ;
+     skos:altLabel "step_index" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "Ordinal identifier of the currently executing schedule step. Nominal (not a measured quantity). MITS 7 code PV1 (PV_StepIndex)."@en ;
+     rdfs:comment "Ordinal identifier of the currently executing schedule step. Nominal (not a measured quantity). MITS 7 code PV1 (PV_StepIndex)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#sub_step_index
+arbin:sub_step_index rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Sub-step Index"@en ;
+     skos:prefLabel "Sub-step Index"@en ;
+     skos:altLabel "Sub_Step_Index" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     skos:definition "Ordinal identifier of a sub-step within the current schedule step; Arbin-specific finer-grained control-flow index with no BDF core equivalent."@en ;
+     rdfs:comment "Ordinal identifier of a sub-step within the current schedule step; Arbin-specific finer-grained control-flow index with no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#sub_step_time_second
+arbin:sub_step_time_second rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Sub-step Time"@en ;
+     skos:prefLabel "Sub-step Time"@en ;
+     skos:altLabel "Sub_Step_Time" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "s" ;
+     schema:unitText "second"@en ;
+     skos:definition "Elapsed time within the current sub-step, in seconds. Arbin-specific; no BDF core equivalent."@en ;
+     rdfs:comment "Elapsed time within the current sub-step, in seconds. Arbin-specific; no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#current_ampere
+arbin:current_ampere rdf:type owl:Class ;
+     rdfs:subClassOf bdf:current_ampere ;
+     skos:exactMatch bdf:current_ampere ;
+     rdfs:label "Current"@en ;
+     skos:prefLabel "Current"@en ;
+     skos:altLabel "Current (A)" ;
+     skos:altLabel "Current(A)" ;
+     skos:altLabel "Current" ;
+     skos:altLabel "Current_A" ;
+     skos:altLabel "current_a" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "A" ;
+     schema:unitText "ampere"@en ;
+     skos:definition "Instantaneous cell current, in ampere. Signed with the Arbin convention that positive current is charge. MITS 7 code PV22 (PV_Current)."@en ;
+     rdfs:comment "Instantaneous cell current, in ampere. Signed with the Arbin convention that positive current is charge. MITS 7 code PV22 (PV_Current)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#voltage_volt
+arbin:voltage_volt rdf:type owl:Class ;
+     rdfs:subClassOf bdf:voltage_volt ;
+     skos:exactMatch bdf:voltage_volt ;
+     rdfs:label "Voltage"@en ;
+     skos:prefLabel "Voltage"@en ;
+     skos:altLabel "Voltage (V)" ;
+     skos:altLabel "Voltage(V)" ;
+     skos:altLabel "Voltage" ;
+     skos:altLabel "Voltage_V" ;
+     skos:altLabel "voltage_v" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "V" ;
+     schema:unitText "volt"@en ;
+     skos:definition "Instantaneous cell terminal voltage, in volt. MITS 7 code PV21 (PV_Voltage)."@en ;
+     rdfs:comment "Instantaneous cell terminal voltage, in volt. MITS 7 code PV21 (PV_Voltage)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#power_watt
+arbin:power_watt rdf:type owl:Class ;
+     rdfs:subClassOf bdf:power_watt ;
+     skos:exactMatch bdf:power_watt ;
+     rdfs:label "Power"@en ;
+     skos:prefLabel "Power"@en ;
+     skos:altLabel "Power (W)" ;
+     skos:altLabel "Power(W)" ;
+     skos:altLabel "Power" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "W" ;
+     schema:unitText "watt"@en ;
+     skos:definition "Instantaneous electrical power, in watt; product of current and voltage."@en ;
+     rdfs:comment "Instantaneous electrical power, in watt; product of current and voltage."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#charging_capacity_ah
+arbin:charging_capacity_ah rdf:type owl:Class ;
+     rdfs:subClassOf bdf:schedule_charging_capacity_ah ;
+     skos:exactMatch bdf:schedule_charging_capacity_ah ;
+     rdfs:label "Charge Capacity"@en ;
+     skos:prefLabel "Charge Capacity"@en ;
+     skos:altLabel "Charge Capacity (Ah)" ;
+     skos:altLabel "Charge_Capacity(Ah)" ;
+     skos:altLabel "Charge Capacity(Ah)" ;
+     skos:altLabel "Charge_Capacity" ;
+     skos:altLabel "Chg_Capacity(Ah)" ;
+     skos:altLabel "Chg. Capacity(Ah)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     skos:definition "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window resets at schedule-authored boundaries (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Decreases only at a reset, to zero. MITS 7 code PV23 (PV_ChargeCapacity)."@en ;
+     rdfs:comment "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window resets at schedule-authored boundaries (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Decreases only at a reset, to zero. MITS 7 code PV23 (PV_ChargeCapacity)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#discharging_capacity_ah
+arbin:discharging_capacity_ah rdf:type owl:Class ;
+     rdfs:subClassOf bdf:schedule_discharging_capacity_ah ;
+     skos:exactMatch bdf:schedule_discharging_capacity_ah ;
+     rdfs:label "Discharge Capacity"@en ;
+     skos:prefLabel "Discharge Capacity"@en ;
+     skos:altLabel "Discharge Capacity (Ah)" ;
+     skos:altLabel "Discharge_Capacity(Ah)" ;
+     skos:altLabel "Discharge Capacity(Ah)" ;
+     skos:altLabel "Discharge_Capacity" ;
+     skos:altLabel "DChg_Capacity(Ah)" ;
+     skos:altLabel "DChg. Capacity(Ah)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     skos:definition "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Decreases only at a reset, to zero. MITS 7 code PV24 (PV_DischargeCapacity)."@en ;
+     rdfs:comment "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Decreases only at a reset, to zero. MITS 7 code PV24 (PV_DischargeCapacity)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#charging_energy_wh
+arbin:charging_energy_wh rdf:type owl:Class ;
+     rdfs:subClassOf bdf:schedule_charging_energy_wh ;
+     skos:exactMatch bdf:schedule_charging_energy_wh ;
+     rdfs:label "Charge Energy"@en ;
+     skos:prefLabel "Charge Energy"@en ;
+     skos:altLabel "Charge Energy (Wh)" ;
+     skos:altLabel "Charge_Energy(Wh)" ;
+     skos:altLabel "Charge Energy(Wh)" ;
+     skos:altLabel "Charge_Energy" ;
+     skos:altLabel "Chg_Energy(Wh)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "W.h" ;
+     schema:unitText "watt hour"@en ;
+     skos:definition "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV25 (PV_ChargeEnergy)."@en ;
+     rdfs:comment "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV25 (PV_ChargeEnergy)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#discharging_energy_wh
+arbin:discharging_energy_wh rdf:type owl:Class ;
+     rdfs:subClassOf bdf:schedule_discharging_energy_wh ;
+     skos:exactMatch bdf:schedule_discharging_energy_wh ;
+     rdfs:label "Discharge Energy"@en ;
+     skos:prefLabel "Discharge Energy"@en ;
+     skos:altLabel "Discharge Energy (Wh)" ;
+     skos:altLabel "Discharge_Energy(Wh)" ;
+     skos:altLabel "Discharge Energy(Wh)" ;
+     skos:altLabel "Discharge_Energy" ;
+     skos:altLabel "DChg_Energy(Wh)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "W.h" ;
+     schema:unitText "watt hour"@en ;
+     skos:definition "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV26 (PV_DischargeEnergy)."@en ;
+     rdfs:comment "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV26 (PV_DischargeEnergy)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#capacity_ah
+arbin:capacity_ah rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Capacity"@en ;
+     skos:prefLabel "Capacity"@en ;
+     skos:altLabel "Capacity (Ah)" ;
+     skos:altLabel "Capacity(Ah)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     skos:scopeNote "Verified against shandong and melasta exports (~376k rows, zero negatives): equals the active-direction half-cycle accumulator and resets 1:1 with Step_Index. Semantics are schedule-window-defined, hence no test-, cycle- or step-scoped core mapping."@en ;
+     skos:definition "Time-series 'Capacity (Ah)' accumulator of the space dialect: the magnitude of charge accumulated in whichever direction is currently active, in ampere hour. Verified unsigned (never negative) and equal to arbin:charging_capacity_ah during charge steps (current > 0) and to arbin:discharging_capacity_ah during discharge steps (current < 0), re-zeroing at schedule step boundaries (1:1 with Step_Index transitions). It is NOT signed net capacity and NOT charge minus discharge, so it does not map to bdf:net_capacity_ah; it is a vendor-only, schedule-window-scoped magnitude. Distinct from the Global_Info nominal Capacity (arbin:nominal_capacity_ah)."@en ;
+     rdfs:comment "Time-series 'Capacity (Ah)' accumulator of the space dialect: the magnitude of charge accumulated in whichever direction is currently active, in ampere hour. Verified unsigned (never negative) and equal to arbin:charging_capacity_ah during charge steps (current > 0) and to arbin:discharging_capacity_ah during discharge steps (current < 0), re-zeroing at schedule step boundaries (1:1 with Step_Index transitions). It is NOT signed net capacity and NOT charge minus discharge, so it does not map to bdf:net_capacity_ah; it is a vendor-only, schedule-window-scoped magnitude. Distinct from the Global_Info nominal Capacity (arbin:nominal_capacity_ah)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#specific_capacity_mah_g
+arbin:specific_capacity_mah_g rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Specific Capacity (time-series)"@en ;
+     skos:prefLabel "Specific Capacity (time-series)"@en ;
+     skos:altLabel "mAh/g" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "mA.h/g" ;
+     schema:unitText "milliampere hour per gram"@en ;
+     skos:definition "Per-gram rescaling of the time-series arbin:capacity_ah accumulator: capacity in ampere hour times 1000 divided by the active-material MASS (gram) from Global_Info, giving milliampere hour per gram. Verified as an exact rescaling of arbin:capacity_ah (not of the charge/discharge accumulators); it inherits capacity_ah's behaviour — unsigned and resetting in lock-step at schedule step boundaries. Zero throughout when MASS is undefined. Vendor-derived, no BDF core equivalent."@en ;
+     rdfs:comment "Per-gram rescaling of the time-series arbin:capacity_ah accumulator: capacity in ampere hour times 1000 divided by the active-material MASS (gram) from Global_Info, giving milliampere hour per gram. Verified as an exact rescaling of arbin:capacity_ah (not of the charge/discharge accumulators); it inherits capacity_ah's behaviour — unsigned and resetting in lock-step at schedule step boundaries. Zero throughout when MASS is undefined. Vendor-derived, no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#dv_dt
+arbin:dv_dt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Voltage Time Derivative"@en ;
+     skos:prefLabel "Voltage Time Derivative"@en ;
+     skos:altLabel "dV/dt (V/s)" ;
+     skos:altLabel "dV/dt(V/s)" ;
+     skos:altLabel "dV/dt" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "V/s" ;
+     schema:unitText "volt per second"@en ;
+     skos:definition "Instrument-reported time derivative of voltage, in volt per second. MITS 7 code PV27 (PV_dVdt)."@en ;
+     rdfs:comment "Instrument-reported time derivative of voltage, in volt per second. MITS 7 code PV27 (PV_dVdt)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#dq_dv
+arbin:dq_dv rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Incremental Capacity dQ/dV"@en ;
+     skos:prefLabel "Incremental Capacity dQ/dV"@en ;
+     skos:altLabel "dQ/dV (Ah/V)" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "A.h/V" ;
+     schema:unitText "ampere hour per volt"@en ;
+     skos:definition "Differential (incremental) capacity, the derivative of accumulated charge with respect to voltage, in ampere hour per volt; used in dQ/dV analysis. Vendor-derived, no BDF core equivalent."@en ;
+     rdfs:comment "Differential (incremental) capacity, the derivative of accumulated charge with respect to voltage, in ampere hour per volt; used in dQ/dV analysis. Vendor-derived, no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#dv_dq
+arbin:dv_dq rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Differential Voltage dV/dQ"@en ;
+     skos:prefLabel "Differential Voltage dV/dQ"@en ;
+     skos:altLabel "dV/dQ (V/Ah)" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "V/A.h" ;
+     schema:unitText "volt per ampere hour"@en ;
+     skos:definition "Differential voltage, the derivative of voltage with respect to accumulated charge, in volt per ampere hour. Vendor-derived, no BDF core equivalent."@en ;
+     rdfs:comment "Differential voltage, the derivative of voltage with respect to accumulated charge, in volt per ampere hour. Vendor-derived, no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#internal_resistance_ohm
+arbin:internal_resistance_ohm rdf:type owl:Class ;
+     rdfs:subClassOf bdf:dc_internal_resistance_ohm ;
+     skos:exactMatch bdf:dc_internal_resistance_ohm ;
+     rdfs:label "Internal Resistance (DC)"@en ;
+     skos:prefLabel "Internal Resistance (DC)"@en ;
+     skos:altLabel "Internal Resistance (Ohm)" ;
+     skos:altLabel "Internal_Resistance(Ohm)" ;
+     skos:altLabel "Internal Resistance(Ohm)" ;
+     skos:altLabel "Internal_Resistance" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "Arbin instrument internal-resistance channel computed by a DC current-step (ΔV/ΔI) method, in ohm. Maps to bdf:dc_internal_resistance_ohm. MITS 7 code PV30 (PV_InternalResistance)."@en ;
+     rdfs:comment "Arbin instrument internal-resistance channel computed by a DC current-step (ΔV/ΔI) method, in ohm. Maps to bdf:dc_internal_resistance_ohm. MITS 7 code PV30 (PV_InternalResistance)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#acr_ohm
+arbin:acr_ohm rdf:type owl:Class ;
+     rdfs:subClassOf bdf:ac_internal_resistance_ohm ;
+     skos:exactMatch bdf:ac_internal_resistance_ohm ;
+     rdfs:label "AC Resistance (ACR)"@en ;
+     skos:prefLabel "AC Resistance (ACR)"@en ;
+     skos:altLabel "ACR (Ohm)" ;
+     skos:altLabel "ACR(Ohm)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "Arbin AC resistance channel: impedance magnitude at a fixed excitation frequency, in ohm. Maps to bdf:ac_internal_resistance_ohm. MITS 7 code PV6 (PV_ACR)."@en ;
+     rdfs:comment "Arbin AC resistance channel: impedance magnitude at a fixed excitation frequency, in ohm. Maps to bdf:ac_internal_resistance_ohm. MITS 7 code PV6 (PV_ACR)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#ac_impedance_ohm
+arbin:ac_impedance_ohm rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "AC Impedance (channel)"@en ;
+     skos:prefLabel "AC Impedance (channel)"@en ;
+     skos:altLabel "AC_Impedance(Ohm)" ;
+     skos:altLabel "AC_Impedance" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "In-line AC impedance magnitude reported on the channel time-series, in ohm; distinct from the dedicated EIS sheet. Vendor-only."@en ;
+     rdfs:comment "In-line AC impedance magnitude reported on the channel time-series, in ohm; distinct from the dedicated EIS sheet. Vendor-only."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aci_phase_angle_degree
+arbin:aci_phase_angle_degree rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "AC Impedance Phase Angle (channel)"@en ;
+     skos:prefLabel "AC Impedance Phase Angle (channel)"@en ;
+     skos:altLabel "ACI_Phase_Angle(Deg)" ;
+     skos:altLabel "ACI_Phase_Angle" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "deg" ;
+     schema:unitText "degree"@en ;
+     skos:definition "In-line AC impedance phase angle reported on the channel time-series, in degree. Vendor-only."@en ;
+     rdfs:comment "In-line AC impedance phase angle reported on the channel time-series, in degree. Vendor-only."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#reference_ac_impedance_ohm
+arbin:reference_ac_impedance_ohm rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Reference AC Impedance"@en ;
+     skos:prefLabel "Reference AC Impedance"@en ;
+     skos:altLabel "Reference_AC_Impedance" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "AC impedance magnitude measured against a reference electrode, in ohm. Vendor-only."@en ;
+     rdfs:comment "AC impedance magnitude measured against a reference electrode, in ohm. Vendor-only."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#reference_aci_phase_angle_degree
+arbin:reference_aci_phase_angle_degree rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Reference AC Impedance Phase Angle"@en ;
+     skos:prefLabel "Reference AC Impedance Phase Angle"@en ;
+     skos:altLabel "Reference_ACI_Phase_Angle" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "deg" ;
+     schema:unitText "degree"@en ;
+     skos:definition "AC impedance phase angle measured against a reference electrode, in degree. Vendor-only."@en ;
+     rdfs:comment "AC impedance phase angle measured against a reference electrode, in degree. Vendor-only."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#reference_voltage_volt
+arbin:reference_voltage_volt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Reference Electrode Voltage"@en ;
+     skos:prefLabel "Reference Electrode Voltage"@en ;
+     skos:altLabel "Reference_Voltage" ;
+     skos:altLabel "Reference_Voltage(Ohm)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "V" ;
+     schema:unitText "volt"@en ;
+     skos:scopeNote "'Reference_Voltage(Ohm)' is an Arbin unit-label bug: the values are volts, not ohms."@en ;
+     skos:definition "Potential of the working electrode against a reference electrode, in volt. Vendor-only. Note the Arbin unit-label bug 'Reference_Voltage(Ohm)' (labelled ohm but carrying volts). In some h5 exports the equivalent channel appears as an auxiliary voltage."@en ;
+     rdfs:comment "Potential of the working electrode against a reference electrode, in volt. Vendor-only. Note the Arbin unit-label bug 'Reference_Voltage(Ohm)' (labelled ohm but carrying volts). In some h5 exports the equivalent channel appears as an auxiliary voltage."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#frequency_hertz
+arbin:frequency_hertz rdf:type owl:Class ;
+     rdfs:subClassOf bdf:frequency_hertz ;
+     skos:exactMatch bdf:frequency_hertz ;
+     rdfs:label "Frequency"@en ;
+     skos:prefLabel "Frequency"@en ;
+     skos:altLabel "Frequency" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "Hz" ;
+     schema:unitText "hertz"@en ;
+     skos:definition "Excitation / AC signal frequency, in hertz. Reported both as an in-line channel column and as the sweep frequency on the EIS sheet."@en ;
+     rdfs:comment "Excitation / AC signal frequency, in hertz. Reported both as an in-line channel column and as the sweep frequency on the EIS sheet."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#amplitude
+arbin:amplitude rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Amplitude"@en ;
+     skos:prefLabel "Amplitude"@en ;
+     skos:altLabel "Amplitude" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:verificationStatus "unverified" ;
+     skos:scopeNote "Not observed in sampled exports; unit mode-dependent (ampere galvanostatic vs volt potentiostatic). Retained from the documented header inventory."@en ;
+     skos:definition "AC excitation amplitude reported on the channel time-series (documented for .res/SQL exports). UNVERIFIED: not present in any sampled CSV/XLSX file, and its unit (ampere vs volt) depends on the drive mode; no unit is asserted. By analogy with the EIS sheet it is expected to be an RMS current under galvanostatic drive."@en ;
+     rdfs:comment "AC excitation amplitude reported on the channel time-series (documented for .res/SQL exports). UNVERIFIED: not present in any sampled CSV/XLSX file, and its unit (ampere vs volt) depends on the drive mode; no unit is asserted. By analogy with the EIS sheet it is expected to be an RMS current under galvanostatic drive."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#di_dt
+arbin:di_dt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Current Time Derivative"@en ;
+     skos:prefLabel "Current Time Derivative"@en ;
+     skos:altLabel "PV28" ;
+     skos:altLabel "PV_dIdt" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "A/s" ;
+     schema:unitText "ampere per second"@en ;
+     skos:definition "Instrument-reported time derivative of current, in ampere per second. MITS 7 long-format code PV28 (PV_dIdt)."@en ;
+     rdfs:comment "Instrument-reported time derivative of current, in ampere per second. MITS 7 long-format code PV28 (PV_dIdt)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#d2v_dt2
+arbin:d2v_dt2 rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Voltage Second Time Derivative"@en ;
+     skos:prefLabel "Voltage Second Time Derivative"@en ;
+     skos:altLabel "PV45" ;
+     skos:altLabel "PV_d2Vd2t" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     schema:unitCode "V/s2" ;
+     schema:unitText "volt per second squared"@en ;
+     skos:definition "Instrument-reported second time derivative of voltage, in volt per second squared. MITS 7 long-format code PV45 (PV_d2Vd2t)."@en ;
+     rdfs:comment "Instrument-reported second time derivative of voltage, in volt per second squared. MITS 7 long-format code PV45 (PV_d2Vd2t)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#is_fc_data
+arbin:is_fc_data rdf:type owl:Class ;
+     rdfs:label "Is Formation-Cycle Data Flag"@en ;
+     skos:prefLabel "Is Formation-Cycle Data Flag"@en ;
+     skos:altLabel "Is_FC_Data" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "timeseries" ;
+     skos:definition "Boolean flag marking a record as belonging to formation-cycle data. Bookkeeping; no scientific content."@en ;
+     rdfs:comment "Boolean flag marking a record as belonging to formation-cycle data. Bookkeeping; no scientific content."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#data_flags
+arbin:data_flags rdf:type owl:Class ;
+     rdfs:label "Data Flags"@en ;
+     skos:prefLabel "Data Flags"@en ;
+     skos:altLabel "Data_Flags" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "timeseries" ;
+     skos:definition "Per-record bitfield of internal status flags emitted in SQL exports. Bookkeeping; no scientific content."@en ;
+     rdfs:comment "Per-record bitfield of internal status flags emitted in SQL exports. Bookkeeping; no scientific content."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#tc_counter
+arbin:tc_counter rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Schedule Loop Counter (TC_Counter)"@en ;
+     skos:prefLabel "Schedule Loop Counter (TC_Counter)"@en ;
+     skos:altLabel "TC_Counter1" ;
+     skos:altLabel "TC_Counter2" ;
+     skos:altLabel "TC_Counter3" ;
+     skos:altLabel "TC_Counter4" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:headerPattern "^TC_Counter\\d+$" ;
+     skos:scopeNote "Verified: TC_Counter1 moves in lock-step with Cycle Index (outer loop) and TC_Counter2 resets 11->0 per cycle (inner loop). They do NOT by themselves expose the accumulator reset boundaries: none of the observed Charge/Discharge_Capacity resets coincide with a TC_Counter change; those resets align with Step_Index transitions instead."@en ;
+     skos:definition "Nested schedule loop-iteration counters exposed by the test-control engine (TC_Counter1..TC_Counter4), where TC_Counter1 is the outermost loop and higher indices are inner loops; unused inner levels stay zero. Non-negative integers. Vendor-only; indexed 1..4."@en ;
+     rdfs:comment "Nested schedule loop-iteration counters exposed by the test-control engine (TC_Counter1..TC_Counter4), where TC_Counter1 is the outermost loop and higher indices are inner loops; unused inner levels stay zero. Non-negative integers. Vendor-only; indexed 1..4."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#metacode_mv_ud
+arbin:metacode_mv_ud rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "User-defined Meta Variable"@en ;
+     skos:prefLabel "User-defined Meta Variable"@en ;
+     skos:altLabel "MetaCode_MV_UD1" ;
+     skos:altLabel "MetaCode_MV_UD2" ;
+     skos:altLabel "MetaCode_MV_UD3" ;
+     skos:altLabel "MetaCode_MV_UD4" ;
+     skos:altLabel "MetaCode_MV_UD5" ;
+     skos:altLabel "MetaCode_MV_UD6" ;
+     skos:altLabel "MetaCode_MV_UD7" ;
+     skos:altLabel "MetaCode_MV_UD8" ;
+     skos:altLabel "MetaCode_MV_UD16" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:headerPattern "^MetaCode_MV_UD\\d+$" ;
+     skos:definition "User-defined CAN/meta variables written by the schedule (MetaCode_MV_UD1..UD8 and UD16); values are test-program-defined and carry no fixed physical meaning. Vendor-only; indexed."@en ;
+     rdfs:comment "User-defined CAN/meta variables written by the schedule (MetaCode_MV_UD1..UD8 and UD16); values are test-program-defined and carry no fixed physical meaning. Vendor-only; indexed."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aux_temperature_celsius
+arbin:aux_temperature_celsius rdf:type owl:Class ;
+     rdfs:subClassOf bdf:temperature_t1_celsius ;
+     skos:exactMatch bdf:temperature_t1_celsius ;
+     rdfs:label "Auxiliary Temperature Channel"@en ;
+     skos:prefLabel "Auxiliary Temperature Channel"@en ;
+     skos:altLabel "Aux_Temperature_1(C)" ;
+     skos:altLabel "Aux_Temperature_1 (C)" ;
+     skos:altLabel "Aux_Temperature_2(C)" ;
+     skos:altLabel "Aux_Temperature_2 (C)" ;
+     skos:altLabel "Aux_Temperature_3 (C)" ;
+     skos:altLabel "Aux_Temperature(C)" ;
+     skos:altLabel "Temperature" ;
+     skos:altLabel "Temperature(C)" ;
+     skos:altLabel "Temperature (C)" ;
+     skos:altLabel "Aux_Temperature(¡æ)_1" ;
+     skos:altLabel "Aux_Temperature(¡æ)_2" ;
+     skos:altLabel "Aux_Temperature(¡æ)_3" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:headerPattern "^Aux_Temperature(_\\d+ ?\\(C\\)|\\(¡æ\\)_\\d+|\\(C\\))$" ;
+     schema:unitCode "degC" ;
+     schema:unitText "degree Celsius"@en ;
+     skos:scopeNote "Aux_Temperature_N maps channel-for-channel to bdf:temperature_tN_celsius; the exactMatch names the representative t1 channel term per the BDF numbered-channel convention."@en ;
+     skos:definition "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). Channel index N corresponds to BDF temperature_tN_celsius; mapped here to the representative core channel term. Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en ;
+     rdfs:comment "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). Channel index N corresponds to BDF temperature_tN_celsius; mapped here to the representative core channel term. Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aux_dt_dt
+arbin:aux_dt_dt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Auxiliary Temperature Time Derivative"@en ;
+     skos:prefLabel "Auxiliary Temperature Time Derivative"@en ;
+     skos:altLabel "Aux_dT/dt_1 (C/s)" ;
+     skos:altLabel "Aux_dT/dt_1(C/s)" ;
+     skos:altLabel "Aux_dT/dt_2 (C/s)" ;
+     skos:altLabel "Aux_dT/dt_3 (C/s)" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:sheetScope "statistics" ;
+     arbin:headerPattern "^Aux_dT/dt_\\d+ ?\\(C/s\\)$" ;
+     schema:unitCode "degC/s" ;
+     schema:unitText "degree Celsius per second"@en ;
+     skos:definition "Time derivative of an auxiliary temperature channel, in degree Celsius per second (Aux_dT/dt_N). Vendor-only; indexed."@en ;
+     rdfs:comment "Time derivative of an auxiliary temperature channel, in degree Celsius per second (Aux_dT/dt_N). Vendor-only; indexed."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aux_voltage_volt
+arbin:aux_voltage_volt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Auxiliary Voltage Channel"@en ;
+     skos:prefLabel "Auxiliary Voltage Channel"@en ;
+     skos:altLabel "Aux_Voltage(V)_1" ;
+     skos:altLabel "Aux_Voltage(V)_2" ;
+     skos:altLabel "Aux_Voltage(V)_3" ;
+     skos:altLabel "Aux_Voltage(V)_4" ;
+     skos:altLabel "Aux_Voltage(V)_5" ;
+     skos:altLabel "Aux_Voltage_1" ;
+     skos:altLabel "Aux_Voltage_2" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "timeseries" ;
+     arbin:headerPattern "^Aux_Voltage(\\(V\\))?_\\d+$" ;
+     schema:unitCode "V" ;
+     schema:unitText "volt"@en ;
+     skos:definition "Auxiliary voltage reading on an indexed channel (Aux_Voltage_N), in volt. Vendor-only; indexed."@en ;
+     rdfs:comment "Auxiliary voltage reading on an indexed channel (Aux_Voltage_N), in volt. Vendor-only; indexed."@en .
+
+#################################################################
+#    Tier 2 — EIS sheet (ACIM_chan_1)
+#################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#eis_test_id
+arbin:eis_test_id rdf:type owl:Class ;
+     rdfs:label "EIS Test Identifier"@en ;
+     skos:prefLabel "EIS Test Identifier"@en ;
+     skos:altLabel "EIS_Test_ID" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "Identifier of the EIS measurement run on the ACIM sheet. Vendor-only nominal identifier."@en ;
+     rdfs:comment "Identifier of the EIS measurement run on the ACIM sheet. Vendor-only nominal identifier."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#eis_record_index
+arbin:eis_record_index rdf:type owl:Class ;
+     rdfs:label "EIS Record Index"@en ;
+     skos:prefLabel "EIS Record Index"@en ;
+     skos:altLabel "EIS_Data_Point" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "Ordinal record counter within the EIS sheet. Vendor-only nominal identifier."@en ;
+     rdfs:comment "Ordinal record counter within the EIS sheet. Vendor-only nominal identifier."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#z_modulus_ohm
+arbin:z_modulus_ohm rdf:type owl:Class ;
+     rdfs:subClassOf bdf:absolute_impedance_ohm ;
+     skos:exactMatch bdf:absolute_impedance_ohm ;
+     rdfs:label "Impedance Modulus"@en ;
+     skos:prefLabel "Impedance Modulus"@en ;
+     skos:altLabel "Zmod" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "Magnitude |Z| of the complex impedance at the sweep frequency, in ohm. Maps to bdf:absolute_impedance_ohm."@en ;
+     rdfs:comment "Magnitude |Z| of the complex impedance at the sweep frequency, in ohm. Maps to bdf:absolute_impedance_ohm."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#z_phase_degree
+arbin:z_phase_degree rdf:type owl:Class ;
+     rdfs:subClassOf bdf:phase_degree ;
+     skos:exactMatch bdf:phase_degree ;
+     rdfs:label "Impedance Phase"@en ;
+     skos:prefLabel "Impedance Phase"@en ;
+     skos:altLabel "Zphz" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "deg" ;
+     schema:unitText "degree"@en ;
+     skos:definition "Phase angle of the complex impedance at the sweep frequency, in degree. Maps to bdf:phase_degree."@en ;
+     rdfs:comment "Phase angle of the complex impedance at the sweep frequency, in degree. Maps to bdf:phase_degree."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#z_real_ohm
+arbin:z_real_ohm rdf:type owl:Class ;
+     rdfs:subClassOf bdf:real_impedance_ohm ;
+     skos:exactMatch bdf:real_impedance_ohm ;
+     rdfs:label "Real Impedance"@en ;
+     skos:prefLabel "Real Impedance"@en ;
+     skos:altLabel "Zreal" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "Real part Z' of the complex impedance, in ohm. Maps to bdf:real_impedance_ohm."@en ;
+     rdfs:comment "Real part Z' of the complex impedance, in ohm. Maps to bdf:real_impedance_ohm."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#z_imaginary_ohm
+arbin:z_imaginary_ohm rdf:type owl:Class ;
+     rdfs:subClassOf bdf:imaginary_impedance_ohm ;
+     skos:exactMatch bdf:imaginary_impedance_ohm ;
+     rdfs:label "Imaginary Impedance"@en ;
+     skos:prefLabel "Imaginary Impedance"@en ;
+     skos:altLabel "Zimg" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "Ohm" ;
+     schema:unitText "ohm"@en ;
+     skos:definition "Imaginary part Z'' of the complex impedance, in ohm. Maps to bdf:imaginary_impedance_ohm."@en ;
+     rdfs:comment "Imaginary part Z'' of the complex impedance, in ohm. Maps to bdf:imaginary_impedance_ohm."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#ocv_volt
+arbin:ocv_volt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Open-circuit Voltage (EIS)"@en ;
+     skos:prefLabel "Open-circuit Voltage (EIS)"@en ;
+     skos:altLabel "OCV" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     schema:unitCode "V" ;
+     schema:unitText "volt"@en ;
+     skos:definition "Open-circuit (rest) voltage recorded on the EIS sheet, in volt. Vendor-only: no BDF core open-circuit-voltage term exists."@en ;
+     rdfs:comment "Open-circuit (rest) voltage recorded on the EIS sheet, in volt. Vendor-only: no BDF core open-circuit-voltage term exists."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#ac_amplitude_rms
+arbin:ac_amplitude_rms rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "AC Amplitude (RMS)"@en ;
+     skos:prefLabel "AC Amplitude (RMS)"@en ;
+     skos:altLabel "AC_Amp_RMS" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     skos:scopeNote "Verified galvanostatic (Driven_Type='Galvanostatic') in all accessible EIS data -> RMS current in ampere. The potentiostatic->volt branch is a documented-convention inference, not observed."@en ;
+     skos:definition "RMS amplitude of the AC excitation on the EIS sheet. The unit is keyed by arbin:driven_type: in the galvanostatic mode observed across all available EIS sheets it is an RMS current in ampere; a potentiostatic sheet would express it as a voltage in volt. No fixed unit is asserted because it is mode-dependent."@en ;
+     rdfs:comment "RMS amplitude of the AC excitation on the EIS sheet. The unit is keyed by arbin:driven_type: in the galvanostatic mode observed across all available EIS sheets it is an RMS current in ampere; a potentiostatic sheet would express it as a voltage in volt. No fixed unit is asserted because it is mode-dependent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#dc_base
+arbin:dc_base rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "DC Base Level"@en ;
+     skos:prefLabel "DC Base Level"@en ;
+     skos:altLabel "DC_Base" ;
+     arbin:role "measurement" ;
+     arbin:sheetScope "eis" ;
+     skos:scopeNote "Verified galvanostatic -> DC current in ampere, observed constant 0 (measured at OCV). The potentiostatic->volt branch is a documented-convention inference, not observed."@en ;
+     skos:definition "DC bias about which the AC excitation is applied on the EIS sheet. The unit is keyed by arbin:driven_type: in the observed galvanostatic mode it is a DC current in ampere (a value of 0 indicating measurement at open-circuit with no DC offset); a potentiostatic sheet would express it as a voltage in volt."@en ;
+     rdfs:comment "DC bias about which the AC excitation is applied on the EIS sheet. The unit is keyed by arbin:driven_type: in the observed galvanostatic mode it is a DC current in ampere (a value of 0 indicating measurement at open-circuit with no DC offset); a potentiostatic sheet would express it as a voltage in volt."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#driven_type
+arbin:driven_type rdf:type owl:Class ;
+     rdfs:label "EIS Drive Mode"@en ;
+     skos:prefLabel "EIS Drive Mode"@en ;
+     skos:altLabel "Driven_Type" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "EIS excitation control mode, e.g. 'Galvanostatic' or 'Potentiostatic'; determines the units of AC_Amp_RMS and DC_Base. Vendor metadata."@en ;
+     rdfs:comment "EIS excitation control mode, e.g. 'Galvanostatic' or 'Potentiostatic'; determines the units of AC_Amp_RMS and DC_Base. Vendor metadata."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#eis_product_id
+arbin:eis_product_id rdf:type owl:Class ;
+     rdfs:label "EIS Instrument Product Identifier"@en ;
+     skos:prefLabel "EIS Instrument Product Identifier"@en ;
+     skos:altLabel "Product_ID" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "Identifier of the impedance instrument that produced the EIS sheet (e.g. 'Gamry_1'). Vendor-only nominal identifier."@en ;
+     rdfs:comment "Identifier of the impedance instrument that produced the EIS sheet (e.g. 'Gamry_1'). Vendor-only nominal identifier."@en .
+
+#################################################################
+#    Tier 3 — statistics sheets
+#################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#charge_time_second
+arbin:charge_time_second rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Charge Time (per window)"@en ;
+     skos:prefLabel "Charge Time (per window)"@en ;
+     skos:altLabel "Charge Time (s)" ;
+     skos:altLabel "Charge_Time" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "s" ;
+     schema:unitText "second"@en ;
+     skos:definition "Total time spent charging within the summarised cycle/step, in seconds. Vendor-derived statistic; no BDF core equivalent."@en ;
+     rdfs:comment "Total time spent charging within the summarised cycle/step, in seconds. Vendor-derived statistic; no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#discharge_time_second
+arbin:discharge_time_second rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Discharge Time (per window)"@en ;
+     skos:prefLabel "Discharge Time (per window)"@en ;
+     skos:altLabel "Discharge Time (s)" ;
+     skos:altLabel "Discharge_Time" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "s" ;
+     schema:unitText "second"@en ;
+     skos:definition "Total time spent discharging within the summarised cycle/step, in seconds. Vendor-derived statistic; no BDF core equivalent."@en ;
+     rdfs:comment "Total time spent discharging within the summarised cycle/step, in seconds. Vendor-derived statistic; no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#vmax_on_cycle_volt
+arbin:vmax_on_cycle_volt rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Maximum Voltage on Cycle"@en ;
+     skos:prefLabel "Maximum Voltage on Cycle"@en ;
+     skos:altLabel "V_Max_On_Cycle (V)" ;
+     skos:altLabel "Vmax_On_Cycle" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "V" ;
+     schema:unitText "volt"@en ;
+     skos:definition "Maximum cell voltage reached within the summarised cycle, in volt. Vendor-derived statistic; no BDF core equivalent."@en ;
+     rdfs:comment "Maximum cell voltage reached within the summarised cycle, in volt. Vendor-derived statistic; no BDF core equivalent."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#coulombic_efficiency_percent
+arbin:coulombic_efficiency_percent rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ;
+     rdfs:label "Coulombic Efficiency"@en ;
+     skos:prefLabel "Coulombic Efficiency"@en ;
+     skos:altLabel "Coulombic Efficiency (%)" ;
+     arbin:role "derived" ;
+     arbin:sheetScope "statistics" ;
+     schema:unitCode "%" ;
+     schema:unitText "percent"@en ;
+     skos:definition "Ratio of discharge to charge capacity for the summarised cycle, in percent. Vendor-derived statistic; no BDF core equivalent."@en ;
+     rdfs:comment "Ratio of discharge to charge capacity for the summarised cycle, in percent. Vendor-derived statistic; no BDF core equivalent."@en .
+
+#################################################################
+#    Tier 4 — metadata (Global_Info / Global_Table)
+#################################################################
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#schedule_file_name
+arbin:schedule_file_name rdf:type owl:Class ;
+     rdfs:label "Schedule File Name"@en ;
+     skos:prefLabel "Schedule File Name"@en ;
+     skos:altLabel "Schedule_File_Name" ;
+     skos:altLabel "Schedule File Name" ;
+     skos:altLabel "schedule_file_name" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Name/path of the Arbin schedule (test program) file. Provenance anchor for every schedule_* scope claim: it identifies the operator-authored program whose boundaries define the Charge/Discharge accumulator reset windows."@en ;
+     rdfs:comment "Name/path of the Arbin schedule (test program) file. Provenance anchor for every schedule_* scope claim: it identifies the operator-authored program whose boundaries define the Charge/Discharge accumulator reset windows."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#schedule_version
+arbin:schedule_version rdf:type owl:Class ;
+     rdfs:label "Schedule Version"@en ;
+     skos:prefLabel "Schedule Version"@en ;
+     skos:altLabel "Schedule Version" ;
+     skos:altLabel "schedule_version" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Version string of the Arbin schedule file."@en ;
+     rdfs:comment "Version string of the Arbin schedule file."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#start_datetime
+arbin:start_datetime rdf:type owl:Class ;
+     rdfs:label "Start Date-Time"@en ;
+     skos:prefLabel "Start Date-Time"@en ;
+     skos:altLabel "Start_DateTime" ;
+     skos:altLabel "Start DateTime" ;
+     skos:altLabel "First_Start_DateTime" ;
+     skos:altLabel "first_start_datetime" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Wall-clock start timestamp of the test (or its first segment)."@en ;
+     rdfs:comment "Wall-clock start timestamp of the test (or its first segment)."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#last_end_datetime
+arbin:last_end_datetime rdf:type owl:Class ;
+     rdfs:label "Last End Date-Time"@en ;
+     skos:prefLabel "Last End Date-Time"@en ;
+     skos:altLabel "Last_End_DateTime" ;
+     skos:altLabel "last_end_datetime" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Wall-clock end timestamp of the last test segment."@en ;
+     rdfs:comment "Wall-clock end timestamp of the last test segment."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#test_name
+arbin:test_name rdf:type owl:Class ;
+     rdfs:label "Test Name"@en ;
+     skos:prefLabel "Test Name"@en ;
+     skos:altLabel "Test_Name" ;
+     skos:altLabel "Test Name" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Human-assigned name of the test."@en ;
+     rdfs:comment "Human-assigned name of the test."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#test_id
+arbin:test_id rdf:type owl:Class ;
+     rdfs:label "Test Identifier"@en ;
+     skos:prefLabel "Test Identifier"@en ;
+     skos:altLabel "Test_ID" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Numeric/database identifier of the test."@en ;
+     rdfs:comment "Numeric/database identifier of the test."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#device_id
+arbin:device_id rdf:type owl:Class ;
+     rdfs:label "Device Identifier"@en ;
+     skos:prefLabel "Device Identifier"@en ;
+     skos:altLabel "device_id" ;
+     skos:altLabel "Device_ID" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "metadata" ;
+     arbin:sheetScope "eis" ;
+     skos:definition "Identifier of the cycler device/unit."@en ;
+     rdfs:comment "Identifier of the cycler device/unit."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#channel_number
+arbin:channel_number rdf:type owl:Class ;
+     rdfs:label "Channel Number"@en ;
+     skos:prefLabel "Channel Number"@en ;
+     skos:altLabel "Channel" ;
+     skos:altLabel "Chan_Num" ;
+     skos:altLabel "iv_ch_id" ;
+     skos:altLabel "Channel_ID" ;
+     skos:altLabel "Channel_Index" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "metadata" ;
+     arbin:sheetScope "eis" ;
+     arbin:sheetScope "timeseries" ;
+     skos:definition "Identifier of the cycler channel on which the cell was tested."@en ;
+     rdfs:comment "Identifier of the cycler channel on which the cell was tested."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#item_id
+arbin:item_id rdf:type owl:Class ;
+     rdfs:label "Item / Barcode Identifier"@en ;
+     skos:prefLabel "Item / Barcode Identifier"@en ;
+     skos:altLabel " Item_ID" ;
+     skos:altLabel "Item ID" ;
+     skos:altLabel "Item_ID" ;
+     skos:altLabel "BarCode" ;
+     skos:altLabel "item_id" ;
+     arbin:role "identifier" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Cell item identifier or barcode. Note the Arbin export quirk of a leading space in the header ' Item_ID'."@en ;
+     rdfs:comment "Cell item identifier or barcode. Note the Arbin export quirk of a leading space in the header ' Item_ID'."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#mass_gram
+arbin:mass_gram rdf:type owl:Class ;
+     rdfs:label "Active-material Mass"@en ;
+     skos:prefLabel "Active-material Mass"@en ;
+     skos:altLabel "MASS" ;
+     skos:altLabel "MASS(g)" ;
+     skos:altLabel "SpecificMASS" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     schema:unitCode "g" ;
+     schema:unitText "gram"@en ;
+     skos:definition "Active-material mass used to normalise specific quantities (e.g. mAh/g), in gram."@en ;
+     rdfs:comment "Active-material mass used to normalise specific quantities (e.g. mAh/g), in gram."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#specific_capacity_ah_g
+arbin:specific_capacity_ah_g rdf:type owl:Class ;
+     rdfs:label "Nominal Specific Capacity"@en ;
+     skos:prefLabel "Nominal Specific Capacity"@en ;
+     skos:altLabel "Specific Capacity" ;
+     skos:altLabel "Specific Capacity(Ah/g)" ;
+     skos:altLabel "SpecificCapacity" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     schema:unitCode "A.h/g" ;
+     schema:unitText "ampere hour per gram"@en ;
+     skos:definition "Nominal specific capacity of the cell chemistry recorded in metadata, in ampere hour per gram. Distinct from the time-series mAh/g channel."@en ;
+     rdfs:comment "Nominal specific capacity of the cell chemistry recorded in metadata, in ampere hour per gram. Distinct from the time-series mAh/g channel."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#nominal_capacity_ah
+arbin:nominal_capacity_ah rdf:type owl:Class ;
+     rdfs:label "Nominal Capacity"@en ;
+     skos:prefLabel "Nominal Capacity"@en ;
+     skos:altLabel "Capacity" ;
+     skos:altLabel "Capacity(Ah)" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     skos:definition "Nominal (rated) cell capacity recorded in Global_Info, in ampere hour. A distinct concept from the time-series arbin:capacity_ah accumulator."@en ;
+     rdfs:comment "Nominal (rated) cell capacity recorded in Global_Info, in ampere hour. A distinct concept from the time-series arbin:capacity_ah accumulator."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#creator
+arbin:creator rdf:type owl:Class ;
+     rdfs:label "Creator"@en ;
+     skos:prefLabel "Creator"@en ;
+     skos:altLabel "Creator" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Operator or software user that created the test."@en ;
+     rdfs:comment "Operator or software user that created the test."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#comments
+arbin:comments rdf:type owl:Class ;
+     rdfs:label "Comments"@en ;
+     skos:prefLabel "Comments"@en ;
+     skos:altLabel "Comments" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Free-text comments recorded with the test."@en ;
+     rdfs:comment "Free-text comments recorded with the test."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#software_version
+arbin:software_version rdf:type owl:Class ;
+     rdfs:label "Software Version"@en ;
+     skos:prefLabel "Software Version"@en ;
+     skos:altLabel "Software Version" ;
+     skos:altLabel "Software_Version" ;
+     skos:altLabel "software_version" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Version of the Arbin MITS/DataPro software that produced the export."@en ;
+     rdfs:comment "Version of the Arbin MITS/DataPro software that produced the export."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#serial_number
+arbin:serial_number rdf:type owl:Class ;
+     rdfs:label "Serial Number"@en ;
+     skos:prefLabel "Serial Number"@en ;
+     skos:altLabel "Serial Number" ;
+     skos:altLabel "serial_number" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Serial number of the cycler hardware."@en ;
+     rdfs:comment "Serial number of the cycler hardware."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#export_time
+arbin:export_time rdf:type owl:Class ;
+     rdfs:label "Export Time"@en ;
+     skos:prefLabel "Export Time"@en ;
+     skos:altLabel "Export Time" ;
+     skos:altLabel "Export_Time" ;
+     skos:altLabel "export_time" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Timestamp at which the file was exported."@en ;
+     rdfs:comment "Timestamp at which the file was exported."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#resumed_times
+arbin:resumed_times rdf:type owl:Class ;
+     rdfs:label "Resumed Times"@en ;
+     skos:prefLabel "Resumed Times"@en ;
+     skos:altLabel "resumed_times" ;
+     arbin:role "metadata" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Number of times the test was resumed after interruption; scientifically relevant because each resume affects accumulator continuity."@en ;
+     rdfs:comment "Number of times the test was resumed after interruption; scientifically relevant because each resume affects accumulator continuity."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#has_aux
+arbin:has_aux rdf:type owl:Class ;
+     rdfs:label "Has Auxiliary Data Flag"@en ;
+     skos:prefLabel "Has Auxiliary Data Flag"@en ;
+     skos:altLabel "Has Aux" ;
+     skos:altLabel "has_aux" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Flag indicating whether auxiliary channels were logged. Bookkeeping."@en ;
+     rdfs:comment "Flag indicating whether auxiliary channels were logged. Bookkeeping."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#has_special
+arbin:has_special rdf:type owl:Class ;
+     rdfs:label "Has Special Data Flag"@en ;
+     skos:prefLabel "Has Special Data Flag"@en ;
+     skos:altLabel "Has Specail" ;
+     skos:altLabel "Has Special" ;
+     skos:altLabel "has_special" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Flag indicating whether 'special' data was logged. Bookkeeping. Retains the verbatim Arbin header typo 'Has Specail'."@en ;
+     rdfs:comment "Flag indicating whether 'special' data was logged. Bookkeeping. Retains the verbatim Arbin header typo 'Has Specail'."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#log_flags
+arbin:log_flags rdf:type owl:Class ;
+     rdfs:label "Logging Flags"@en ;
+     skos:prefLabel "Logging Flags"@en ;
+     skos:altLabel "Log Aux Data Flag" ;
+     skos:altLabel "Log Special Flag" ;
+     skos:altLabel "Log_Event_Data_Flag" ;
+     skos:altLabel "Log_ChanStat_Data_Flag" ;
+     skos:altLabel "Log_Smart_Battery_Data_Flag" ;
+     skos:altLabel "log_aux_data_flag" ;
+     skos:altLabel "log_special_data_flag" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Family of boolean flags controlling which optional data streams the schedule logs (auxiliary, special, event, channel-statistics, smart-battery). Bookkeeping."@en ;
+     rdfs:comment "Family of boolean flags controlling which optional data streams the schedule logs (auxiliary, special, event, channel-statistics, smart-battery). Bookkeeping."@en .
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#internal_bookkeeping
+arbin:internal_bookkeeping rdf:type owl:Class ;
+     rdfs:label "Internal Database/Config State"@en ;
+     skos:prefLabel "Internal Database/Config State"@en ;
+     skos:altLabel "rowstate" ;
+     skos:altLabel "m_ncanconfigmd5" ;
+     skos:altLabel "canconfig_filename" ;
+     skos:altLabel "databases" ;
+     skos:altLabel "grade_id" ;
+     skos:altLabel "value" ;
+     skos:altLabel "value2" ;
+     skos:altLabel "Applications_Path" ;
+     skos:altLabel "DAQ_Index" ;
+     skos:altLabel "Channel_Type" ;
+     skos:altLabel "Mapped_Aux_Temperature Number" ;
+     skos:altLabel "Mapped_Aux_Voltage Number" ;
+     skos:altLabel "Mapped_Aux_Pressure Number" ;
+     skos:altLabel "Mapped_Aux_PH Number" ;
+     skos:altLabel "Mapped_Aux_Flow_Rate Number" ;
+     skos:altLabel "Mapped_Aux_Conc Number" ;
+     skos:altLabel "Mapped_Aux_DI Number" ;
+     skos:altLabel "Mapped_Aux_DO Number" ;
+     skos:altLabel "Mapped_Aux_CNumber" ;
+     arbin:role "bookkeeping" ;
+     arbin:sheetScope "metadata" ;
+     skos:definition "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring, mapped-auxiliary channel counts). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en ;
+     rdfs:comment "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring, mapped-auxiliary channel counts). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en .
+
