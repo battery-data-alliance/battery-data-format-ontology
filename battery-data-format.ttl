@@ -1339,11 +1339,11 @@ sosa:ObservableProperty rdf:type owl:Class .
                             ] ;
             rdfs:comment "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
             rdfs:label "Step Index / 1"@en ;
-            rdfs:seeAlso unit:UNITLESS ;
+            rdfs:seeAlso unit:NUM ;
             skos:altLabel "step_index"@en ,
                           "step_index_1"@en ;
             skos:definition "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
-            qudt:hasQuantityKind quantitykind:Dimensionless ;
+            qudt:hasQuantityKind quantitykind:Count ;
             skos:notation "step_index" ;
             :latexSymbol "j"^^xsd:string ;
             :obligation "optional" ;
