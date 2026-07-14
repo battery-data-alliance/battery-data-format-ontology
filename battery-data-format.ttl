@@ -1038,6 +1038,130 @@ sosa:ObservableProperty rdf:type owl:Class .
               emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "An ordinal, dimensionless integer used to order data records within a time-series dataset, incremented by one for each recorded record and carrying no physical or quantitative meaning."@en .
 
 
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_charging_capacity_ah
+:schedule_charging_capacity_ah rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ,
+                     electrochemistry:electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45 ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                       owl:someValuesFrom emmo:AmpereHour
+                     ] ;
+     rdfs:comment "Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined."@en ;
+     rdfs:label "Schedule Charging Capacity / Ah"@en ;
+     rdfs:seeAlso unit:A-HR ;
+     skos:altLabel "schedule_charging_capacity_ah"@en ,
+                   "schedule_charging_capacity_ampere_hour"@en ;
+     skos:definition "Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined."@en ;
+     qudt:hasQuantityKind quantitykind:ElectricCharge ;
+     skos:notation "schedule_charging_capacity_ah" ;
+     skos:scopeNote "Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_capacity_ah for the test-scoped quantity."@en ;
+     :latexSymbol "Q_\\mathrm{chg}^\\mathrm{sched}"^^xsd:string ;
+     :latexFormula "Q_\\mathrm{chg}^\\mathrm{sched}(t) = \\frac{1}{3600}\\int_{t_r}^{t} \\max\\!\\bigl(I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_r = \\text{most recent schedule-defined reset}"^^xsd:string ;
+     :obligation "optional" ;
+     skos:prefLabel "Schedule Charging Capacity / Ah"@en ;
+     prov:wasDerivedFrom :current_ampere ,
+                         :test_time_second ;
+     schema:description "Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Decreases only at schedule-defined resets, to zero."@en ;
+     schema:measurementTechnique "Vendor accumulator integrated by the instrument between schedule-defined reset events; equivalently, the time integral of the positive part of current since the most recent reset."@en ;
+     schema:name "Schedule Charging Capacity / Ah"@en ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_discharging_capacity_ah
+:schedule_discharging_capacity_ah rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ,
+                     electrochemistry:electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476 ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                       owl:someValuesFrom emmo:AmpereHour
+                     ] ;
+     rdfs:comment "Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined."@en ;
+     rdfs:label "Schedule Discharging Capacity / Ah"@en ;
+     rdfs:seeAlso unit:A-HR ;
+     skos:altLabel "schedule_discharging_capacity_ah"@en ,
+                   "schedule_discharging_capacity_ampere_hour"@en ;
+     skos:definition "Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined."@en ;
+     qudt:hasQuantityKind quantitykind:ElectricCharge ;
+     skos:notation "schedule_discharging_capacity_ah" ;
+     skos:scopeNote "Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_capacity_ah for the test-scoped quantity."@en ;
+     :latexSymbol "Q_\\mathrm{dchg}^\\mathrm{sched}"^^xsd:string ;
+     :latexFormula "Q_\\mathrm{dchg}^\\mathrm{sched}(t) = \\frac{1}{3600}\\int_{t_r}^{t} \\max\\!\\bigl(-I(\\tau),\\,0\\bigr)\\,\\mathrm{d}\\tau,\\quad t_r = \\text{most recent schedule-defined reset}"^^xsd:string ;
+     :obligation "optional" ;
+     skos:prefLabel "Schedule Discharging Capacity / Ah"@en ;
+     prov:wasDerivedFrom :current_ampere ,
+                         :test_time_second ;
+     schema:description "Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Decreases only at schedule-defined resets, to zero."@en ;
+     schema:measurementTechnique "Vendor accumulator integrated by the instrument between schedule-defined reset events; equivalently, the time integral of the magnitude of the negative part of current since the most recent reset."@en ;
+     schema:name "Schedule Discharging Capacity / Ah"@en ;
+     schema:unitCode "A.h" ;
+     schema:unitText "ampere hour"@en ;
+     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_charging_energy_wh
+:schedule_charging_energy_wh rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ,
+                     electrochemistry:electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53 ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                       owl:someValuesFrom emmo:WattHour
+                     ] ;
+     rdfs:comment "Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined."@en ;
+     rdfs:label "Schedule Charging Energy / Wh"@en ;
+     rdfs:seeAlso unit:W-HR ;
+     skos:altLabel "schedule_charging_energy_wh"@en ,
+                   "schedule_charging_energy_watt_hour"@en ;
+     skos:definition "Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined."@en ;
+     qudt:hasQuantityKind quantitykind:Energy ;
+     skos:notation "schedule_charging_energy_wh" ;
+     skos:scopeNote "Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_energy_wh for the test-scoped quantity."@en ;
+     :latexSymbol "E_\\mathrm{chg}^\\mathrm{sched}"^^xsd:string ;
+     :latexFormula "E_\\mathrm{chg}^\\mathrm{sched}(t) = \\frac{1}{3600}\\int_{t_r}^{t} P(\\tau)\\,\\bigl[I(\\tau) > 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_r = \\text{most recent schedule-defined reset}"^^xsd:string ;
+     :obligation "optional" ;
+     skos:prefLabel "Schedule Charging Energy / Wh"@en ;
+     prov:wasDerivedFrom :current_ampere ,
+                         :test_time_second ;
+     schema:description "Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Decreases only at schedule-defined resets, to zero."@en ;
+     schema:measurementTechnique "Vendor accumulator integrated by the instrument between schedule-defined reset events; equivalently, the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset."@en ;
+     schema:name "Schedule Charging Energy / Wh"@en ;
+     schema:unitCode "W.h" ;
+     schema:unitText "watt hour"@en ;
+     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined."@en .
+
+
+###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_discharging_energy_wh
+:schedule_discharging_energy_wh rdf:type owl:Class ;
+     rdfs:subClassOf sosa:ObservableProperty ,
+                     electrochemistry:electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7 ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+                       owl:someValuesFrom emmo:WattHour
+                     ] ;
+     rdfs:comment "Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined."@en ;
+     rdfs:label "Schedule Discharging Energy / Wh"@en ;
+     rdfs:seeAlso unit:W-HR ;
+     skos:altLabel "schedule_discharging_energy_wh"@en ,
+                   "schedule_discharging_energy_watt_hour"@en ;
+     skos:definition "Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined."@en ;
+     qudt:hasQuantityKind quantitykind:Energy ;
+     skos:notation "schedule_discharging_energy_wh" ;
+     skos:scopeNote "Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_energy_wh for the test-scoped quantity."@en ;
+     :latexSymbol "E_\\mathrm{dchg}^\\mathrm{sched}"^^xsd:string ;
+     :latexFormula "E_\\mathrm{dchg}^\\mathrm{sched}(t) = \\frac{1}{3600}\\int_{t_r}^{t} \\bigl|P(\\tau)\\bigr|\\,\\bigl[I(\\tau) < 0\\bigr]\\,\\mathrm{d}\\tau,\\quad t_r = \\text{most recent schedule-defined reset}"^^xsd:string ;
+     :obligation "optional" ;
+     skos:prefLabel "Schedule Discharging Energy / Wh"@en ;
+     prov:wasDerivedFrom :current_ampere ,
+                         :test_time_second ;
+     schema:description "Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Decreases only at schedule-defined resets, to zero."@en ;
+     schema:measurementTechnique "Vendor accumulator integrated by the instrument between schedule-defined reset events; equivalently, the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset."@en ;
+     schema:name "Schedule Discharging Energy / Wh"@en ;
+     schema:unitCode "W.h" ;
+     schema:unitText "watt hour"@en ;
+     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined."@en .
+
+
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_capacity_ah
 :step_capacity_ah rdf:type owl:Class ;
                   rdfs:subClassOf sosa:ObservableProperty ,
