@@ -3372,16 +3372,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
     <td class="element-table-value">step_capacity_ampere_hour</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_capacity_ah</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3420,16 +3420,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3468,16 +3468,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value">test_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">test_time_millisecond</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Test time recorded in millisecond.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
@@ -3516,16 +3516,16 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value">unix_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
     <td class="element-table-value">unix_time_millisecond</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Unix time recorded in millisecond.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
