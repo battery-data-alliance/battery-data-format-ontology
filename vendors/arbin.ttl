@@ -381,10 +381,10 @@ arbin:dv_dq rdf:type owl:Class ;
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#internal_resistance_ohm
 arbin:internal_resistance_ohm rdf:type owl:Class ;
-     rdfs:subClassOf bdf:dc_internal_resistance_ohm ;
-     skos:exactMatch bdf:dc_internal_resistance_ohm ;
-     rdfs:label "Internal Resistance (DC)"@en ;
-     skos:prefLabel "Internal Resistance (DC)"@en ;
+     rdfs:subClassOf bdf:internal_resistance_ohm ;
+     skos:exactMatch bdf:internal_resistance_ohm ;
+     rdfs:label "Internal Resistance"@en ;
+     skos:prefLabel "Internal Resistance"@en ;
      skos:altLabel "Internal Resistance (Ohm)" ;
      skos:altLabel "Internal_Resistance(Ohm)" ;
      skos:altLabel "Internal Resistance(Ohm)" ;
@@ -393,8 +393,9 @@ arbin:internal_resistance_ohm rdf:type owl:Class ;
      arbin:sheetScope "timeseries" ;
      schema:unitCode "Ohm" ;
      schema:unitText "ohm"@en ;
-     skos:definition "Arbin instrument internal-resistance channel computed by a DC current-step (ΔV/ΔI) method, in ohm. Maps to bdf:dc_internal_resistance_ohm. MITS 7 code PV30 (PV_InternalResistance)."@en ;
-     rdfs:comment "Arbin instrument internal-resistance channel computed by a DC current-step (ΔV/ΔI) method, in ohm. Maps to bdf:dc_internal_resistance_ohm. MITS 7 code PV30 (PV_InternalResistance)."@en .
+     skos:scopeNote "Kept method-agnostic: no export evidence that Arbin's Internal Resistance column uses a DC current-step method specifically. If a schedule is known to use a DC-pulse method, the more specific bdf:dc_internal_resistance_ohm applies."@en ;
+     skos:definition "Arbin instrument internal-resistance channel, in ohm. The determination method is not fixed by the export, so it maps to the method-agnostic core term bdf:internal_resistance_ohm (matching the runtime CSVW crosswalk and the resistance-family decision), not to the DC subtype. MITS 7 code PV30 (PV_InternalResistance)."@en ;
+     rdfs:comment "Arbin instrument internal-resistance channel, in ohm. The determination method is not fixed by the export, so it maps to the method-agnostic core term bdf:internal_resistance_ohm (matching the runtime CSVW crosswalk and the resistance-family decision), not to the DC subtype. MITS 7 code PV30 (PV_InternalResistance)."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#acr_ohm
 arbin:acr_ohm rdf:type owl:Class ;
@@ -595,8 +596,7 @@ arbin:metacode_mv_ud rdf:type owl:Class ;
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aux_temperature_celsius
 arbin:aux_temperature_celsius rdf:type owl:Class ;
-     rdfs:subClassOf bdf:temperature_t1_celsius ;
-     skos:exactMatch bdf:temperature_t1_celsius ;
+     rdfs:subClassOf sosa:ObservableProperty ;
      rdfs:label "Auxiliary Temperature Channel"@en ;
      skos:prefLabel "Auxiliary Temperature Channel"@en ;
      skos:altLabel "Aux_Temperature_1(C)" ;
@@ -614,12 +614,13 @@ arbin:aux_temperature_celsius rdf:type owl:Class ;
      arbin:role "measurement" ;
      arbin:sheetScope "timeseries" ;
      arbin:sheetScope "statistics" ;
+     rdfs:seeAlso bdf:temperature_t1_celsius ;
      arbin:headerPattern "^Aux_Temperature(_\\d+ ?\\(C\\)|\\(¡æ\\)_\\d+|\\(C\\))$" ;
      schema:unitCode "degC" ;
      schema:unitText "degree Celsius"@en ;
-     skos:scopeNote "Aux_Temperature_N maps channel-for-channel to bdf:temperature_tN_celsius; the exactMatch names the representative t1 channel term per the BDF numbered-channel convention."@en ;
-     skos:definition "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). Channel index N corresponds to BDF temperature_tN_celsius; mapped here to the representative core channel term. Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en ;
-     rdfs:comment "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). Channel index N corresponds to BDF temperature_tN_celsius; mapped here to the representative core channel term. Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en .
+     skos:scopeNote "Vendor-only because the family spans channels: Aux_Temperature_N corresponds channel-for-channel to bdf:temperature_tN_celsius (rdfs:seeAlso names the t1 representative). A per-channel skos:exactMatch would be needed to assert equivalence for a specific index; it is deliberately not asserted at the family level."@en ;
+     skos:definition "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). This one concept spans all channel indices, so it asserts no equivalence to a single core channel term; instead the channel index N corresponds to bdf:temperature_tN_celsius (rdfs:seeAlso points at the family). Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en ;
+     rdfs:comment "Auxiliary thermocouple temperature reading, in degree Celsius, on an indexed channel (Aux_Temperature_N). This one concept spans all channel indices, so it asserts no equivalence to a single core channel term; instead the channel index N corresponds to bdf:temperature_tN_celsius (rdfs:seeAlso points at the family). Indexed; also seen as a bare 'Temperature' column and, under a GBK code-page mojibake, as 'Aux_Temperature(¡æ)_N'."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#aux_dt_dt
 arbin:aux_dt_dt rdf:type owl:Class ;
@@ -1109,10 +1110,15 @@ arbin:log_flags rdf:type owl:Class ;
      skos:altLabel "Log_Smart_Battery_Data_Flag" ;
      skos:altLabel "log_aux_data_flag" ;
      skos:altLabel "log_special_data_flag" ;
+     skos:altLabel "Log_Data_Flag" ;
+     skos:altLabel "ChanStat" ;
+     skos:altLabel "Aux" ;
+     skos:altLabel "SmartBty" ;
+     skos:altLabel "Event" ;
      arbin:role "bookkeeping" ;
      arbin:sheetScope "metadata" ;
-     skos:definition "Family of boolean flags controlling which optional data streams the schedule logs (auxiliary, special, event, channel-statistics, smart-battery). Bookkeeping."@en ;
-     rdfs:comment "Family of boolean flags controlling which optional data streams the schedule logs (auxiliary, special, event, channel-statistics, smart-battery). Bookkeeping."@en .
+     skos:definition "Family of boolean flags controlling which optional data streams the schedule logs. Includes the 'Log_Data_Flag' block of the Global_Info report, whose sub-columns (ChanStat, Aux, SmartBty, Event) each flag one logged stream. Bookkeeping."@en ;
+     rdfs:comment "Family of boolean flags controlling which optional data streams the schedule logs. Includes the 'Log_Data_Flag' block of the Global_Info report, whose sub-columns (ChanStat, Aux, SmartBty, Event) each flag one logged stream. Bookkeeping."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#internal_bookkeeping
 arbin:internal_bookkeeping rdf:type owl:Class ;
@@ -1137,8 +1143,22 @@ arbin:internal_bookkeeping rdf:type owl:Class ;
      skos:altLabel "Mapped_Aux_DI Number" ;
      skos:altLabel "Mapped_Aux_DO Number" ;
      skos:altLabel "Mapped_Aux_CNumber" ;
+     skos:altLabel "Mapped_Aux_Number" ;
+     skos:altLabel "Volt" ;
+     skos:altLabel "Temp" ;
+     skos:altLabel "Pres" ;
+     skos:altLabel "PH" ;
+     skos:altLabel "FR" ;
+     skos:altLabel "CAN" ;
+     skos:altLabel "Grade" ;
+     skos:altLabel "Cell Grading" ;
+     skos:altLabel "Concentration" ;
+     skos:altLabel "Digital I/O" ;
+     skos:altLabel "Digital Input" ;
+     skos:altLabel "Digital Output" ;
+     skos:altLabel "Related Humidity" ;
      arbin:role "bookkeeping" ;
      arbin:sheetScope "metadata" ;
-     skos:definition "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring, mapped-auxiliary channel counts). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en ;
-     rdfs:comment "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring, mapped-auxiliary channel counts). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en .
+     skos:definition "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring). Includes the Global_Info 'Mapped_Aux_Number' block, whose sub-columns count the auxiliary channels mapped of each type (Volt, Temp, Pres, PH, FR, CAN, Concentration, Digital Input/Output, Related Humidity) and the 'Cell Grading' block (Grade). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en ;
+     rdfs:comment "Catch-all for internal Arbin database and configuration state emitted in exports (row state, CAN-config identity, file paths, grading, DAQ/channel wiring). Includes the Global_Info 'Mapped_Aux_Number' block, whose sub-columns count the auxiliary channels mapped of each type (Volt, Temp, Pres, PH, FR, CAN, Concentration, Digital Input/Output, Related Humidity) and the 'Cell Grading' block (Grade). No scientific content; modelled so agents can distinguish 'no scientific content' from 'not modelled'."@en .
 
