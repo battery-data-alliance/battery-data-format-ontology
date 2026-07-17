@@ -328,7 +328,7 @@ Terms and Definitions
      - —
    * - Step Index / 1
      - ``step_index``
-     - :math:`j`
+     - —
      - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.
      - ``1``
      - Count
@@ -344,6 +344,12 @@ Terms and Definitions
      - Net energy transferred during the current test step, in watt hour. Defined as step_charging_energy_wh minus step_discharging_energy_wh; the running signed integral of instantaneous power from the step start, reset to zero at each step transition. Can be negative if more energy is extracted than delivered during the step. Increases during charge intervals and decreases during discharge intervals within the step. *Derived from:* ``step_charging_energy_wh, step_discharging_energy_wh``. *Formula:* :math:`E_\mathrm{net}^\mathrm{step}(t) = E_\mathrm{chg}^\mathrm{step}(t) - E_\mathrm{dchg}^\mathrm{step}(t) = \frac{1}{3600}\int_{t_s}^{t} P(\tau)\,\mathrm{d}\tau,\quad t_s = \text{start of the current step}`.
      - ``W.h``
      - Energy
+   * - Step Record Index / 1
+     - ``step_record_index``
+     - :math:`j`
+     - 1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.
+     - ``1``
+     - Count
    * - Step Time / s
      - ``step_time_second``
      - :math:`\Delta t_\mathrm{step}`

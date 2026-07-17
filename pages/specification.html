@@ -885,7 +885,7 @@ e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.o
 </tr>
 <tr class="row-odd"><td><p>Step Index / 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_index</span></code></p></td>
-<td><p><span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p>—</p></td>
 <td><p>1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named ‘Step Index’ (e.g. Arbin Step_Index) maps to step_id, not to this property.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Count</p></td>
@@ -904,98 +904,105 @@ e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.o
 <td><p><code class="docutils literal notranslate"><span class="pre">W.h</span></code></p></td>
 <td><p>Energy</p></td>
 </tr>
-<tr class="row-even"><td><p>Step Time / s</p></td>
+<tr class="row-even"><td><p>Step Record Index / 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">step_record_index</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p>1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named ‘Step Index’ (e.g. Arbin Step_Index) maps to step_id, not to this property.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Count</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_time_second</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(\Delta t_\mathrm{step}\)</span></p></td>
 <td><p>Elapsed time since the beginning of the active test step, in second; resets to zero at each step transition.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
-<tr class="row-odd"><td><p>Step Type</p></td>
+<tr class="row-even"><td><p>Step Type</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">step_type</span></code></p></td>
 <td><p>—</p></td>
 <td><p>A string label describing the operational mode of the current test step, as reported by the cycler software. Common values include CC_CHG (constant-current charge), CC_DCH (constant-current discharge), CV_CHG (constant-voltage charge), CCCV_CHG (constant-current constant-voltage charge), REST, OCV, and EIS. The controlled vocabulary for this field is not yet standardised; values should be preserved as reported by the instrument.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">—</span></code></p></td>
 <td><p>—</p></td>
 </tr>
-<tr class="row-even"><td><p>Surface Pressure / Pa</p></td>
+<tr class="row-odd"><td><p>Surface Pressure / Pa</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">surface_pressure_pa</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(p_\mathrm{surf}\)</span></p></td>
 <td><p>Pressure measured at the surface of the test object, in pascal. A measured quantity that may be nonzero even when no external pressure is actively applied, e.g. from cell swelling against a fixture. Distinguished from applied_pressure_pa, which is actively applied and controlled by an external agent.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pa</span></code></p></td>
 <td><p>Pressure</p></td>
 </tr>
-<tr class="row-odd"><td><p>Surface Temperature / degC</p></td>
+<tr class="row-even"><td><p>Surface Temperature / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">surface_temperature_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_\mathrm{surf}\)</span></p></td>
 <td><p>Temperature measured at the surface of the test object, in degree Celsius, regardless of which sensor channel recorded it. Use this term when a column is explicitly a surface (skin) temperature without channel information; channel-indexed auxiliary sensors map to temperature_t1_celsius through temperature_t5_celsius, whose placement is setup-defined.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-even"><td><p>Temperature T1 / degC</p></td>
+<tr class="row-odd"><td><p>Temperature T1 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t1_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_1\)</span></p></td>
 <td><p>Temperature recorded by auxiliary temperature channel 1 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-odd"><td><p>Temperature T2 / degC</p></td>
+<tr class="row-even"><td><p>Temperature T2 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t2_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_2\)</span></p></td>
 <td><p>Temperature recorded by auxiliary temperature channel 2 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-even"><td><p>Temperature T3 / degC</p></td>
+<tr class="row-odd"><td><p>Temperature T3 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t3_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_3\)</span></p></td>
 <td><p>Temperature recorded by auxiliary temperature channel 3 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-odd"><td><p>Temperature T4 / degC</p></td>
+<tr class="row-even"><td><p>Temperature T4 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t4_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_4\)</span></p></td>
 <td><p>Temperature recorded by auxiliary temperature channel 4 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-even"><td><p>Temperature T5 / degC</p></td>
+<tr class="row-odd"><td><p>Temperature T5 / degC</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temperature_t5_celsius</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(T_5\)</span></p></td>
 <td><p>Temperature recorded by auxiliary temperature channel 5 of the test setup, in degree Celsius. Sensor placement (e.g. cell surface, terminal, or elsewhere) is setup-defined and not constrained by this term; record the placement in accompanying metadata. Where a channel is known to measure the surface temperature of the test object, see also surface_temperature_celsius.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Cel</span></code></p></td>
 <td><p>Temperature</p></td>
 </tr>
-<tr class="row-odd"><td><p>Test Time / ms</p></td>
+<tr class="row-even"><td><p>Test Time / ms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">test_time_millisecond</span></code></p></td>
 <td><p>—</p></td>
 <td><p>Test time recorded in millisecond.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
-<tr class="row-even"><td><p>Test Time / s</p></td>
+<tr class="row-odd"><td><p>Test Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">test_time_second</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(t\)</span></p></td>
 <td><p>Elapsed time since the start of the test, in second. Monotonically non-decreasing within a test; behaviour during pauses is instrument-defined and values must be preserved as reported.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
-<tr class="row-odd"><td><p>Unix Time / ms</p></td>
+<tr class="row-even"><td><p>Unix Time / ms</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unix_time_millisecond</span></code></p></td>
 <td><p>—</p></td>
 <td><p>Unix time recorded in millisecond.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ms</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
-<tr class="row-even"><td><p>Unix Time / s</p></td>
+<tr class="row-odd"><td><p>Unix Time / s</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unix_time_second</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(t_\mathrm{unix}\)</span></p></td>
 <td><p>Timestamp expressed as Unix time, in second: seconds elapsed since 1970-01-01T00:00:00 UTC (the Unix epoch), excluding leap seconds. The value identifies an absolute instant and is independent of local time zone: the same physical moment has the same value everywhere, and local wall-clock times must be converted to UTC before encoding.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
 <td><p>Time</p></td>
 </tr>
-<tr class="row-odd"><td><p>Voltage / V</p></td>
+<tr class="row-even"><td><p>Voltage / V</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">voltage_volt</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(V\)</span></p></td>
 <td><p>Instantaneous voltage measured across the terminals of the test object, in volt.</p></td>

@@ -674,6 +674,7 @@ schema:unitText a owl:AnnotationProperty .
 
 :step_index a owl:Class ;
     rdfs:label "Step Index / 1"@en ;
+    dcterms:isReplacedBy :step_record_index ;
     qudt:hasQuantityKind quantitykind:Count ;
     rdfs:comment "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
     rdfs:seeAlso unit:NUM ;
@@ -682,17 +683,17 @@ schema:unitText a owl:AnnotationProperty .
             owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978 ],
         sosa:ObservableProperty,
         emmo:EMMO_0cd58641_824c_4851_907f_f4c3be76630c ;
+    owl:deprecated true ;
     skos:altLabel "step_index"@en,
         "step_index_1"@en ;
     skos:definition "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
+    skos:historyNote "Deprecated in 1.3.0 (2026-07-17). Renamed to step_record_index to avoid collision with vendor 'Step Index' columns (e.g. Arbin Step_Index), which are program step identifiers mapping to step_id; the concept is unchanged."@en ;
     skos:notation "step_index" ;
     skos:prefLabel "Step Index / 1"@en ;
     schema:description "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
     schema:name "Step Index / 1"@en ;
     schema:unitCode "1" ;
     schema:unitText "one"@en ;
-    :latexSymbol "j"^^xsd:string ;
-    :obligation "optional" ;
     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en .
 
 :step_net_capacity_ah a owl:Class ;
@@ -1374,6 +1375,31 @@ schema:unitText a owl:AnnotationProperty .
     :latexSymbol "E_\\mathrm{dchg}^\\mathrm{step}"^^xsd:string ;
     :obligation "optional" ;
     emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Energy transferred out of the test object during the discharge portion of the current test step, in watt hour. Non-negative (≥ 0); resets to zero at each step transition. Where computed, it is the negated time integral of instantaneous power over the discharge intervals (current < 0) of the step."@en .
+
+:step_record_index a owl:Class ;
+    rdfs:label "Step Record Index / 1"@en ;
+    qudt:hasQuantityKind quantitykind:Count ;
+    rdfs:comment "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
+    rdfs:seeAlso unit:NUM ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty emmo:EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569 ;
+            owl:someValuesFrom emmo:EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978 ],
+        sosa:ObservableProperty,
+        emmo:EMMO_0cd58641_824c_4851_907f_f4c3be76630c ;
+    skos:altLabel "step_index"@en,
+        "step_record_index"@en,
+        "step_record_index_1"@en ;
+    skos:definition "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
+    skos:historyNote "Introduced in 1.3.0 (2026-07-17) as the new name of step_index, which is deprecated and redirects here via dcterms:isReplacedBy; the concept is unchanged."@en ;
+    skos:notation "step_record_index" ;
+    skos:prefLabel "Step Record Index / 1"@en ;
+    schema:description "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en ;
+    schema:name "Step Record Index / 1"@en ;
+    schema:unitCode "1" ;
+    schema:unitText "one"@en ;
+    :latexSymbol "j"^^xsd:string ;
+    :obligation "optional" ;
+    emmo:EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property."@en .
 
 :unix_time_second a owl:Class ;
     rdfs:label "Unix Time / s"@en ;
