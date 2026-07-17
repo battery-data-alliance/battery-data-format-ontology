@@ -492,11 +492,40 @@
     },
     {
       "@type": "csvw:Column",
+      "csvw:name": "step_record_index",
+      "csvw:titles": "Step Record Index / 1",
+      "csvw:propertyUrl": "bdf:step_record_index",
+      "dcterms:description": "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.",
+      "rdfs:comment": "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.",
+      "skos:prefLabel": {
+        "@value": "Step Record Index / 1",
+        "@language": "en"
+      },
+      "skos:altLabel": "step_index",
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      },
+      "hasMeasurementUnit": {
+        "@id": "emmo:UnitOne"
+      },
+      "qudt:hasQuantityKind": {
+        "@id": "quantitykind:Count"
+      },
+      "qudt:hasUnit": {
+        "@id": "unit:NUM"
+      },
+      "schema:unitCode": "1",
+      "csvw:required": false
+    },
+    {
+      "@type": "csvw:Column",
       "csvw:name": "step_index",
       "csvw:titles": "Step Index / 1",
+      "owl:deprecated": true,
+      "skos:note": "This column is maintained for legacy compatibility. It is superseded by step_record_index.",
       "csvw:propertyUrl": "bdf:step_index",
-      "dcterms:description": "Index of the control technique being applied in the current step",
-      "rdfs:comment": "Index of the control technique being applied in the current step",
+      "dcterms:description": "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.",
+      "rdfs:comment": "1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.",
       "skos:prefLabel": {
         "@value": "Step Index / 1",
         "@language": "en"

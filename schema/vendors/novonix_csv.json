@@ -64,7 +64,7 @@
       ]
     },
     {
-      "csvw:name": "step_index",
+      "csvw:name": "step_record_index",
       "csvw:titles": [
         "Step Position"
       ],

@@ -629,7 +629,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#10763eb0_dbc9_4d34_bd1a_7b8996590d45' onclick="if(!document.getElementById('10763eb0_dbc9_4d34_bd1a_7b8996590d45')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#10763eb0_dbc9_4d34_bd1a_7b8996590d45';return false;}">electrochemistry.10763eb0_dbc9_4d34_bd1a_7b8996590d45</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45' onclick="if(!document.getElementById('electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45';return false;}">ChargingCapacity</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -693,7 +693,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#2ab7af60_da58_4243_b3bc_cbb2155cac53' onclick="if(!document.getElementById('2ab7af60_da58_4243_b3bc_cbb2155cac53')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#2ab7af60_da58_4243_b3bc_cbb2155cac53';return false;}">electrochemistry.2ab7af60_da58_4243_b3bc_cbb2155cac53</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53' onclick="if(!document.getElementById('electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53';return false;}">ChargingEnergy</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -809,7 +809,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#ae108db7_8765_4329_9908_059277dee586';return false;}">electrochemistry.ae108db7_8765_4329_9908_059277dee586</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ae108db7_8765_4329_9908_059277dee586' onclick="if(!document.getElementById('electrochemistry_ae108db7_8765_4329_9908_059277dee586')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ae108db7_8765_4329_9908_059277dee586';return false;}">StepCapacity</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -869,7 +869,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_c
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#46376e5d_9627_4514_9881_9e62083625c3';return false;}">electrochemistry.46376e5d_9627_4514_9881_9e62083625c3</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -933,7 +933,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#0141b5c2_9f15_46f4_82e6_92a104faa476' onclick="if(!document.getElementById('0141b5c2_9f15_46f4_82e6_92a104faa476')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#0141b5c2_9f15_46f4_82e6_92a104faa476';return false;}">electrochemistry.0141b5c2_9f15_46f4_82e6_92a104faa476</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476' onclick="if(!document.getElementById('electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476';return false;}">DischargingCapacity</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -997,7 +997,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_d
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#ca36cbf3_1fed_4b88_9177_b4e16ad00cf7' onclick="if(!document.getElementById('ca36cbf3_1fed_4b88_9177_b4e16ad00cf7')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#ca36cbf3_1fed_4b88_9177_b4e16ad00cf7';return false;}">electrochemistry.ca36cbf3_1fed_4b88_9177_b4e16ad00cf7</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7' onclick="if(!document.getElementById('electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7';return false;}">DischargingEnergy</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -1057,7 +1057,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_n
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#791c1915_a791_4450_acd8_7f94764743b5' onclick="if(!document.getElementById('791c1915_a791_4450_acd8_7f94764743b5')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#791c1915_a791_4450_acd8_7f94764743b5';return false;}">electrochemistry.791c1915_a791_4450_acd8_7f94764743b5</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_791c1915_a791_4450_acd8_7f94764743b5' onclick="if(!document.getElementById('electrochemistry_791c1915_a791_4450_acd8_7f94764743b5')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_791c1915_a791_4450_acd8_7f94764743b5';return false;}">Capacity</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -1117,7 +1117,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#cycle_n
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#46376e5d_9627_4514_9881_9e62083625c3';return false;}">electrochemistry.46376e5d_9627_4514_9881_9e62083625c3</a></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
@@ -1449,7 +1449,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a>, <a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a></td>
+    <td class="element-table-value"><a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a>, <a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a></td>
   </tr>
   </table>
 
@@ -1784,6 +1784,262 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#record_
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c' onclick="if(!document.getElementById('EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c')){window.location.href='https://w3id.org/emmo#EMMO_ba882f34_0d71_4e4f_9d92_0c076c633a2c';return false;}">PureNumberQuantity</a></td>
   </tr>
   </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="schedule_charging_capacity_ah"></div>
+
+Schedule Charging Capacity / Ah
+-------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_charging_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_charging_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">schedule_charging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{sched}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45' onclick="if(!document.getElementById('electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_10763eb0_dbc9_4d34_bd1a_7b8996590d45';return false;}">ChargingCapacity</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
+  </tr>
+  </table>
+
+.. note::
+
+   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_capacity_ah for the test-scoped quantity.
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="schedule_charging_energy_wh"></div>
+
+Schedule Charging Energy / Wh
+-----------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_charging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_charging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">schedule_charging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{sched}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53' onclick="if(!document.getElementById('electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_2ab7af60_da58_4243_b3bc_cbb2155cac53';return false;}">ChargingEnergy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
+  </tr>
+  </table>
+
+.. note::
+
+   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_energy_wh for the test-scoped quantity.
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="schedule_discharging_capacity_ah"></div>
+
+Schedule Discharging Capacity / Ah
+----------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_discharging_capacity_ah
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_discharging_capacity_ampere_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">schedule_discharging_capacity_ah</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{sched}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/ElectricCharge' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/ElectricCharge')){window.location.href='http://qudt.org/vocab/quantitykind/ElectricCharge';return false;}">http://qudt.org/vocab/quantitykind/ElectricCharge</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#AmpereHour' onclick="if(!document.getElementById('AmpereHour')){window.location.href='https://w3id.org/emmo#AmpereHour';return false;}">AmpereHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476' onclick="if(!document.getElementById('electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_0141b5c2_9f15_46f4_82e6_92a104faa476';return false;}">DischargingCapacity</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
+  </tr>
+  </table>
+
+.. note::
+
+   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_capacity_ah for the test-scoped quantity.
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="schedule_discharging_energy_wh"></div>
+
+Schedule Discharging Energy / Wh
+--------------------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedule_discharging_energy_wh
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">schedule_discharging_energy_watt_hour</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">schedule_discharging_energy_wh</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{sched}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">formula</span></td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \bigl|P(\tau)\bigr|\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Energy' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Energy')){window.location.href='http://qudt.org/vocab/quantitykind/Energy';return false;}">http://qudt.org/vocab/quantitykind/Energy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#WattHour' onclick="if(!document.getElementById('WattHour')){window.location.href='https://w3id.org/emmo#WattHour';return false;}">WattHour</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7' onclick="if(!document.getElementById('electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_ca36cbf3_1fed_4b88_9177_b4e16ad00cf7';return false;}">DischargingEnergy</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
+    <td class="element-table-value"><a href='#current_ampere' onclick="if(!document.getElementById('current_ampere')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#current_ampere';return false;}">Current / A</a>, <a href='#test_time_second' onclick="if(!document.getElementById('test_time_second')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_time_second';return false;}">Test Time / s</a></td>
+  </tr>
+  </table>
+
+.. note::
+
+   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_energy_wh for the test-scoped quantity.
 
 
 .. raw:: html
@@ -2269,58 +2525,6 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_id
 .. raw:: html
 
    <hr class="term-separator" />
-   <div id="step_index"></div>
-
-Step Index / 1
---------------
-
-IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_index
-
-.. raw:: html
-
-  <table class="element-table">
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
-    <td class="element-table-value">step_index</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
-    <td class="element-table-value">step_index_1</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">notation</span></td>
-    <td class="element-table-value">step_index</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
-    <td class="element-table-value">\(j\)</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
-    <td class="element-table-value">optional</td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
-    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Dimensionless' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Dimensionless')){window.location.href='http://qudt.org/vocab/quantitykind/Dimensionless';return false;}">http://qudt.org/vocab/quantitykind/Dimensionless</a></td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
-    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#One' onclick="if(!document.getElementById('One')){window.location.href='https://w3id.org/emmo#One';return false;}">One</a></li></ul></div></td>
-  </tr>
-  <tr>
-    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
-    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_0cd58641_824c_4851_907f_f4c3be76630c' onclick="if(!document.getElementById('EMMO_0cd58641_824c_4851_907f_f4c3be76630c')){window.location.href='https://w3id.org/emmo#EMMO_0cd58641_824c_4851_907f_f4c3be76630c';return false;}">Index</a></td>
-  </tr>
-  </table>
-
-
-.. raw:: html
-
-   <hr class="term-separator" />
    <div id="step_net_capacity_ah"></div>
 
 Step Net Capacity / Ah
@@ -2434,6 +2638,66 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ne
   <tr>
     <td class="element-table-key"><span class="element-table-key">wasDerivedFrom</span></td>
     <td class="element-table-value"><a href='#step_charging_energy_wh' onclick="if(!document.getElementById('step_charging_energy_wh')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_charging_energy_wh';return false;}">Step Charging Energy / Wh</a>, <a href='#step_discharging_energy_wh' onclick="if(!document.getElementById('step_discharging_energy_wh')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_discharging_energy_wh';return false;}">Step Discharging Energy / Wh</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_record_index"></div>
+
+Step Record Index / 1
+---------------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_record_index
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_record_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_record_index_1</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Introduced in 1.3.0 (2026-07-17) as the new name of step_index, which is deprecated and redirects here via dcterms:isReplacedBy; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_record_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">symbol</span></td>
+    <td class="element-table-value">\(j\)</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">obligation</span></td>
+    <td class="element-table-value">optional</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978' onclick="if(!document.getElementById('EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978')){window.location.href='https://w3id.org/emmo#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978';return false;}">UnitOne</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_0cd58641_824c_4851_907f_f4c3be76630c' onclick="if(!document.getElementById('EMMO_0cd58641_824c_4851_907f_f4c3be76630c')){window.location.href='https://w3id.org/emmo#EMMO_0cd58641_824c_4851_907f_f4c3be76630c';return false;}">Index</a></td>
   </tr>
   </table>
 
@@ -3116,12 +3380,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
     <td class="element-table-value">step_capacity_ampere_hour</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3164,12 +3428,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3186,6 +3450,54 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
     <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3' onclick="if(!document.getElementById('electrochemistry_46376e5d_9627_4514_9881_9e62083625c3')){window.location.href='https://w3id.org/emmo/domain/electrochemistry#electrochemistry_46376e5d_9627_4514_9881_9e62083625c3';return false;}">StoredEnergy</a></td>
+  </tr>
+  </table>
+
+
+.. raw:: html
+
+   <hr class="term-separator" />
+   <div id="step_index"></div>
+
+Step Index / 1
+--------------
+
+IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_index
+
+.. raw:: html
+
+  <table class="element-table">
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">altLabel</span></td>
+    <td class="element-table-value">step_index_1</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in 1.3.0 (2026-07-17). Renamed to step_record_index to avoid collision with vendor 'Step Index' columns (e.g. Arbin Step_Index), which are program step identifiers mapping to step_id; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">notation</span></td>
+    <td class="element-table-value">step_index</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">hasQuantityKind</span></td>
+    <td class="element-table-value"><a href='#http://qudt.org/vocab/quantitykind/Count' onclick="if(!document.getElementById('http://qudt.org/vocab/quantitykind/Count')){window.location.href='http://qudt.org/vocab/quantitykind/Count';return false;}">http://qudt.org/vocab/quantitykind/Count</a></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">restrictions</span></td>
+    <td class="element-table-value"><div class="restriction-list"><ul><li><a href='#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569' onclick="if(!document.getElementById('EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569')){window.location.href='https://w3id.org/emmo#EMMO_bed1d005_b04e_4a90_94cf_02bc678a8569';return false;}">hasMeasurementUnit</a> some <a href='#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978' onclick="if(!document.getElementById('EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978')){window.location.href='https://w3id.org/emmo#EMMO_5ebd5e01_0ed3_49a2_a30d_cd05cbe72978';return false;}">UnitOne</a></li></ul></div></td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">subclassOf</span></td>
+    <td class="element-table-value"><a href='#http://www.w3.org/ns/sosa/ObservableProperty' onclick="if(!document.getElementById('http://www.w3.org/ns/sosa/ObservableProperty')){window.location.href='http://www.w3.org/ns/sosa/ObservableProperty';return false;}">sosa.ObservableProperty</a>, <a href='#EMMO_0cd58641_824c_4851_907f_f4c3be76630c' onclick="if(!document.getElementById('EMMO_0cd58641_824c_4851_907f_f4c3be76630c')){window.location.href='https://w3id.org/emmo#EMMO_0cd58641_824c_4851_907f_f4c3be76630c';return false;}">Index</a></td>
   </tr>
   </table>
 
@@ -3212,12 +3524,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value">test_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Test time recorded in millisecond.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3260,12 +3572,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value">unix_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
-    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
     <td class="element-table-value">Unix time recorded in millisecond.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
+    <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
