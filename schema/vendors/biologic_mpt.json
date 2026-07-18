@@ -101,11 +101,12 @@
       "schema:unitCode": "mA.h"
     },
     {
-      "csvw:name": "step_capacity_ah",
+      "csvw:name": "step_cumulative_capacity_ah",
       "csvw:titles": [
         "dQ/mA.h"
       ],
-      "schema:unitCode": "mA.h"
+      "schema:unitCode": "mA.h",
+      "skos:note": "Mapping follows the deprecated step_capacity_ah redirect. EC-Lab dQ may be signed within the step, which would match step_net_capacity_ah instead; needs verification against real exports."
     },
     {
       "csvw:name": "cumulative_capacity_ah",
@@ -135,7 +136,7 @@
       ]
     },
     {
-      "csvw:name": "power_w",
+      "csvw:name": "power_watt",
       "csvw:titles": [
         "P/W"
       ]

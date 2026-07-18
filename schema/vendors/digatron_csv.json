@@ -103,11 +103,11 @@
       ]
     },
     {
-      "csvw:name": "step_capacity_ah",
+      "csvw:name": "step_cumulative_capacity_ah",
       "csvw:titles": [
         "AhStep#Ah"
       ],
-      "skos:note": "Digatron AhStep is unsigned; the BDF normaliser recomputes a signed step capacity from AhCha/AhDch increments."
+      "skos:note": "Digatron AhStep is an unsigned within-step accumulator, matching the step_cumulative_capacity_ah definition (time integral of |I| from the step start). No recomputation is performed."
     },
     {
       "csvw:name": "net_capacity_ah",
@@ -137,11 +137,11 @@
       ]
     },
     {
-      "csvw:name": "step_energy_wh",
+      "csvw:name": "step_cumulative_energy_wh",
       "csvw:titles": [
         "WhStep#Wh"
       ],
-      "skos:note": "Digatron WhStep is unsigned; the BDF normaliser recomputes a signed step energy from WhCha/WhDch increments."
+      "skos:note": "Digatron WhStep is an unsigned within-step accumulator, matching the step_cumulative_energy_wh definition (time integral of |P| from the step start). No recomputation is performed."
     },
     {
       "csvw:name": "cumulative_energy_wh",
@@ -151,7 +151,7 @@
       ]
     },
     {
-      "csvw:name": "power_w",
+      "csvw:name": "power_watt",
       "csvw:titles": [
         "Watt",
         "Power#W"
