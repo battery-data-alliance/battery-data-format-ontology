@@ -101,7 +101,7 @@
       ]
     },
     {
-      "csvw:name": "power_w",
+      "csvw:name": "power_watt",
       "csvw:titles": [
         "Power(W)",
         "Power (W)"
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "csvw:name": "surface_temperature_t1_celsius",
+      "csvw:name": "temperature_t1_celsius",
       "csvw:titles": [
         "Circuit Temperature (°C)",
         "Circuit Temp (°C)",
