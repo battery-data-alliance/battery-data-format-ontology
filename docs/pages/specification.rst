@@ -15,7 +15,7 @@ Status
    * - Title
      - Battery Data Format Ontology
    * - Version
-     - 1.2.0
+     - 1.3.0
    * - Issued
      - 2026-05-14
    * - Modified
@@ -41,7 +41,7 @@ Identifiers
 - **Base IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#``
 - Full term IRIs are formed by appending the notation to the base IRI,
   e.g. ``https://w3id.org/battery-data-alliance/ontology/battery-data-format#voltage_volt``.
-- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/battery-data-format``
+- **Version IRI:** ``https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.3.0/battery-data-format``
 
 Terms and Definitions
 ---------------------

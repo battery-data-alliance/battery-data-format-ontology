@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.0] - Unreleased
+## [1.3.0] - 2026-07-19
 
 ### Added
 - Four schedule-scoped quantity terms: `schedule_charging_capacity_ah`, `schedule_discharging_capacity_ah`, `schedule_charging_energy_wh`, `schedule_discharging_energy_wh` -- accumulators "since the most recent schedule-defined assignment event". These carry the vendor accumulator columns of schedule-driven cyclers (e.g. Arbin MITS Charge_/Discharge_Capacity/Energy) under truthful semantics: assignment points are operator-authored (per cycle, at scripted steps, or never), so the columns match no test-, cycle-, or step-scoped term in general. Definitions carry the assignment invariant (values change discontinuously only at schedule-defined assignments, typically a reset to zero) and a scopeNote warning against cross-test aggregation; when a schedule defines no assignments the quantity coincides with the test-scoped term, enabling verified upgrade by consumers. Evidence base: a five-laboratory, seven-schedule Arbin survey (see battery-data-format reference-data scorecards), with the assignment semantics confirmed by Arbin's MITS software team ('Set variable(s)' reset and 'Set value' arbitrary-assignment controls).
