@@ -1,0 +1,161 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/digatron_csv",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Digatron CSV — BDF column mapping",
+  "dcterms:description": "Maps Digatron battery cycler CSV export headers to BDF canonical columns. Digatron uses a '#' separator between column name and unit (e.g. 'Voltage#V'). Column headers appear on row 1; row 2 is a units row that the BDF parser drops. IMPORTANT: Digatron's AhAccu/WhAccu, AhBal/WhBal, and AhStep/WhStep do not align with the BDF cumulative/net/step definitions; the BDF normaliser recomputes all derived capacity and energy columns from the primary accumulators (AhCha, AhDch).",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Digatron Power Electronics"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Program Duration#s",
+        "Prog Time",
+        "Program Time"
+      ],
+      "schema:unitCode": "s",
+      "skos:note": "The '#s'-suffixed column 'Program Duration#s' is emitted in milliseconds despite the 's' label (a ~1 s wall-clock advance increments the value by ~1000); it must be divided by 1000 for seconds. The schema:unitCode 's' therefore under-reports the scale for that variant and is pending the Digatron unit review."
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "Step Duration#s",
+        "Step Time"
+      ],
+      "schema:unitCode": "s",
+      "skos:note": "The '#s'-suffixed column 'Step Duration#s' is emitted in milliseconds despite the 's' label; divide by 1000 for seconds. Pending the Digatron unit review."
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Voltage#V",
+        "Voltage"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Current#A",
+        "Current"
+      ]
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "Timestamp"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "ISO 8601 datetime string; converted to Unix epoch seconds by the BDF normaliser."
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step"
+      ]
+    },
+    {
+      "csvw:name": "step_type",
+      "csvw:titles": [
+        "Status"
+      ],
+      "skos:note": "Status values indicate the step mode (e.g. charge, discharge, rest). The vocabulary is instrument-defined."
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "Tenv#degC"
+      ]
+    },
+    {
+      "csvw:name": "temperature_t1_celsius",
+      "csvw:titles": [
+        "T1#degC",
+        "LogTemp001"
+      ]
+    },
+    {
+      "csvw:name": "charging_capacity_ah",
+      "csvw:titles": [
+        "AhCha#Ah"
+      ]
+    },
+    {
+      "csvw:name": "discharging_capacity_ah",
+      "csvw:titles": [
+        "AhDch#Ah"
+      ]
+    },
+    {
+      "csvw:name": "step_cumulative_capacity_ah",
+      "csvw:titles": [
+        "AhStep#Ah"
+      ],
+      "skos:note": "Digatron AhStep is an unsigned within-step accumulator, matching the step_cumulative_capacity_ah definition (time integral of |I| from the step start). No recomputation is performed."
+    },
+    {
+      "csvw:name": "net_capacity_ah",
+      "csvw:titles": [
+        "AhBal#Ah"
+      ],
+      "skos:note": "Digatron AhBal is an instrument-internal rolling balance that diverges from the BDF net definition; the BDF normaliser recomputes net_capacity_ah = AhCha − AhDch."
+    },
+    {
+      "csvw:name": "cumulative_capacity_ah",
+      "csvw:titles": [
+        "AhAccu#Ah",
+        "AhAccu"
+      ],
+      "skos:note": "Digatron AhAccu is the net signed running integral; the BDF normaliser recomputes cumulative_capacity_ah = AhCha + AhDch (throughput)."
+    },
+    {
+      "csvw:name": "charging_energy_wh",
+      "csvw:titles": [
+        "WhCha#Wh"
+      ]
+    },
+    {
+      "csvw:name": "discharging_energy_wh",
+      "csvw:titles": [
+        "WhDch#Wh"
+      ]
+    },
+    {
+      "csvw:name": "step_cumulative_energy_wh",
+      "csvw:titles": [
+        "WhStep#Wh"
+      ],
+      "skos:note": "Digatron WhStep is an unsigned within-step accumulator, matching the step_cumulative_energy_wh definition (time integral of |P| from the step start). No recomputation is performed."
+    },
+    {
+      "csvw:name": "cumulative_energy_wh",
+      "csvw:titles": [
+        "WhAccu#Wh",
+        "WhAccu"
+      ]
+    },
+    {
+      "csvw:name": "power_watt",
+      "csvw:titles": [
+        "Watt",
+        "Power#W"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/biologic_mpt",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Bio-Logic EC-Lab / BT-Lab MPT — BDF column mapping",
+  "dcterms:description": "Maps Bio-Logic EC-Lab and BT-Lab MPT ASCII export headers to BDF canonical columns. IMPORTANT: Current is exported in milliamperes (mA) and capacities in mA·h; schema:unitCode documents the as-exported unit. The BDF normaliser scales these to SI (A and A·h). File encoding is typically latin-1. Decimal separator may be a comma.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Bio-Logic Science Instruments"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "time/s",
+        "time / s",
+        "t (s)",
+        "time [s]",
+        "relative time(s)"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Ewe/V",
+        "Ecell/V",
+        "U/V",
+        "U[V]",
+        "Ewe (V)",
+        "Ewe/V (V)",
+        "<Ewe>/V"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "I/mA",
+        "I [A]",
+        "current / A",
+        "current(A)",
+        "I / mA",
+        "<I>/mA",
+        "I(A)",
+        "I/A"
+      ],
+      "schema:unitCode": "mA",
+      "skos:note": "I/mA columns are in milliamperes and are divided by 1000 during normalisation. I/A, current / A, and I[A] variants are already in amperes."
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "cycle number",
+        "z cycle"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Ns",
+        "N"
+      ],
+      "skos:note": "Ns is Bio-Logic's sequence number identifying the protocol step."
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "Temperature/C",
+        "Temperature/degC",
+        "Temperature/°C",
+        "Temperature/øC",
+        "Temp/C",
+        "Temp/degC",
+        "Temp/°C",
+        "Temp/øC",
+        "T/C",
+        "T/°C",
+        "T/øC"
+      ]
+    },
+    {
+      "csvw:name": "charging_capacity_ah",
+      "csvw:titles": [
+        "Q charge/mA.h",
+        "Q charge /mA.h"
+      ],
+      "schema:unitCode": "mA.h"
+    },
+    {
+      "csvw:name": "discharging_capacity_ah",
+      "csvw:titles": [
+        "Q discharge/mA.h",
+        "Q discharge /mA.h"
+      ],
+      "schema:unitCode": "mA.h"
+    },
+    {
+      "csvw:name": "step_cumulative_capacity_ah",
+      "csvw:titles": [
+        "dQ/mA.h"
+      ],
+      "schema:unitCode": "mA.h",
+      "skos:note": "Mapping follows the deprecated step_capacity_ah redirect. EC-Lab dQ may be signed within the step, which would match step_net_capacity_ah instead; needs verification against real exports."
+    },
+    {
+      "csvw:name": "cumulative_capacity_ah",
+      "csvw:titles": [
+        "(Q-Qo)/mA.h",
+        "capacity/mA.h"
+      ],
+      "schema:unitCode": "mA.h",
+      "skos:note": "(Q-Qo)/mA.h is Bio-Logic's running signed capacity integral from the start of the technique; it corresponds to the BDF net_capacity_ah definition."
+    },
+    {
+      "csvw:name": "charging_energy_wh",
+      "csvw:titles": [
+        "Energy charge/W.h"
+      ]
+    },
+    {
+      "csvw:name": "discharging_energy_wh",
+      "csvw:titles": [
+        "Energy discharge/W.h"
+      ]
+    },
+    {
+      "csvw:name": "cumulative_energy_wh",
+      "csvw:titles": [
+        "|Energy|/W.h"
+      ]
+    },
+    {
+      "csvw:name": "power_watt",
+      "csvw:titles": [
+        "P/W"
+      ]
+    },
+    {
+      "csvw:name": "internal_resistance_ohm",
+      "csvw:titles": [
+        "R/Ohm"
+      ]
+    }
+  ]
+}

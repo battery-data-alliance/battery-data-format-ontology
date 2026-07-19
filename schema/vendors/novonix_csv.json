@@ -1,0 +1,128 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/novonix_csv",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "Novonix UHPC CSV — BDF column mapping",
+  "dcterms:description": "Maps Novonix Ultra-High Precision Charger (UHPC) CSV export headers to BDF canonical columns. The file has an INI-style preamble ([Summary], [Data] sections); the column header row immediately follows the [Data] marker. IMPORTANT: Time columns are in HOURS, not seconds; schema:unitCode is 'h' and the BDF normaliser multiplies by 3600.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "Novonix"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "Run Time (h)",
+        "Run-Time (h)",
+        "Runtime (h)",
+        "Test Time (h)",
+        "TestTime(h)"
+      ],
+      "schema:unitCode": "h"
+    },
+    {
+      "csvw:name": "step_time_second",
+      "csvw:titles": [
+        "Step Time (h)",
+        "StepTime(h)"
+      ],
+      "schema:unitCode": "h"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "Potential (V)",
+        "Voltage (V)",
+        "Cell Voltage (V)"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "Current (A)",
+        "Cell Current (A)"
+      ]
+    },
+    {
+      "csvw:name": "cycle_count",
+      "csvw:titles": [
+        "Cycle Number",
+        "Cycle"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    },
+    {
+      "csvw:name": "step_id",
+      "csvw:titles": [
+        "Step Number",
+        "Step"
+      ]
+    },
+    {
+      "csvw:name": "step_record_index",
+      "csvw:titles": [
+        "Step Position"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      },
+      "skos:note": "Step Position is Novonix's within-step data-point counter; it resets to 1 at each step transition."
+    },
+    {
+      "csvw:name": "unix_time_second",
+      "csvw:titles": [
+        "Date and Time",
+        "Timestamp",
+        "Absolute Time"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:dateTime"
+      },
+      "skos:note": "Datetime string; converted to Unix epoch seconds by the BDF normaliser."
+    },
+    {
+      "csvw:name": "net_capacity_ah",
+      "csvw:titles": [
+        "Capacity (Ah)",
+        "Net Capacity (Ah)"
+      ],
+      "skos:note": "Novonix Capacity (Ah) is a signed running integral of current; positive during charging, negative during discharging. Maps to BDF net_capacity_ah."
+    },
+    {
+      "csvw:name": "net_energy_wh",
+      "csvw:titles": [
+        "Energy (Wh)",
+        "Net Energy (Wh)"
+      ]
+    },
+    {
+      "csvw:name": "power_watt",
+      "csvw:titles": [
+        "Power(W)",
+        "Power (W)"
+      ]
+    },
+    {
+      "csvw:name": "ambient_temperature_celsius",
+      "csvw:titles": [
+        "Temperature (°C)",
+        "Temperature (C)",
+        "Ambient Temperature (C)",
+        "Ambient Temp (C)"
+      ]
+    },
+    {
+      "csvw:name": "temperature_t1_celsius",
+      "csvw:titles": [
+        "Circuit Temperature (°C)",
+        "Circuit Temp (°C)",
+        "Circuit Temperature (C)"
+      ]
+    }
+  ]
+}

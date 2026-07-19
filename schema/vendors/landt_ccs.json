@@ -1,0 +1,74 @@
+{
+  "@context": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/context",
+  "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/schema/vendors/landt_ccs",
+  "@type": "csvw:TableSchema",
+  "dcterms:title": "LANDT CCS binary — BDF column mapping",
+  "dcterms:description": "Maps DataFrame column names produced by parsing LANDT CCS binary files to BDF canonical columns. CCS is a proprietary binary format; there are no text headers in the file. The column names listed here are assigned programmatically by the BDF parser during binary decoding. All values are produced in BDF canonical SI units (seconds, volts, amperes, ampere-hours, watt-hours, ohms); no unit conversion is required.",
+  "schema:producer": {
+    "@type": "schema:Organization",
+    "schema:name": "LANDT Instruments"
+  },
+  "dcterms:conformsTo": {
+    "@id": "https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.0.0/schema"
+  },
+  "csvw:columns": [
+    {
+      "csvw:name": "test_time_second",
+      "csvw:titles": [
+        "ccs_test_time_s"
+      ],
+      "schema:unitCode": "s"
+    },
+    {
+      "csvw:name": "voltage_volt",
+      "csvw:titles": [
+        "ccs_voltage_v"
+      ]
+    },
+    {
+      "csvw:name": "current_ampere",
+      "csvw:titles": [
+        "ccs_current_a"
+      ]
+    },
+    {
+      "csvw:name": "charging_capacity_ah",
+      "csvw:titles": [
+        "ccs_charging_capacity_ah"
+      ]
+    },
+    {
+      "csvw:name": "discharging_capacity_ah",
+      "csvw:titles": [
+        "ccs_discharging_capacity_ah"
+      ]
+    },
+    {
+      "csvw:name": "charging_energy_wh",
+      "csvw:titles": [
+        "ccs_charging_energy_wh"
+      ]
+    },
+    {
+      "csvw:name": "discharging_energy_wh",
+      "csvw:titles": [
+        "ccs_discharging_energy_wh"
+      ]
+    },
+    {
+      "csvw:name": "internal_resistance_ohm",
+      "csvw:titles": [
+        "ccs_internal_resistance_ohm"
+      ]
+    },
+    {
+      "csvw:name": "step_record_index",
+      "csvw:titles": [
+        "ccs_step_index"
+      ],
+      "csvw:datatype": {
+        "csvw:base": "xsd:integer"
+      }
+    }
+  ]
+}
