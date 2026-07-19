@@ -68,13 +68,15 @@ jobs:
         run: python .github/scripts/foops_toolkit.py --generate-badge
 
       - name: Prepare deploy directory structure
-        run: mkdir -p docs/_build/html/{context,schema,assets,versions}
+        run: mkdir -p docs/_build/html/{context,schema/vendors,vendors,assets,versions}
 
-      - name: Copy static assets, context, and schema to build output
+      - name: Copy static assets, context, schema, and vendor artifacts to build output
         run: |
           cp -r docs/assets/. docs/_build/html/assets/ 2>/dev/null || true
           cp context/context.json docs/_build/html/context/
           cp schema/schema.json   docs/_build/html/schema/
+          cp -r schema/vendors/.  docs/_build/html/schema/vendors/
+          cp -r vendors/.         docs/_build/html/vendors/
 
       - name: Apply FOOPS recommendations to TTL files
         run: |
