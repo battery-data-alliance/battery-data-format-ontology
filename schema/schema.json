@@ -1436,8 +1436,8 @@
       "csvw:name": "schedule_charging_capacity_ah",
       "csvw:titles": "Schedule Charging Capacity / Ah",
       "csvw:propertyUrl": "bdf:schedule_charging_capacity_ah",
-      "dcterms:description": "Cumulative charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour",
-      "rdfs:comment": "Cumulative charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour",
+      "dcterms:description": "Cumulative charge transferred into the test object during charging since the most recent schedule-defined assignment event, in ampere hour",
+      "rdfs:comment": "Cumulative charge transferred into the test object during charging since the most recent schedule-defined assignment event, in ampere hour",
       "skos:prefLabel": {
         "@value": "Schedule Charging Capacity / Ah",
         "@language": "en"
@@ -1463,8 +1463,8 @@
       "csvw:name": "schedule_discharging_capacity_ah",
       "csvw:titles": "Schedule Discharging Capacity / Ah",
       "csvw:propertyUrl": "bdf:schedule_discharging_capacity_ah",
-      "dcterms:description": "Cumulative charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour",
-      "rdfs:comment": "Cumulative charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour",
+      "dcterms:description": "Cumulative charge transferred out of the test object during discharging since the most recent schedule-defined assignment event, in ampere hour",
+      "rdfs:comment": "Cumulative charge transferred out of the test object during discharging since the most recent schedule-defined assignment event, in ampere hour",
       "skos:prefLabel": {
         "@value": "Schedule Discharging Capacity / Ah",
         "@language": "en"
@@ -1490,8 +1490,8 @@
       "csvw:name": "schedule_charging_energy_wh",
       "csvw:titles": "Schedule Charging Energy / Wh",
       "csvw:propertyUrl": "bdf:schedule_charging_energy_wh",
-      "dcterms:description": "Cumulative energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour",
-      "rdfs:comment": "Cumulative energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour",
+      "dcterms:description": "Cumulative energy transferred into the test object during charging since the most recent schedule-defined assignment event, in watt hour",
+      "rdfs:comment": "Cumulative energy transferred into the test object during charging since the most recent schedule-defined assignment event, in watt hour",
       "skos:prefLabel": {
         "@value": "Schedule Charging Energy / Wh",
         "@language": "en"
@@ -1517,8 +1517,8 @@
       "csvw:name": "schedule_discharging_energy_wh",
       "csvw:titles": "Schedule Discharging Energy / Wh",
       "csvw:propertyUrl": "bdf:schedule_discharging_energy_wh",
-      "dcterms:description": "Cumulative energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour",
-      "rdfs:comment": "Cumulative energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour",
+      "dcterms:description": "Cumulative energy transferred out of the test object during discharging since the most recent schedule-defined assignment event, in watt hour",
+      "rdfs:comment": "Cumulative energy transferred out of the test object during discharging since the most recent schedule-defined assignment event, in watt hour",
       "skos:prefLabel": {
         "@value": "Schedule Discharging Energy / Wh",
         "@language": "en"

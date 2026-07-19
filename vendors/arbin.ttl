@@ -247,8 +247,8 @@ arbin:charging_capacity_ah rdf:type owl:Class ;
      arbin:sheetScope "statistics" ;
      schema:unitCode "A.h" ;
      schema:unitText "ampere hour"@en ;
-     skos:definition "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window resets at schedule-authored boundaries (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Decreases only at a reset, to zero. MITS 7 code PV23 (PV_ChargeCapacity)."@en ;
-     rdfs:comment "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window resets at schedule-authored boundaries (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Decreases only at a reset, to zero. MITS 7 code PV23 (PV_ChargeCapacity)."@en .
+     skos:definition "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window is delimited by schedule-authored assignment events (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV23 (PV_ChargeCapacity)."@en ;
+     rdfs:comment "Instrument charge accumulator for current flowing into the cell (charge), in ampere hour. The accumulation window is delimited by schedule-authored assignment events (per cycle, at scripted steps, or never) that are not recoverable from the exported time-series alone, so it maps to the program-scoped core term bdf:schedule_charging_capacity_ah rather than a cycle- or step-scoped term. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV23 (PV_ChargeCapacity)."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#discharging_capacity_ah
 arbin:discharging_capacity_ah rdf:type owl:Class ;
@@ -267,8 +267,8 @@ arbin:discharging_capacity_ah rdf:type owl:Class ;
      arbin:sheetScope "statistics" ;
      schema:unitCode "A.h" ;
      schema:unitText "ampere hour"@en ;
-     skos:definition "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Decreases only at a reset, to zero. MITS 7 code PV24 (PV_DischargeCapacity)."@en ;
-     rdfs:comment "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Decreases only at a reset, to zero. MITS 7 code PV24 (PV_DischargeCapacity)."@en .
+     skos:definition "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV24 (PV_DischargeCapacity)."@en ;
+     rdfs:comment "Instrument charge accumulator for current flowing out of the cell (discharge), in ampere hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_discharging_capacity_ah. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV24 (PV_DischargeCapacity)."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#charging_energy_wh
 arbin:charging_energy_wh rdf:type owl:Class ;
@@ -286,8 +286,8 @@ arbin:charging_energy_wh rdf:type owl:Class ;
      arbin:sheetScope "statistics" ;
      schema:unitCode "W.h" ;
      schema:unitText "watt hour"@en ;
-     skos:definition "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV25 (PV_ChargeEnergy)."@en ;
-     rdfs:comment "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV25 (PV_ChargeEnergy)."@en .
+     skos:definition "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV25 (PV_ChargeEnergy)."@en ;
+     rdfs:comment "Instrument energy accumulator over the charge intervals, in watt hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_charging_energy_wh. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV25 (PV_ChargeEnergy)."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#discharging_energy_wh
 arbin:discharging_energy_wh rdf:type owl:Class ;
@@ -305,8 +305,8 @@ arbin:discharging_energy_wh rdf:type owl:Class ;
      arbin:sheetScope "statistics" ;
      schema:unitCode "W.h" ;
      schema:unitText "watt hour"@en ;
-     skos:definition "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV26 (PV_DischargeEnergy)."@en ;
-     rdfs:comment "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored reset windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Decreases only at a reset, to zero. MITS 7 code PV26 (PV_DischargeEnergy)."@en .
+     skos:definition "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV26 (PV_DischargeEnergy)."@en ;
+     rdfs:comment "Instrument energy accumulator over the discharge intervals, in watt hour, with schedule-authored assignment windows not recoverable from the time-series; maps to bdf:schedule_discharging_energy_wh. Value changes discontinuously only at schedule-authored assignment events: MITS 'Set variable(s)' resets to zero, and 'Set value' may assign an arbitrary value or a formula result (confirmed by Arbin, 2026-07). MITS 7 code PV26 (PV_DischargeEnergy)."@en .
 
 ###  https://w3id.org/battery-data-alliance/ontology/battery-data-format/vendors/arbin#capacity_ah
 arbin:capacity_ah rdf:type owl:Class ;

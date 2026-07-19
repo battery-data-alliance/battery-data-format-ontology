@@ -1449,7 +1449,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#interna
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">subclasses</span></td>
-    <td class="element-table-value"><a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a>, <a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a></td>
+    <td class="element-table-value"><a href='#dc_internal_resistance_ohm' onclick="if(!document.getElementById('dc_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#dc_internal_resistance_ohm';return false;}">DC Internal Resistance / ohm</a>, <a href='#ac_internal_resistance_ohm' onclick="if(!document.getElementById('ac_internal_resistance_ohm')){window.location.href='https://w3id.org/battery-data-alliance/ontology/battery-data-format#ac_internal_resistance_ohm';return false;}">AC Internal Resistance / ohm</a></td>
   </tr>
   </table>
 
@@ -1809,7 +1809,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose reset behavior is operator-defined.</td>
+    <td class="element-table-value">Cumulative electric charge transferred into the test object during charging since the most recent schedule-defined assignment event, in ampere hour. Assignment points are authored in the test program (per cycle, at scripted steps, or never): typically a reset to zero, though schedule controls may assign an arbitrary value or a formula result (e.g. Arbin MITS 'Set variable(s)' resets and 'Set value' assignments; confirmed by Arbin). The value changes discontinuously only at such a schedule-defined assignment. When the schedule defines no assignments, this quantity coincides with charging_capacity_ah. Where computed, it is the time integral of the positive part of current since the most recent assignment. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Capacity), whose assignment behavior is operator-defined.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1821,7 +1821,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+    <td class="element-table-value">\(Q_\mathrm{chg}^\mathrm{sched}(t) = Q_\mathrm{chg}^\mathrm{sched}(t_r) + \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined assignment}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1847,7 +1847,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
 
 .. note::
 
-   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_capacity_ah for the test-scoped quantity.
+   Assignment points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_capacity_ah for the test-scoped quantity.
 
 
 .. raw:: html
@@ -1873,7 +1873,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose reset behavior is operator-defined.</td>
+    <td class="element-table-value">Cumulative electric energy transferred into the test object during charging since the most recent schedule-defined assignment event, in watt hour. Assignment points are authored in the test program (per cycle, at scripted steps, or never): typically a reset to zero, though schedule controls may assign an arbitrary value or a formula result (e.g. Arbin MITS 'Set variable(s)' resets and 'Set value' assignments; confirmed by Arbin). The value changes discontinuously only at such a schedule-defined assignment. When the schedule defines no assignments, this quantity coincides with charging_energy_wh. Where computed, it is the time integral of instantaneous power over the charge intervals (current > 0) since the most recent assignment. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Charge_Energy), whose assignment behavior is operator-defined.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1885,7 +1885,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+    <td class="element-table-value">\(E_\mathrm{chg}^\mathrm{sched}(t) = E_\mathrm{chg}^\mathrm{sched}(t_r) + \frac{1}{3600}\int_{t_r}^{t} P(\tau)\,\bigl[I(\tau) > 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined assignment}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1911,7 +1911,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
 
 .. note::
 
-   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_energy_wh for the test-scoped quantity.
+   Assignment points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use charging_energy_wh for the test-scoped quantity.
 
 
 .. raw:: html
@@ -1937,7 +1937,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined reset event, in ampere hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose reset behavior is operator-defined.</td>
+    <td class="element-table-value">Cumulative electric charge transferred out of the test object during discharging since the most recent schedule-defined assignment event, in ampere hour. Assignment points are authored in the test program (per cycle, at scripted steps, or never): typically a reset to zero, though schedule controls may assign an arbitrary value or a formula result (e.g. Arbin MITS 'Set variable(s)' resets and 'Set value' assignments; confirmed by Arbin). The value changes discontinuously only at such a schedule-defined assignment. When the schedule defines no assignments, this quantity coincides with discharging_capacity_ah. Where computed, it is the time integral of the magnitude of the negative part of current since the most recent assignment. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Capacity), whose assignment behavior is operator-defined.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -1949,7 +1949,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+    <td class="element-table-value">\(Q_\mathrm{dchg}^\mathrm{sched}(t) = Q_\mathrm{dchg}^\mathrm{sched}(t_r) + \frac{1}{3600}\int_{t_r}^{t} \max\!\bigl(-I(\tau),\,0\bigr)\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined assignment}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -1975,7 +1975,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
 
 .. note::
 
-   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_capacity_ah for the test-scoped quantity.
+   Assignment points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_capacity_ah for the test-scoped quantity.
 
 
 .. raw:: html
@@ -2001,7 +2001,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined reset event, in watt hour. Reset points are authored in the test program (per cycle, at scripted steps, or never); a value decrease occurs only at a reset, where the accumulator returns to zero. When the schedule defines no resets, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent reset. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose reset behavior is operator-defined.</td>
+    <td class="element-table-value">Cumulative electric energy transferred out of the test object during discharging since the most recent schedule-defined assignment event, in watt hour. Assignment points are authored in the test program (per cycle, at scripted steps, or never): typically a reset to zero, though schedule controls may assign an arbitrary value or a formula result (e.g. Arbin MITS 'Set variable(s)' resets and 'Set value' assignments; confirmed by Arbin). The value changes discontinuously only at such a schedule-defined assignment. When the schedule defines no assignments, this quantity coincides with discharging_energy_wh. Where computed, it is the time integral of instantaneous power magnitude over the discharge intervals (current < 0) since the most recent assignment. Matches the accumulators exported by schedule-driven cyclers (e.g. Arbin MITS Discharge_Energy), whose assignment behavior is operator-defined.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -2013,7 +2013,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">formula</span></td>
-    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{sched}(t) = \frac{1}{3600}\int_{t_r}^{t} \bigl|P(\tau)\bigr|\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined reset}\)</td>
+    <td class="element-table-value">\(E_\mathrm{dchg}^\mathrm{sched}(t) = E_\mathrm{dchg}^\mathrm{sched}(t_r) + \frac{1}{3600}\int_{t_r}^{t} \bigl|P(\tau)\bigr|\,\bigl[I(\tau) < 0\bigr]\,\mathrm{d}\tau,\quad t_r = \text{most recent schedule-defined assignment}\)</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">obligation</span></td>
@@ -2039,7 +2039,7 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#schedul
 
 .. note::
 
-   Reset points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_energy_wh for the test-scoped quantity.
+   Assignment points are protocol-defined, so values are not comparable across tests without the schedule; not suitable for cross-test aggregation. Use discharging_energy_wh for the test-scoped quantity.
 
 
 .. raw:: html
@@ -2668,12 +2668,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_re
     <td class="element-table-value">step_record_index_1</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Introduced in 1.3.0 (2026-07-17) as the new name of step_index, which is deprecated and redirects here via dcterms:isReplacedBy; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3380,12 +3380,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_ca
     <td class="element-table-value">step_capacity_ampere_hour</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_capacity_ah for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of charge throughput within the current test step, in ampere hour: the time integral of the absolute current from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3428,12 +3428,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_en
     <td class="element-table-value">step_energy_wh</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Deprecated in 1.1.0 (2026-06-08). Renamed to step_cumulative_energy_wh for consistency with the {charging, discharging, net, cumulative} convention; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Running accumulation of energy throughput within the current test step, in watt hour: the time integral of the current-signed instantaneous power (P times the sign of I) from the step start, monotonically non-decreasing within the step and reset to zero at each step transition. The direction of transfer is indicated by step_type or the sign of current_ampere, not by this value.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3476,12 +3476,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#step_in
     <td class="element-table-value">step_index_1</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Deprecated in 1.3.0 (2026-07-17). Renamed to step_record_index to avoid collision with vendor 'Step Index' columns (e.g. Arbin Step_Index), which are program step identifiers mapping to step_id; the concept is unchanged.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">1-based positional counter for data points within a step. Resets to 1 at the start of each new step and increments by 1 for each subsequent recorded data point. Always derivable from the data; not typically exported directly by cycler software. This is the within-step data-point counter, not the program step identifier: an instrument column named 'Step Index' (e.g. Arbin Step_Index) maps to step_id, not to this property.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3524,12 +3524,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#test_ti
     <td class="element-table-value">test_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Test time recorded in millisecond.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Deprecated in favour of test_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Test time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
@@ -3572,12 +3572,12 @@ IRI: https://w3id.org/battery-data-alliance/ontology/battery-data-format#unix_ti
     <td class="element-table-value">unix_time_ms</td>
   </tr>
   <tr>
-    <td class="element-table-key"><span class="element-table-key">definition</span></td>
-    <td class="element-table-value">Unix time recorded in millisecond.</td>
-  </tr>
-  <tr>
     <td class="element-table-key"><span class="element-table-key">historyNote</span></td>
     <td class="element-table-value">Deprecated in favour of unix_time_second: seconds are the canonical BDF time unit. Retained for legacy compatibility.</td>
+  </tr>
+  <tr>
+    <td class="element-table-key"><span class="element-table-key">definition</span></td>
+    <td class="element-table-value">Unix time recorded in millisecond.</td>
   </tr>
   <tr>
     <td class="element-table-key"><span class="element-table-key">notation</span></td>
