@@ -65,16 +65,16 @@ schema:unitText a owl:AnnotationProperty .
     dcterms:creator <https://orcid.org/0000-0002-8758-6109> ;
     dcterms:issued "2026-05-14"^^xsd:date ;
     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
-    dcterms:modified "2026-06-11"^^xsd:date ;
+    dcterms:modified "2026-07-19"^^xsd:date ;
     dcterms:publisher <https://github.com/battery-data-alliance> ;
     dcterms:title "Battery Data Format Ontology"@en ;
     bibo:status "stable" ;
     vann:preferredNamespacePrefix "bdf" ;
     vann:preferredNamespaceUri "https://w3id.org/battery-data-alliance/ontology/battery-data-format#" ;
     owl:imports <https://w3id.org/emmo/domain/battery/0.18.6/battery> ;
-    owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.1.0/battery-data-format> ;
-    owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/battery-data-format> ;
-    owl:versionInfo "1.2.0" .
+    owl:priorVersion <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.2.0/battery-data-format> ;
+    owl:versionIRI <https://w3id.org/battery-data-alliance/ontology/battery-data-format/1.3.0/battery-data-format> ;
+    owl:versionInfo "1.3.0" .
 
 :absolute_impedance_ohm a owl:Class ;
     rdfs:label "Absolute Impedance / ohm"@en ;
